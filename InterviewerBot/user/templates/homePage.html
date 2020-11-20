@@ -1,0 +1,186 @@
+{% load static %}
+
+
+{% block headerinclude %}
+
+    <title>Interview BOT - Home</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/homePage.css' %}">
+
+{% endblock headerinclude %}
+
+
+{% block footerinclude %}
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+{% endblock footerinclude %}
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static '/images/logo.png' %}" width="100%">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                	<a href="{% url 'user:home_view' %}">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li >
+                    <a href="{% url 'user:job-offers_view' %}">
+                        <i class="fas fa-search"></i>
+                        Job Offers
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user:about-us_view' %}">
+                        <i class="fas fa-info-circle"></i>
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user:contact-us_view' %}">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </li>
+                <li>
+		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </li>
+                    </ul>
+		        </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <h1> Home </h1>
+            <hr><br><br>
+
+            <div class="container">
+                <div class="row" style="margin-top: 10px;">
+                    <div class="col-sm-3">
+                        <h2>3</h2>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="verticalLine"></div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h2>1</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h5>Saved Jobs</h5>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="verticalLine"></div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h5>Applied Jobs</h5>
+                    </div>
+                </div>
+            </div><br><br>
+
+            <button class="accordion">Saved Jobs</button>
+            <div class="panel">
+                <table width="100%" class="table-striped table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
+                            <td width="60%">
+                                <div class="row jobTitle">Job Title</div>
+                                <div class="row jobDescription">Job Description</div>
+                            </td>
+                            <td width="15%" align="center">
+                                <button class="btnUnsave"><i class="fa fa-bookmark"></i> UNSAVE</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
+                            <td width="60%">
+                                <div class="row jobTitle">Web Developer</div>
+                                <div class="row jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam porta dignissim id nec magna. Sed in elit nibh. Suspendisse eros nunc, placerat nec ultricies eu, suscipit et felis. Morbi fringilla, quam nec eleifend convallis, eros massa commodo justo, sed mattis diam lectus a odio.</div>
+                            </td>
+                            <td width="15%" align="center">
+                                <button class="btnUnsave"><i class="fa fa-bookmark"></i> UNSAVE</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
+                            <td width="60%">
+                                <div class="row jobTitle">Job Title</div>
+                                <div class="row jobDescription">Job Description</div>
+                            </td>
+                            <td width="15%" align="center">
+                                <button class="btnUnsave"><i class="fa fa-bookmark"></i> UNSAVE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br><br>
+
+            <button class="accordion">Applied Jobs</button>
+            <div class="panel">
+                <table width="100%" class="table-striped table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <td width="10%"> <img src="{% static 'images/white_bg.jpg' %}" class="imgJob"></td>
+                            <td width="60%">
+                                <div class="row jobTitle">Web Designer</div>
+                                <div class="row jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam porta dignissim id nec magna. Sed in elit nibh. Suspendisse eros nunc, placerat nec ultricies eu, suscipit et felis. Morbi fringilla, quam nec eleifend convallis, eros massa commodo justo, sed mattis diam lectus a odio.</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+        </script>
+        
+    </div>
+
+{% endblock content %}

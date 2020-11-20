@@ -1,0 +1,56 @@
+{% load static %}
+
+{% block headerinclude %}
+
+    <title>Login to Interview BOT</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/userLog-inPage.css' %}">
+    
+{% endblock headerinclude %}
+
+
+
+{% block footerinclude %}
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+{% endblock footerinclude %}
+
+
+
+{% block content %}
+
+    <div class="login">
+        <div class="logo">
+            <img  src="{% static '/images/logo.png' %}" width="35%" height="23%">
+         </div>            
+         <form id="login" method="get" action="UserLog-inPage.html">
+            <label>
+              <center>  <input type="button" name="LogAdmin" id="LogAdmin" value="LOG IN AS ADMIN"></center><br>
+                <p style="font-size: 11px;">_____________________________________________ OR _____________________________________________</p>
+            </label>
+            <div>
+            <label>
+                <input type="text"  name="emailAdd" id="emailAdd" placeholder="Email Address">
+            </label> 
+            </div>      
+            <label>
+                <input type="Password" name="pass" id="pass" placeholder="Password"><br><br>
+         <p style="font-size: 11px;">______________________________________________________________________________________________</p>
+            </label>
+            <label>
+                <input class="btn_login" type="button" name="login" id="login" value="LOG IN"><br><br><br>
+            </label>
+            <label>
+                <input type="button" name="signUp" id="signUp" value="SIGN UP">
+            </label>
+        </form>
+    </div>    
+
+{% endblock content %}        

@@ -1,0 +1,101 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/images/white_bg.jpg');
+    background-size: cover;
+}
+
+input[type=button] {
+	cursor: pointer;
+}
+
+.login {
+	width: 55%;
+	overflow: hidden;
+	margin: auto;
+	padding: 50px;
+}
+
+.logo {
+	position: relative;
+	left: 28%;
+	margin:auto;
+}
+
+#LogAdmin {
+	border-radius: 15px;
+	width: 350px;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	font-weight: bold;
+}
+#LogAdmin:hover{
+	background-color: #A9A9A9;
+}
+#emailAdd {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #ffcc00;
+	position: relative;
+	left: 33%;
+	
+}
+#pass {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: #ffcc00;
+	position: relative;
+	left: 20%;
+	
+}
+.btn_login {
+	border-radius: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width:150px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #cc0000;
+	position: relative;
+	left: 220px;
+	color: white;
+}
+.btn_login:hover{
+	background-color: #8B0000;
+}
+#signUp {
+	border-radius: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width:150px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	position: relative;
+	left: 65px;
+}
+#signUp:hover{
+	background-color: #A9A9A9;
+}
+input {
+	text-align: center;
+}

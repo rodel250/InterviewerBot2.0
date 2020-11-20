@@ -1,0 +1,139 @@
+body{
+    font-family: Arial;
+    background-image: url("white_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.jobInteview{
+    position: relative;
+    margin: auto;
+}
+.imgJob {
+    width: 70px; 
+    height: 70px; 
+    border-radius: 50%;
+    position: relative;
+    left: 30%;
+}
+#btn-mic{
+    cursor: pointer;
+    border-radius: 50px;
+    width: 60px;
+    height: 45px;
+    position: absolute;
+    top: 24%;
+    left: 83.5%;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #8B0000;
+}
+#mic-logo{
+    cursor: pointer;
+    width: 43px;
+    height:35px;
+    position: absolute;
+    left: 84%;
+    top:28%;
+}
+
+#job-form{
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    padding: 10px;
+}
+#job-text{
+    font-weight: bold;
+    position: absolute;
+    left: 10%;
+    top: 3%;
+    font-size: 23px;
+}
+#lorem-text{
+    position: absolute;
+    left: 10%;
+    top: 8%;
+    font-size: 16px;
+}
+
+#label{
+    background-color: #FFCC00;
+    
+}
+#question{
+    font-family: Arial;
+    font-size: 16px;
+    position: relative;
+    left: 108%;
+}
+
+#line{
+    position: relative;
+    left:7%;
+}
+#time{
+    font-size: 11px;
+    font-family: Arial;
+    color: black;
+}
+#btnSend{
+    cursor: pointer;
+    width: 120px;
+    border-radius: 18px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #8B0000;
+    color: white;
+    font-size: 15px;
+    position: relative;
+    left: 25%;
+}
+#foot{
+    width: 100%;
+    position: absolute;
+    top: 88%;
+    left: 0%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    height: inherit;
+}
+#message{
+    border-radius: 20px;
+    width: 930px;
+    text-align: center;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #ffffff;
+    position: relative;
+    text-align: left;
+    left: 15%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+}
+#send-logo{
+    cursor: pointer;
+    width: 35px;
+    height: 23px;
+    position: relative;
+    left: 15%;
+}
+#id-time{
+    position: absolute;
+    top: 24%;
+    left: 2%;
+}

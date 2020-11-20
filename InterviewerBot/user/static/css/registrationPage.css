@@ -1,0 +1,100 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: url("/static/images/white_bg.jpg");
+    background-size: cover;
+   
+}
+.register {
+	width: 55%;
+	overflow: hidden;
+	margin: auto;
+	padding: 50px;
+}
+h6 {
+	text-align: center;
+	position: absolute;
+	top: 90px;
+	left: 647px;
+}
+h1 {
+	text-align: center;
+	position: absolute;
+	top: 110px;
+	left: 680px;
+}
+.logo {
+	position: relative;
+	margin:auto;
+
+}
+
+#fullName {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	position: relative;
+	
+}
+
+#emailAdd {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	position: relative;
+	
+}
+
+#pass {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	position: relative;
+	
+}
+
+.btn_register {
+	border-radius: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	width:150px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
+	position: relative;
+	font-weight: bold;
+	color: black;
+}
+
+input[type=button] {
+	cursor: pointer;
+}
+
+input {
+	text-align: center;
+}
+
+input:hover {
+	background-color: lightgrey;
+}
+
+a,
+a:hover{
+	color: #800;
+}

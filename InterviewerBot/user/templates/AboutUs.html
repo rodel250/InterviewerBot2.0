@@ -1,0 +1,95 @@
+{% load static %}
+
+
+{% block headerinclude %}
+
+    <title>Interview BOT - About Us</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/aboutUs.css' %}">
+
+{% endblock headerinclude %}
+
+
+{% block footerinclude %}
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+{% endblock footerinclude %}
+
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static '/images/logo.png' %}" width="100%">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="{% url 'user:home_view' %}">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li >
+                    <a href="{% url 'user:job-offers_view' %}">
+                        <i class="fas fa-search"></i>
+                        Job Offers
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'user:about-us_view' %}">
+                        <i class="fas fa-info-circle"></i>
+                        About Us
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user:contact-us_view' %}">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </li>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!-- Page Content  -->
+
+        <div id="content">
+
+            <h1>About Us<hr></h1><br>
+            <h3 class="h1-responsive font-weight-bold mt-4 text-warning">&nbsp;About Interview Bot</h2>
+            <p class="w-responsive mx-auto mb-4 text-light">&nbsp;Emerging technologies, like AI-powered bots has a huge impact to the organizations or job applicants since they provide quicker resolutions and simplify the job of an Interviewer agent. Being able to balance speed and personalization will lead to increase job applicants satisfaction levels as well as the reputational benefits that follows.</p>
+            <br>
+            <h3 class="h1-responsive font-weight-bold mt-3 text-warning">&nbsp;Our Mission</h2>
+            <p class="w-responsive mx-auto mb-4 text-light">&nbsp;To provide customer support to the applicants as well as in organization.</p>
+
+        </div>
+    </div>
+
+{% endblock content %}

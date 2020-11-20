@@ -1,0 +1,147 @@
+{% load static %}
+
+
+{% block headerinclude %}
+
+    <title>Interview BOT</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/contactUs.css' %}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+
+{% endblock headerinclude %}
+
+
+
+{% block footerinclude %}
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+{% endblock footerinclude %}
+
+
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static '/images/logo.png' %}" width="100%">
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                	<a href="{% url 'user:home_view' %}">
+                        <i class="fas fa-home"></i>
+                        Home</a>
+                </li>
+                <li >
+                    <a href="{% url 'user:job-offers_view' %}">
+                        <i class="fas fa-search"></i>
+                        Job Offers
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'user:about-us_view' %}">
+                        <i class="fas fa-info-circle"></i>
+                        About Us
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'user:contact-us_view' %}">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                </li>
+                <li>
+		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#"><i class="fa fa-cog"></i> Settings</a> 
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </li>
+                    </ul>
+		        </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+
+        <div id="content">
+            <h1>Contact Us<hr></h1>
+            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+
+                <div class="row align-items-center">
+
+                    <div class="col-md-6">
+                           
+                            <div class="form-group text-left">
+                                <h3 class="h1-responsive font-weight-bold mt-4 text-warning">Send us a message</h2>
+                                <p class="w-responsive mx-auto mb-4 text-light">Fill out the quick form and we will be in touch in no time.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Your email address">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="md-form my-3">
+                                        <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea" placeholder="Message"></textarea>
+                                    </div>
+                            </div>
+
+                        <div class="text-center text-md-left">
+                            <a id="submit" class="btn btn-warning font-weight-bold text-dark" onclick="document.getElementById('contact-form').submit();">SUBMIT</a>
+                        </div>
+                        <div class="status"></div>
+                        </div>
+
+                        <div class="col-md-1 text-center">
+                            
+                        </div>
+
+                        <div class="col-md-3 text-center">
+                            <div class="form-group">
+                                    <h5 class="text-white font-weight-bold">Connect with us:</h6>
+                            </div>
+
+                             <div class="form-group">
+                                    <i class="fas fa-envelope mt-1" style="color: white"></i>
+                                    <p class="text-white">contact@interviewbot.com</p>
+                                    <i class="fas fa-phone mt-1" style="color: white"></i>
+                                    <p class="text-white">+63 (0)995 831 2823</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                
+        </div>
+    </div>
+    
+{% endblock content %}

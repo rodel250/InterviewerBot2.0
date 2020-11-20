@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Interview BOT - Create Job</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="createJob.css">
+
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+</head>
+
+<body>
+   <form id="job-form" style="background-color: #ffcc00">
+    <div class="createJob" id="cJob">
+        <label id="label"> 
+            <img src="Notepad.png" class="imgJob">
+            <h4 id="job-text">Untitled Questionnaire</h4>
+            <input type="submit" id="btnPost" value="Post">
+            <img src="ellipsis.png" class="imgEllipsis">
+            <img src="circle.png" class="imgCir">
+        </label>
+        <label>
+            <input type="button" name="post" id="question" value="Questions" style="background-color: #ffcc00">
+        </label> 
+        <label>
+            <input type="button" name="post" id="responses" value="Responses" style="background-color: #ffcc00">
+        </label>
+    </div>     
+    </form> 
+    <br>
+    <br> 
+
+    <form id="msg-form" style="background-color: #FFFFFF;">
+        <label>
+            <h4 id="j-text">Untitled Questionnaire</h4>
+            <br>
+            &nbsp;<input type="text" name="message" id="message" value="&nbsp;Questionnaire Description">
+        </label>
+    </form>
+
+    <form id="msg2-form" style="background-color: #FFFFFF;">
+        <label>
+            <br>
+            &nbsp;<input type="text" name="message" id="message2" value="&nbsp;Untitled Question"><br>
+            &nbsp;<input type="text" name="message" id="message3" value="&nbsp;Long answer text"><br>
+            &nbsp;<input type="text" name="message" id="message4" value="&nbsp;"><br><br>
+            <input type="image" src="copy.png" alt="Submit" id=imgCopy>
+            <input type="image" src="delete.jpg" alt="Submit" id=imgDelete>
+        </label>
+    </form>
+    <form id="function-form" style="background-color: #FFFFFF;">
+        <label>
+            <input type="image" src="plus.png" alt="Submit" id=imgPlus><br>
+            <input type="image" src="forward.png" alt="Submit" id=imgForward><br>
+            <input type="image" src="truetype.png" alt="Submit" id=imgTT><br>
+            <input type="image" src="gallery.png" alt="Submit" id=imgGallery><br>
+        </label>
+    </form>
+   </div>
+</body>
+</html>

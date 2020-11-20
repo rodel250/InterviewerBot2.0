@@ -1,0 +1,362 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/images/red_bg.jpg');
+    background-size: cover;
+}
+
+button {
+    cursor: pointer;
+}
+
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+i,
+span {
+    display: inline-block;
+}
+
+h1 {
+	color: white; 
+	font-weight: bold; 
+	font-size: 48px; 
+	margin-top: 5%;
+}
+
+hr {
+	border-color: white; 
+	width: 87%; 
+	height: 5%; 
+	float: left;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    position: fixed;
+    overflow-y: auto;
+    height: 100%;
+    min-width: 25%;
+    max-width: 25%;
+    background: white;
+    color: black;
+    transition: all 0.3s;
+}
+
+#sidebar.active {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+
+#sidebar.active .sidebar-header h3,
+#sidebar.active .CTAs {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+#sidebar.active ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active .dropdown-toggle::after {
+    top: auto;
+    bottom: 10px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: white;
+}
+
+#sidebar .sidebar-header strong {
+    display: none;
+    font-size: 1.8em;
+}
+
+#sidebar ul li a {
+    padding: 20px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color: black;
+    background: lightgrey;
+}
+
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active>a {
+    color: white;
+    background: #800;
+}
+
+a[aria-expanded="true"] {
+    background-color: lightgrey;
+}	
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: white;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+	width: 100%;
+    padding: 20px;
+    margin-left: 26%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+/* ---------------------------------------------
+	SEARCH BAR
+-----------------------------------------------*/
+
+.searchInput {
+	position: relative;
+	margin-right: 10px;
+}
+
+.searchInput input[type=text] {
+	width: 70%;
+	padding: 10px;
+  	padding-left: 20px;
+  	border-radius: 100px;
+  	margin-right: 2%;
+  	font-weight: bold;
+  	background-color: lightgrey;
+}
+
+.searchButton {
+	background: #FFCC00;  
+	width: 15%; 
+	margin: 1 0;
+	font-weight: bold; 
+	padding: 10px; 
+	border-radius: 100px;
+}
+
+.searchButton:hover {
+    background: #FFD700;
+}
+
+
+/* ---------------------------------
+	TABLE CONTENTS
+-----------------------------------*/
+
+table, th, td {
+	padding: 5px;
+}
+
+table {
+	background-color: white;
+	border-collapse: separate;
+    border-radius: 10px;
+	border: none;
+}
+
+td {
+	height: 5%;
+}
+
+.btnApply {
+	border-color: #4D4DFF;
+	padding: 5px 16px;
+	font-weight: bold;
+	font-size: 16px;
+	color: #4D4DFF;
+	border-radius: 8px;
+}
+
+.btnApply:hover {
+	background-color: #4D4DFF;
+	color: white;
+}
+
+.btnSave {
+	border: none;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.btnSave:hover {
+    font-size: 18px;
+}
+
+.jobTitle {
+	font-weight: bold;
+	margin-left: 1%;
+}
+
+.jobDescription {
+	width: 100%;
+	font-size: 12px;
+	text-align: justify;
+	margin-left: 1%;
+}
+
+.imgJob {
+	width: 80%; 
+	height: inherit; 
+	border-radius: 50%;
+}
+
+/*JOB REQUIREMENTS MODAL*/
+.jobModal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4);
+}
+
+.jobModal_content{
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 5px solid #DCB800;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 15px;
+}
+
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.column{
+    float: left;
+    width: 50%;
+}
+.column2{
+    float: left;
+    width: 50%;
+    border-left: 1px solid #EADFA8;
+}
+
+.column h3{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.column2 h3{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*Upload File CSS*/
+input[type="file"] {
+  display: block;
+}
+.imageThumb {
+  max-height: 75px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+  background: white;
+  color: black;
+}
+
+.btnSubmit a{
+    position: absolute;
+    font-weight: bold;
+    bottom: -80px;
+    right: 170px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: #DCB800;
+    border-radius: 15px;
+}
