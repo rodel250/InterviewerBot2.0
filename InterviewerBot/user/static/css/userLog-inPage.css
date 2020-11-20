@@ -20,20 +20,6 @@ input[type=button] {
 	left: 28%;
 	margin:auto;
 }
-
-#LogAdmin {
-	border-radius: 15px;
-	width: 350px;
-	padding-left: 10px;
-	border-left-width: 3px;
-	border-right-width: 3px;
-	border-top-width: 3px;
-	border-bottom-width: 3px;
-	font-weight: bold;
-}
-#LogAdmin:hover{
-	background-color: #A9A9A9;
-}
 #emailAdd {
 	border-radius: 15px;
 	width: 350px;
