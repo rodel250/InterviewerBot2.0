@@ -1,11 +1,10 @@
 body{
-    font-family: Arial;
-    background-image: url("white_bg.jpg");
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/images/white_bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     
 }
-
 .jobInteview{
     position: relative;
     margin: auto;
@@ -42,11 +41,24 @@ body{
     top:28%;
 }
 
-#job-form{
+.bckg_head{
     width: 100%;
     overflow: hidden;
     margin: auto;
     padding: 10px;
+    background-color: #ffcc00;
+}
+.job-form{
+    width: 100%;
+    height: inherit;
+    background-color: transparent;
+    position: relative;
+    left: 6.5%;
+}
+.time{
+    position: absolute;
+    top: 24%;
+    left: 2%;
 }
 #job-text{
     font-weight: bold;
@@ -72,11 +84,6 @@ body{
     position: relative;
     left: 108%;
 }
-
-#line{
-    position: relative;
-    left:7%;
-}
 #time{
     font-size: 11px;
     font-family: Arial;
@@ -99,6 +106,7 @@ body{
     left: 25%;
 }
 #foot{
+    background-color: #A9A9A9;
     width: 100%;
     position: absolute;
     top: 88%;
@@ -132,8 +140,4 @@ body{
     position: relative;
     left: 15%;
 }
-#id-time{
-    position: absolute;
-    top: 24%;
-    left: 2%;
-}
+
