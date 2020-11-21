@@ -41,13 +41,13 @@
             </div>      
             <label>
                 <input type="Password" name="pass" id="pass" placeholder="Password"><br><br>
-         <p style="font-size: 11px;">______________________________________________________________________________________________</p>
+                <p style="font-size: 11px;">______________________________________________________________________________________________</p>
             </label>
             <label>
-                <input class="btn_login" type="button" name="login" id="login" value="LOG IN"><br><br><br>
+                <a href="{% url 'user:home_view' %}" class="btn_login" type="button" name="login" id="id-login">LOG IN</a><br><br><br>
             </label>
             <label>
-                <input type="button" name="signUp" id="signUp" value="SIGN UP">
+                <a href="{% url 'user:registration_view' %}"" class="btn_signUp" type="button" name="signUp" id="id-signUp">SIGN UP</a>
             </label>
         </form>
     </div>    

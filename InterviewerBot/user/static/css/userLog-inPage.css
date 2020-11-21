@@ -51,6 +51,7 @@ input[type=button] {
 	
 }
 .btn_login {
+	text-align: center;
 	border-radius: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -63,11 +64,19 @@ input[type=button] {
 	position: relative;
 	left: 220px;
 	color: white;
+	padding-top: 5%;
+	padding-bottom: 5%
 }
 .btn_login:hover{
 	background-color: #8B0000;
 }
-#signUp {
+#id-login{
+	text-decoration: none;
+}
+#id-login:hover{
+	color: white;
+}
+.btn_signUp {
 	border-radius: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -79,9 +88,15 @@ input[type=button] {
 	position: relative;
 	left: 65px;
 }
-#signUp:hover{
+.btn_signUp:hover{
 	background-color: #A9A9A9;
 }
+#id-signUp{
+	color: black;
+	text-align: center;
+	text-decoration: none;
+}
+
 input {
 	text-align: center;
 }
