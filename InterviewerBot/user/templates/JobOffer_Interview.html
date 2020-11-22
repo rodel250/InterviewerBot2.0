@@ -9,10 +9,10 @@
 
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{% static '/css/JobOffer_Interview.css' %}">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    
 {% endblock headerinclude %}
+
+
 
 {% block footerinclude %}
 
@@ -27,12 +27,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 {% endblock footerinclude %}
 
+
+
 {% block content %}
    
    <div class="bckg_head">
     <div class="jobInterview" id="jobInter">
         <label id="label"> 
-            <img src="red_bg.jpg" class="imgJob">
+            <img src="{% static '/images/red_bg.jpg' %}" class="imgJob">
             <h4 id="job-text"> Job offer </h4>
             <h6 id="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam.</h6><br>
         </label>
@@ -52,12 +54,12 @@
             <br>
             &nbsp;<input type="text"  name="message" id="message" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write a message">
             <input type="button" name="send" id="btnSend" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send">
-            <img  src="send-logo.png"  id="send-logo">
+            <img  src="{% static '/images/send-logo.png' %}"  id="send-logo">
         </label>
     <div>
         <label>
             <input type="button" name="mic" id="btn-mic">
-             <img  src="mic-logo.png" id="mic-logo">
+             <img  src="{% static '/images/mic-logo.png' %}" id="mic-logo">
         </label>
     </div>
     <div class="time">
@@ -66,4 +68,5 @@
         </label>
     </div>
    </div>
+
 {% endblock content %}  

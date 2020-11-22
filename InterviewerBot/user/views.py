@@ -25,7 +25,7 @@ class HomePageView(View):
 
 class JobInterviewView(View):
 	def get(self, request):
-		return render(request, 'JobOffer_Inteview.html')
+		return render(request, 'jobOffer_Interview.html')
 
 class UserRegistrationView(View):
 	def get(self, request):
