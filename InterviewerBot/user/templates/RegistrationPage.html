@@ -11,9 +11,6 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static '/css/registrationPage.css' %}">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
-
 {% endblock headerinclude %}
 
 
@@ -59,7 +56,7 @@
             </div>
             <div>
                 <input class="btn_register" type="button" name="register" id="register" value="REGISTER"><br><br>
-                <a href="#">Already have an account? Log In</a>
+                <a href="{% url 'user:login_view' %}">Already have an account? Log In</a>
             </div>
         </form>
     </div>             
