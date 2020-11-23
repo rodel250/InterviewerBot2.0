@@ -10,3 +10,11 @@ from django.core.files.storage import default_storage
 class CreateJobView(View):
 	def get(self, request):
 		return render(request, 'createJob.html')
+
+class DashboardView(View):
+	def get(self, request):
+		return render(request, 'admindashboard.html')
+
+class JobListsView(View):
+	def get(self, request):
+		return render(request, 'adminjoblist.html')

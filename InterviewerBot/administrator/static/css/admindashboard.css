@@ -1,12 +1,12 @@
-@font-face { font-family: GonthamBook; src: url('static/css/GonthamBook.ttf'); } 
+@font-face { font-family: GonthamBook; src: url('/static/css/GonthamBook.ttf'); } 
 
 body {
     font-family: 'GonthamBook';
     background-image: url('/static/images/red_bg.jpg');
-    background-size: cover;
+    background-size: cover; 
 }
 
-button { 
+button {
     cursor: pointer;
 }
 
@@ -24,19 +24,15 @@ span {
 }
 
 h1 {
-    color: white; 
-    font-weight: bold; 
-    font-size: 48px; 
-    margin-top: 5%;
+	color: white; 
+	font-weight: bold; 
+	font-size: 48px; 
+	margin-top: 5%;
 }
 
 hr {
-    border-color: white; 
-    width: 100%;  
-    float: center;
-    padding: 0px;
-    margin: 0px;  
-    margin-top: 20px;
+	border-color: white; 
+	width: 80%;  
 }
 
 /* ---------------------------------------------------
@@ -131,7 +127,7 @@ hr {
 
 #sidebar ul li.active>a {
     color: white;
-    background: #933633;
+    background: #800;
 }
 
 a[aria-expanded="true"] {
@@ -155,15 +151,46 @@ ul ul a {
     padding-left: 30px !important;
     background: white;
 }
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
 #content {
-    width: 100%;
+	width: 70%;
     padding: 20px;
     margin-left: 26%;
     min-height: 100vh;
     transition: all 0.3s;
+}
+.topBorder{
+    width: 77%;
+    margin-left: 23%;
+    border-top: 30px solid #ffc107;
+}
+
+#content .selectWrapper{
+  border-radius:36px;
+  display:inline-block;
+  overflow:hidden;
+  background:white;
+  border:1px solid #cccccc;
+  font-size: 1.1em;
+}
+#content .selectBox{
+  width:140px;
+  height:40px;
+  border:0px;
+  outline:none;
+  margin-left: 13px;
+}
+
+#content .table1{
+    margin-top: 35px;
+    height: 350px;
+    background-color: white;
+    border-radius: 20px;
+    border-top: 30px solid lightgray;
+}
+#content .table2{
+    margin-top: 35px;
+    min-height: 740px;
+    background-color: white;
+    border-radius: 20px;
+    border-top: 30px solid lightgray;
 }
