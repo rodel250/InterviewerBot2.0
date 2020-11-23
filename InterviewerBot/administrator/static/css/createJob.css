@@ -1,5 +1,7 @@
+@font-face { font-family: GonthamBook; src: url('/static/css/GonthamBook.ttf'); } 
+
 body{
-    font-family: Arial;
+    font-family: GonthamBook;
     background-color: #C0C0C0;
     background-size: cover;
     background-repeat: no-repeat;
