@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static '/css/registrationPage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/RegistrationPage.css' %}">
 
 {% endblock headerinclude %}
 
@@ -29,7 +29,7 @@
     <div class="register" style="text-align: center">
         <div class="logo">
         <center>
-        <img src="{% static '/images/logo.png' %}" width="35%" height="23%">
+        <img src="{% static '/images/logo.png' %}" width="40%" height="23%">
         </center>
         </div>           
          <form id="register" method="get" action="RegistrationPage.html">
@@ -40,19 +40,9 @@
             </div>
             <div>
             <label>
-                <input type="text" name="firstName" id="firstName" placeholder="First Name">
+                <input type="text" name="fullName" id="fullName" placeholder="Full Name">
             </label> 
             </div>  
-            <div>
-            <label>
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name">
-            </label> 
-            </div> 
-            <div>
-            <label>
-                <input type="text" name="gender" id="gender" placeholder="Gender">
-            </label> 
-            </div> 
             <div>    
             <label>
                 <input type="text" name="emailAdd" id="emailAdd" placeholder="Email Address">

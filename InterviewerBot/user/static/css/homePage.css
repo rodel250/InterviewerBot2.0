@@ -1,10 +1,14 @@
-@font-face { font-family: GothamBook; src: url('static/css/GothamBook.ttf'); } 
+@font-face { font-family: Gotham; src: url('font/GothamLight.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBook; src: url('font/GothamBook.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBold; src: url('font/GothamBold.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamMedium; src: url('font/GothamMedium.ttf'); font-weight: normal;} 
 
 body {
-    font-family: 'Gotham';
+    font-family: 'GothamBook';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
+
 
 button {
     cursor: pointer;
@@ -24,15 +28,15 @@ span {
 }
 
 h1 {
+    font-family: 'GothamBold';
 	color: white; 
-	font-weight: bold; 
 	font-size: 48px; 
 	margin-top: 5%;
 }
 
 hr {
 	border-color: white; 
-	width: 100%;  
+	width: 80%;  
 	float: left;
 }
 
@@ -117,7 +121,6 @@ hr {
 
 #sidebar ul li a {
     padding: 20px;
-    font-weight: 400;
     display: block;
 }
 
@@ -162,7 +165,7 @@ ul ul a {
 ----------------------------------------------------- */
 
 #content {
-	width: 100%;
+	width: 65%;
     padding: 20px;
     margin-left: 26%;
     min-height: 100vh;
@@ -172,8 +175,8 @@ ul ul a {
 .container {
     padding: 10px;
     background-color: white;
-    border: 1px solid black;
-    border-radius: 15px;
+    /*border: 1px solid black;*/
+    border-radius: 12px;
 }
 
 .verticalLine {
@@ -187,15 +190,15 @@ ul ul a {
 
 .accordion {
   width: 100%;
-  border-radius: 15px 15px 0px 0px;
   background-color: white;
+  border-radius: 15px 15px 0px 0px;
   color: black;
   cursor: pointer;
   padding: 18px;
   text-align: left;
   font-weight: bold;
   border-style: solid;
-  border-color: black;
+  /*border-color: black;*/
   outline: none;
   transition: 0.4s;
 }
@@ -213,7 +216,7 @@ ul ul a {
 
 .panel {
   padding: 0 18px;
-  background-color: #FFCC00;
+  background-color: #FFDF16;
   max-height: 0;
   overflow: hidden;
   border-style: solid;
@@ -223,10 +226,6 @@ ul ul a {
 
 .container.accordion.active:after {
     background-color: #ffcc00;
-}
-
-.accordion p {
-    background-color: lightgrey;
 }
 
 /* ---------------------------------

@@ -3,7 +3,7 @@
 
 {% block headerinclude %}
 
-    <title>Interview BOT - Contact Us</title>
+    <title>Interview BOT</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -11,7 +11,11 @@
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{% static '/css/ContactUs.css' %}">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+
 {% endblock headerinclude %}
+
 
 
 {% block footerinclude %}
@@ -26,6 +30,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     
 {% endblock footerinclude %}
+
 
 
 
@@ -87,7 +92,7 @@
                     <div class="col-md-6">
                            
                             <div class="form-group text-left">
-                                <h3 class="h1-responsive mt-4 text-warning">Send us a message</h2>
+                                <h3 class="h1-responsive font-weight-bold mt-4 text-warning">Send us a message</h2>
                                 <p class="w-responsive mx-auto mb-4 text-light">Fill out the quick form & we'll be in touch in no time.</p>
                             </div>
 
@@ -121,7 +126,7 @@
 
                         <div class="col-md-3 text-center">
                             <div class="form-group">
-                                    <h5 class="text-white">Connect with us:</h6>
+                                    <h5 class="text-white font-weight-bold">Connect with us:</h6>
                             </div>
 
                              <div class="form-group">
@@ -138,6 +143,5 @@
                 
         </div>
     </div>
-
     
 {% endblock content %}

@@ -1,7 +1,17 @@
+@font-face { font-family: Gotham; src: url('font/GothamLight.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBook; src: url('font/GothamBook.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBold; src: url('font/GothamBold.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamMedium; src: url('font/GothamMedium.ttf'); font-weight: normal;} 
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'GothamBook';
     background-image: url('/static/images/white_bg.jpg');
     background-size: cover;
+}
+hr {
+	height: 1px;
+	border: none;
+	background-color: black;
 }
 
 input[type=button] {
@@ -17,7 +27,7 @@ input[type=button] {
 
 .logo {
 	position: relative;
-	left: 28%;
+	left: 32%;
 	margin:auto;
 }
 #emailAdd {
@@ -32,7 +42,7 @@ input[type=button] {
 	padding-bottom: 5px;
 	background-color: #ffcc00;
 	position: relative;
-	left: 33%;
+	left: 40%;
 	
 }
 #pass {
@@ -47,8 +57,8 @@ input[type=button] {
 	padding-bottom: 5px;
 	background-color: #ffcc00;
 	position: relative;
-	left: 20%;
-	
+	left: 40%;
+
 }
 .btn_login {
 	text-align: center;
@@ -60,15 +70,15 @@ input[type=button] {
 	border-right-width: 0px;
 	border-top-width: 0px;
 	border-bottom-width: 0px;
-	background-color: #cc0000;
+	background-color: #8C383E;
 	position: relative;
-	left: 220px;
+	left: 240px;
 	color: white;
 	padding-top: 5%;
 	padding-bottom: 5%
 }
 .btn_login:hover{
-	background-color: #8B0000;
+	background-color: #781B1B;
 }
 #id-login{
 	text-decoration: none;
@@ -86,10 +96,10 @@ input[type=button] {
 	border-top-width: 0px;
 	border-bottom-width: 0px;
 	position: relative;
-	left: 65px;
+	left: 85px;
 }
 .btn_signUp:hover{
-	background-color: #A9A9A9;
+	background-color: lightgrey;
 }
 #id-signUp{
 	color: black;
