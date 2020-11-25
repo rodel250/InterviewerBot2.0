@@ -1,6 +1,5 @@
 body {
-    font-family: 'Gotham'
-    font-weight: 400;
+    font-family: 'Gotham';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
