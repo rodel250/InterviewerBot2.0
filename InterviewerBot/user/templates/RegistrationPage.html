@@ -34,36 +34,30 @@
         </div>           
          <form id="register" method="get" action="RegistrationPage.html">
             <div>
-            <label>
-                <p style="font-size: 11px;">______________________________________________________</p>
-            </label>
+                <p style="font-size: 11px;">_______________________________________________________________________________________</p>
             </div>
-            <div>
-            <label>
-                <input type="text" name="firstName" id="firstName" placeholder="First Name">
-            </label> 
+
+            <div class="form-group">
+                <input type="text" id="firstName" name="first" placeholder="First Name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="lastName" name="last" placeholder="Last Name">
             </div>  
-            <div>
-            <label>
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name">
-            </label> 
-            </div> 
-            <div>
-            <label>
-                <input type="text" name="gender" id="gender" placeholder="Gender">
-            </label> 
-            </div> 
-            <div>    
-            <label>
-                <input type="text" name="emailAdd" id="emailAdd" placeholder="Email Address">
-            </label> 
+
+            <div class="form-group">
+                <input type="text" id="genderReg" name="gender" placeholder="Gender">
+            </div>  
+
+            <div class="form-group">   
+                <input type="text" id="emailAdd" name="email" placeholder="Email Address">
             </div>
-            <div>
-            <label>
-                <input type="Password" name="pass" id="pass" placeholder="Password"><br><br>
-                <p style="font-size: 11px;">______________________________________________________</p>
-            </label>
+
+            <div>                
+                <input type="Password" id="pass" name="pass" placeholder="Password"><br>
+                <p style="font-size: 11px;">_______________________________________________________________________________________</p>
             </div>
+
             <div>
                 <input class="btn_register" type="button" name="register" id="register" value="REGISTER"><br><br>
                 <a href="{% url 'user:login_view' %}">Already have an account? Log In</a>
