@@ -1,7 +1,6 @@
-@font-face { font-family: GonthamBook; src: url('static/css/GonthamBook.ttf'); } 
 
 body {
-    font-family: 'GonthamBook';
+    font-family: 'Gotham';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
