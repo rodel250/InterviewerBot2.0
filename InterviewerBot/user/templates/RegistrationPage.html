@@ -37,33 +37,36 @@
         </div>           
          <form id="register" method="get" action="RegistrationPage.html">
             <div>
-                <p style="font-size: 11px;">_______________________________________________________________________________________</p>
+                <hr style="width: 60%; height: 3px; text-align:center; color: black; background-color: black">
             </div>
 
             <div class="form-group">
                 <input type="text" id="firstName" name="first" placeholder="First Name">
+                <input type="text" id="lastName" name="last" placeholder="Last Name">
             </div>
 
             <div class="form-group">
-                <input type="text" id="lastName" name="last" placeholder="Last Name">
-            </div>  
-
-            <div class="form-group">
-                <input type="text" id="genderReg" name="gender" placeholder="Gender">
-            </div>  
+                <input type="text" id="phoneNo" name="phone" placeholder="Phone">
+            <select name="gender" id="gender">
+                <option value="g" color="#d3d3d3">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            </div>
 
             <div class="form-group">   
-                <input type="text" id="emailAdd" name="email" placeholder="Email Address">
+                <input type="text" id="emailAdd" name="email" placeholder="Email">
             </div>
 
             <div>                
                 <input type="Password" id="pass" name="pass" placeholder="Password"><br>
-                <p style="font-size: 11px;">_______________________________________________________________________________________</p>
+                <hr style="width: 60%; height: 3px; text-align:center; color: black; background-color: black">
             </div>
 
             <div>
+                <a href="{% url 'user:login_view' %}">Already have an account? Login</a><br><br>
                 <input class="btn_register" type="button" name="register" id="register" value="REGISTER"><br><br>
-                <a href="{% url 'user:login_view' %}">Already have an account? Log In</a>
             </div>
         </form>
     </div>             
