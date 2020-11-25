@@ -71,6 +71,10 @@ hr {
     transition: all 0.3s;
 }
 
+.member{
+    font-family: 'GothamBook';
+
+}
 #sidebar.active {
     min-width: 80px;
     max-width: 80px;
