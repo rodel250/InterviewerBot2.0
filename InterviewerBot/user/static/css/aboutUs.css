@@ -1,7 +1,10 @@
-@font-face { font-family: GothamLight; src: url('font/GothamLight.ttf'); } 
+@font-face { font-family: Gotham; src: url('font/GothamLight.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBook; src: url('font/GothamBook.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBold; src: url('font/GothamBold.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamMedium; src: url('font/GothamMedium.ttf'); font-weight: normal;} 
 
 body {
-    font-family: 'GothamLight';
+    font-family: 'Gotham';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
@@ -24,10 +27,15 @@ span {
 }
 
 h1 {
+    font-family: 'GothamBold';
     color: white; 
     font-weight: bold; 
     font-size: 48px; 
     margin-top: 5%;
+}
+
+h3{
+    font-family: 'Gotham';
 }
 
 hr {
