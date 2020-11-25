@@ -28,7 +28,31 @@ h1 {
 
 }
 
-#fullName {
+#firstName {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	position: relative;
+	
+}
+#lastName {
+	border-radius: 15px;
+	width: 350px;
+	text-align: center;
+	padding-left: 10px;
+	border-left-width: 3px;
+	border-right-width: 3px;
+	border-top-width: 3px;
+	border-bottom-width: 3px;
+	position: relative;
+	
+}
+#gender {
 	border-radius: 15px;
 	width: 350px;
 	text-align: center;
