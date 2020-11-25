@@ -128,7 +128,7 @@ hr {
 
 #sidebar ul li.active>a {
     color: white;
-    background: #800;
+    background: #933633;
 }
 
 a[aria-expanded="true"] {
