@@ -23,7 +23,7 @@ span {
 
 h1 {
     color: white; 
-    font-weight: bold; 
+    font-weight: 600; 
     font-size: 48px; 
     margin-top: 5%;
 }
@@ -37,6 +37,9 @@ hr {
     margin-top: 20px;
 }
 
+p{
+    font-weight: 400;
+}
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -114,9 +117,8 @@ hr {
 
 #sidebar ul li a {
     padding: 20px;
-    font-size: 1.1em;
+    font-weight: 400;
     display: block;
-    font-weight: bold;
 }
 
 #sidebar ul li a:hover {
