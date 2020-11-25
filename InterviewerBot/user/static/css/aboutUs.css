@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 body {
     font-family: 'Gotham';
     font-weight: 400;
+=======
+@font-face { font-family: Gotham; src: url('static/css/Gotham.ttf'); } 
+
+body {
+    font-family: 'GothamBook';
+>>>>>>> ca40fd74454ecfed3d86c8e169f07f26cbd0e21c
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
