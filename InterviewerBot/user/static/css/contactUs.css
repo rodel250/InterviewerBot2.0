@@ -151,6 +151,10 @@ p{
     display: block;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 #sidebar ul li a:hover {
     color: black;
     background: lightgrey;
