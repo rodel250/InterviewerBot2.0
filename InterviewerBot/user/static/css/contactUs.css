@@ -29,10 +29,14 @@ span {
 }
 
 h1 {
+    font-family: 'GothamBold';
     color: white; 
-    font-weight: bold; 
     font-size: 48px; 
     margin-top: 5%;
+}
+
+h3{
+    font-family: 'GothamBook';
 }
 
 hr {
@@ -62,6 +66,10 @@ hr {
 
 #submit{
     border-radius: 15px;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 /* ---------------------------------------------------
     SIDEBAR STYLE
@@ -140,7 +148,6 @@ hr {
 
 #sidebar ul li a {
     padding: 20px;
-    font-size: 1.1em;
     display: block;
 }
 

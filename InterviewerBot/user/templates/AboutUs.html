@@ -42,35 +42,35 @@
                 <li>
                     <a href="{% url 'user:home_view' %}">
                         <i class="fas fa-home"></i>
-                        Home
+                        &nbsp;&nbsp;Home
                     </a>
                 </li>
                 <li >
                     <a href="{% url 'user:job-offers_view' %}">
                         <i class="fas fa-search"></i>
-                        Job Offers
+                        &nbsp;&nbsp;Job Offers
                     </a>
                 </li>
                 <li class="active">
                     <a href="{% url 'user:about-us_view' %}">
                         <i class="fas fa-info-circle"></i>
-                        About Us
+                        &nbsp;&nbsp;About Us
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'user:contact-us_view' %}">
                         <i class="fas fa-envelope"></i>
-                        Contact Us
+                        &nbsp;&nbsp;Contact Us
                     </a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="#"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
                 </li>
