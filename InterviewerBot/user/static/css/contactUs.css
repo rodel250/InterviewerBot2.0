@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Gotham';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
@@ -16,8 +16,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-}
-
 i,
 span {
     display: inline-block;
@@ -25,7 +23,7 @@ span {
 
 h1 {
     color: white; 
-    font-weight: bold; 
+    font-weight: 600; 
     font-size: 48px; 
     margin-top: 5%;
 }
@@ -37,6 +35,10 @@ hr {
     padding: 0px;
     margin: 0px;  
     margin-top: 20px;
+}
+
+p{
+    font-weight: 400;
 }
 
 #name{
@@ -58,6 +60,8 @@ hr {
 #submit{
     border-radius: 15px;
 }
+
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
