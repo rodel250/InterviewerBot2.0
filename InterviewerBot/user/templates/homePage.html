@@ -1,4 +1,4 @@
-{% load static %}
+    {% load static %}
 
 
 {% block headerinclude %}
@@ -69,7 +69,7 @@
                             <a href="#"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
 		        </li>
@@ -112,7 +112,7 @@
                 <table width="100%" class="table-striped table-bordered table-sm">
                     <tbody>
                         <tr>
-                            <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
+                            <td width="13%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
                             <td width="60%">
                                 <div class="row jobTitle">Job Title</div>
                                 <div class="row jobDescription">Job Description</div>

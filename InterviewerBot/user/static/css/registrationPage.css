@@ -21,6 +21,11 @@ hr {
 	padding: 50px;
 }
 
+a{
+	font-family: 'GothamBook';
+	font-size: 14px;
+}
+
 h6 {
 	text-align: center;
 	position: absolute;
@@ -37,6 +42,10 @@ h1 {
 	position: relative;
 	margin:auto;
 
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 #fullName {
