@@ -10,6 +10,7 @@ body {
 }
 hr {
 	height: 1px;
+	width: 100%;
 	border: none;
 	background-color: black;
 }
@@ -27,7 +28,6 @@ input[type=button] {
 
 .logo {
 	position: relative;
-	left: 32%;
 	margin:auto;
 }
 #emailAdd {
@@ -42,7 +42,7 @@ input[type=button] {
 	padding-bottom: 5px;
 	background-color: #ffcc00;
 	position: relative;
-	left: 40%;
+	
 	
 }
 #pass {
@@ -57,7 +57,7 @@ input[type=button] {
 	padding-bottom: 5px;
 	background-color: #ffcc00;
 	position: relative;
-	left: 40%;
+	
 
 }
 .btn_login {
@@ -72,7 +72,6 @@ input[type=button] {
 	border-bottom-width: 0px;
 	background-color: #8C383E;
 	position: relative;
-	left: 240px;
 	color: white;
 	padding-top: 5%;
 	padding-bottom: 5%
@@ -96,17 +95,19 @@ input[type=button] {
 	border-top-width: 0px;
 	border-bottom-width: 0px;
 	position: relative;
-	left: 85px;
 }
 .btn_signUp:hover{
 	background-color: lightgrey;
 }
 #id-signUp{
 	color: black;
-	text-align: center;
 	text-decoration: none;
+	position: relative;
 }
 
 input {
+	text-align: center;
+}
+a {
 	text-align: center;
 }

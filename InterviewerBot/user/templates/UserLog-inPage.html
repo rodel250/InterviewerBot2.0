@@ -28,29 +28,34 @@
 
     <div class="login">
         <div class="logo">
-            <img  src="{% static '/images/logo.png' %}" width="40%" height="23%">
+          <center>  <img  src="{% static '/images/logo.png' %}" width="40%" height="23%"></center>
          </div>            
-         <form id="login" method="get" action="UserLog-inPage.html">
-            <hr><br>
-
+        <center> <form id="login" method="get" action="UserLog-inPage.html">
             <div>
                 <label>
+                    <hr>
+                    <br>
                     <input type="text"  name="emailAdd" id="emailAdd" placeholder="Email Address">
-                </label> 
-            </div>    
-
-            <label>
-                <input type="password" name="pass" id="pass" placeholder="Password"><br><br>
-            </label><hr><br>
-
-            <label>
-                <a href="{% url 'user:home_view' %}" class="btn_login" type="button" name="login" id="id-login">LOG IN</a><br><br><br>
-            </label>
-
-            <label>
-                <a href="{% url 'user:registration_view' %}" class="btn_signUp" type="button" name="signUp" id="id-signUp">SIGN UP</a>
-            </label>
+                </label> <br>
+            </div>
+            <div>
+                <label>
+                    <input type="password" name="pass" id="pass" placeholder="Password"><br><br>
+                    <hr>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <a href="{% url 'user:home_view' %}" class="btn_login" type="button" name="login" id="id-login">LOG IN</a>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <a href="{% url 'user:registration_view' %}" class="btn_signUp" type="button" name="signUp" id="id-signUp">SIGN UP</a>
+                </label>
+            </div>
         </form>
-    </div>    
+    </center>
+</div>    
 
 {% endblock content %}        
