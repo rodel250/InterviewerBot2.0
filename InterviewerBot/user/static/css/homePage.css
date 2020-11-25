@@ -30,8 +30,12 @@ h1 {
 
 hr {
 	border-color: white; 
-	width: 80%;  
+	width: 100%;  
 	float: left;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 /* ---------------------------------------------------
@@ -111,7 +115,7 @@ hr {
 
 #sidebar ul li a {
     padding: 20px;
-    font-size: 1.1em;
+    font-weight: 400;
     display: block;
 }
 
@@ -165,9 +169,9 @@ ul ul a {
 
 .container {
     padding: 10px;
-    background-color: lightgrey;
+    background-color: white;
     border: 1px solid black;
-    border-radius: 12px;
+    border-radius: 15px;
 }
 
 .verticalLine {
@@ -181,7 +185,8 @@ ul ul a {
 
 .accordion {
   width: 100%;
-  background-color: lightgrey;
+  border-radius: 15px 15px 0px 0px;
+  background-color: white;
   color: black;
   cursor: pointer;
   padding: 18px;
