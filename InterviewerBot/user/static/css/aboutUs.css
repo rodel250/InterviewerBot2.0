@@ -116,6 +116,7 @@ hr {
     padding: 20px;
     font-size: 1.1em;
     display: block;
+    font-weight: bold;
 }
 
 #sidebar ul li a:hover {
