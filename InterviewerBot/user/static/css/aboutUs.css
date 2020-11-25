@@ -1,7 +1,7 @@
-@font-face { font-family: Gotham; src: url('static/css/Gotham.ttf'); } 
+@font-face { font-family: GothamLight; src: url('font/GothamLight.ttf'); } 
 
 body {
-    font-family: 'GothamBook';
+    font-family: 'GothamLight';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover;
 }
