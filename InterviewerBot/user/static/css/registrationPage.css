@@ -38,6 +38,17 @@ h1 {
 	top: 110px;
 	left: 680px;
 }
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
 .logo {
 	position: relative;
 	margin:auto;
@@ -48,41 +59,95 @@ h1 {
     display: none;
 }
 
-#fullName {
+#firstName{
 	border-radius: 15px;
-	width: 350px;
+	width: 175px;
 	text-align: center;
 	padding-left: 10px;
-	border-left-width: 3px;
-	border-right-width: 3px;
-	border-top-width: 3px;
-	border-bottom-width: 3px;
-	position: relative;
-	
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
+	position: relative;	
 }
 
-#emailAdd {
+#lastName{
+	border-radius: 15px;
+	width: 175px;
+	text-align: center;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
+	position: relative;	
+}
+
+#phoneNo{
+	border-radius: 15px;
+	width: 175px;
+	text-align: center;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
+	position: relative;	
+}
+
+#gender{
+	border-radius: 30px;
+	width: 175px;
+	text-align: center;
+	padding-left: 55px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
+	position: relative;
+}
+
+#emailAdd{
 	border-radius: 15px;
 	width: 350px;
 	text-align: center;
 	padding-left: 10px;
-	border-left-width: 3px;
-	border-right-width: 3px;
-	border-top-width: 3px;
-	border-bottom-width: 3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
 	position: relative;
-	
 }
+
+
 
 #pass {
 	border-radius: 15px;
 	width: 350px;
 	text-align: center;
 	padding-left: 10px;
-	border-left-width: 3px;
-	border-right-width: 3px;
-	border-top-width: 3px;
-	border-bottom-width: 3px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #ffcc00;
 	position: relative;
 	
 }
@@ -96,10 +161,13 @@ h1 {
 	border-right-width: 0px;
 	border-top-width: 0px;
 	border-bottom-width: 0px;
-	background-color: #ffcc00;
+	background-color: #8C383E;
 	position: relative;
 	font-weight: bold;
-	color: black;
+	color: white;
+}
+.btn_register:hover{
+	background-color: #781B1B;
 }
 
 input[type=button] {
@@ -117,4 +185,13 @@ input:hover {
 a,
 a:hover{
 	color: #800;
+}
+
+select option {
+    background: rgba(0, 100, 100, 100);
+    color: #d3d3d3;
+}
+
+select{
+	color: #808080;
 }
