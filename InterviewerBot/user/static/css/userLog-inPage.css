@@ -19,6 +19,16 @@ input[type=button] {
 	cursor: pointer;
 }
 
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
 .login {
 	width: 55%;
 	overflow: hidden;
@@ -62,6 +72,7 @@ input[type=button] {
 }
 .btn_login {
 	text-align: center;
+	font-weight: bold;
 	border-radius: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -73,8 +84,8 @@ input[type=button] {
 	background-color: #8C383E;
 	position: relative;
 	color: white;
-	padding-top: 5%;
-	padding-bottom: 5%
+	padding-top: 1%;
+	padding-bottom: 1%
 }
 .btn_login:hover{
 	background-color: #781B1B;
@@ -87,6 +98,7 @@ input[type=button] {
 }
 .btn_signUp {
 	border-radius: 15px;
+	font-weight: bold;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	width:150px;
