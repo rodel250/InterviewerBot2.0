@@ -1,13 +1,21 @@
-@font-face { font-family: GonthamBook; src: url('/static/css/GonthamBook.ttf'); } 
+@font-face { font-family: Gotham; src: url('font/GothamLight.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBook; src: url('font/GothamBook.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamBold; src: url('font/GothamBold.ttf'); font-weight: normal;} 
+@font-face { font-family: GothamMedium; src: url('font/GothamMedium.ttf'); font-weight: normal;} 
 
 body {
-    font-family: 'GonthamBook';
+    font-family: 'GothamBook';
     background-image: url('/static/images/red_bg.jpg');
     background-size: cover; 
 }
 
 button {
     cursor: pointer;
+}
+
+a{
+    font-family: 'GothamBook';
+    font-size: 14px;
 }
 
 a,
@@ -193,4 +201,289 @@ ul ul a {
     background-color: white;
     border-radius: 20px;
     border-top: 30px solid lightgray;
+}
+
+#modalContent {
+    width: 100%;
+    padding: 20px;
+    margin-left: 26%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.modal-content{
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 95%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+    background-color: #fefefe;
+    margin: 1% auto; /* 2% from the top and centered */
+    padding: 2px;
+    border: 5px solid #DCB800;
+    width: 100%; /* Could be more or less, depending on screen size */
+    border-radius: 15px;
+}
+
+.close{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.createJob{
+    position: relative;
+    margin: auto;
+}
+.imgJob {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 2%;
+    position: relative;
+    left: 2%;
+}
+#job-form{
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+    padding: 30px;
+}
+#job-text{
+    font-weight: bold;
+    position: absolute;
+    left: 4%;
+    top: 27%;
+    font-size: 23px;
+}
+#btnPost{
+    width: 110px;
+    border-radius: 15px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    background-color: #8B0000;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    left: 488%;
+}
+.imgEllipsis{
+    width: 30px; 
+    height: 30px; 
+    border-radius: 2%;
+    position: relative;
+    left: 488%;
+}
+.imgCir{
+    width: 70px; 
+    height: 70px; 
+    border-radius: 2%;
+    position: relative;
+    left: 488%;
+}
+#label{
+    background-color: #FFCC00;
+}
+#question{
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    border-style: none;
+    color: #696969;
+    top: 60px;
+    left: 470%;
+}
+#responses{
+    font-family: Arial;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    border-style: none;
+    color: #696969;
+    top: 60px;
+    left: 470%;
+}
+#msg-form{
+    width: 80%;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    padding-top: 3%;
+    padding-bottom: 2%;
+    height: inherit;
+    border-radius: 10px;
+    border-top: 8px solid #8B0000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+#j-text{
+    font-weight: bold;
+    position: absolute;
+    left: 2.5%;
+    top: 27%;
+    font-size: 23px;
+}
+#message{
+    border-radius: 0px;
+    width: 1250px;
+    text-align: center;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+    background-color: #ffffff;
+    color: #696969;
+    position: relative;
+    text-align: left;
+    font-weight: bold;
+    left: 2%;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#msg2-form{
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 10px;
+    height: inherit;
+    border-top: 1px solid #000000;
+    border-left: 8px solid #8B0000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+#message2{
+    border-radius: 0px;
+    width: 1250px;
+    text-align: center;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+    background-color: #DCDCDC;
+    position: relative;
+    text-align: left;
+    left: 2%;
+    font-size: 20px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+#message3{
+    border-radius: 0px;
+    width: 1250px;
+    text-align: center;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+    background-color: #ffffff;
+    position: relative;
+    text-align: left;
+    left: 2%;
+    color: #696969;
+    font-size: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+#message4{
+    border-radius: 0px;
+    width: 1250px;
+    text-align: center;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+    background-color: #ffffff;
+    position: relative;
+    text-align: left;
+    left: 2%;
+    font-size: 20px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+#imgCopy{
+    width: 40px;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 95%;
+}
+#imgDelete{
+    width: 40px;
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 96%;
+}
+#function-form{
+    width: 4%;
+    height: 50px;
+    position: absolute;
+    border-radius: 20px;
+    top: 50%;
+    left: 91%;
+    padding-top: 1%;
+    padding-bottom: 7%;
+    height: inherit;
+    border-top: 1px solid #000000;
+    border-left: 1px solid #8B0000;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+#imgPlus{
+    width: 40px;
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 35%;
+}
+#imgForward{
+    width: 40px;
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 35%;
+}
+#imgTT{
+    width: 40px;
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 35%;
+}
+#imgGallery{
+    width: 40px;
+    height: 55px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    left: 35%;
 }
