@@ -8,140 +8,112 @@ body {
     background-image: url('/static/images/white_bg.jpg');
     background-size: cover;
 }
-
-.jobInteview{
-    position: relative;
-    margin: auto;
-}
-.imgJob {
-    width: 70px; 
-    height: 70px; 
-    border-radius: 50%;
-    position: relative;
-    left: 30%;
-}
-#btn-mic{
+button{
     cursor: pointer;
-    border-radius: 50px;
-    width: 60px;
-    height: 45px;
-    position: absolute;
-    top: 24%;
-    left: 83.5%;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-color: #8B0000;
 }
-#mic-logo{
-    cursor: pointer;
-    width: 43px;
-    height:35px;
-    position: absolute;
-    left: 84%;
-    top:28%;
+form {
+  flex: 5;
+  display: block;
+  padding: 15px;
+  position: relative;
+  top: 270px;
 }
-
-.bckg_head{
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-    padding: 10px;
-    background-color: #ffcc00;
+b{
+    color: black;
+    font-size: 13px;
 }
-.job-form{
-    width: 100%;
-    height: inherit;
-    background-color: transparent;
+b#question{
+    font-size: 20px;
+}
+.heading{
+    background-color: #F8C400;
+    padding: 15px;
+}
+.foot{
     position: relative;
-    left: 6.5%;
+    top: 150px;
+    background-color: #EBEBEB;
+    position: relative;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+.text-box{
+    width: 100%;
+    position: relative;
+    bottom: 250px;
 }
 .time{
-    position: absolute;
-    top: 24%;
-    left: 2%;
+   position: relative;
+   right: 65px;
+   top: 10px;
+  
 }
-#job-text{
-    font-weight: bold;
-    position: absolute;
-    left: 10%;
-    top: 3%;
-    font-size: 23px;
+#id-write{
+    width: 70%;
+    padding-left: 11px;
+    padding-right: 9px;
+    font-size: 16px;
+    height: 40px;
+    flex: 10;
+    outline: none;
+    margin: 0 10px 0 0;
+    box-sizing: border-box;
+    border: 1px solid #aaa;
+    border-radius: 13px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+
+}
+#imgJob{
+    display: flex;
+    border-radius: 50%;
+    height:100px;
+    width: 100px;
+    position: relative;
+}
+#jobOffer-text{
+    position: relative;
+    bottom: 28px;
+    left: 8%;
+    font-size: 32px;
 }
 #lorem-text{
-    position: absolute;
-    left: 10%;
-    top: 8%;
-    font-size: 16px;
-}
-
-#label{
-    background-color: #FFCC00;
-    
-}
-#question{
-    font-family: Arial;
-    font-size: 16px;
     position: relative;
-    left: 108%;
+    bottom: 22px;
+    left: 8%;
+    font-size: 20px;
 }
-#time{
-    font-size: 11px;
-    font-family: Arial;
-    color: black;
-}
-#btnSend{
-    cursor: pointer;
-    width: 120px;
-    border-radius: 18px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #8B0000;
+#id-send{
+    position: relative;
+    left: 65px;
     color: white;
-    font-size: 15px;
-    position: relative;
-    left: 25%;
-}
-#foot{
-    background-color: #A9A9A9;
-    width: 100%;
-    position: absolute;
-    top: 88%;
-    left: 0%;
-    padding-top: 0%;
-    padding-bottom: 0%;
-    height: inherit;
-}
-#message{
+    background-color: #781B1B;
+    height: 40px;
+    width: 100px;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0;
     border-radius: 20px;
-    width: 930px;
-    text-align: center;
-    border-left-width: 0px;
     border-right-width: 0px;
+    border-left-width: 0px;
     border-top-width: 0px;
     border-bottom-width: 0px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: #ffffff;
-    position: relative;
-    text-align: left;
-    left: 15%;
-    padding-bottom: 10px;
-    padding-top: 10px;
-
 }
-#send-logo{
-    cursor: pointer;
-    width: 35px;
-    height: 23px;
+#id-mic{
     position: relative;
-    left: 15%;
+    left: 35px;
+    color: white;
+    background-color: #781B1B;
+    height: 40px;
+    width: 60px;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0;
+    border-radius: 20px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
 }
-

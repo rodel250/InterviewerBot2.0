@@ -4,6 +4,9 @@
 
     <title>Interview BOT - Job Offers Interview</title>
 
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -31,42 +34,37 @@
 
 {% block content %}
    
-   <div class="bckg_head">
-    <div class="jobInterview" id="jobInter">
-        <label id="label"> 
-            <img src="{% static '/images/red_bg.jpg' %}" class="imgJob">
-            <h4 id="job-text"> Job offer </h4>
-            <h6 id="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam.</h6><br>
-        </label>
-    </div>     
+    <div class="heading">
+        <div class="job-text">
+            <label>
+                <img src="{% static '/images/red_bg.jpg' %}" id="imgJob">
+            </label>
+            <label>
+                <h2 id="jobOffer-text"> Job offer </h2>
+                <h5 id="lorem-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam.</h5>
+            </label>
+        </div>
     </div>
+    <center>
     <br><br>
-    <form class="job-form">
-        <label>
-            <p id="question"><b>Q1:</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p>
-        </label>  
-        <label>
-            <p style="color: orange;">______________________________________________________________ <b id="time">3:59 PM</b>  ________________________________________________________________</p>
-        </label>
+    <form onSubmit="return chatbot.sendMessage()">
+        <div class="text-box">
+            <label>
+                <p><b id="question">Q1:</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</p><br>
+                <p style="color: orange;">______________________________________________________________ <b id="time">3:59 PM</b>  ________________________________________________________________</p>
+            </label>
+        </div>
+        <div class="foot">
+            <div>
+                <label class="time">
+                    <p>&nbsp;<b>TIME LEFT :</b><br><b>1:00:00</b></p>
+                </label>
+                <input type="text" name="write-text" id="id-write" autocomplete="off" placeholder="Write a text">
+                <input type="button" name="mic" id="id-mic" value="....">
+                <input type="submit" name="send" id="id-send" value="Send">
+            </div>
+        </div>
     </form>
-    <div id="foot">
-        <label>
-            <br>
-            &nbsp;<input type="text"  name="message" id="message" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Write a message">
-            <input type="button" name="send" id="btnSend" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send">
-            <img  src="{% static '/images/send-logo.png' %}"  id="send-logo">
-        </label>
-    <div>
-        <label>
-            <input type="button" name="mic" id="btn-mic">
-             <img  src="{% static '/images/mic-logo.png' %}" id="mic-logo">
-        </label>
-    </div>
-    <div class="time">
-        <label>
-        <p><b>TIME LEFT :</b><br>&nbsp;&nbsp;&nbsp;&nbsp;1:00:00</p>
-        </label>
-    </div>
-   </div>
+</center>
 
 {% endblock content %}  
