@@ -32,27 +32,24 @@
          </div>            
         <center> <form id="login" method="get" action="UserLog-inPage.html">
             <div>
-                <label>
-                    <hr>
-                    <br>
-                    <input type="text"  name="emailAdd" id="emailAdd" placeholder="Email Address">
-                </label> <br>
+                <hr style="width: 60%; height: 2px; text-align:center; color: black; background-color: black">
             </div>
-            <div>
-                <label>
-                    <input type="password" name="pass" id="pass" placeholder="Password"><br><br>
-                    <hr>
-                </label>
+
+            <div class="form-group">
+                <input type="text"  name="emailAdd" id="emailAdd" placeholder="Email"><br>
             </div>
-            <div>
-                <label>
+
+            <div class="form-group">
+                    <input type="password" name="pass" id="pass" placeholder="Password"><br>
+                    <hr style="width: 60%; height: 2px; text-align:center; color: black; background-color: black">
+            </div>
+
+            <div class="form-group">
                     <a href="{% url 'user:home_view' %}" class="btn_login" type="button" name="login" id="id-login">LOG IN</a>
-                </label>
             </div>
-            <div>
-                <label>
+
+            <div class="form-group">
                     <a href="{% url 'user:registration_view' %}" class="btn_signUp" type="button" name="signUp" id="id-signUp">SIGN UP</a>
-                </label>
             </div>
         </form>
     </center>
