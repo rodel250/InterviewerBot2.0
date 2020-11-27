@@ -27,6 +27,10 @@ class JobInterviewView(View):
 	def get(self, request):
 		return render(request, 'jobOffer_Interview.html')
 
+class SettingsView(View):
+	def get(self, request):
+		return render(request, 'Settings.html')
+
 class UserRegistrationView(View):
 	def get(self, request):
 		return render(request, 'RegistrationPage.html')
