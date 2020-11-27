@@ -48,9 +48,15 @@ hr {
     margin-top: 20px;
 }
 
-#name, #email, #subject, #submit{
+#name, #email, #subject{
     border-radius: 15px;
     border: none;
+}
+
+#submit{
+    border-radius: 100px;
+    border: none;
+    padding: 10px; 
 }
 
 #message{

@@ -21,6 +21,10 @@ hr {
 	padding: 50px;
 }
 
+input:focus{
+    outline: none;
+}
+
 a{
 	font-family: 'GothamBook';
 	font-size: 14px;

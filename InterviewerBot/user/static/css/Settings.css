@@ -46,7 +46,13 @@ hr {
     margin-top: 20px;
 }
 
-#update, #lastname, #phone, #email, #password, #firstname{
+#update{
+    border-radius: 100px;
+    padding: 10px; 
+    border: none;
+}
+
+#lastname, #phone, #email, #password, #firstname{
     border-radius: 15px;
     border: none;
 }
