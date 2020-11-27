@@ -304,7 +304,7 @@ td {
   cursor: pointer;
 }
 
-.column{
+/*.column{
     float: left;
     width: 50%;
 }
@@ -328,10 +328,10 @@ td {
     content: "";
     display: table;
     clear: both;
-}
+}*/
 
 /*Upload File CSS*/
-input[type="file"] {
+/*input[type="file"] {
   display: block;
 }
 .imageThumb {
@@ -355,7 +355,7 @@ input[type="file"] {
 .remove:hover {
   background: white;
   color: black;
-}
+}*/
 
 .btnSubmit a{
     position: absolute;
