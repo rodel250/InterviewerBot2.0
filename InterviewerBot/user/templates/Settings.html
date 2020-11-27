@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/ContactUs.css' %}">
+    <link rel="stylesheet" href="{% static '/css/Settings.css' %}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
@@ -61,7 +61,7 @@
                         &nbsp;&nbsp;About Us
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="{% url 'user:contact-us_view' %}">
                         <i class="fas fa-envelope"></i>
                         &nbsp;&nbsp;Contact Us
@@ -70,7 +70,7 @@
                 <li>
 		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
+                        <li class="active">
                             <a href="{% url 'user:settings_view' %}"><i class="fa fa-cog"></i>&nbsp;&nbsp; Settings</a> 
                         </li>
                         <li>
@@ -84,62 +84,61 @@
         <!-- Page Content  -->
 
         <div id="content">
-            <h1>Account Settings<hr></h1>
+            <h1>Settings<hr></h1>
             <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
                 <div class="row align-items-center">
 
-                    <div class="col-md-6">
+                    <div class="col-md-5 mr-4">
                            
-                            <div class="form-group text-left">
-                                <h3 class="h1-responsive font-weight-bold mt-4 text-warning">Send us a message</h2>
-                                <p class="w-responsive mx-auto mb-4 text-light">Fill out the quick form & we'll be in touch in no time.</p>
+                            <div class="form-group text-left mt-5">
+                                <p class="w-responsive mx-auto mb-2 text-warning">Profile Information</p>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="Name">
+                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Your email address">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number">
                             </div>
-
-                            <div class="form-group">
-                                <div class="md-form my-3">
-                                        <textarea type="text" id="message" name="message" rows="3" class="form-control md-textarea" placeholder="Message"></textarea>
-                                    </div>
-                            </div>
-
-                        <div class="text-center text-md-left">
-                            <a id="submit" class="btn btn-warning font-weight-bold text-dark" onclick="document.getElementById('contact-form').submit();">SUBMIT</a>
-                        </div>
-                        <div class="status"></div>
-                        </div>
-
-                        <div class="col-md-1 text-center">
-                            
-                        </div>
-
-                        <div class="col-md-3 text-center">
-                            <div class="form-group">
-                                    <h5 class="text-white font-weight-bold">Connect with us:</h6>
-                            </div>
-
-                             <div class="form-group">
-                                    <i class="fas fa-envelope mt-1" style="color: white"></i>
-                                    <p class="text-white">contact@interviewbot.com</p>
-                                    <i class="fas fa-phone mt-1" style="color: white"></i>
-                                    <p class="text-white">+63 (0)995 831 2823</p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </form>
+
+                    <div class="col-md-5 ml-4">
+
+                            <div class="form-group text-left ">
+                                <p class="w-responsive mx-auto mb-2 text-warning">Account Information</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Email Address">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" id="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                    </div>
+                </div>
+
+
+                <div class="row align-items-center mt-5">
+                        <div class="text-center text-md-left">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <a id="update" class="btn btn-warning font-weight-bold text-dark" onclick="document.getElementById('settings-form').submit();">UPDATE</a>
+                        </div>
+                </div>
+            </form>
                 
         </div>
     </div>

@@ -28,6 +28,10 @@ hr {
   background-color: lightgrey;
 }
 
+input:focus{
+    outline: none;
+}
+
 .login {
 	width: 55%;
 	overflow: hidden;

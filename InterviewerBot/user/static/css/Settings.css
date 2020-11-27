@@ -21,8 +21,6 @@ a:focus {
     transition: all 0.3s;
 }
 
-}
-
 i,
 span {
     display: inline-block;
@@ -48,24 +46,13 @@ hr {
     margin-top: 20px;
 }
 
-#name{
+#update, #lastname, #phone, #email, #password, #firstname{
     border-radius: 15px;
+    border: none;
 }
 
-#email{
-    border-radius: 15px;
-}
-
-#subject{
-    border-radius: 15px;
-}
-
-#message{
-    border-radius: 15px 15px 5px 15px;
-}
-
-#submit{
-    border-radius: 15px;
+input:focus{
+    outline: none;
 }
 
 ::-webkit-scrollbar {

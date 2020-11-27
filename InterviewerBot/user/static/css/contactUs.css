@@ -48,24 +48,18 @@ hr {
     margin-top: 20px;
 }
 
-#name{
+#name, #email, #subject, #submit{
     border-radius: 15px;
-}
-
-#email{
-    border-radius: 15px;
-}
-
-#subject{
-    border-radius: 15px;
+    border: none;
 }
 
 #message{
     border-radius: 15px 15px 5px 15px;
+    border:none;
 }
 
-#submit{
-    border-radius: 15px;
+input:focus{
+    outline: none;
 }
 
 ::-webkit-scrollbar {
