@@ -44,8 +44,7 @@ hr {
   margin-bottom: 0.5em;
   margin-left: auto;
   margin-right: auto;
-  border-style: inset;
-  border-width: 1px;
+  background-color: lightgrey;
 }
 .logo {
 	position: relative;
@@ -187,7 +186,9 @@ a:hover{
 
 select option {
     background: rgba(0, 100, 100, 100);
-    color: #d3d3d3;
+    color: grey;
+    background-color: white;
+
 }
 
 select{

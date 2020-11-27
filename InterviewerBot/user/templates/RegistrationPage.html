@@ -32,12 +32,12 @@
     <div class="register" style="text-align: center">
         <div class="logo">
         <center>
-        <img src="{% static '/images/logo.png' %}" width="35%" height="23%">
+        <img src="{% static '/images/logo.png' %}" width="40%" height="23%">
         </center>
         </div>           
          <form id="register" method="get" action="RegistrationPage.html">
-            <div>
-                <hr style="width: 60%; height: 2px; text-align:center; color: black; background-color: black">
+            <div class="py-3">
+                <hr style="width: 50%; text-align:center;">
             </div>
 
             <div class="form-group">
@@ -48,8 +48,7 @@
             <div class="form-group">
                 <input type="text" id="phoneNo" name="phone" placeholder="Phone">
             <select name="gender" id="gender">
-                <option value="g" color="#d3d3d3">Gender</option>
-                <option value="g">Gender</option>
+                <option value="" disabled selected>Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
@@ -62,7 +61,9 @@
 
             <div>                
                 <input type="Password" id="pass" name="pass" placeholder="Password"><br>
-                <hr style="width: 60%; height: 2px; text-align:center; color: black; background-color: black">
+            </div>
+            <div class="py-3">
+                <hr style="width: 50%; text-align:center;">
             </div>
 
             <div>
