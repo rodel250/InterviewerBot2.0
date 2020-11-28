@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %}
 
 
 {% block headerinclude %}
@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/adminjoblists.css' %}">
+    <link rel="stylesheet" href="{% static '/css/adminjoblist.css' %}">
 
 {% endblock headerinclude %}
 
@@ -19,6 +19,7 @@
 {% block footerinclude %}
 
     <!-- Font Awesome JS -->
+    <script src="{% static 'Automate/js/bootstrap.js' %}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
@@ -40,56 +41,226 @@
             <div class="sidebar-header">
                 <img src="{% static '/images/logo.png' %}" width="100%">
             </div>
-            <div class="create"style="margin-left: 100px;">
-                <button type="button" class="btn btn-warning" style="padding-right: 100px;padding-left: 100px; padding-top: 10px;padding-bottom: 10px;font-size: 1.1em; color: white;">Create Job</button>
-            </div>
+            <center>
+                <button type="button" id="id-btnCreateJob" class="jobCreate" data-toggle="modal" data-target="#modalCreate" class="btn btn-warning">Create Job</button>
+            </center>
             <br>
             <ul class="list-unstyled components">
                 <li>
-                	<a href="{% url 'administrator:dashboard_view' %}">
+                    <a href="{% url 'administrator:dashboard_view' %}">
                         <i class="fas fa-table"></i>
-                        Dashboard
+                        &nbsp;&nbsp;Dashboard
                     </a>
                 </li>
                 <li class="active">
                     <a href="{% url 'administrator:job-lists_view' %}">
                         <i class="fas fa-search"></i>
-                        Job List
+                        &nbsp;&nbsp;Job List
                     </a>
                 </li>
-                <div style="margin-top: 350px;"> 
-                    <li style="margin-left: 25px; color: red;">
-                        Add Admin User
-                    </li>
-                    <li>
-                        <div style="margin-top: 00px;"> 
-                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> USERNAME</a>
-                    </li>
-                </div>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Admin Username</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
+            <div class="addAdmin">
+                <a href="#">Add Admin Account</a>
+            </div>
         </nav>
     </div>
 
-    <div class="topBorder"></div>
-
-    <div id="content">
-        <div style="color: aliceblue;margin-left: 88.09%;">Current Date Here</div>
-        <form>
-            <div class="selectWrapper" style="width:170px;">
-                <select class="selectBox">
-                  <option value="0">Job Type</option>
-                  <option value="1">job1</option>
-                  <option value="2">job2</option>
-                </select>
+    <div class="content-container">
+        <div class="topBorder"></div>
+        <div class="red-header">
+            <div id="content-header">
+                <div class="dateandtime">
+                    <a>2:13:00 PM</a><br>
+                    <a>Friday, November 27, 2020</a><br><br>
+                </div>
+                <form>
+                    <div class="selectWrapper">
+                        <select class="selectBox">
+                          <option value="0">Job Type</option>
+                          <option value="1">job1</option>
+                          <option value="2">job2</option>
+                        </select>
+                    </div>
+                    <div class="selectWrapper">
+                        <select class="selectBox" style="width: 240px;">
+                          <option value="0">City, State or Province</option>
+                          <option value="1">test  </option>
+                          <option value="2">test</option>
+                        </select>
+                    </div>
+                </form>
             </div>
-            <div class="selectWrapper" style="width:270px;margin-left: 25px;">
-                <select class="selectBox" style="width: 240px;">
-                  <option value="0">City, State or Province</option>
-                  <option value="1">test</option>
-                  <option value="2">test</option>
-                </select>
-            </div>       
-            <div class="tableContent">
+        </div>
+        <div class="content-form">
+            <div class="row">
+                <div class="column-form">
+                    <header>Experienced Janitor</header>
+                    <textarea style="background-color:#E5E5E5;" readonly>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <footer>
+                        <a href="#">Delete</a>
+                        <a href="#">Update</a>
+                        <a href="#">View</a>
+                    </footer>
+                </div>
+                <div class="column-status">
+                    <lo>Applied: 2</lo><br>
+                    <lo>Status: Pending</lo>
+                </div>
+            </div>
+        </div>
+        <div class="content-form">
+            <div class="row">
+                <div class="column-form">
+                    <header>Master Teacher</header>
+                    <textarea style="background-color:#E5E5E5;" readonly>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                    <footer>
+                        <a href="#">Delete</a>
+                        <a href="#">Update</a>
+                        <a href="#">View</a>
+                    </footer>
+                </div>
+                <div class="column-status">
+                    <lo>Applied: 1</lo><br>
+                    <lo>Status: Pending</lo>
+                </div>
+            </div>
+        </div>
+        <div class="botFooter">
+            <footer>Copyright © InterviewBOT. All rights reserved.</footer>
+        </div>
+    </div>
+
+    <!-- CREATE JOB MODAL -->
+    <div id="createJobModal" class="jobCreateModal">
+        <div class="createJob-content">
+            <span class="close">&times</span>
+            <form>
+                <div class="containerColor">
+                <div class="modalHeader">
+                    <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
+                    <a class="questionTitle">Untitled Questionaire</a>
+                    <img src="{% static '/images/circle.png' %}" class="imgProfile">
+                    <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
+                    <button class="btnPost">Post</button>
+                </div>
+                <div class="container">
+                    <ul class="nav nav-tabs">
+                        <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab" class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                        <li><a data-toggle="tab" href="#responsesTab" class="tab-modal" style="font-weight: bold;">Responses</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="questionsTab" class="tab-pane fade in active">
+                            <center>
+                            <header></header>
+                            <div class="questionnaireTitle">
+                                <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
+                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"></textarea>
+                            </div>
+                            <div class="questionContainer">
+                                <div class="tools">
+                                    <a href="#"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
+                                    <a href="#"><img src="{% static '/images/forward.png' %}" class="imgForward"></a>
+                                    <a href="#"><img src="{% static '/images/truetype.png' %}" class="imgTruetype"></a>
+                                    <a href="#"><img src="{% static '/images/gallery.png' %}" class="imgGallery"></a>
+                                    <a href="#"><img src="{% static '/images/copy.png' %}" class="imgCopy"></a>
+                                    <a href="#"><img src="{% static '/images/delete.jpg' %}" class="imgDelete"></a>
+                                </div>
+                                <div class="contentQuestion">
+                                    <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
+                                    <textarea type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"></textarea>
+                                </div>
+                            </div>
+                            <footer></footer>
+                            </center>
+                        </div>
+                        <div id="responsesTab" class="tab-pane fade">
+                            <h3>Response Tab</h3>
+                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- script for Create Job MOdal -->
+    <script type="text/javascript">
+        var modal = document.getElementById("createJobModal");
+        var btn = document.getElementById("id-btnCreateJob");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function(){
+            modal.style.display = "block";
+        }
+        span.onclick = function(){
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <!-- AUTOMATIC CLICK QUESTIONS TAB IN MODAL -->
+    <script type="text/javascript">
+        $('#id-btnCreateJob').click(function(){
+            $("#id-btnQuestion").click();
+        })
+    </script>
+
+    <!-- MODAL EXIT WHEN PRESSED ESCAPE -->
+    <script type="text/javascript">
+        $(document).keydown(function(event) { 
+            if (event.keyCode == 27) { 
+                $('#createJobModal').hide();
+            }
+        });
+    </script>
+
+    <!-- <div class="topBorder"></div>
+    <div class="red-header">
+        <div id="content-header">
+            <div class="dateandtime">
+                <a>2:13:00 PM</a><br>
+                <a>Friday, November 27, 2020</a><br><br>
+            </div>
+            <form>
+                <div class="selectWrapper">
+                    <select class="selectBox">
+                      <option value="0">Job Type</option>
+                      <option value="1">job1</option>
+                      <option value="2">job2</option>
+                    </select>
+                </div>
+                <div class="selectWrapper">
+                    <select class="selectBox" style="width: 240px;">
+                      <option value="0">City, State or Province</option>
+                      <option value="1">test  </option>
+                      <option value="2">test</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    
+
+
+
+
+
+
+            <!-- <div class="tableContent">
                 <div class="whiteContainer">
                     <div class="container-fluid">
                         <div class="row">
@@ -134,10 +305,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
-        </form>
         
-    </div>
 
 {% endblock content %}
