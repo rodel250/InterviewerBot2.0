@@ -86,10 +86,11 @@
 
         <div id="content">
             <h1>Settings<hr></h1>
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
 
+            <form id="contact-form" name="contact-form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row align-items-center">
-
+                    {% for applicant in applicant %}
                     <div class="col-md-5 mr-4">
                            
                             <div class="form-group text-left mt-5">
@@ -97,15 +98,15 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name">
+                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" value="{{applicant.firstname}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" value="{{applicant.lastname}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" value="{{applicant.phone}}">
                             </div>
                     </div>
 
@@ -116,13 +117,14 @@
                             </div>
                             
                             <div class="form-group">
-                                <input type="text" id="email" name="email" class="form-control" placeholder="Email Address">
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Email Address" value="{{applicant.emailAddress}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="password" name="password" class="form-control" placeholder="Password">
+                                <input type="text" id="password" name="password" class="form-control" placeholder="Password" value="{{applicant.password}}">
                             </div>
                     </div>
+                    {% endfor %}
                 </div>
 
 
@@ -140,8 +142,9 @@
                         </div>
                 </div>
             </form>
-                
+
         </div>
+            }
     </div>
     
 {% endblock content %}

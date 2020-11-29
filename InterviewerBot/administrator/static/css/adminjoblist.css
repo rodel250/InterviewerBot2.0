@@ -5,7 +5,7 @@
 
 body {
     font-family: 'GothamBook';
-    background-image: url('/static/images/red_bg.jpg');
+    background-image: url('/static/images/white_bg.jpg');
     background-size: cover;
 }
 
@@ -28,14 +28,14 @@ span {
 }
 
 h1 {
-	font-family: 'GothamBold';
+    font-family: 'GothamBold';
     color: white; 
     font-size: 48px; 
     margin-top: 5%;
 }
 
 hr {
-	border-color: white; 
+    border-color: white; 
     width: 100%;  
     float: left; 
 }
@@ -184,29 +184,21 @@ ul ul a {
     CONTENT STYLE
 ----------------------------------------------------- */
 
-#content {
-	width: 99%; 
-    min-height: 100vh;
-    transition: all 0.3s;
+#content-header{
+    padding-left: 0.981%;
+    padding-right: 13px;
 }
-.contentWrapper{
-    padding-left: 26%;
+
+.content-container{
+    width: 75%;
+    min-height: 100vh;
+    margin-left: 25%;
+    float: right;
 }
 
 .topBorder{
-    width: 101%;
+    width: 100%;
     border-top: 10px solid #2b353b;
-    
-}
-
-.dateandtime {
-    color: #ffffff;
-    text-align: right;
-    font-size: 0.7em;
-}
-
-hr{
-    opacity: 30%;
 }
 
 .addAdmin{
@@ -222,25 +214,13 @@ hr{
     bottom: 0;
 }
 
-
-.botFooter{
-    font-size: 0.8em;
-    color: #ffffff;
-    background-color: #2b353b;
-    padding: 5px;
-    width: 101%;
-    margin-bottom: -25px;
-    text-align: right;
-    margin-top: 2.5%;
-}
-
-#content .selectWrapper{
+#content-header .selectWrapper{
   border-radius: 10px;
   display:inline-block;
   overflow:hidden;
   background:white;
 }
-#content .selectBox{
+#content-header .selectBox{
   width: 140px;
   height: 30px;
   padding-left: 10px;
@@ -248,14 +228,14 @@ hr{
   border: none;
 }
 
-#content .table1{
+#content-header .table1{
     margin-top: 35px;
     height: 350px;
     background-color: white;
     border-radius: 20px;
     border-top: 30px solid lightgray;
 }
-#content .table2{
+#content-header .table2{
     margin-top: 35px;
     min-height: 740px;
     background-color: white;
@@ -263,11 +243,80 @@ hr{
     border-top: 30px solid lightgray;
 }
 
-#modalContent {
-    padding: 20px;
-    transition: all 0.3s;
+.dateandtime {
+    color: #ffffff;
+    text-align: right;
+    font-size: 0.7em;
+    margin-right: 0.44%;
 }
 
+.red-header{
+    width: 100%;
+    height: 100px;
+    background-color: #933633;
+    float: right;
+    margin-bottom: 20px;
+}
+
+.content-form{
+    padding: 40px;
+}
+
+.column-form{
+    width: 80%;
+    border-radius: 15px;
+}
+
+.column-status{
+    width: 15%;
+    margin: 10px;
+}
+
+.column-form header{
+    width: 100%;
+    background-color: #2b353b;
+    padding: 5px;
+    border-radius: 15px 15px 0 0;
+    color: #ffffff;
+    border-radius: 15px 15px 0 0;
+}
+
+.column-form footer{
+    width: 100%;
+    height: 30px;
+    background-color: #E5E5E5;
+    border-radius: 0 0 15px 15px;
+}
+
+.column-form a{
+    float: right;
+    margin-right: 25px;
+    opacity: 50%;
+}
+
+.column-form a:hover{
+    opacity: 100%;
+}
+
+.column-form textarea{
+    width: 100%;
+    min-height: 200px;
+    max-height: 200px;
+    resize: none;
+    border: none;
+}
+
+.botFooter{
+    font-size: 0.8em;
+    color: #ffffff;
+    background-color: #2b353b;
+    padding: 5px;
+    width: 100%;
+    margin-top: 12.8%;
+    text-align: right;
+}
+
+/*MODAL JOBE CREATE*/
 /*CREATE JOB CSS*/
 .jobCreateModal{
     display: none; /* Hidden by default */
@@ -497,278 +546,3 @@ textarea{
 .imgDelete{
     width: 32px;
 }
-
-/*.modal-content{
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 90%; 
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content{
-    background-color: #fefefe;
-    padding: 2px;
-    border: 5px solid #DCB800;
-    width: 100%; 
-    border-radius: 15px;
-}
-
-.close{
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus{
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-*/
-/*.createJob{
-    position: relative;
-    margin: auto;
-}
-.imgJob {
-    width: 40px; 
-    height: 40px; 
-    border-radius: 2%;
-    position: relative;
-    left: 2%;
-}
-#job-form{
-    width: 100%;
-    overflow: hidden;
-    margin: auto;
-    padding: 30px;
-}
-#job-text{
-    font-weight: bold;
-    position: absolute;
-    left: 4%;
-    top: 27%;
-    font-size: 23px;
-}
-#btnPost{
-    width: 110px;
-    border-radius: 15px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 0px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    background-color: #8B0000;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    position: relative;
-    left: 488%;
-}
-.imgEllipsis{
-    width: 30px; 
-    height: 30px; 
-    border-radius: 2%;
-    position: relative;
-    left: 488%;
-}
-.imgCir{
-    width: 70px; 
-    height: 70px; 
-    border-radius: 2%;
-    position: relative;
-    left: 488%;
-}
-#label{
-    background-color: #FFCC00;
-}
-#question{
-    font-family: Arial;
-    font-size: 17px;
-    font-weight: bold;
-    position: relative;
-    border-style: none;
-    color: #696969;
-    top: 60px;
-    left: 470%;
-}
-#responses{
-    font-family: Arial;
-    font-size: 17px;
-    font-weight: bold;
-    position: relative;
-    border-style: none;
-    color: #696969;
-    top: 60px;
-    left: 470%;
-}
-#msg-form{
-    width: 80%;
-    position: absolute;
-    top: 25%;
-    left: 10%;
-    padding-top: 3%;
-    padding-bottom: 2%;
-    height: inherit;
-    border-radius: 10px;
-    border-top: 8px solid #8B0000;
-    border-left: 1px solid #000000;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-}
-#j-text{
-    font-weight: bold;
-    position: absolute;
-    left: 2.5%;
-    top: 27%;
-    font-size: 23px;
-}
-#message{
-    border-radius: 0px;
-    width: 1250px;
-    text-align: center;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 3px;
-    background-color: #ffffff;
-    color: #696969;
-    position: relative;
-    text-align: left;
-    font-weight: bold;
-    left: 2%;
-    padding-bottom: 10px;
-    padding-top: 10px;
-}
-#msg2-form{
-    width: 80%;
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border-radius: 10px;
-    height: inherit;
-    border-top: 1px solid #000000;
-    border-left: 8px solid #8B0000;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-}
-#message2{
-    border-radius: 0px;
-    width: 1250px;
-    text-align: center;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 3px;
-    background-color: #DCDCDC;
-    position: relative;
-    text-align: left;
-    left: 2%;
-    font-size: 20px;
-    padding-bottom: 25px;
-    padding-top: 25px;
-}
-#message3{
-    border-radius: 0px;
-    width: 1250px;
-    text-align: center;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 3px;
-    background-color: #ffffff;
-    position: relative;
-    text-align: left;
-    left: 2%;
-    color: #696969;
-    font-size: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-}
-#message4{
-    border-radius: 0px;
-    width: 1250px;
-    text-align: center;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 3px;
-    background-color: #ffffff;
-    position: relative;
-    text-align: left;
-    left: 2%;
-    font-size: 20px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-}
-#imgCopy{
-    width: 40px;
-    height: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 95%;
-}
-#imgDelete{
-    width: 40px;
-    height: 55px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 96%;
-}
-#function-form{
-    width: 4%;
-    height: 50px;
-    position: absolute;
-    border-radius: 20px;
-    top: 50%;
-    left: 91%;
-    padding-top: 1%;
-    padding-bottom: 7%;
-    height: inherit;
-    border-top: 1px solid #000000;
-    border-left: 1px solid #8B0000;
-    border-right: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-}
-#imgPlus{
-    width: 40px;
-    height: 55px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 35%;
-}
-#imgForward{
-    width: 40px;
-    height: 55px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 35%;
-}
-#imgTT{
-    width: 40px;
-    height: 55px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 35%;
-}
-#imgGallery{
-    width: 40px;
-    height: 55px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    left: 35%;
-}*/

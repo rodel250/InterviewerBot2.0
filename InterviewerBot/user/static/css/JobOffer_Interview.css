@@ -7,49 +7,165 @@ body {
     font-family: 'GothamBook';
     background-image: url('/static/images/white_bg.jpg');
     background-size: cover;
+    overflow: hidden;
 }
-button{
-    cursor: pointer;
+button {
+  background-color: rgba(255,255,255,.5);
+  padding: 5px;
+  outline: none;
+  border: 1px solid rgba(0,0,0,.3);
+  border-radius: 5px;
+}
+div{
+  height: 55px;
 }
 form {
-  flex: 5;
+  flex: 15;
   display: block;
   padding: 15px;
-  position: relative;
-  top: 270px;
 }
-b{
-    color: black;
-    font-size: 13px;
-}
-b#question{
-    font-size: 20px;
-}
+/* ---------------------------------------------------
+                         CLASS STYLE
+----------------------------------------------------- */
 .heading{
+    position: relative;
+    top: 0px;
+    bottom: 1px;
+    height: 70px;
+    width: 100%;
     background-color: #F8C400;
     padding: 15px;
 }
-.foot{
-    position: relative;
-    top: 150px;
-    background-color: #EBEBEB;
-    position: relative;
-    padding-top: 1%;
-    padding-bottom: 1%;
+.wrapper {
+  max-width: 100%;
+  height: 97vh;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0;
+  background-color: rgba(255,255,255,.1);
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid rgba(255,255,255,.2);
+  border-right: 1px solid rgba(255,255,255,.2);
 }
-.text-box{
+.text-box {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
     width: 100%;
+    background-color: gray;
+}
+.bot-row, .user-row {
+  padding: 1px 0 5px 0;
+  display: block;
+  position: relative;
+}
+.user-row {
+  text-align: right;
+}
+
+.user, .bot {
+  font-size: 16px;
+  padding: 5px 8px;
+  margin: 1px;
+  border-radius: 12px;
+  display: inline-block;
+  position: relative;
+  top: 10px;
+}
+.bot {
+  margin-right: 100px;
+  background-color: #F8C400;
+  border-bottom-left-radius: 0;
+  position: relative;
+  right: 38%;
+}
+.user {
+  margin-left: 100px;
+  color: white;
+  background-color: #781B1B; 
+  border-bottom-right-radius: 0;
+  position: relative;
+  right: 2%;
+}
+/* ---------------------------------------------------
+                         ID STYLE
+----------------------------------------------------- */
+#fa-send{
+    font-size: 16px;
     position: relative;
-    bottom: 250px;
+    right: 5px;
 }
-.time{
-   position: relative;
-   right: 65px;
-   top: 10px;
-  
+#fa-mic{
+    font-size: 24px;
+    position: relative;
+    right: 1px;
 }
-#id-write{
-    width: 70%;
+#imgJob{
+    display: flex;
+    border-radius: 50%;
+    height:50px;
+    width: 50px;
+    position: relative;
+    bottom: 6px;
+}
+#jobOffer-text{
+    position: relative;
+    bottom: 60px;
+    left: 15%;
+    font-size: 18px;
+}
+#lorem-text{
+    position: relative;
+    bottom: 63px;
+    left: 15%;
+    font-size: 13px;
+}
+#time{
+    position: relative;
+    font-size: 12px;
+    top: 5px;
+    right: 45%;
+}
+#id-mic{
+    position: relative;
+    bottom: 50px;
+    left: 55px;
+    color: white;
+    background-color: #781B1B;
+    height: 40px;
+    width: 50px;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0;
+    border-radius: 20px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+}
+#id-send{
+    height: 40px;
+    width: 100px;
+    position: relative;
+    bottom: 53px;
+    left: 65px;
+    color: white;
+    background-color: #781B1B;
+    font-size: 12px;
+    line-height: 25px;
+    padding: 0;
+    border-radius: 20px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+}
+input#message {
+    position: relative;
+    left: 55px;
+    bottom: 53px;
+    width: 72%;
     padding-left: 11px;
     padding-right: 9px;
     font-size: 16px;
@@ -59,61 +175,21 @@ b#question{
     margin: 0 10px 0 0;
     box-sizing: border-box;
     border: 1px solid #aaa;
-    border-radius: 13px;
+    border-radius: 20px;
     border-right-width: 0px;
     border-left-width: 0px;
     border-top-width: 0px;
     border-bottom-width: 0px;
+}
 
+div#dialogue {
+  overflow-x: none;
+  overflow-y: auto;
+  display: block;
+  flex: 95;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
 }
-#imgJob{
-    display: flex;
-    border-radius: 50%;
-    height:100px;
-    width: 100px;
-    position: relative;
-}
-#jobOffer-text{
-    position: relative;
-    bottom: 28px;
-    left: 8%;
-    font-size: 32px;
-}
-#lorem-text{
-    position: relative;
-    bottom: 22px;
-    left: 8%;
-    font-size: 20px;
-}
-#id-send{
-    position: relative;
-    left: 65px;
-    color: white;
-    background-color: #781B1B;
-    height: 40px;
-    width: 100px;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 0;
-    border-radius: 20px;
-    border-right-width: 0px;
-    border-left-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-}
-#id-mic{
-    position: relative;
-    left: 35px;
-    color: white;
-    background-color: #781B1B;
-    height: 40px;
-    width: 60px;
-    font-size: 16px;
-    line-height: 25px;
-    padding: 0;
-    border-radius: 20px;
-    border-right-width: 0px;
-    border-left-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-}
+

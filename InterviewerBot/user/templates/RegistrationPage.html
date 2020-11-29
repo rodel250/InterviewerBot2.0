@@ -36,39 +36,40 @@
         <img src="{% static '/images/logo.png' %}" width="40%" height="23%">
         </center>
         </div>           
-         <form id="register" method="get" action="RegistrationPage.html">
+         <form id="register" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="py-3">
                 <hr style="width: 50%; text-align:center;">
             </div>
 
             <div class="form-group">
-                <input type="text" id="firstName" name="first" placeholder="First Name">
-                <input type="text" id="lastName" name="last" placeholder="Last Name">
+                <input type="text" id="firstName" name="first" placeholder="First Name" required>
+                <input type="text" id="lastName" name="last" placeholder="Last Name" required>
             </div>
 
             <div class="form-group">
                 <input type="text" id="phoneNo" name="phone" placeholder="Phone">
-            <select name="gender" id="gender">
+            <select name="gender" id="gender" required>
                 <option value="" disabled selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
             </select>
             </div>
 
             <div class="form-group">   
-                <input type="text" id="emailAdd" name="email" placeholder="Email">
+                <input type="text" id="emailAdd" name="email" placeholder="Email" required>
             </div>
 
             <div>                
-                <input type="Password" id="pass" name="pass" placeholder="Password"><br>
+                <input type="Password" id="pass" name="pass" placeholder="Password" required><br>
             </div>
             <div class="py-3">
                 <hr style="width: 50%; text-align:center;">
             </div>
 
             <div>
-                <input class="btn_register" type="button" name="register" id="register" value="REGISTER"><br><br>
+                <button type="submit" class="btn_register" name="register">REGISTER</button><br><br>
                 <a href="{% url 'user:login_view' %}">Already have an account? Login</a>
             </div>
         </form>
