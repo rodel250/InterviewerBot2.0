@@ -23,7 +23,7 @@ class Login(models.Model):
 class Contact(models.Model):
 	email = models.EmailField(max_length=50)
 	subject = models.CharField(max_length = 50)
-	message = models.CharField(max_length = 100)
+	message = models.CharField(max_length = 500)
 
 	class Meta:
 		db_table = "Contact"
