@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from django.core.files.storage import default_storage
+from django.core.mail import send_mail
 # Create your views here.
 
 class UserIndexView(View):
@@ -35,6 +36,19 @@ class AboutUsView(View):
 class ContactUsView(View):
 	def get(self, request):
 		return render(request, 'ContactUs.html')
+
+	def post(self, request):
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			email = request.POST.get("email")
+			subject = request.POST.get("subject")
+			message = request.POST.get("message")
+			send_mail(subject,message,email,['interviewbot.cit@gmail.com',email])
+
+			return redirect('user:contact-us_view')
+
+		return render(request, 'ContactUs.html')
+					
 
 class HomePageView(View):
 	def get(self, request):

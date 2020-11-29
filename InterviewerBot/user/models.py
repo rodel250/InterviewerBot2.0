@@ -20,6 +20,13 @@ class Login(models.Model):
 	class Meta:
 		db_table = "currentUser"
 
+class Contact(models.Model):
+	email = models.EmailField(max_length=50)
+	subject = models.CharField(max_length = 50)
+	message = models.CharField(max_length = 100)
+
+	class Meta:
+		db_table = "Contact"
 # class JobOffer(models.Model):
 # 	jobName = models.CharField(max_length = 20)
 # 	jobDescription = models.TextField()

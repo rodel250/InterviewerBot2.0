@@ -18,3 +18,9 @@ class UpdateForm(forms.ModelForm):
 	class Meta:
 		model = Applicant
 		fields = ('firstname', 'lastname', 'password', 'emailAddress')
+
+class ContactForm(forms.Form):
+
+	class Meta:
+		model = Contact
+		fields = ('email','subject','message')
