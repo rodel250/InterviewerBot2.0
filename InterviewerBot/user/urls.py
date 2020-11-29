@@ -7,7 +7,7 @@ urlpatterns=[
     #path('api/data', views.get_data, name='api-data'),
 
     #TEST URL
-    path('login', views.UserIndexView.as_view(), name="login"),
+    path('login', views.UserIndexView.as_view(), name="login_view"),
     path('about-us', views.AboutUsView.as_view(), name="about-us_view"),
     path('contact-us', views.ContactUsView.as_view(), name="contact-us_view"),
     path('home', views.HomePageView.as_view(), name="home_view"),

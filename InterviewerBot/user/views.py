@@ -58,7 +58,7 @@ class UserRegistrationView(View):
 										emailAddress = emailAdd)
 				form.save()
 
-				return redirect('user:login')
+				return redirect('user:login_view')
 		else:
 			print(form.errors)
 			return HttpResponse('Email address is already used.')
