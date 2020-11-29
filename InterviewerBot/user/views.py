@@ -6,6 +6,7 @@ from .forms import *
 from .models import *
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
+
 # Create your views here.
 
 class UserIndexView(View):
@@ -123,3 +124,8 @@ class UserRegistrationView(View):
 class JobOffersView(View):
 	def get(self, request):
 		return render(request, 'jobOffers.html')
+
+class LogOutView(View):
+	def get(self, request):
+		return render(request, 'LogOut.html')
+

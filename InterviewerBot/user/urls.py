@@ -15,4 +15,5 @@ urlpatterns=[
     path('registration', views.UserRegistrationView.as_view(), name="registration_view"),
     path('job-offers', views.JobOffersView.as_view(), name="job-offers_view"),
     path('settings', views.SettingsView.as_view(), name="settings_view"),
+    path('logout', views.LogOutView.as_view(), name="logout_view"),
 ]

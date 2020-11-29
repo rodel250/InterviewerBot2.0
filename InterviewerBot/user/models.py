@@ -27,6 +27,7 @@ class Contact(models.Model):
 
 	class Meta:
 		db_table = "Contact"
+		
 # class JobOffer(models.Model):
 # 	jobName = models.CharField(max_length = 20)
 # 	jobDescription = models.TextField()
