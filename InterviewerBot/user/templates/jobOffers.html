@@ -4,12 +4,13 @@
 {% block headerinclude %}
 
     <title>Interview BOT - Job Offers</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/jobOffers.css' %}">
+    <link rel="stylesheet" href="{% static '/css/JobOffers.css' %}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
@@ -28,26 +29,8 @@
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-    <!-- Job Requirements Modal -->
-    <script type="text/javascript">
-        var modal = document.getElementById("jobReqModal");
-        var btn = document.getElementById("id-btnApply");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function(){
-            modal.style.display = "block";
-        }
-        span.onclick = function(){
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
-
     <!-- Script for upload files -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             if (window.File && window.FileList && window.FileReader) {
@@ -73,7 +56,7 @@
                 alert("Your browser doesn't support to File API")
             }
         });
-    </script>
+    </script> -->
 
 {% endblock footerinclude %}
 
@@ -92,35 +75,35 @@
                 <li>
                 	<a href="{% url 'user:home_view' %}">
                         <i class="fas fa-home"></i> 
-                        Home
+                        &nbsp;&nbsp;Home
                     </a>
                 </li>
                 <li class="active">
                     <a href="{% url 'user:job-offers_view' %}">
                         <i class="fas fa-search"></i>
-                        Job Offers
+                        &nbsp;&nbsp;Job Offers
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'user:about-us_view' %}">
                         <i class="fas fa-info-circle"></i>
-                        About Us
+                        &nbsp;&nbsp;About Us
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'user:contact-us_view' %}">
                         <i class="fas fa-envelope"></i>
-                        Contact Us
+                        &nbsp;&nbsp;Contact Us
                     </a>
                 </li>
                 <li>
-		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="{% url 'user:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
 		        </li>
@@ -175,7 +158,53 @@
         <div id="jobReqModal" class="jobModal">
             <div class="jobModal_content">
                 <span class="close">&times</span>
-                <div class="row">
+                <table class="modalTable">
+                    <tr>
+                        <th>Job Requirements</th>
+                        <th>Attach Your Requirements Here</th>
+                    </tr>
+                    <tr>
+                        <td>Application Letter</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Accomplished Civil Service Commission Form 212 (CSC Form 212 Revised 2017)</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Certified Photocopy of your LET Rating</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Photocopy of your PRC Licence</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Certified Photocopy of your Transcript of Records</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Photocopy of the Certificate(s) of Specialized Training(s) you attended</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>Certification of Employment/ Service Records/ Performance Rating or Clearances</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                    <tr>
+                        <td>MARL MARL</td>
+                    </tr>
+                    <tr>
+                        <td>Original copy of Certificate of Residency or Voter’s ID or Voter’s Affidavit</td>
+                        <td><input type="file" id="id-file" name="name-file"></td>
+                    </tr>
+                </table>
+                <form id="myForm" method="post">
+                    <div class="btnSubmit">
+                        <a href="#">Submit</a>
+                    </div>
+                </form>
+                <!-- <div class="row">
                     <div class="column">
                         <h3>Job Requirements</h3><br>
                         <li>Application Letter</li>
@@ -204,9 +233,27 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
+
+    <!-- Job Requirements Modal -->
+    <script type="text/javascript">
+        var modal = document.getElementById("jobReqModal");
+        var btn = document.getElementById("id-btnApply");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function(){
+            modal.style.display = "block";
+        }
+        span.onclick = function(){
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 {% endblock content %}

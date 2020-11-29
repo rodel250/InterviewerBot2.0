@@ -1,0 +1,143 @@
+{% load static %}
+
+
+{% block headerinclude %}
+    
+    <title>Interview BOT - Job List</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/adminjoblists.css' %}">
+
+{% endblock headerinclude %}
+
+
+
+{% block footerinclude %}
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+{% endblock footerinclude %}
+
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static '/images/logo.png' %}" width="100%">
+            </div>
+            <div class="create"style="margin-left: 100px;">
+                <button type="button" class="btn btn-warning" style="padding-right: 100px;padding-left: 100px; padding-top: 10px;padding-bottom: 10px;font-size: 1.1em; color: white;">Create Job</button>
+            </div>
+            <br>
+            <ul class="list-unstyled components">
+                <li>
+                	<a href="{% url 'administrator:dashboard_view' %}">
+                        <i class="fas fa-table"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{% url 'administrator:job-lists_view' %}">
+                        <i class="fas fa-search"></i>
+                        Job List
+                    </a>
+                </li>
+                <div style="margin-top: 350px;"> 
+                    <li style="margin-left: 25px; color: red;">
+                        Add Admin User
+                    </li>
+                    <li>
+                        <div style="margin-top: 00px;"> 
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> USERNAME</a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="topBorder"></div>
+
+    <div id="content">
+        <div style="color: aliceblue;margin-left: 88.09%;">Current Date Here</div>
+        <form>
+            <div class="selectWrapper" style="width:170px;">
+                <select class="selectBox">
+                  <option value="0">Job Type</option>
+                  <option value="1">job1</option>
+                  <option value="2">job2</option>
+                </select>
+            </div>
+            <div class="selectWrapper" style="width:270px;margin-left: 25px;">
+                <select class="selectBox" style="width: 240px;">
+                  <option value="0">City, State or Province</option>
+                  <option value="1">test</option>
+                  <option value="2">test</option>
+                </select>
+            </div>       
+            <div class="tableContent">
+                <div class="whiteContainer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table1">
+                                            <div class="borderTop">&nbsp&nbsp&nbsp&nbsp Experienced Janitor</div>
+                                            <br>
+                                            <div class="jobDescription">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet cursus libero, quis hendrerit nunc ultrices pellentesque. Proin a fringilla lorem, a dictum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis justo nisi, sit amet volutpat dui auctor et. Sed sollicitudin vulputate varius. Sed sed mauris pellentesque, finibus ex id, bibendum nisi. Fusce sagittis sem et eros pulvinar, in laoreet sem facilisis. Mauris neque est, cursus eget purus et, convallis blandit metus. Mauris a finibus neque, sit amet volutpat lorem. Integer bibendum egestas erat eu sodales. Nullam id neque bibendum, dignissim erat at, elementum enim. Pellentesque quis pharetra nibh.
+                                                <br><br><br>
+                                                <div class="VUD">View &nbsp&nbsp&nbsp Update &nbsp&nbsp&nbsp Delete</div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table1">
+                                            <div class="borderTop">&nbsp&nbsp&nbsp&nbsp Master Teacher</div>
+                                            <br>
+                                            <div class="jobDescription">
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet cursus libero, quis hendrerit nunc ultrices pellentesque. Proin a fringilla lorem, a dictum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis justo nisi, sit amet volutpat dui auctor et. Sed sollicitudin vulputate varius. Sed sed mauris pellentesque, finibus ex id, bibendum nisi. Fusce sagittis sem et eros pulvinar, in laoreet sem facilisis. Mauris neque est, cursus eget purus et, convallis blandit metus. Mauris a finibus neque, sit amet volutpat lorem. Integer bibendum egestas erat eu sodales. Nullam id neque bibendum, dignissim erat at, elementum enim. Pellentesque quis pharetra nibh.
+                                                <br><br><br>
+                                                <div class="VUD">View &nbsp&nbsp&nbsp Update &nbsp&nbsp&nbsp Delete</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="test1">
+                                    Applied: 2
+                                    <br>
+                                    Status: Pending
+                                </div>
+                                <div class="test1">
+                                    Applied: 5
+                                    <br>
+                                    Status: Pending
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+
+{% endblock content %}

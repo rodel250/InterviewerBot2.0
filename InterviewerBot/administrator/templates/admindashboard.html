@@ -1,0 +1,179 @@
+{% load static %}
+
+
+{% block headerinclude %}
+
+    <title>Interview BOT - Dashboard</title>]
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/Admindashboard.css' %}">
+
+{% endblock headerinclude %}
+
+
+
+{% block footerinclude %}
+
+    <!-- Font Awesome JS -->
+    <script src="{% static 'Automate/js/bootstrap.js' %}"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+{% endblock footerinclude %}
+
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{% static '/images/logo.png' %}" width="100%">
+            </div>
+            <div class="create"style="margin-left: 100px;">
+                <button type="button" data-toggle="modal" data-target="#modalCreate" class="btn btn-warning" style="padding-right: 60px;padding-left: 60px; padding-top: 10px;padding-bottom: 10px;font-size: 1.1em; color: white;">Create Job</button>
+            </div>
+            <br>
+            <ul class="list-unstyled components">
+                <li class="active">
+                	<a href="{% url 'administrator:dashboard_view' %}">
+                        <i class="fas fa-table"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li >
+                    <a href="{% url 'administrator:job-lists_view' %}">
+                        <i class="fas fa-search"></i>
+                        Job List
+                    </a>
+                </li>
+                <div style="margin-top: 350px;"> 
+                    <li style="margin-left: 25px; color: red;">
+                        Add Admin User
+                    </li>
+                    <li>
+                        <div style="margin-top: 00px;"> 
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> USERNAME</a>
+                    </li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <div class="topBorder"></div>
+    <div id="content">
+        <div style="color: aliceblue;margin-left: 85%;">Current Date Here</div>
+        <form>
+            <div class="selectWrapper" style="width:170px;">
+                <select class="selectBox">
+                  <option value="0">Job Type</option>
+                  <option value="1">job1</option>
+                  <option value="2">job2</option>
+                </select>
+            </div>
+            <div class="selectWrapper" style="width:270px;margin-left: 25px;">
+                <select class="selectBox" style="width: 240px;">
+                  <option value="0">City, State or Province</option>
+                  <option value="1">test  </option>
+                  <option value="2">test</option>
+                </select>
+            </div>       
+            <hr style="width: 104%;">
+            <div class="tableContent">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table1">test</div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table1">test</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="table2">test</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+
+    Modal Create
+    <div id="modalContent">
+        <div class="container">
+            <div class="modal" id="modalCreate">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form id="job-form" style="background-color: #ffcc00">
+                            <div class="createJob" id="cJob">
+                            <label id="label"> 
+                                <img src="{% static '/images/Notepad.png' %}" class="imgJob">
+                                <h4 id="job-text">Untitled Questionnaire</h4>
+                                <input type="submit" id="btnPost" value="Post">
+                                <img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis">
+                                <img src="{% static '/images/circle.png' %}" class="imgCir">
+                            </label>
+                            <label>
+                                <input type="button" name="post" id="question" value="Questions" style="background-color: #ffcc00">
+                            </label> 
+                            <label>
+                                <input type="button" name="post" id="responses" value="Responses" style="background-color: #ffcc00">
+                            </label>
+                            </div>     
+                        </form> 
+                        <br>
+                        <br> 
+
+                        <form id="msg-form" style="background-color: #FFFFFF;">
+                            <label>
+                                <h4 id="j-text">Untitled Questionnaire</h4><br>
+                                &nbsp;<input type="text" name="message" id="message" value="&nbsp;Questionnaire Description">
+                            </label>
+                        </form>
+
+                        <form id="msg2-form" style="background-color: #FFFFFF;">
+                            <label><br>
+                                &nbsp;<input type="text" name="message" id="message2" value="&nbsp;Untitled Question"><br>
+                                &nbsp;<input type="text" name="message" id="message3" value="&nbsp;Long answer text"><br>
+                                &nbsp;<input type="text" name="message" id="message4" value="&nbsp;"><br><br>
+                                <input type="image" src="{% static '/images/copy.png' %}" alt="Submit" id=imgCopy>
+                                <input type="image" src="{% static '/images/delete.jpg' %}" alt="Submit" id=imgDelete>
+                            </label>
+                        </form>
+
+                        <form id="function-form" style="background-color: #FFFFFF;">
+                            <label>
+                                <input type="image" src="{% static '/images/plus.png' %}" alt="Submit" id=imgPlus><br>
+                                <input type="image" src="{% static '/images/forward.png' %}" alt="Submit" id=imgForward><br>
+                                <input type="image" src="{% static '/images/truetype.png' %}" alt="Submit" id=imgTT><br>
+                                <input type="image" src="{% static '/images/gallery.png' %}" alt="Submit" id=imgGallery><br>
+                            </label>
+                        </form>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+{% endblock content %}

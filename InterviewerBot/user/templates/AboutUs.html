@@ -4,12 +4,13 @@
 {% block headerinclude %}
 
     <title>Interview BOT - About Us</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/aboutUs.css' %}">
+    <link rel="stylesheet" href="{% static '/css/AboutUs.css' %}">
 
 {% endblock headerinclude %}
 
@@ -42,35 +43,35 @@
                 <li>
                     <a href="{% url 'user:home_view' %}">
                         <i class="fas fa-home"></i>
-                        Home
+                        &nbsp;&nbsp;Home
                     </a>
                 </li>
                 <li >
                     <a href="{% url 'user:job-offers_view' %}">
                         <i class="fas fa-search"></i>
-                        Job Offers
+                        &nbsp;&nbsp;Job Offers
                     </a>
                 </li>
                 <li class="active">
                     <a href="{% url 'user:about-us_view' %}">
                         <i class="fas fa-info-circle"></i>
-                        About Us
+                        &nbsp;&nbsp;About Us
                     </a>
                 </li>
                 <li>
                     <a href="{% url 'user:contact-us_view' %}">
                         <i class="fas fa-envelope"></i>
-                        Contact Us
+                        &nbsp;&nbsp;Contact Us
                     </a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i> Account</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="{% url 'user:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -88,6 +89,57 @@
             <br>
             <h3 class="h1-responsive font-weight-bold mt-3 text-warning">&nbsp;Our Mission</h2>
             <p class="w-responsive mx-auto mb-4 text-light">&nbsp;To provide customer support to the applicants as well as in organization.</p>
+            <br>
+            <h3 class="h1-responsive font-weight-bold mt-3 mb-5 text-warning">&nbsp;Meet Our Team</h2>
+            <div class="row ml-5">
+                <div class="column" style="text-align: center; color: white">
+                    <div class="member ml-2 mr-5">
+                        <img src="https://lair.education/pluginfile.php/2264/user/icon/mb2cg/f1?rev=7517" style="border-radius: 50%">
+                        <p><br>John Vincent Belandres</p>
+                    </div>
+                </div>
+
+                <div class="column ml-5" style="text-align: center; color: white">
+                    <div class="member ml-2 mr-5">
+                        <img src="https://lair.education/pluginfile.php/2281/user/icon/mb2cg/f1?rev=7526" style="border-radius: 50%">
+                        <p><br>Rodel Perez</p>
+                    </div>
+                </div>
+
+                <div class="column ml-5" style="text-align: center; color: white">
+                    <div class="member ml-2">
+                        <img src="https://lair.education/pluginfile.php/2270/user/icon/mb2cg/f1?rev=8848" style="border-radius: 50%">
+                        <br>
+                        <p><br>Jon Anthony Genobaten</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-5 ml-5">
+                <div class="column" style="text-align: center; color: white">
+                    <div class="member ml-4 mr-3">
+                        <img src="https://lair.education/pluginfile.php/2277/user/icon/mb2cg/f1?rev=7509" style="border-radius: 50%">
+                        <p><br>&nbsp;&nbsp;&nbsp;&nbsp;Michael Moneza II</p>
+                    </div>
+                </div>
+
+                <div class="column ml-5" style="text-align: center; color: white">
+                    <div class="member ml-2 mr-3">
+                        <img src="https://lair.education/pluginfile.php/2275/user/icon/mb2cg/f1?rev=48731" style="border-radius: 50%">
+                        <br>
+                        <p><br>&nbsp;Kyle Jhunelle Lumayag</p>
+                    </div>
+                </div>
+
+                <div class="column ml-5" style="text-align: center; color: white">
+                    <div class="member ml-2">
+                        <img src="https://lair.education/pluginfile.php/2263/user/icon/mb2cg/f1?rev=15056" style="border-radius: 50%">
+                        <br>
+                        <p><br>Christian Kyle Autida</p>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
