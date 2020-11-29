@@ -36,23 +36,34 @@ class UserRegistrationView(View):
 		return render(request, 'RegistrationPage.html')
 
 	def post(self, request):
+		count = 0
 		form = ApplicantForm(request.POST)
+		applicants = Applicant.objects.all()
+		emailAdd = request.POST.get("email")
 
-		if(form.is_valid()):
-			fname = request.POST.get("firstname")
-			lname = request.POST.get("lastname")
-			password = request.POST.get("password")
-			gender = request.POST.get("gender")
-			emailAdd = request.POST.get("emailAddress")
+		for applicant in applicants:
+			if(applicant.emailAddress == emailAdd):
+				count = 1
 
-			form = Applicant(firstname = fname, lastname = lname, password = password, gender = gender, 
-								emailAddress = emailAdd)
-			form.save()
+		if (count == 0):
+			if(form.is_valid()):
+				fname = request.POST.get("first")
+				lname = request.POST.get("last")
+				phone = request.POST.get("phone")
+				password = request.POST.get("pass")
+				gender = request.POST.get("gender")
+				emailAdd = request.POST.get("email")
 
-			return redirect('user:login_view')
+				form = Applicant(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
+										emailAddress = emailAdd)
+				form.save()
+
+				return redirect('user:login')
 		else:
 			print(form.errors)
-			return HttpResponse('not valid')
+			return HttpResponse('Email address is already used.')
+		
+		return HttpResponse('not valid')
 
 class JobOffersView(View):
 	def get(self, request):

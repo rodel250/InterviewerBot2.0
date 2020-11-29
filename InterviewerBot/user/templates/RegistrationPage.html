@@ -36,7 +36,8 @@
         <img src="{% static '/images/logo.png' %}" width="40%" height="23%">
         </center>
         </div>           
-         <form id="register" method="get" action="RegistrationPage.html">
+         <form id="register" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
             <div class="py-3">
                 <hr style="width: 50%; text-align:center;">
             </div>
@@ -50,9 +51,9 @@
                 <input type="text" id="phoneNo" name="phone" placeholder="Phone">
             <select name="gender" id="gender">
                 <option value="" disabled selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
             </select>
             </div>
 
@@ -68,8 +69,8 @@
             </div>
 
             <div>
-                <input class="btn_register" type="button" name="register" id="register" value="REGISTER"><br><br>
-                <a href="{% url 'user:login_view' %}">Already have an account? Login</a>
+                <button type="submit" class="btn_register" name="register">REGISTER</button><br><br>
+                <a href="{% url 'user:login' %}">Already have an account? Login</a>
             </div>
         </form>
     </div>             
