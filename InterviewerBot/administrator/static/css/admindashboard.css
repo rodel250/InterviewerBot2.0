@@ -185,15 +185,18 @@ ul ul a {
 ----------------------------------------------------- */
 
 #content {
-	width: 99%;
-    padding-left: 26%;
+	width: 99%; 
     min-height: 100vh;
     transition: all 0.3s;
 }
+.contentWrapper{
+    padding-left: 26%;
+}
 
 .topBorder{
-    width: 100%;
+    width: 101%;
     border-top: 10px solid #2b353b;
+    
 }
 
 .dateandtime {
@@ -219,17 +222,16 @@ hr{
     bottom: 0;
 }
 
-.botFooter{
-    text-align: right;
-}
 
 .botFooter{
     font-size: 0.8em;
     color: #ffffff;
     background-color: #2b353b;
     padding: 5px;
-    width: 100%;
+    width: 101%;
     margin-bottom: -25px;
+    text-align: right;
+    margin-top: 2.5%;
 }
 
 #content .selectWrapper{

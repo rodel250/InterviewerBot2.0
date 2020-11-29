@@ -3,7 +3,7 @@
 
 {% block headerinclude %}
 
-    <title>Interview BOT - Dashboard</title>]
+    <title>Interview BOT - Dashboard</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Bootstrap CSS CDN -->
@@ -76,52 +76,57 @@
             </div>
         </nav>
     </div>
-    <div class="topBorder"></div>
+    
     <div id="content">
-        <div class="dateandtime">
-            <a>2:13:00 PM</a><br>
-            <a>Friday, November 27, 2020</a><br><br>
-        </div>
-        <form>
-            <div class="selectWrapper">
-                <select class="selectBox">
-                  <option value="0">Job Type</option>
-                  <option value="1">job1</option>
-                  <option value="2">job2</option>
-                </select>
+        <div class="topBorder"></div>
+        <div class="contentWrapper">
+            <div class="dateandtime">
+                <a>2:13:00 PM</a><br>
+                <a>Friday, November 27, 2020</a><br><br>
             </div>
-            <div class="selectWrapper">
-                <select class="selectBox" style="width: 240px;">
-                  <option value="0">City, State or Province</option>
-                  <option value="1">test  </option>
-                  <option value="2">test</option>
-                </select>
-            </div>
-            <hr>
-            <div class="tableContent">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="table1">test</div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="table1">test</div>
+            <form>
+                <div class="selectWrapper">
+                    <select class="selectBox">
+                    <option value="0">Job Type</option>
+                    <option value="1">job1</option>
+                    <option value="2">job2</option>
+                    </select>
+                </div>
+                <div class="selectWrapper">
+                    <select class="selectBox" style="width: 240px;">
+                    <option value="0">City, State or Province</option>
+                    <option value="1">test  </option>
+                    <option value="2">test</option>
+                    </select>
+                </div>
+                <hr>
+                <div class="tableContent">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="table1">test</div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="table1">test</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="table2">test</div>
+                            <div class="col-md-4">
+                                <div class="table2">test</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>    
-        </form>
+                </div>    
+            </form>   
+        </div>
+        <div class="botFooter">
+            <footer>Copyright © InterviewBOT. All rights reserved.</footer>
+        </div>    
     </div>
-    <div class="botFooter">
-        <footer>Copyright © InterviewBOT. All rights reserved.</footer>
-    </div>
+    
+
 
     <!-- CREATE JOB MODAL -->
     <div id="createJobModal" class="jobCreateModal">
