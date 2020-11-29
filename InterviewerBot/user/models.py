@@ -13,6 +13,13 @@ class Applicant(models.Model):
 	class Meta:
 		db_table = "Applicant"
 
+class Login(models.Model):
+	emailAddress = models.CharField(max_length = 50, null=True, blank=True)
+	password = models.CharField(max_length = 50, null=True, blank=True)
+
+	class Meta:
+		db_table = "currentUser"
+
 # class JobOffer(models.Model):
 # 	jobName = models.CharField(max_length = 20)
 # 	jobDescription = models.TextField()

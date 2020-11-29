@@ -11,6 +11,23 @@ class UserIndexView(View):
 	def get(self, request):
 		return render(request, 'UserLog-inPage.html')
 
+	def post(self, request):
+		email = request.POST.get("emailAdd")
+		password = request.POST.get("pass")
+		applicants = Applicant.objects.all()
+		form = LoginForm(request.POST)
+
+		for applicant in applicants:
+			if(applicant.emailAddress == email and applicant.password == password):
+				if(form.is_valid()):
+					form = Login.objects.get(id=1)
+					form.emailAddress = email
+					form.password = password
+					form.save()
+				return redirect('user:home_view')
+
+		return HttpResponse('Email address or password is incorrect.')
+
 class AboutUsView(View):
 	def get(self, request):
 		return render(request, 'AboutUs.html')

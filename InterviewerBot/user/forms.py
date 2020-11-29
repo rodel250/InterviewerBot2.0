@@ -6,3 +6,9 @@ class ApplicantForm(forms.ModelForm):
 	class Meta:
 		model = Applicant
 		fields = ('firstname','lastname','password', 'gender', 'emailAddress')
+
+class LoginForm(forms.ModelForm):
+
+	class Meta:
+		model = Login
+		fields = ('emailAddress', 'password')
