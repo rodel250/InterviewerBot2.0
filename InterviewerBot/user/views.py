@@ -65,8 +65,8 @@ class JobInterviewView(View):
 
 class SettingsView(View):
 	def get(self, request):
-		currentUser = Login.objects.values_list("emailAddress", flat=True).get(pk = 1)
-		applicant = Applicant.objects.filter(emailAddress = currentUser)
+		currentUser = Login.objects.get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser.id)
 
 		context = {
 			'applicant': applicant
@@ -75,14 +75,25 @@ class SettingsView(View):
 		return render(request, 'Settings.html', context)
 
 	def post(self, request):
+		applicants = Applicant.objects.all()
+		count = 0
+
+		applicant_id = request.POST.get("applicant-id")
 		firstName = request.POST.get("firstname")
 		lastName = request.POST.get("lastname")
 		phone = request.POST.get("phone")
 		email = request.POST.get("email")
 		password = request.POST.get("password")
 
-		update_applicant = Applicant.objects.filter(emailAddress=email).update(firstname = firstName,
-			lastname = lastName, phone = phone, emailAddress = email, password = password)
+		for applicant in applicants:
+			if applicant.emailAddress == email:
+				count = 1
+
+		if count == 0:
+			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
+				lastname = lastName, phone = phone, emailAddress = email, password = password)
+		else:
+			return HttpResponse('Email is already taken.')
 
 		return redirect('user:settings_view')
 
