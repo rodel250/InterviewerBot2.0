@@ -87,7 +87,7 @@
         <div id="content">
             <h1>Settings<hr></h1>
 
-            <form id="contact-form" name="contact-form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <form id="update-form" name="update-form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row align-items-center">
                     {% for applicant in applicant %}
@@ -138,7 +138,7 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                            <a id="update" class="btn btn-warning font-weight-bold text-dark" onclick="document.getElementById('settings-form').submit();">UPDATE</a>
+                            <button type="submit" id="update" name="update" class="btn btn-warning font-weight-bold text-dark">UPDATE</button>
                         </div>
                 </div>
             </form>

@@ -71,19 +71,14 @@ class SettingsView(View):
 		return render(request, 'Settings.html', context)
 
 	def post(self, request):
-		form = UpdateForm(request.POST)
-		currentUser = Login.objects.values_list("emailAddress", flat=True).get(pk = 1)
-		applicant = Applicant.objects.filter(emailAddress = currentUser)
-
 		firstName = request.POST.get("firstname")
 		lastName = request.POST.get("lastname")
 		phone = request.POST.get("phone")
 		email = request.POST.get("email")
 		password = request.POST.get("password")
 
-		if(form.is_valid):
-			update_applicant = Applicant.objects.filter(emailAddress=email).update(firstname = firstName,
-				lastname = lastName, phone = phone, emailAddress = email, password = password)
+		update_applicant = Applicant.objects.filter(emailAddress=email).update(firstname = firstName,
+			lastname = lastName, phone = phone, emailAddress = email, password = password)
 
 		return redirect('user:settings_view')
 
