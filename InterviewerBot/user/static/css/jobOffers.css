@@ -358,11 +358,9 @@ td {
   color: black;
 }*/
 
-.btnSubmit a{
-    position: absolute;
+#btnss{
+    float: right;
     font-weight: bold;
-    bottom: -80px;
-    right: 170px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 50px;

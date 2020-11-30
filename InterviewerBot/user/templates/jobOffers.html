@@ -159,10 +159,20 @@
             <div class="jobModal_content">
                 <span class="close">&times</span>
                 <table class="modalTable">
-                    <tr>
-                        <th>Job Requirements</th>
-                        <th>Attach Your Requirements Here</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Job Requirements</th>
+                            <th>Attach Your Requirements Here</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <a href="#" id="btnss">Submit</a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                    
                     <tr>
                         <td>Application Letter</td>
                         <td><input type="file" id="id-file" name="name-file"></td>
@@ -198,11 +208,7 @@
                         <td><input type="file" id="id-file" name="name-file"></td>
                     </tr>
                 </table>
-                <form id="myForm" method="post">
-                    <div class="btnSubmit">
-                        <a href="#">Submit</a>
-                    </div>
-                </form>
+                
                 <!-- <div class="row">
                     <div class="column">
                         <h3>Job Requirements</h3><br>
