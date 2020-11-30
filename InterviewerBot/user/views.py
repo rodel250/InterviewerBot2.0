@@ -46,7 +46,7 @@ class ContactUsView(View):
 			message = request.POST.get("message")
 			send_mail(subject,message,email,['interviewbot.cit@gmail.com',email])
 
-			return redirect('user:contact-us_view')
+			return redirect('user:mailsent_view')
 
 		return render(request, 'ContactUs.html')
 					
@@ -129,3 +129,6 @@ class LogOutView(View):
 	def get(self, request):
 		return render(request, 'LogOut.html')
 
+class MailSentView(View):
+	def get(self, request):
+		return render(request, 'MailSent.html')

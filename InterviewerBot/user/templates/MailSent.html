@@ -2,7 +2,7 @@
 
 {% block headerinclude %}
 
-    <title>Logging out</title>
+    <title>Thank you!</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 
     <!-- Bootstrap CSS CDN -->
@@ -15,10 +15,10 @@
 
 <script>
     function redirect(){
-       window.location.href = "login";
+       window.location.href = "home";
     }
 
-    setTimeout(redirect, 3000); //2000 is equivalent to 2 seconds
+    setTimeout(redirect, 5000); //2000 is equivalent to 2 seconds
 </script>
 
 {% block body %}
@@ -28,12 +28,15 @@
           <center>  <img  src="{% static '/images/logo.png' %}" width="40%" height="23%"></center>
          </div>            
         <center><form>
-        	<div class="py-3">
-        	<h1>You have been successfully logged out</h1>
-        	</div>
-        	<div>
-            <p>Redirecting to login page in a few seconds...</p>
-        	</div>
+            <div class="pt-3 pb-1">
+            <h1>Message successfully sent.</h1>
+            </div>
+            <div class="pb-3">
+            <h3>Thank you. We'll be in touch!</h3>
+            </div>
+            <div>
+            <p>Redirecting to home page in a few seconds...</p>
+            </div>
         </form>
     </center>
 </div>    
