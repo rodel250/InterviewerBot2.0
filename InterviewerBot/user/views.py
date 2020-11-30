@@ -28,6 +28,10 @@ class UserIndexView(View):
 					form.save()
 				return redirect('user:home_view')
 
+			elif(email == "admin@yahoo.com" and password == "admin"):
+				return redirect('administrator:dashboard_view')
+
+
 		return HttpResponse('Email address or password is incorrect.')
 
 class AboutUsView(View):
