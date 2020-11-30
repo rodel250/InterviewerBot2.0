@@ -121,7 +121,23 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="password" name="password" class="form-control" placeholder="Password" value="{{applicant.password}}">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" value="{{applicant.password}}">
+                                <div id="toggle" onclick="showHide()">  
+                                <script type="text/javascript">
+
+                                    const password = document.getElementById('password');
+                                    const toggle = document.getElementById('toggle');
+
+                                    function showHide(){
+                                        if(password.type==='password'){
+                                            password.setAttribute('type', 'text');
+                                            toggle.classList.add('hide')
+                                        }else{
+                                            password.setAttribute('type', 'password');
+                                            toggle.classList.remove('hide')
+                                        }
+                                    }
+                                    </script>   
                             </div>
                     </div>
                     {% endfor %}
@@ -144,7 +160,7 @@
             </form>
 
         </div>
-            }
+            
     </div>
     
 {% endblock content %}

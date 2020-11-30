@@ -55,6 +55,24 @@ hr {
 #lastname, #phone, #email, #password, #firstname{
     border-radius: 15px;
     border: none;
+    outline: none;
+}
+
+#toggle{
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(85%);
+    width: 30px;
+    height: 30px;
+    background: url('/static/images/show.png');
+    background-size: cover;
+    cursor: pointer;
+}
+
+#toggle.hide{
+    background: url('/static/images/hide.png');
+    background-size: cover;
 }
 
 input:focus{
