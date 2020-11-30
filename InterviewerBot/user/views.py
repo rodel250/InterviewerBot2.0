@@ -23,6 +23,7 @@ class UserIndexView(View):
 			if(applicant.emailAddress == email and applicant.password == password):
 				if(form.is_valid()):
 					form = Login.objects.get(id=1)
+					form.user_id = applicant.id
 					form.emailAddress = email
 					form.password = password
 					form.save()
@@ -65,8 +66,8 @@ class JobInterviewView(View):
 
 class SettingsView(View):
 	def get(self, request):
-		currentUser = Login.objects.get(pk = 1)
-		applicant = Applicant.objects.filter(id = currentUser.id)
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
 
 		context = {
 			'applicant': applicant
@@ -76,22 +77,26 @@ class SettingsView(View):
 
 	def post(self, request):
 		applicants = Applicant.objects.all()
-		count = 0
+		count = 1
 
 		applicant_id = request.POST.get("applicant-id")
 		firstName = request.POST.get("firstname")
 		lastName = request.POST.get("lastname")
 		phone = request.POST.get("phone")
-		email = request.POST.get("email")
 		password = request.POST.get("password")
+		email = request.POST.get("email")
 
 		for applicant in applicants:
-			if applicant.emailAddress == email:
+			if applicant.emailAddress == email and applicant.id != applicant_id:
+				count = 0
+			elif applicant.emailAddress == email and applicant.id == applicant_id and applicant.firstname != firstname or applicant.lastname != lastName or applicant.phone != phone or applicant.password != password:
 				count = 1
+			else:
+				count = 0
 
-		if count == 0:
+		if count == 1:
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
-				lastname = lastName, phone = phone, emailAddress = email, password = password)
+				lastname = lastName, emailAddress = email, phone = phone, password = password)
 		else:
 			return HttpResponse('Email is already taken.')
 

@@ -14,6 +14,7 @@ class Applicant(models.Model):
 		db_table = "Applicant"
 
 class Login(models.Model):
+	user_id = models.IntegerField()
 	emailAddress = models.CharField(max_length = 50, null=True, blank=True)
 	password = models.CharField(max_length = 50, null=True, blank=True)
 
