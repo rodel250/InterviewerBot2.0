@@ -231,7 +231,7 @@ hr{
     width: 101%;
     margin-bottom: -25px;
     text-align: right;
-    margin-top: 2.5%;
+    margin-top: 24.76%;
 }
 
 #content .selectWrapper{
@@ -249,18 +249,13 @@ hr{
 }
 
 #content .table1{
-    margin-top: 35px;
-    height: 350px;
+    margin-top: 5%;
+    height: 45%;
     background-color: white;
     border-radius: 20px;
     border-top: 30px solid lightgray;
-}
-#content .table2{
-    margin-top: 35px;
-    min-height: 740px;
-    background-color: white;
-    border-radius: 20px;
-    border-top: 30px solid lightgray;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 #modalContent {
