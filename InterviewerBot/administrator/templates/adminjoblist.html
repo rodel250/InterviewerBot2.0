@@ -1,4 +1,4 @@
-<!-- {% load static %}
+{% load static %}
 
 
 {% block headerinclude %}
@@ -71,7 +71,7 @@
                 </li>
             </ul>
             <div class="addAdmin">
-                <a href="#">Add Admin Account</a>
+                <a href="{% url 'administrator:add-admin_view' %}">Add Admin Account</a>
             </div>
         </nav>
     </div>

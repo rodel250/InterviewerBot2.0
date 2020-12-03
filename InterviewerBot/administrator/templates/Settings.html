@@ -69,8 +69,7 @@
                     </a>
                 </li>
                 <li>
-                    {% for applicant in applicant %}
-		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; {{applicant.emailAddress}}</a>
+		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li class="active">
                             <a href="{% url 'user:settings_view' %}"><i class="fa fa-cog"></i>&nbsp;&nbsp; Settings</a> 
@@ -91,6 +90,7 @@
             <form id="update-form" name="update-form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row align-items-center">
+                    {% for applicant in applicant %}
                     <div class="col-md-5 mr-4">
                            
                             <div class="form-group text-left mt-5">

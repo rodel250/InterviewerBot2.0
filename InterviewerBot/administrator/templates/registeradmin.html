@@ -1,0 +1,75 @@
+{% load static %}
+
+
+{% block headerinclude %}
+
+    <title>Interview BOT - Registration</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/registrationPage.css' %}">
+
+{% endblock headerinclude %}
+
+
+
+{% block footerinclude %}
+    <!-- Font Awesome JS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="    sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+{% endblock footerinclude %}
+
+
+
+{% block content %}
+
+    <div class="register" style="text-align: center">
+        <div class="logo">
+        <center>
+        <img src="{% static '/images/logo.png' %}" width="40%" height="23%">
+        </center>
+        </div>           
+         <form id="register" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="py-3">
+                <hr style="width: 50%; text-align:center;">
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="firstName" name="first" placeholder="First Name" required>
+                <input type="text" id="lastName" name="last" placeholder="Last Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="phoneNo" name="phone" placeholder="Phone">
+            <select name="gender" id="gender" required>
+                <option value="" disabled selected>Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            </div>
+
+            <div class="form-group">   
+                <input type="text" id="emailAdd" name="email" placeholder="Email" required>
+            </div>
+
+            <div>                
+                <input type="Password" id="pass" name="pass" placeholder="Password" required><br>
+            </div>
+            <div class="py-3">
+                <hr style="width: 50%; text-align:center;">
+            </div>
+
+            <div>
+                <button type="submit" class="btn_register" name="register">ADD ADMIN ACCOUNT</button><br><br>
+            </div>
+        </form>
+    </div>             
+
+{% endblock content %}

@@ -29,7 +29,7 @@ class UserIndexView(View):
 					form.save()
 				return redirect('user:home_view')
 
-			elif(email == "admin@yahoo.com" and password == "admin"):
+			elif(email == "admin@admin.com" and password == "admin"):
 				return redirect('administrator:dashboard_view')
 
 
@@ -37,11 +37,25 @@ class UserIndexView(View):
 
 class AboutUsView(View):
 	def get(self, request):
-		return render(request, 'AboutUs.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'AboutUs.html', context)
 
 class ContactUsView(View):
 	def get(self, request):
-		return render(request, 'ContactUs.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'ContactUs.html', context)
 
 	def post(self, request):
 		form = ContactForm(request.POST)
@@ -58,7 +72,14 @@ class ContactUsView(View):
 
 class HomePageView(View):
 	def get(self, request):
-		return render(request, 'homePage.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'homePage.html', context)
 
 class JobInterviewView(View):
 	def get(self, request):
@@ -126,7 +147,14 @@ class UserRegistrationView(View):
 
 class JobOffersView(View):
 	def get(self, request):
-		return render(request, 'jobOffers.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'jobOffers.html', context)
 
 class LogOutView(View):
 	def get(self, request):
