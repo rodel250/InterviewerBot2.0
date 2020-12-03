@@ -154,10 +154,12 @@ function toogleDataSeries(e){
                     </a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Admin Username</a>
+                    {% for admin in administrator %}
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; {{admin.emailAddress}}</a>
+                    {% endfor %}
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
+                            <a href="{% url 'administrator:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
                             <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>

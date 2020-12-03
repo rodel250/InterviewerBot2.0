@@ -7,12 +7,6 @@ class AdministratorForm(forms.ModelForm):
 		model = Administrator
 		fields = ('firstname','lastname','password', 'gender', 'emailAddress')
 
-class LoginForm(forms.ModelForm):
-
-	class Meta:
-		model = Login
-		fields = ('emailAddress', 'password')
-
 class UpdateForm(forms.ModelForm):
 
 	class Meta:

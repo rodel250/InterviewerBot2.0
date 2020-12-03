@@ -198,6 +198,39 @@ ul ul a {
     background: white;
 }
 
+.addAdmin{
+    text-align: left;
+    margin-left: 22px;
+    color: #933633;
+    font-weight: bold;
+    transition: 0.1s;
+}
+
+.addAdmin:hover{
+    color: #CD0000;
+    bottom: 0;
+}
+
+.jobCreate{
+    color: #ffffff;
+    text-decoration: none;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #ffcc00;
+    border: none;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.jobCreate:hover,
+.jobCreate:focus{
+    background-color: #933633;
+}
+
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */
