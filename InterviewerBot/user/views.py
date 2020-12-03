@@ -84,21 +84,9 @@ class SettingsView(View):
 		lastName = request.POST.get("lastname")
 		phone = request.POST.get("phone")
 		password = request.POST.get("password")
-		email = request.POST.get("email")
 
-		for applicant in applicants:
-			if applicant.emailAddress == email and applicant.id != applicant_id:
-				count = 0
-			elif applicant.emailAddress == email and applicant.id == applicant_id and applicant.firstname != firstname or applicant.lastname != lastName or applicant.phone != phone or applicant.password != password:
-				count = 1
-			else:
-				count = 0
-
-		if count == 1:
-			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
-				lastname = lastName, emailAddress = email, phone = phone, password = password)
-		else:
-			return HttpResponse('Email is already taken.')
+		update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
+			lastname = lastName, phone = phone, password = password)
 
 		return redirect('user:settings_view')
 
