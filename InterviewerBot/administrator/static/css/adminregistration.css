@@ -157,7 +157,7 @@ hr {
 	border-radius: 15px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	width:150px;
+	width:250px;
 	border-left-width: 0px;
 	border-right-width: 0px;
 	border-top-width: 0px;
@@ -166,13 +166,16 @@ hr {
 	position: relative;
 	font-weight: bold;
 	color: white;
+	cursor: pointer;
 }
+
 .btn_register:hover{
 	background-color: #781B1B;
 }
 
-input[type=button] {
-	cursor: pointer;
+.btn_cancel {
+	position: relative;
+	font-weight: bold;
 }
 
 input {

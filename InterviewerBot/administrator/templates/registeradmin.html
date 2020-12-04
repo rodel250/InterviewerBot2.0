@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static '/css/registrationPage.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/adminregistration.css' %}">
 
 {% endblock headerinclude %}
 
@@ -68,6 +68,7 @@
 
             <div>
                 <button type="submit" class="btn_register" name="register">ADD ADMIN ACCOUNT</button><br><br>
+                <a href="{% url 'administrator:dashboard_view' %}" class="btn_cancel">CANCEL</a>
             </div>
         </form>
     </div>             
