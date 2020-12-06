@@ -31,14 +31,15 @@ class DashboardView(View):
             jobQuestion = request.POST.get("question")
             jobAnswer = request.POST.get("answer")
 
-            form = CreateJob(title = jobTitle, description = jobDescription, question = jobQuestion,
-                                    answer = jobAnswer)
+            form = CreateJob(title = jobTitle, description = jobDescription, question = jobQuestion, answer = jobAnswer)
             form.save()
 
             return redirect('administrator:dashboard_view')
         else:
             print(form.errors)
-            return HttpResponse('not valid')
+            return HttpResponse('Job created is incorrect.')
+
+        return HttpResponse('not valid')
 
 class JobListsView(View):
     def get(self, request):
