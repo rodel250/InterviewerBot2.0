@@ -104,15 +104,19 @@
                 </form>
             </div>
         </div>
+
+        <div class="cont">
+
+        {% for joblist in joblists %}
         <div class="content-form">
             <div class="row">
                 <div class="column-form">
-                    <header>Experienced Janitor</header>
-                    <textarea style="background-color:#E5E5E5;" readonly>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+                    <header>{{joblist.job_header}}</header>
+                    <textarea style="background-color:#E5E5E5;" readonly>{{joblist.job_description}}</textarea>
                     <footer>
-                        <a href="#">Delete</a>
-                        <a href="#">Update</a>
-                        <a href="#">View</a>
+                        <a data-target="#updateModal-{{joblist.id}}" data-toggle="modal" href="#updateModal">Update</a>
+                        <a data-target="#deleteModal-{{joblist.id}}" data-toggle="modal" href="#deleteModal">Delete</a>
+                        <a data-target="#viewModal-{{joblist.id}}" data-toggle="modal" href="#viewModal">View</a>
                     </footer>
                 </div>
                 <div class="column-status">
@@ -121,23 +125,86 @@
                 </div>
             </div>
         </div>
-        <div class="content-form">
-            <div class="row">
-                <div class="column-form">
-                    <header>Master Teacher</header>
-                    <textarea style="background-color:#E5E5E5;" readonly>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
-                    <footer>
-                        <a href="#">Delete</a>
-                        <a href="#">Update</a>
-                        <a href="#">View</a>
-                    </footer>
+
+        <!-- View Modal -->
+        <div class="modal fade" id="viewModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 </div>
-                <div class="column-status">
-                    <lo>Applied: 1</lo><br>
-                    <lo>Status: Pending</lo>
+                <div class="modal-body">
+                {{joblist.job_description}}
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="citButton1" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Update Modal -->
+        <div class="modal fade" id="updateModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <form id="updateForm" method="POST">
+                    {% csrf_token %}
+                    <div hidden>
+                        <input type="text" name="jobID" value="{{joblist.id}}">
+                    </div>
+                    <div class="modal-body">
+                    <textarea name="jobHeader">{{joblist.job_header}}</textarea>
+                    <textarea name="jobDescription">{{joblist.job_description}}</textarea>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="submit" class="citButton" id="btnUpdate" name="btnUpdate">Save changes</button>
+                    <button type="button" class="citButton1" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="deleteForm" method="POST">
+                        <div hidden>
+                            <input type="text" name="jobID" value="{{joblist.id}}">
+                        </div>
+                    {% csrf_token %}
+                        <div class="modal-body">
+                            <center>Are you sure?</center>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="citButton" id="btnDelete" name="btnDelete">Yes</button>
+                            <button type="button" class="citButton1" data-dismiss="modal">No</button>  
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
+
+
+        {% endfor %}
+        </div>
+
         <div class="botFooter">
             <footer>Copyright © InterviewBOT. All rights reserved.</footer>
         </div>
@@ -196,6 +263,12 @@
             </form>
         </div>
     </div>
+
+    
+
+
+
+
     <!-- script for Create Job MOdal -->
     <script type="text/javascript">
         var modal = document.getElementById("createJobModal");
@@ -230,84 +303,7 @@
         });
     </script>
 
-    <!-- <div class="topBorder"></div>
-    <div class="red-header">
-        <div id="content-header">
-            <div class="dateandtime">
-                <a>2:13:00 PM</a><br>
-                <a>Friday, November 27, 2020</a><br><br>
-            </div>
-            <form>
-                <div class="selectWrapper">
-                    <select class="selectBox">
-                      <option value="0">Job Type</option>
-                      <option value="1">job1</option>
-                      <option value="2">job2</option>
-                    </select>
-                </div>
-                <div class="selectWrapper">
-                    <select class="selectBox" style="width: 240px;">
-                      <option value="0">City, State or Province</option>
-                      <option value="1">test  </option>
-                      <option value="2">test</option>
-                    </select>
-                </div>
-            </form>
-        </div>
-    </div> -->
     
-
-
-
-
-
-
-            <!-- <div class="tableContent">
-                <div class="whiteContainer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="table1">
-                                            <div class="borderTop">&nbsp&nbsp&nbsp&nbsp Experienced Janitor</div>
-                                            <br>
-                                            <div class="jobDescription">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet cursus libero, quis hendrerit nunc ultrices pellentesque. Proin a fringilla lorem, a dictum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis justo nisi, sit amet volutpat dui auctor et. Sed sollicitudin vulputate varius. Sed sed mauris pellentesque, finibus ex id, bibendum nisi. Fusce sagittis sem et eros pulvinar, in laoreet sem facilisis. Mauris neque est, cursus eget purus et, convallis blandit metus. Mauris a finibus neque, sit amet volutpat lorem. Integer bibendum egestas erat eu sodales. Nullam id neque bibendum, dignissim erat at, elementum enim. Pellentesque quis pharetra nibh.
-                                                <br><br><br>
-                                                <div class="VUD">View &nbsp&nbsp&nbsp Update &nbsp&nbsp&nbsp Delete</div>
-                                            </div>    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="table1">
-                                            <div class="borderTop">&nbsp&nbsp&nbsp&nbsp Master Teacher</div>
-                                            <br>
-                                            <div class="jobDescription">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet cursus libero, quis hendrerit nunc ultrices pellentesque. Proin a fringilla lorem, a dictum ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis justo nisi, sit amet volutpat dui auctor et. Sed sollicitudin vulputate varius. Sed sed mauris pellentesque, finibus ex id, bibendum nisi. Fusce sagittis sem et eros pulvinar, in laoreet sem facilisis. Mauris neque est, cursus eget purus et, convallis blandit metus. Mauris a finibus neque, sit amet volutpat lorem. Integer bibendum egestas erat eu sodales. Nullam id neque bibendum, dignissim erat at, elementum enim. Pellentesque quis pharetra nibh.
-                                                <br><br><br>
-                                                <div class="VUD">View &nbsp&nbsp&nbsp Update &nbsp&nbsp&nbsp Delete</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="test1">
-                                    Applied: 2
-                                    <br>
-                                    Status: Pending
-                                </div>
-                                <div class="test1">
-                                    Applied: 5
-                                    <br>
-                                    Status: Pending
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             
         
 

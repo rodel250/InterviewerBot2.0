@@ -26,12 +26,32 @@ class JobListsView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		administrator = Administrator.objects.filter(id = currentUser)
+		joblist = Joblist.objects.all()
 
 		context = {
-			'administrator': administrator
+			'administrator': administrator,
+			'joblists': joblist
 		}
 
 		return render(request, 'adminjoblist.html', context)
+
+	def post(self, request):
+		if request.method == 'POST':
+			if 'btnDelete' in request.POST:
+				jobID1 = request.POST.get("jobID")
+				job = Joblist.objects.filter(id=jobID1).delete()
+			
+			elif 'btnUpdate' in request.POST:
+				jobID1 = request.POST.get("jobID")
+				jobDesription1 = request.POST.get("jobDescription")
+				jobHeader1 = request.POST.get("jobHeader")
+				job = Joblist.objects.filter(id=jobID1).update(job_description = jobDesription1, job_header= jobHeader1)
+				
+
+	
+		return redirect('administrator:job-lists_view')
+		
+		
 
 class AdminRegistrationView(View):
 	def get(self, request):

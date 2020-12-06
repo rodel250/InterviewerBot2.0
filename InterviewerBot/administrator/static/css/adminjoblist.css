@@ -316,6 +316,54 @@ ul ul a {
     text-align: right;
 }
 
+.cont{
+    min-height: 77.2%;
+    max-height: 77.2%;
+}
+
+.citButton {
+	border-radius: 15px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+	min-width:20%;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: #8C383E;
+	position: relative;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.citButton:hover{
+	background-color: #781B1B;
+}
+
+.citButton1 {
+	border-radius: 15px;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+	min-width:20%;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	background-color: darkgray;
+	position: relative;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+.citButton1:hover{
+    background-color: gray;
+}
+
 /*MODAL JOBE CREATE*/
 /*CREATE JOB CSS*/
 .jobCreateModal{
