@@ -249,7 +249,7 @@ function toogleDataSeries(e){
                     <a class="questionTitle">Untitled Questionaire</a>
                     <img src="{% static '/images/circle.png' %}" class="imgProfile">
                     <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
-                    <button class="btnPost">Post</button>
+                    <button type="submit" class="btn_post" name="post" id="post">POST</button>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
@@ -262,7 +262,7 @@ function toogleDataSeries(e){
                             <header></header>
                             <div class="questionnaireTitle">
                                 <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
-                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"></textarea>
+                                <input type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"/>
                             </div>
                             <div class="questionContainer">
                                 <div class="tools">
@@ -275,7 +275,7 @@ function toogleDataSeries(e){
                                 </div>
                                 <div class="contentQuestion">
                                     <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
-                                    <textarea type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"></textarea>
+                                    <input type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"/>
                                 </div>
                             </div>
                             <footer></footer>
