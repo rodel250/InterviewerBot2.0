@@ -35,7 +35,10 @@ class DashboardView(View):
                                     answer = jobAnswer)
             form.save()
 
-        return redirect('administrator:dashboard_view')
+            return redirect('administrator:dashboard_view')
+        else:
+            print(form.errors)
+            return HttpResponse('not valid')
 
 class JobListsView(View):
     def get(self, request):
@@ -61,7 +64,7 @@ class JobListsView(View):
                 jobDesription1 = request.POST.get("jobDescription")
                 jobHeader1 = request.POST.get("jobHeader")
                 job = Joblist.objects.filter(id=jobID1).update(job_description = jobDesription1, job_header= jobHeader1)
-                
+    
         return redirect('administrator:job-lists_view')
         
 class AdminRegistrationView(View):
