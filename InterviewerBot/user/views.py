@@ -4,6 +4,7 @@ from django.http import Http404
 from django.http import HttpResponse
 from .forms import *
 from .models import *
+from administrator.models import Administrator
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 
@@ -17,30 +18,52 @@ class UserIndexView(View):
 		email = request.POST.get("emailAdd")
 		password = request.POST.get("pass")
 		applicants = Applicant.objects.all()
+		administrators = Administrator.objects.all()
 		form = LoginForm(request.POST)
 
 		for applicant in applicants:
 			if(applicant.emailAddress == email and applicant.password == password):
 				if(form.is_valid()):
 					form = Login.objects.get(id=1)
+					form.user_id = applicant.id
 					form.emailAddress = email
 					form.password = password
 					form.save()
 				return redirect('user:home_view')
 
-			elif(email == "admin@yahoo.com" and password == "admin"):
+		for administrator in administrators:
+			if (administrator.emailAddress == email and administrator.password == password):
+				if (form.is_valid()):
+					form = Login.objects.get(id=1)
+					form.user_id = administrator.id
+					form.emailAddress = email
+					form.password = password
+					form.save()
 				return redirect('administrator:dashboard_view')
-
 
 		return HttpResponse('Email address or password is incorrect.')
 
 class AboutUsView(View):
 	def get(self, request):
-		return render(request, 'AboutUs.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'AboutUs.html', context)
 
 class ContactUsView(View):
 	def get(self, request):
-		return render(request, 'ContactUs.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'ContactUs.html', context)
 
 	def post(self, request):
 		form = ContactForm(request.POST)
@@ -57,7 +80,14 @@ class ContactUsView(View):
 
 class HomePageView(View):
 	def get(self, request):
-		return render(request, 'homePage.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'homePage.html', context)
 
 class JobInterviewView(View):
 	def get(self, request):
@@ -65,8 +95,8 @@ class JobInterviewView(View):
 
 class SettingsView(View):
 	def get(self, request):
-		currentUser = Login.objects.get(pk = 1)
-		applicant = Applicant.objects.filter(id = currentUser.id)
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
 
 		context = {
 			'applicant': applicant
@@ -76,24 +106,16 @@ class SettingsView(View):
 
 	def post(self, request):
 		applicants = Applicant.objects.all()
-		count = 0
+		count = 1
 
 		applicant_id = request.POST.get("applicant-id")
 		firstName = request.POST.get("firstname")
 		lastName = request.POST.get("lastname")
 		phone = request.POST.get("phone")
-		email = request.POST.get("email")
 		password = request.POST.get("password")
 
-		for applicant in applicants:
-			if applicant.emailAddress == email:
-				count = 1
-
-		if count == 0:
-			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
-				lastname = lastName, phone = phone, emailAddress = email, password = password)
-		else:
-			return HttpResponse('Email is already taken.')
+		update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
+			lastname = lastName, phone = phone, password = password)
 
 		return redirect('user:settings_view')
 
@@ -133,7 +155,14 @@ class UserRegistrationView(View):
 
 class JobOffersView(View):
 	def get(self, request):
-		return render(request, 'jobOffers.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		context = {
+			'applicant': applicant
+		}
+
+		return render(request, 'jobOffers.html', context)
 
 class LogOutView(View):
 	def get(self, request):

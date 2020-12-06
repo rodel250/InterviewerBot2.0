@@ -32,7 +32,7 @@
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script>
         window.onload = function () {
-
+        
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	theme: "light2",
@@ -67,11 +67,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		type: "line",
 		showInLegend: true,
 		name: "Total Visit",
-		markerType: "square",
+		lineDashType: "dash",
 		xValueFormatString: "DD MMM, YYYY",
 		color: "#F08080",
 		dataPoints: [
-			{ x: new Date(2017, 0, 3), y: 1},
+			{ x: new Date(2017, 0, 3), y: 8},
 			{ x: new Date(2017, 0, 4), y: 5 },
 			{ x: new Date(2017, 0, 5), y: 5 },
 			{ x: new Date(2017, 0, 6), y: 4 },
@@ -84,16 +84,43 @@ var chart = new CanvasJS.Chart("chartContainer", {
 			{ x: new Date(2017, 0, 13), y: 5 },
 			{ x: new Date(2017, 0, 14), y: 7 },
 			{ x: new Date(2017, 0, 15), y: 9 },
-			{ x: new Date(2017, 0, 16), y: 10 }
+			{ x: new Date(2017, 0, 16), y: 14 },
+            { x: new Date(2017, 0, 16), y: 100 }
+		]
+	},
+    {
+		type: "line",
+		showInLegend: true,
+		name: "Male",
+		markerType: "square",
+		xValueFormatString: "DD MMM, YYYY",
+		color: "#2B8420",
+		dataPoints: [
+			{ x: new Date(2017, 0, 3), y: 5},
+			{ x: new Date(2017, 0, 4), y: 5 },
+			{ x: new Date(2017, 0, 5), y: 5 },
+			{ x: new Date(2017, 0, 6), y: 4 },
+			{ x: new Date(2017, 0, 7), y: 4 },
+			{ x: new Date(2017, 0, 8), y: 2 },
+			{ x: new Date(2017, 0, 9), y: 1 },
+			{ x: new Date(2017, 0, 10), y: 3 },
+			{ x: new Date(2017, 0, 11), y: 2 },
+			{ x: new Date(2017, 0, 12), y: 5 },
+			{ x: new Date(2017, 0, 13), y: 5 },
+			{ x: new Date(2017, 0, 14), y: 7 },
+			{ x: new Date(2017, 0, 15), y: 9 },
+			{ x: new Date(2017, 0, 16), y: 14 },
+            { x: new Date(2017, 0, 16), y: 12 }
 		]
 	},
 	{
 		type: "line",
 		showInLegend: true,
-		name: "Applicants",
-		lineDashType: "dash",
+		name: "Female",
+		markerType: "square",
+        color: "#E01477",
 		dataPoints: [
-			{ x: new Date(2017, 0, 3), y: 0 },
+			{ x: new Date(2017, 0, 3), y: 3 },
 			{ x: new Date(2017, 0, 4), y: 5 },
 			{ x: new Date(2017, 0, 5), y: 5 },
 			{ x: new Date(2017, 0, 6), y: 5 },
@@ -154,10 +181,12 @@ function toogleDataSeries(e){
                     </a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; Admin Username</a>
+                    {% for admin in administrator %}
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; {{admin.emailAddress}}</a>
+                    {% endfor %}
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
+                            <a href="{% url 'administrator:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
                             <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
@@ -166,7 +195,7 @@ function toogleDataSeries(e){
                 </li>
             </ul>
             <div class="addAdmin">
-                <a href="#">Add Admin Account</a>
+                <a href="{% url 'administrator:add-admin_view' %}">Add Admin Account</a>
             </div>
         </nav>
     </div>

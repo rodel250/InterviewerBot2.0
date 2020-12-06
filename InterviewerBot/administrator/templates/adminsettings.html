@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/Settings.css' %}">
+    <link rel="stylesheet" href="{% static '/css/adminsettings.css' %}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
@@ -43,44 +43,40 @@
             <div class="sidebar-header">
                 <img src="{% static '/images/logo.png' %}" width="100%">
             </div>
-
+            <center>
+                <button type="button" id="id-btnCreateJob" class="jobCreate" data-toggle="modal" data-target="#modalCreate" class="btn btn-warning">Create Job</button>
+            </center>
+            <br>
             <ul class="list-unstyled components">
                 <li>
-                	<a href="{% url 'user:home_view' %}">
-                        <i class="fas fa-home"></i>
-                        &nbsp;&nbsp;Home</a>
+                    <a href="{% url 'administrator:dashboard_view' %}">
+                        <i class="fas fa-table"></i>
+                        &nbsp;&nbsp;Dashboard
+                    </a>
                 </li>
                 <li >
-                    <a href="{% url 'user:job-offers_view' %}">
+                    <a href="{% url 'administrator:job-lists_view' %}">
                         <i class="fas fa-search"></i>
-                        &nbsp;&nbsp;Job Offers
+                        &nbsp;&nbsp;Job List
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'user:about-us_view' %}">
-                        <i class="fas fa-info-circle"></i>
-                        &nbsp;&nbsp;About Us
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'user:contact-us_view' %}">
-                        <i class="fas fa-envelope"></i>
-                        &nbsp;&nbsp;Contact Us
-                    </a>
-                </li>
-                <li>
-                    {% for applicant in applicant %}
-		        	<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; {{applicant.emailAddress}}</a>
+                    {% for admin in administrator %}
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-circle"></i>&nbsp;&nbsp; {{admin.emailAddress}}</a>
+                    {% endfor %}
                     <ul class="list-unstyled" id="homeSubmenu">
                         <li class="active">
-                            <a href="{% url 'user:settings_view' %}"><i class="fa fa-cog"></i>&nbsp;&nbsp; Settings</a> 
+                            <a href="{% url 'administrator:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="{% url 'user:logout_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
+                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
-		        </li>
+                </li>
             </ul>
+            <div class="addAdmin">
+                <a href="{% url 'administrator:add-admin_view' %}">Add Admin Account</a>
+            </div>
         </nav>
 
         <!-- Page Content  -->
@@ -91,24 +87,25 @@
             <form id="update-form" name="update-form" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row align-items-center">
+                    {% for admin in administrator %}
                     <div class="col-md-5 mr-4">
                            
                             <div class="form-group text-left mt-5">
                                 <p class="w-responsive mx-auto mb-2 text-warning">Profile Information</p>
                             </div>
 
-                            <input type="text" name="applicant-id" value = {{applicant.id}} hidden>
+                            <input type="text" name="administrator-id" value = {{admin.id}} hidden>
 
                             <div class="form-group">
-                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" value="{{applicant.firstname}}">
+                                <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" value="{{admin.firstname}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" value="{{applicant.lastname}}">
+                                <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" value="{{admin.lastname}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" value="{{applicant.phone}}">
+                                <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone Number" value="{{admin.phone}}">
                             </div>
                     </div>
 
@@ -119,11 +116,11 @@
                             </div>
                             
                             <div class="form-group">
-                                <input disabled type="text" id="email" name="email" class="form-control" placeholder="Email Address" value="{{applicant.emailAddress}}">
+                                <input disabled type="text" id="email" name="email" class="form-control" placeholder="Email Address" value="{{admin.emailAddress}}">
                             </div>
 
                             <div class="form-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" value="{{applicant.password}}">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="Password" value="{{admin.password}}">
                                 <div id="toggle" onclick="showHide()">  
                                 <script type="text/javascript">
 
