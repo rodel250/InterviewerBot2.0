@@ -12,3 +12,10 @@ class Administrator(models.Model):
 
 	class Meta:
 		db_table = "Administrator"
+
+class Joblist(models.Model):
+	job_header = models.CharField(max_length = 50, null=False)
+	job_description = models.CharField(max_length = 250, null=False)
+
+	class Meta:
+		db_table ="Joblist"
