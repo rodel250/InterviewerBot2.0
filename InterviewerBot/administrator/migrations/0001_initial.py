@@ -38,4 +38,17 @@ class Migration(migrations.Migration):
                 'db_table': 'currentAdmin',
             },
         ),
+        migrations.CreateModel(
+            name='CreateJob',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id-title', models.CharField(blank=True, max_length=50, null=True)),
+                ('id-description', models.CharField(blank=True, max_length=50, null=True)),
+                ('id-question', models.CharField(blank=True, max_length=50, null=True)),
+                ('id-answer', models.CharField(blank=True, max_length=50, null=True)),
+            ],
+            options={
+                'db_table': 'CreateJob',
+            },
+        ),
     ]
