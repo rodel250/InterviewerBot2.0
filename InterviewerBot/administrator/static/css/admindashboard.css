@@ -325,14 +325,20 @@ hr{
     margin-left: 20px;
 }
 
-.btnPost{
-    background-color: #933633;
+.btn_post{
+    border-radius: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    background-color: #8C383E;
+    position: relative;
+    font-weight: bold;
+    color: white;
     width: 100px;
     height: 35px;
-    border: none;
-    color: #ffffff;
-    font-weight: bold;
-    border-radius: 10px;
     float: right;
     margin-top: 16px;
     margin-right: 5px;
@@ -340,7 +346,7 @@ hr{
 }
 
 .btnPost:hover{
-    background-color: #A00000;
+    background-color: ##781B1B;;
 }
 
 .imgEllipsis{
@@ -382,7 +388,7 @@ hr{
     border-top: 5px solid #933633;
 }
 
-.questionnaireTitle input, textarea{
+.questionnaireTitle input{
     float: left;
     width: 100%;
 }
@@ -396,9 +402,6 @@ hr{
 
 #id-description{
     border-style: none;
-}
-
-textarea{
     resize: none;
     line-height: 2ch;
     background-image: linear-gradient(transparent, transparent calc(2ch - 1px), #DEDEDE 0px);
