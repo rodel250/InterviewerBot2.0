@@ -19,3 +19,12 @@ class Joblist(models.Model):
 
 	class Meta:
 		db_table ="Joblist"
+
+class CreateJob(models.Model):
+    title = models.CharField(max_length = 50, null=True, blank=True)
+    description = models.CharField(max_length = 50, null=True, blank=True)
+    question = models.CharField(max_length = 50, null=True, blank=True)
+    answer = models.CharField(max_length = 50, null=True, blank=True)
+
+    class Meta: 
+        db_table = "CreateJob"
