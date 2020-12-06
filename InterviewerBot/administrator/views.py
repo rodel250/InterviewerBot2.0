@@ -22,6 +22,24 @@ class DashboardView(View):
 		}
 		return render(request, 'admindashboard.html', context)
 
+	def post(self, request):
+        form = CreateJobForm(request.POST)
+
+        if(form.is_valid()):
+            jobTitle = request.POST.get("title")
+            jobDescription = request.POST.get("description")
+            jobQuestion = request.POST.get("question")
+            jobAnswer = request.POST.get("answer")
+
+            form = CreateJob(title = jobTitle, description = jobDescription, question = jobQuestion,
+                                    answer = jobAnswer)
+            form.save()
+
+            return redirect('administrator:dashboard_view')
+        else:
+            print(form.errors)
+            return HttpResponse('not valid')
+
 class JobListsView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
