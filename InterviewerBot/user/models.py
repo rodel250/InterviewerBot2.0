@@ -30,6 +30,7 @@ class Contact(models.Model):
 		db_table = "Contact"
 		
 class SavedJobs(models.Model):
+	user_id = models.IntegerField()
 	job_id = models.IntegerField()
 	job_header = models.CharField(max_length = 50, null=False)
 	job_description = models.CharField(max_length = 250, null=False)

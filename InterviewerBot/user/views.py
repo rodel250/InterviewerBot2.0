@@ -83,11 +83,13 @@ class HomePageView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		savedJobs = SavedJobs.objects.all()
+		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs WHERE currentuser.user_id = savedjobs.user_id')
+		totalSavedJobs = SavedJobs.objects.raw('SELECT COUNT(*) FROM savedjobs')
 
 		context = {
 			'applicant': applicant,
-			'savedJobs': savedJobs,
+			'savedjobs': savedjobs,
+			'totalSavedJobs': totalSavedJobs,
 		}
 
 		return render(request, 'homePage.html', context)
@@ -160,7 +162,7 @@ class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		joblists = Joblist.objects.all()
+		joblists = Joblist.objects.raw('SELECT * from joblist LEFT JOIN savedjobs ON savedjobs.job_id = joblist.id WHERE savedjobs.id IS NULL')
 
 		context = {
 			'applicant': applicant,
@@ -173,9 +175,11 @@ class JobOffersView(View):
 		if request.method == 'POST':
 			if 'btnSave' in request.POST:
 				count = 0
+				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
 				job_title = request.POST.get("job-header")
 				job_description = request.POST.get("job-description")
+				print(user_id)
 
 				saved_jobs = SavedJobs.objects.all()
 
@@ -183,8 +187,8 @@ class JobOffersView(View):
 					count = count + 1
 
 				if count < 5:
-					save_jobs = SavedJobs.objects.create(job_id = job_id, job_header = job_title, job_description = job_description)
-					return redirect('user:home_view')
+					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
+					return redirect('user:job-offers_view')
 
 		return HttpResponse('You can only save at most 5 job offerings.')
 

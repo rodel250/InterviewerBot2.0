@@ -154,6 +154,9 @@
 
                                 <form id="deleteForm" method="POST">
                                 {% csrf_token %}
+                                    {% for applicant in applicant %}
+                                    <input type="text" name="user-id" value="{{applicant.id}}" hidden>
+                                    {% endfor %}
                                     <input type="text" name="job-id" value="{{joblist.id}}" hidden>
                                     <input type="text" name="job-header" value="{{joblist.job_header}}" hidden>
                                     <input type="text" name="job-description" value="{{joblist.job_description}}" hidden>
