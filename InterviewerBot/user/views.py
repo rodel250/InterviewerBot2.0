@@ -162,7 +162,7 @@ class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		joblists = Joblist.objects.raw('SELECT * from joblist LEFT JOIN savedjobs ON savedjobs.job_id = joblist.id WHERE savedjobs.id IS NULL')
+		joblists = Joblist.objects.raw('SELECT joblist.id, joblist.job_header, joblist.job_description FROM joblist WHERE joblist.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
 
 		context = {
 			'applicant': applicant,
@@ -186,7 +186,7 @@ class JobOffersView(View):
 				for saved_job in saved_jobs:
 					count = count + 1
 
-				if count < 5:
+				if count <= 5:
 					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
 					return redirect('user:job-offers_view')
 
