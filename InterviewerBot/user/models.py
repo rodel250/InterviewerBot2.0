@@ -29,20 +29,11 @@ class Contact(models.Model):
 	class Meta:
 		db_table = "Contact"
 		
-# class JobOffer(models.Model):
-# 	jobName = models.CharField(max_length = 20)
-# 	jobDescription = models.TextField()
-# 	jobRequirements = models.TextField()
-# 	jobPicture = models.FileField()
+class SavedJobs(models.Model):
+	user_id = models.IntegerField()
+	job_id = models.IntegerField()
+	job_header = models.CharField(max_length = 50, null=False)
+	job_description = models.CharField(max_length = 250, null=False)
 
-# 	class Meta: 
-# 		db_table = "Job"
-
-# class Administrator(models.Model):
-# 	firstName = models.CharField(max_length = 50)
-# 	middleName = models.CharField(max_length = 50)
-# 	lastName = models.CharField(max_length = 50)
-# 	birthDate = models.DateField()
-# 	age = models.IntegerField()
-# 	gender = models.CharField(max_length = 10)
-# 	emailAddress = models.CharField(max_length = 10)
+	class Meta:
+		db_table ="SavedJobs"

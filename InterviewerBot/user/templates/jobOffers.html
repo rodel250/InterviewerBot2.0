@@ -126,33 +126,50 @@
 
             <table width="87%" class="table-striped table-bordered table-sm">
                 <tbody>
+                    {% for joblist in joblists %}
                     <tr>
                         <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"> </td>
                         <td width="50%">
-                            <div class="row jobTitle">Job Title</div>
-                            <div class="row jobDescription">Job Description</div>
+                            <div class="row jobTitle">{{joblist.job_header}}</div>
+                            <div class="row jobDescription">{{joblist.job_description}}</div>
                         </td>
                         <td width="15%" align="center">
-                            <button class="btnApply" id="id-btnApply">Apply</button> 
+                                <button class="btnApply" id="id-btnApply">Apply</button> 
                         </td>
                         <td width="15%" align="center">
-                            <button class="btnSave"><i class="fa fa-bookmark"></i> SAVE</button>
+                            <button type="button" class="btnSave" data-toggle="modal" data-target="#jobdetailsModal-{{joblist.id}}"><i class="fa fa-bookmark"></i> SAVE</button>
                         </td>
                     </tr>
 
-                    <tr>
-                        <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
-                        <td width="60%">
-                            <div class="row jobTitle">Web Developer</div>
-                            <div class="row jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam porta dignissim id nec magna. Sed in elit nibh. Suspendisse eros nunc, placerat nec ultricies eu, suscipit et felis. Morbi fringilla, quam nec eleifend convallis, eros massa commodo justo, sed mattis diam lectus a odio.</div>
-                        </td>
-                        <td width="15%" align="center">
-                            <button class="btnApply" id="id-btnApply">Apply</button>
-                        </td>
-                        <td width="15%" align="center">
-                            <button class="btnSave"><i class="fa fa-bookmark"></i> SAVE</button>
-                        </td>
-                    </tr>
+                    <!---- SAVE MODAL ------->
+                    <div class="modal fade" id="jobdetailsModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="jobdetailsModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color:#933633; color: white">
+                                    <h5 class="modal-title" id="myLargeModalLabel"><b>{{joblist.job_header}}</b></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <form id="deleteForm" method="POST">
+                                {% csrf_token %}
+                                    {% for applicant in applicant %}
+                                    <input type="text" name="user-id" value="{{applicant.id}}" hidden>
+                                    {% endfor %}
+                                    <input type="text" name="job-id" value="{{joblist.id}}" hidden>
+                                    <input type="text" name="job-header" value="{{joblist.job_header}}" hidden>
+                                    <input type="text" name="job-description" value="{{joblist.job_description}}" hidden>
+                                    <textarea disabled name="job-description" id="job-description" rows="5" style="border: none; margin-left: 7%; margin-right: 5%;">{{joblist.job_description}}</textarea>
+                                    <div class="modal-footer">
+                                      <button type="submit" id="btnSave" name="btnSave" class="btn btn-primary">SAVE</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </tbody>
             </table>
     	</div>
