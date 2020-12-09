@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from administrator.models import Administrator
-from administrator.models import Joblist
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 
