@@ -58,7 +58,8 @@ class JobListsView(View):
     def get(self, request):
         currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         administrator = Administrator.objects.filter(id = currentUser)
-        joblist = Joblist.objects.all()
+        joblist = CreateJob.objects.all()
+        
 
         p = Paginator(joblist,2)
         page_number = request.GET.get('page',1)
@@ -85,15 +86,17 @@ class JobListsView(View):
         if request.method == 'POST':
             if 'btnDelete' in request.POST:
                 jobID1 = request.POST.get("jobID")
-                job = Joblist.objects.filter(id=jobID1).delete()
+                job = CreateJob.objects.filter(id=jobID1).delete()
             
             elif 'btnUpdate' in request.POST:
                 jobID1 = request.POST.get("jobID")
                 jobDesription1 = request.POST.get("jobDescription")
                 jobHeader1 = request.POST.get("jobHeader")
-                job = Joblist.objects.filter(id=jobID1).update(job_description = jobDesription1, job_header= jobHeader1)
+                job = CreateJob.objects.filter(id=jobID1).update(description = jobDesription1, title= jobHeader1)
     
         return redirect('administrator:job-lists_view')
+
+        
         
 class AdminRegistrationView(View):
     def get(self, request):
