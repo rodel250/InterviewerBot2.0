@@ -6,6 +6,7 @@ from .forms import *
 from .models import *
 from user.models import Login
 from django.core.files.storage import default_storage
+from django.core.paginator import Paginator
 # Create your views here.
 
 class CreateJobView(View):
@@ -46,9 +47,23 @@ class JobListsView(View):
         administrator = Administrator.objects.filter(id = currentUser)
         joblist = Joblist.objects.all()
 
+        p = Paginator(joblist,2)
+        page_number = request.GET.get('page',1)
+        page = p.page(page_number)
+        numberOfPage = p.num_pages
+        
+
+        array = []
+        for x in range(1, numberOfPage+1):
+            array.append(x)
+            
+
         context = {
             'administrator': administrator,
-            'joblists': joblist
+            'joblists': page,
+            'pages':array,
+            'page_number':int(page_number)
+
         }
 
         return render(request, 'adminjoblist.html', context)

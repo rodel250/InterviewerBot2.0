@@ -109,6 +109,24 @@ hr {
     transform: translateX(50%);
 }
 
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: 933633;
+    border-color: brown;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: black;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
 #sidebar .sidebar-header {
     padding: 20px;
     background: white;
@@ -312,7 +330,7 @@ ul ul a {
     background-color: #2b353b;
     padding: 5px;
     width: 100%;
-    margin-top: 12.8%;
+    margin-top: 10.15%;
     text-align: right;
 }
 
