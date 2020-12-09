@@ -15,7 +15,7 @@ class Administrator(models.Model):
 
 class CreateJob(models.Model):
     title = models.CharField(max_length = 50, null=True, blank=True)
-    description = models.CharField(max_length = 50, null=True, blank=True)
+    description = models.CharField(max_length = 150, null=True, blank=True)
     question_1 = models.CharField(max_length = 50, null=True, blank=True)
     question_2 = models.CharField(max_length = 50, null=True, blank=True)
     question_3 = models.CharField(max_length = 50, null=True, blank=True)

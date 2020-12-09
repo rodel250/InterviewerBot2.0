@@ -199,8 +199,8 @@
                 </div>
             </div>
             {% endfor %}
-
-                <nav aria-label="Page navigation example">
+        </div>
+                <nav aria-label="Page navigation example" id="paginate-align">
                     <ul class="pagination justify-content-center">
                     {% if joblists.has_previous %}
                     <li class="page-item">  
@@ -218,8 +218,6 @@
                     </li>
                     {% endfor %}
                     
-
-                    
                     {% if joblists.has_next %}
                     <li class="page-item">
                         <a class="page-link" href="{% url 'administrator:job-lists_view' %}?page={{joblists.next_page_number}}">Next</a>              
@@ -234,9 +232,6 @@
             <div class="footer">
                 <p>Copyright © InterviewBOT. All rights reserved.</p>
             </div>
-
-        </div>
-
     </div>
 
     <!-- CREATE JOB MODAL -->

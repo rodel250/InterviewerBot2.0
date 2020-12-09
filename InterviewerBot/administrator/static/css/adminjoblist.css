@@ -127,6 +127,16 @@ hr {
     border: 1px solid #dee2e6;
 }
 
+#paginate-align{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    text-align: right;
+    margin-bottom: 30px;
+    margin-left: 12%;
+}
+
 #sidebar .sidebar-header {
     padding: 20px;
     background: white;
@@ -372,7 +382,11 @@ ul ul a {
     background-color: gray;
 }
 
-/*MODAL JOBE CREATE*/
+#viewModal{
+    width: 100%;
+}
+
+/*MODAL JOB CREATE*/
 /*CREATE JOB CSS*/
 .jobCreateModal{
     display: none; /* Hidden by default */
