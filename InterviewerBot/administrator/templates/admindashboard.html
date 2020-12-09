@@ -235,21 +235,21 @@ function toogleDataSeries(e){
             <footer>Copyright © InterviewBOT. All rights reserved.</footer>
         </div>  
     </div>
-    
 
 
     <!-- CREATE JOB MODAL -->
     <div id="createJobModal" class="jobCreateModal">
         <div class="createJob-content">
             <span class="close">&times</span>
-            <form>
+            <form id="post_question" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="containerColor">
                 <div class="modalHeader">
                     <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
                     <a class="questionTitle">Untitled Questionaire</a>
                     <img src="{% static '/images/circle.png' %}" class="imgProfile">
                     <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
-                    <button type="submit" class="btn_post" name="post" id="post">Post</button>
+                    <button type="submit" class="btn_post" name="post_question" id="id_post">Post</button>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
@@ -262,21 +262,34 @@ function toogleDataSeries(e){
                             <center>
                             <header></header>
                             <div class="questionnaireTitle">
-                                <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
-                                <input type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"/>
+                                <select name="name-title" id="id-title" placeholder="Select Option">
+                                    <option value="janitor">Janitor</option>
+                                    <option value="teacher">Teacher</option>
+                                </select>
+                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
                             </div>
                             <div class="questionContainer">
-                                <div class="tools">
-                                    <a href="#"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
+                                <!-- <div class="tools">
+                                    <a href="#" class="add_field_button2" id="btn-plus"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
                                     <a href="#"><img src="{% static '/images/forward.png' %}" class="imgForward"></a>
                                     <a href="#"><img src="{% static '/images/truetype.png' %}" class="imgTruetype"></a>
                                     <a href="#"><img src="{% static '/images/gallery.png' %}" class="imgGallery"></a>
                                     <a href="#"><img src="{% static '/images/copy.png' %}" class="imgCopy"></a>
                                     <a href="#"><img src="{% static '/images/delete.jpg' %}" class="imgDelete"></a>
-                                </div>
+                                </div> -->
                                 <div class="contentQuestion">
-                                    <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
-                                    <input type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"/>
+                                    <div class="input_fields_wrap2">
+                                    <input type="text" name="qtn1" id="id-question1" placeholder="Question 1"> &nbsp;<br>
+                                    <input type="text" name="qtn2" id="id-question2" placeholder="Question 2"> &nbsp;<br>
+                                    <input type="text" name="qtn3" id="id-question3" placeholder="Question 3"> &nbsp;<br>
+                                    <input type="text" name="qtn4" id="id-question4" placeholder="Question 4"> &nbsp;<br>
+                                    <input type="text" name="qtn5" id="id-question5" placeholder="Question 5"> &nbsp;<br>
+                                    <input type="text" name="qtn6" id="id-question6" placeholder="Question 6"> &nbsp;<br>
+                                    <input type="text" name="qtn7" id="id-question7" placeholder="Question 7"> &nbsp;<br>
+                                    <input type="text" name="qtn8" id="id-question8" placeholder="Question 8"> &nbsp;<br>
+                                    <input type="text" name="qtn9" id="id-question9" placeholder="Question 9"> &nbsp;<br>
+                                    <input type="text" name="qtn10" id="id-question10" placeholder="Question 10"> &nbsp;<br>
+                                    </div>
                                 </div>
                             </div>
                             <footer></footer>
@@ -287,8 +300,8 @@ function toogleDataSeries(e){
                             <div class="input_fields_wrap">
                                 <button class="add_field_button" id="btn-add-more-field">Add More Field</button><br>
                                 <div class="class-requirement" id="id-requirement">
-                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;">
-                                    <input type="checkbox" name="check-attachement">
+                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;">
+                                    <input type="checkbox" name="check-attachement" id="id-checkbox">
                                     <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
@@ -300,41 +313,6 @@ function toogleDataSeries(e){
                         </div>
                     </div>
                 </div>
-                <!-- <div class="tabContent">
-                    <div class="headerTabs">
-                        <center>
-                            <ul class="nav nav-tabs">
-                                <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab" class="tabQuestions" style="font-weight: bold;">Questions</a></li>
-                                <li><a data-toggle="tab" href="#responsesTab" class="tabResponses" style="font-weight: bold;">Responses</a></li>
-                            </ul>  
-                        </center>
-                    </div>
-                    <div class="tab-content">
-                        <center>
-                            <div id="questionsTab" class="tab-pane fade in active">
-                                <div class="questionnaireTitle">
-                                    <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
-                                    <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"></textarea>
-                                </div>
-                                <div class="questionContainer">
-                                    <div class="tools">
-                                        <a href="#"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
-                                        <a href="#"><img src="{% static '/images/forward.png' %}" class="imgForward"></a>
-                                        <a href="#"><img src="{% static '/images/truetype.png' %}" class="imgTruetype"></a>
-                                        <a href="#"><img src="{% static '/images/gallery.png' %}" class="imgGallery"></a>
-                                        <a href="#"><img src="{% static '/images/copy.png' %}" class="imgCopy"></a>
-                                        <a href="#"><img src="{% static '/images/delete.jpg' %}" class="imgDelete"></a>
-                                    </div>
-                                    <div class="contentQuestion">
-                                        <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
-                                        <textarea type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="responsesTab" class="tab-pane fade">asdasd</div>
-                        </center>
-                    </div>
-                </div> -->
                 </div>
             </form>
         </div>
@@ -386,7 +364,7 @@ function toogleDataSeries(e){
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;"> <input type="checkbox" name="check-attachement"> <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;"> <input type="checkbox" name="check-attachement" id="id-requirement"><label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
             }
         });
         
@@ -395,67 +373,5 @@ function toogleDataSeries(e){
         })
         });
     </script>
-
-   <!--  Modal Create -->
-    <!-- <div id="modalContent">
-        <div class="container">
-            <div class="modal" id="modalCreate">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <form id="job-form" style="background-color: #ffcc00">
-                            <div class="createJob" id="cJob">
-                            <label id="label"> 
-                                <img src="{% static '/images/Notepad.png' %}" class="imgJob">
-                                <h4 id="job-text">Untitled Questionnaire</h4>
-                                <input type="submit" id="btnPost" value="Post">
-                                <img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis">
-                                <img src="{% static '/images/circle.png' %}" class="imgCir">
-                            </label>
-                            <label>
-                                <input type="button" name="post" id="question" value="Questions" style="background-color: #ffcc00">
-                            </label> 
-                            <label>
-                                <input type="button" name="post" id="responses" value="Responses" style="background-color: #ffcc00">
-                            </label>
-                            </div>     
-                        </form> 
-                        <br>
-                        <br> 
-
-                        <form id="msg-form" style="background-color: #FFFFFF;">
-                            <label>
-                                <h4 id="j-text">Untitled Questionnaire</h4><br>
-                                &nbsp;<input type="text" name="message" id="message" value="&nbsp;Questionnaire Description">
-                            </label>
-                        </form>
-
-                        <form id="msg2-form" style="background-color: #FFFFFF;">
-                            <label><br>
-                                &nbsp;<input type="text" name="message" id="message2" value="&nbsp;Untitled Question"><br>
-                                &nbsp;<input type="text" name="message" id="message3" value="&nbsp;Long answer text"><br>
-                                &nbsp;<input type="text" name="message" id="message4" value="&nbsp;"><br><br>
-                                <input type="image" src="{% static '/images/copy.png' %}" alt="Submit" id=imgCopy>
-                                <input type="image" src="{% static '/images/delete.jpg' %}" alt="Submit" id=imgDelete>
-                            </label>
-                        </form>
-
-                        <form id="function-form" style="background-color: #FFFFFF;">
-                            <label>
-                                <input type="image" src="{% static '/images/plus.png' %}" alt="Submit" id=imgPlus><br>
-                                <input type="image" src="{% static '/images/forward.png' %}" alt="Submit" id=imgForward><br>
-                                <input type="image" src="{% static '/images/truetype.png' %}" alt="Submit" id=imgTT><br>
-                                <input type="image" src="{% static '/images/gallery.png' %}" alt="Submit" id=imgGallery><br>
-                            </label>
-                        </form>
-                    </div>
-                    
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 
 {% endblock content %}

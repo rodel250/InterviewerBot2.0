@@ -86,7 +86,14 @@
             <div class="container">
                 <div class="row" style="margin-top: 10px;">
                     <div class="col-sm-3">
-                        <!-- <h2>{{ totalSavedJobs }}</h2> -->
+                        <h2 id="totalSavedJobs"></h2>
+                        <script>
+                            var count = 0;
+                            {% for total in savedjobs %}
+                                count++;
+                            {% endfor %}
+                            document.getElementById("totalSavedJobs").innerHTML = ""+count;
+                        </script>
                     </div>
                     <div class="col-sm-1">
                         <div class="verticalLine"></div>
@@ -121,9 +128,37 @@
                                 <div class="row jobDescription">{{savedjob.job_description}}</div>
                             </td>
                             <td width="15%" align="center">
-                                <button class="btnUnsave"><i class="fa fa-bookmark"></i> UNSAVE</button>
+                                <button type="button" class="btnUnsave" data-toggle="modal" data-target="#unsaveModal-{{savedjob.job_id}}"><i class="fa fa-bookmark"></i> UNSAVE</button>
                             </td>
                         </tr>
+
+                        <div class="modal fade" id="unsaveModal-{{savedjob.job_id}}" tabindex="-1" role="dialog" aria-labelledby="unsaveModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color:#933633; color: white">
+                                        <h5 class="modal-title" id="myLargeModalLabel"><b>UNSAVE JOB OFFERING</b></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <form id="unsaveForm" method="POST">
+                                    {% csrf_token %}
+                                        <input type="text" name="job-id" value= {{savedjob.job_id}} hidden>
+                             
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to unsave this job offering?<p>
+                                            <p style="text-align: center; font-weight: bold; font-size: 24px;">{{savedjob.job_header}}</p>
+                                        </div>
+
+                                <div class="modal-footer">
+                                  <button type="submit" id="btnUnsave" name="btnUnsave" class="btn btn-primary">UNSAVE</button>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
                         {% endfor %}
                     </tbody>
                 </table>

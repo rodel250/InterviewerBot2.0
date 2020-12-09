@@ -84,15 +84,22 @@ class HomePageView(View):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
 		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs WHERE currentuser.user_id = savedjobs.user_id')
-		totalSavedJobs = SavedJobs.objects.raw('SELECT COUNT(*) FROM savedjobs')
 
 		context = {
 			'applicant': applicant,
 			'savedjobs': savedjobs,
-			'totalSavedJobs': totalSavedJobs,
 		}
 
 		return render(request, 'homePage.html', context)
+
+	def post(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+
+		job_id = request.POST.get("job-id")
+		savedjobs = SavedJobs.objects.filter(job_id = job_id).delete()
+
+		return redirect('user:home_view')
 
 class JobInterviewView(View):
 	def get(self, request):

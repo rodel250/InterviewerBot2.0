@@ -111,8 +111,8 @@
             <div class="content-form">
                 <div class="row">
                     <div class="column-form">
-                        <header>{{joblist.job_header}}</header>
-                        <textarea style="background-color:#E5E5E5;" readonly>{{joblist.job_description}}</textarea>
+                        <header>{{joblist.title}}</header>
+                        <textarea style="background-color:#E5E5E5;" readonly>{{joblist.description}}</textarea>
                         <footer>
                             <a href="#viewResponse">Responses</a>
                             <a data-target="#updateModal-{{joblist.id}}" data-toggle="modal" href="#updateModal">Update</a>
@@ -133,13 +133,13 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.title}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div>
                     <div class="modal-body">
-                    {{joblist.job_description}}
+                    {{joblist.description}}
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="citButton1" data-dismiss="modal">Close</button>
@@ -153,7 +153,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.title}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -164,8 +164,8 @@
                             <input type="text" name="jobID" value="{{joblist.id}}">
                         </div>
                         <div class="modal-body">
-                        <textarea name="jobHeader">{{joblist.job_header}}</textarea>
-                        <textarea name="jobDescription">{{joblist.job_description}}</textarea>
+                        <textarea name="jobHeader">{{joblist.title}}</textarea>
+                        <textarea name="jobDescription">{{joblist.description}}</textarea>
                         </div>
                         <div class="modal-footer">
                         <button type="submit" class="citButton" id="btnUpdate" name="btnUpdate">Save changes</button>
@@ -251,14 +251,15 @@
     <div id="createJobModal" class="jobCreateModal">
         <div class="createJob-content">
             <span class="close">&times</span>
-            <form>
+            <form id="post_question" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="containerColor">
                 <div class="modalHeader">
                     <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
                     <a class="questionTitle">Untitled Questionaire</a>
                     <img src="{% static '/images/circle.png' %}" class="imgProfile">
                     <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
-                    <button class="btnPost">Post</button>
+                    <button type="submit" class="btnPost" name="post_question" id="id_post">Post</button>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
@@ -271,21 +272,34 @@
                             <center>
                             <header></header>
                             <div class="questionnaireTitle">
-                                <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
-                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"></textarea>
+                                <select name="name-title" id="id-title" placeholder="Select Option">
+                                    <option value="janitor">Janitor</option>
+                                    <option value="teacher">Teacher</option>
+                                </select>
+                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
                             </div>
                             <div class="questionContainer">
-                                <div class="tools">
-                                    <a href="#"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
+                                <!-- <div class="tools">
+                                    <a href="#" class="add_field_button2" id="btn-plus"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
                                     <a href="#"><img src="{% static '/images/forward.png' %}" class="imgForward"></a>
                                     <a href="#"><img src="{% static '/images/truetype.png' %}" class="imgTruetype"></a>
                                     <a href="#"><img src="{% static '/images/gallery.png' %}" class="imgGallery"></a>
                                     <a href="#"><img src="{% static '/images/copy.png' %}" class="imgCopy"></a>
                                     <a href="#"><img src="{% static '/images/delete.jpg' %}" class="imgDelete"></a>
-                                </div>
+                                </div> -->
                                 <div class="contentQuestion">
-                                    <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
-                                    <textarea type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"></textarea>
+                                    <div class="input_fields_wrap2">
+                                    <input type="text" name="qtn1" id="id-question1" placeholder="Question 1"> &nbsp;<br>
+                                    <input type="text" name="qtn2" id="id-question2" placeholder="Question 2"> &nbsp;<br>
+                                    <input type="text" name="qtn3" id="id-question3" placeholder="Question 3"> &nbsp;<br>
+                                    <input type="text" name="qtn4" id="id-question4" placeholder="Question 4"> &nbsp;<br>
+                                    <input type="text" name="qtn5" id="id-question5" placeholder="Question 5"> &nbsp;<br>
+                                    <input type="text" name="qtn6" id="id-question6" placeholder="Question 6"> &nbsp;<br>
+                                    <input type="text" name="qtn7" id="id-question7" placeholder="Question 7"> &nbsp;<br>
+                                    <input type="text" name="qtn8" id="id-question8" placeholder="Question 8"> &nbsp;<br>
+                                    <input type="text" name="qtn9" id="id-question9" placeholder="Question 9"> &nbsp;<br>
+                                    <input type="text" name="qtn10" id="id-question10" placeholder="Question 10"> &nbsp;<br>
+                                    </div>
                                 </div>
                             </div>
                             <footer></footer>
@@ -296,8 +310,8 @@
                             <div class="input_fields_wrap">
                                 <button class="add_field_button" id="btn-add-more-field">Add More Field</button><br>
                                 <div class="class-requirement" id="id-requirement">
-                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;">
-                                    <input type="checkbox" name="check-attachement">
+                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;">
+                                    <input type="checkbox" name="check-attachement" id="id-checkbox">
                                     <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
@@ -313,11 +327,6 @@
             </form>
         </div>
     </div>
-
-    
-
-
-
 
     <!-- script for Create Job MOdal -->
     <script type="text/javascript">
@@ -365,7 +374,7 @@
             e.preventDefault();
             if(x < max_fields){ //max input box allowed
                 x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;"> <input type="checkbox" name="check-attachement"> <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;"> <input type="checkbox" name="check-attachement" id="id-requirement"><label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
             }
         });
         
@@ -374,9 +383,5 @@
         })
         });
     </script>
-
-    
-            
-        
 
 {% endblock content %}
