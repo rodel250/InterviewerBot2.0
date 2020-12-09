@@ -107,102 +107,139 @@
 
         <div class="cont">
 
-        {% for joblist in joblists %}
-        <div class="content-form">
-            <div class="row">
-                <div class="column-form">
-                    <header>{{joblist.job_header}}</header>
-                    <textarea style="background-color:#E5E5E5;" readonly>{{joblist.job_description}}</textarea>
-                    <footer>
-                        <a data-target="#updateModal-{{joblist.id}}" data-toggle="modal" href="#updateModal">Update</a>
-                        <a data-target="#deleteModal-{{joblist.id}}" data-toggle="modal" href="#deleteModal">Delete</a>
-                        <a data-target="#viewModal-{{joblist.id}}" data-toggle="modal" href="#viewModal">View</a>
-                    </footer>
-                </div>
-                <div class="column-status">
-                    <lo>Applied: 2</lo><br>
-                    <lo>Status: Pending</lo>
-                </div>
-            </div>
-        </div>
-
-        <!-- View Modal -->
-        <div class="modal fade" id="viewModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                {{joblist.job_description}}
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="citButton1" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-            </div>
-        </div>
-
-        <!-- Update Modal -->
-        <div class="modal fade" id="updateModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <form id="updateForm" method="POST">
-                    {% csrf_token %}
-                    <div hidden>
-                        <input type="text" name="jobID" value="{{joblist.id}}">
+            {% for joblist in joblists %}
+            <div class="content-form">
+                <div class="row">
+                    <div class="column-form">
+                        <header>{{joblist.job_header}}</header>
+                        <textarea style="background-color:#E5E5E5;" readonly>{{joblist.job_description}}</textarea>
+                        <footer>
+                            <a href="#viewResponse">Responses</a>
+                            <a data-target="#updateModal-{{joblist.id}}" data-toggle="modal" href="#updateModal">Update</a>
+                            <a data-target="#deleteModal-{{joblist.id}}" data-toggle="modal" href="#deleteModal">Delete</a>
+                            <a data-target="#viewModal-{{joblist.id}}" data-toggle="modal" href="#viewModal">View</a>
+                            
+                        </footer>
                     </div>
-                    <div class="modal-body">
-                    <textarea name="jobHeader">{{joblist.job_header}}</textarea>
-                    <textarea name="jobDescription">{{joblist.job_description}}</textarea>
+                    <div class="column-status">
+                        <lo>Applied: 2</lo><br>
+                        <lo>Status: Pending</lo>        
                     </div>
-                    <div class="modal-footer">
-                    <button type="submit" class="citButton" id="btnUpdate" name="btnUpdate">Save changes</button>
-                    <button type="button" class="citButton1" data-dismiss="modal">Close</button>
-                    </div>
-                </form>
+                </div>
             </div>
-            </div>
-        </div>
 
-        <!-- Delete Modal -->
-        <div class="modal fade" id="deleteModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <!-- View Modal -->
+            <div class="modal fade" id="viewModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     </div>
-                    <form id="deleteForm" method="POST">
+                    <div class="modal-body">
+                    {{joblist.job_description}}
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="citButton1" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Update Modal -->
+            <div class="modal fade" id="updateModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{joblist.job_header}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <form id="updateForm" method="POST">
+                        {% csrf_token %}
                         <div hidden>
                             <input type="text" name="jobID" value="{{joblist.id}}">
                         </div>
-                    {% csrf_token %}
                         <div class="modal-body">
-                            <center>Are you sure?</center>
+                        <textarea name="jobHeader">{{joblist.job_header}}</textarea>
+                        <textarea name="jobDescription">{{joblist.job_description}}</textarea>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="citButton" id="btnDelete" name="btnDelete">Yes</button>
-                            <button type="button" class="citButton1" data-dismiss="modal">No</button>  
+                        <button type="submit" class="citButton" id="btnUpdate" name="btnUpdate">Save changes</button>
+                        <button type="button" class="citButton1" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
+                </div>
             </div>
+
+            <!-- Delete Modal -->
+            <div class="modal fade" id="deleteModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Delete</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="deleteForm" method="POST">
+                            <div hidden>
+                                <input type="text" name="jobID" value="{{joblist.id}}">
+                            </div>
+                        {% csrf_token %}
+                            <div class="modal-body">
+                                <center>Are you sure?</center>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="citButton" id="btnDelete" name="btnDelete">Yes</button>
+                                <button type="button" class="citButton1" data-dismiss="modal">No</button>  
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+            
         </div>
+        <div class="pagination_Container">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
 
+                {% if joblists.has_previous %}
+                <li class="page-item">  
+                    <a class="page-link" href="{% url 'administrator:job-lists_view' %}?page={{joblists.previous_page_number}}" tabindex="-1">Previous</a>
+                </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                    <a class="page-link" href="#">Previous</a>              
+                    </li>
+                    {% endif %}
 
-        {% endfor %}
+                {% for page in pages %}
+                <li class="page-item {% if page == page_number %} active {% endif %}">
+                    <a class="page-link" href="?page={{page}}">{{page}}</a>
+                </li>
+                {% endfor %}
+                
+
+                
+                {% if joblists.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{% url 'administrator:job-lists_view' %}?page={{joblists.next_page_number}}">Next</a>              
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                <a class="page-link" href="#">Next</a>              
+                </li>
+                {% endif %}
+                </ul>
+            </nav>
         </div>
 
         <div class="botFooter">
