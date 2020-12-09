@@ -477,23 +477,24 @@ ul ul a {
 
 .questionnaireTitle{
     width: 80%;
-    height: 175px;
+    height: 190px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     border-top: 5px solid #933633;
 }
 
-.questionnaireTitle input, textarea{
+.questionnaireTitle select, textarea{
     float: left;
     width: 100%;
 }
 
 #id-title{
-    border-style: none;
     font-weight: bold;
+    padding: 5px;
     font-size: 20px;
-    border-bottom-style: groove;
+    border-radius: 8px;
+    border: 1px solid #000000;
 }
 
 #id-description{
@@ -543,7 +544,7 @@ textarea{
 
 .contentQuestion{
     width: 80%;
-    height: 300px;
+    min-height: 100px;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px;
@@ -593,4 +594,18 @@ textarea{
 
 .imgDelete{
     width: 32px;
+}
+
+.input_fields_wrap button{
+    margin: 5px;
+    padding: 5px;
+    border: none;
+    background-color: grey;
+    opacity: 50%;
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.input_fields_wrap button:hover{
+    opacity: 100%;
 }

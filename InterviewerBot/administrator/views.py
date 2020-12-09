@@ -8,10 +8,6 @@ from user.models import Login
 from django.core.files.storage import default_storage
 # Create your views here.
 
-class CreateJobView(View):
-    def get(self, request):
-        return render(request, 'createJob.html')
-
 class DashboardView(View):
     def get(self, request):
         currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
@@ -25,17 +21,34 @@ class DashboardView(View):
     def post(self, request):
         form = CreateJobForm(request.POST)
 
-        if(form.is_valid()):
-            jobTitle = request.POST.get("title")
-            jobDescription = request.POST.get("description")
-            jobQuestion = request.POST.get("question")
-            jobAnswer = request.POST.get("answer")
+        if form.is_valid():
+            jobTitle = request.POST.get("name-title")
+            jobDescription = request.POST.get("name-description")
+            print(jobTitle)
+            q1 = request.POST.get("qtn1")
+            q2 = request.POST.get("qtn2")
+            q3 = request.POST.get("qtn3")
+            q4 = request.POST.get("qtn4")
+            q5 = request.POST.get("qtn5")
+            q6 = request.POST.get("qtn6")
+            q7 = request.POST.get("qtn7")
+            q8 = request.POST.get("qtn8")
+            q9 = request.POST.get("qtn9")
+            q10 = request.POST.get("qtn10")
 
-            form = CreateJob(title = jobTitle, description = jobDescription, question = jobQuestion,
-                                    answer = jobAnswer)
+            r1 = request.POST.get("mytext[]") #E LOOP TINGALI NI DI KO KIBAW
+            # r1 = request.POST.get("mytext[1]")
+            # r1 = request.POST.get("mytext[2]")
+            # r1 = request.POST.get("mytext[3]")
+            # r1 = request.POST.get("mytext[4]")
+
+            form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
+                question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
+                question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
+                requirement1 = r1)
             form.save()
 
-            return redirect('administrator:dashboard_view')
+            return redirect('administrator:job-lists_view')
         else:
             print(form.errors)
             return HttpResponse('not valid')

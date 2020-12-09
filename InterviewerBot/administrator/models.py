@@ -23,8 +23,26 @@ class Joblist(models.Model):
 class CreateJob(models.Model):
     title = models.CharField(max_length = 50, null=True, blank=True)
     description = models.CharField(max_length = 50, null=True, blank=True)
-    question = models.CharField(max_length = 50, null=True, blank=True)
-    answer = models.CharField(max_length = 50, null=True, blank=True)
+    question_1 = models.CharField(max_length = 50, null=True, blank=True)
+    question_2 = models.CharField(max_length = 50, null=True, blank=True)
+    question_3 = models.CharField(max_length = 50, null=True, blank=True)
+    question_4 = models.CharField(max_length = 50, null=True, blank=True)
+    question_5 = models.CharField(max_length = 50, null=True, blank=True)
+    question_6 = models.CharField(max_length = 50, null=True, blank=True)
+    question_7 = models.CharField(max_length = 50, null=True, blank=True)
+    question_8 = models.CharField(max_length = 50, null=True, blank=True)
+    question_9 = models.CharField(max_length = 50, null=True, blank=True)
+    question_10 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement1 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement2 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement3 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement4 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement5 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement6 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement7 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement8 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement9 = models.CharField(max_length = 50, null=True, blank=True)
+    requirement10 = models.CharField(max_length = 50, null=True, blank=True)
 
     class Meta: 
         db_table = "CreateJob"
