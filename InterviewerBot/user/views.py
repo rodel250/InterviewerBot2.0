@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from administrator.models import Administrator
+from administrator.models import CreateJob
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 
@@ -168,7 +169,7 @@ class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		joblists = Joblist.objects.raw('SELECT joblist.id, joblist.job_header, joblist.job_description FROM joblist WHERE joblist.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
+		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
 
 		context = {
 			'applicant': applicant,
@@ -185,7 +186,6 @@ class JobOffersView(View):
 				job_id = request.POST.get("job-id")
 				job_title = request.POST.get("job-header")
 				job_description = request.POST.get("job-description")
-				print(user_id)
 
 				saved_jobs = SavedJobs.objects.all()
 
