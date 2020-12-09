@@ -223,15 +223,16 @@ hr{
 }
 
 
-.botFooter{
-    font-size: 0.8em;
-    color: #ffffff;
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #2b353b;
-    padding: 5px;
-    width: 101%;
-    margin-bottom: -25px;
+    color: #ffffff;
     text-align: right;
-    margin-top: 18.21%;
+    font-size: 0.9em;
+    z-index: -1;
 }
 
 #content .selectWrapper{
