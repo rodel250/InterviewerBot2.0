@@ -251,14 +251,15 @@
     <div id="createJobModal" class="jobCreateModal">
         <div class="createJob-content">
             <span class="close">&times</span>
-            <form>
+            <form id="post_question" method="POST" action="" autocomplete="off" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="containerColor">
                 <div class="modalHeader">
                     <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
                     <a class="questionTitle">Untitled Questionaire</a>
                     <img src="{% static '/images/circle.png' %}" class="imgProfile">
                     <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
-                    <button class="btnPost">Post</button>
+                    <button type="submit" class="btnPost" name="post_question" id="id_post">Post</button>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
@@ -326,11 +327,6 @@
             </form>
         </div>
     </div>
-
-    
-
-
-
 
     <!-- script for Create Job MOdal -->
     <script type="text/javascript">
