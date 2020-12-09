@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from administrator.models import Administrator
+from administrator.models import Joblist
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 
@@ -82,9 +83,13 @@ class HomePageView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
+		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs WHERE currentuser.user_id = savedjobs.user_id')
+		totalSavedJobs = SavedJobs.objects.raw('SELECT COUNT(*) FROM savedjobs')
 
 		context = {
-			'applicant': applicant
+			'applicant': applicant,
+			'savedjobs': savedjobs,
+			'totalSavedJobs': totalSavedJobs,
 		}
 
 		return render(request, 'homePage.html', context)
@@ -157,12 +162,35 @@ class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
+		joblists = Joblist.objects.raw('SELECT joblist.id, joblist.job_header, joblist.job_description FROM joblist WHERE joblist.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
 
 		context = {
-			'applicant': applicant
+			'applicant': applicant,
+			'joblists': joblists
 		}
 
 		return render(request, 'jobOffers.html', context)
+
+	def post(self, request):
+		if request.method == 'POST':
+			if 'btnSave' in request.POST:
+				count = 0
+				user_id = request.POST.get("user-id")
+				job_id = request.POST.get("job-id")
+				job_title = request.POST.get("job-header")
+				job_description = request.POST.get("job-description")
+				print(user_id)
+
+				saved_jobs = SavedJobs.objects.all()
+
+				for saved_job in saved_jobs:
+					count = count + 1
+
+				if count <= 5:
+					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
+					return redirect('user:job-offers_view')
+
+		return HttpResponse('You can only save at most 5 job offerings.')
 
 class LogOutView(View):
 	def get(self, request):

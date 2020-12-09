@@ -249,11 +249,12 @@ function toogleDataSeries(e){
                     <a class="questionTitle">Untitled Questionaire</a>
                     <img src="{% static '/images/circle.png' %}" class="imgProfile">
                     <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
-                    <button class="btnPost">Post</button>
+                    <button type="submit" class="btn_post" name="post" id="post">Post</button>
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
                         <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab" class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                        <li><a data-toggle="tab" id="id-btnRequirements" href="#requirementsTab" class="tab-modal" style="font-weight: bold;">Requirements</a></li>
                         <li><a data-toggle="tab" href="#responsesTab" class="tab-modal" style="font-weight: bold;">Responses</a></li>
                     </ul>
                     <div class="tab-content">
@@ -262,7 +263,7 @@ function toogleDataSeries(e){
                             <header></header>
                             <div class="questionnaireTitle">
                                 <input type="text" name="name-title" id="id-title" placeholder="Untitled Questionnaire">
-                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"></textarea>
+                                <input type="text" name="name-description" id="id-description" rows="5" cols="50" placeholder="Questionaire description"/>
                             </div>
                             <div class="questionContainer">
                                 <div class="tools">
@@ -275,11 +276,23 @@ function toogleDataSeries(e){
                                 </div>
                                 <div class="contentQuestion">
                                     <input type="text" name="name-question" id="id-question" placeholder="Untitled Question">
-                                    <textarea type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"></textarea>
+                                    <input type="text" name="name-answer" id="id-answer" rows="5" cols="50" placeholder="Long answer text"/>
                                 </div>
                             </div>
                             <footer></footer>
                             </center>
+                        </div>
+                        <div id="requirementsTab" class="tab-pane fade">
+                            <header></header>
+                            <div class="input_fields_wrap">
+                                <button class="add_field_button" id="btn-add-more-field">Add More Field</button><br>
+                                <div class="class-requirement" id="id-requirement">
+                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;">
+                                    <input type="checkbox" name="check-attachement">
+                                    <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;
+                                </div>
+                            </div>
+                            <footer></footer>
                         </div>
                         <div id="responsesTab" class="tab-pane fade">
                             <h3>Response Tab</h3>
@@ -358,6 +371,28 @@ function toogleDataSeries(e){
             if (event.keyCode == 27) { 
                 $('#createJobModal').hide();
             }
+        });
+    </script>
+
+    <!-- ADD MORE FIELD BUTTON -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+        var max_fields      = 10; //maximum input boxes allowed
+        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+        var add_button      = $(".add_field_button"); //Add button ID
+        
+        var x = 1; //initlal text box count
+        $(add_button).click(function(e){ //on add input button click
+            e.preventDefault();
+            if(x < max_fields){ //max input box allowed
+                x++; //text box increment
+                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 60%; margin: 5px;"> <input type="checkbox" name="check-attachement"> <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
+            }
+        });
+        
+        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
         });
     </script>
 

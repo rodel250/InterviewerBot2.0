@@ -9,106 +9,120 @@ from django.core.files.storage import default_storage
 # Create your views here.
 
 class CreateJobView(View):
-	def get(self, request):
-		return render(request, 'createJob.html')
+    def get(self, request):
+        return render(request, 'createJob.html')
 
 class DashboardView(View):
-	def get(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
-		administrator = Administrator.objects.filter(id = currentUser)
+    def get(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+        administrator = Administrator.objects.filter(id = currentUser)
 
-		context = {
-			'administrator': administrator
-		}
-		return render(request, 'admindashboard.html', context)
+        context = {
+            'administrator': administrator
+        }
+        return render(request, 'admindashboard.html', context)
+
+    def post(self, request):
+        form = CreateJobForm(request.POST)
+
+        if(form.is_valid()):
+            jobTitle = request.POST.get("title")
+            jobDescription = request.POST.get("description")
+            jobQuestion = request.POST.get("question")
+            jobAnswer = request.POST.get("answer")
+
+            form = CreateJob(title = jobTitle, description = jobDescription, question = jobQuestion,
+                                    answer = jobAnswer)
+            form.save()
+
+            return redirect('administrator:dashboard_view')
+        else:
+            print(form.errors)
+            return HttpResponse('not valid')
 
 class JobListsView(View):
-	def get(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
-		administrator = Administrator.objects.filter(id = currentUser)
-		joblist = Joblist.objects.all()
+    def get(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+        administrator = Administrator.objects.filter(id = currentUser)
+        joblist = Joblist.objects.all()
 
-		context = {
-			'administrator': administrator,
-			'joblists': joblist
-		}
+        context = {
+            'administrator': administrator,
+            'joblists': joblist
+        }
 
-		return render(request, 'adminjoblist.html', context)
+        return render(request, 'adminjoblist.html', context)
 
-	def post(self, request):
-		if request.method == 'POST':
-			if 'btnDelete' in request.POST:
-				jobID1 = request.POST.get("jobID")
-				job = Joblist.objects.filter(id=jobID1).delete()
-			
-			elif 'btnUpdate' in request.POST:
-				jobID1 = request.POST.get("jobID")
-				jobDesription1 = request.POST.get("jobDescription")
-				jobHeader1 = request.POST.get("jobHeader")
-				job = Joblist.objects.filter(id=jobID1).update(job_description = jobDesription1, job_header= jobHeader1)
-				
-
-	
-		return redirect('administrator:job-lists_view')
-		
-		
-
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnDelete' in request.POST:
+                jobID1 = request.POST.get("jobID")
+                job = Joblist.objects.filter(id=jobID1).delete()
+            
+            elif 'btnUpdate' in request.POST:
+                jobID1 = request.POST.get("jobID")
+                jobDesription1 = request.POST.get("jobDescription")
+                jobHeader1 = request.POST.get("jobHeader")
+                job = Joblist.objects.filter(id=jobID1).update(job_description = jobDesription1, job_header= jobHeader1)
+    
+        return redirect('administrator:job-lists_view')
+        
 class AdminRegistrationView(View):
-	def get(self, request):
-		return render(request, 'registeradmin.html')
+    def get(self, request):
+        return render(request, 'registeradmin.html')
 
-	def post(self, request):
-		count = 0
-		form = AdministratorForm(request.POST)
-		administrators = Administrator.objects.all()
-		emailAdd = request.POST.get("email")
+    def post(self, request):
+        count = 0
+        form = AdministratorForm(request.POST)
+        administrators = Administrator.objects.all()
+        emailAdd = request.POST.get("email")
 
-		for administrator in administrators:
-			if(administrator.emailAddress == emailAdd):
-				count = 1
+        for administrator in administrators:
+            if(administrator.emailAddress == emailAdd):
+                count = 1
 
-		if (count == 0):
-			if(form.is_valid()):
-				fname = request.POST.get("first")
-				lname = request.POST.get("last")
-				phone = request.POST.get("phone")
-				password = request.POST.get("pass")
-				gender = request.POST.get("gender")
-				emailAdd = request.POST.get("email")
+        if (count == 0):
+            if(form.is_valid()):
+                fname = request.POST.get("first")
+                lname = request.POST.get("last")
+                phone = request.POST.get("phone")
+                password = request.POST.get("pass")
+                gender = request.POST.get("gender")
+                emailAdd = request.POST.get("email")
 
-				form = Administrator(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
-										emailAddress = emailAdd)
-				form.save()
+                form = Administrator(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
+                                        emailAddress = emailAdd)
+                form.save()
 
-				return redirect('user:login_view')
-		else:
-			print(form.errors)
-			return HttpResponse('Email address is already used.')
-		
-		return HttpResponse('not valid')
+                return redirect('user:login_view')
+        else:
+            print(form.errors)
+            return HttpResponse('Email address is already used.')
+        
+        return HttpResponse('not valid')
 
 class SettingsView(View):
-	def get(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
-		administrator = Administrator.objects.filter(id = currentUser)
+    def get(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+        administrator = Administrator.objects.filter(id = currentUser)
 
-		context = {
-			'administrator': administrator
-		}
+        context = {
+            'administrator': administrator
+        }
 
-		return render(request, 'adminsettings.html', context)
+        return render(request, 'adminsettings.html', context)
 
-	def post(self, request):
-		administrator = Administrator.objects.all()
-		count = 1
+    def post(self, request):
+        administrator = Administrator.objects.all()
+        count = 1
 
-		administrator_id = request.POST.get("administrator-id")
-		firstName = request.POST.get("firstname")
-		lastName = request.POST.get("lastname")
-		phone = request.POST.get("phone")
-		password = request.POST.get("password")
+        administrator_id = request.POST.get("administrator-id")
+        firstName = request.POST.get("firstname")
+        lastName = request.POST.get("lastname")
+        phone = request.POST.get("phone")
+        password = request.POST.get("password")
 
-		update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
-			lastname = lastName, phone = phone, password = password)
+        update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
+            lastname = lastName, phone = phone, password = password)
 
-		return redirect('administrator:settings_view')
+        return redirect('administrator:settings_view')
