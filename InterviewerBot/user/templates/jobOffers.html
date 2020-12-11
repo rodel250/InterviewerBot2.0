@@ -117,18 +117,21 @@
         <div id="content">
             <h1>Job Offers</h1><br>
 
-            <div class="searchInput">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="&#xF002;&nbsp;&nbsp; Search jobs by title, or keyword." style="font-family: Arial, 'Font Awesome 5 Free'" />
-                <button type="submit" class="searchButton" id="btnSearch" name="btnSearch">Search</button>
-	        </div>
+            <!-- <form method="POST">
+                {% csrf_token %} -->
+                <div class="searchInput">
+                    <input type="text" id="search" name="search" onkeyup="searchJob()" placeholder="&#xF002;&nbsp;&nbsp; Search jobs by title, or keyword." style="font-family: Arial, 'Font Awesome 5 Free'" />
+                    <!-- <button type="submit" class="searchButton" id="btnSearch" name="btnSearch">Search</button> -->
+    	        </div>
+            <!-- </form> -->
 
             <script>
-                function myFunction() {
+                function searchJob() {
                   // Declare variables
-                  var input, filter, table, tr, td, i, txtValue;
-                  input = document.getElementById("myInput");
+                  var input, filter, table, tr, td, i, txtValue, nav;
+                  input = document.getElementById("search");
                   filter = input.value.toUpperCase();
-                  table = document.getElementById("myTable");
+                  table = document.getElementById("jobTable");
                   tr = table.getElementsByTagName("tr");
 
                   // Loop through all table rows, and hide those who don't match the search query
@@ -148,7 +151,7 @@
 
             <br><hr>
 
-            <table width="87%" id="myTable" class="table-striped table-bordered table-sm">
+            <table width="87%" id="jobTable" class="table-striped table-bordered table-sm">
                 <tbody>
                     {% for joblist in joblists %}
                     <tr>
@@ -197,7 +200,7 @@
                 </tbody>
             </table><br>
 
-            <nav aria-label="Page navigation example" id="paginate-align">
+            <!-- <nav aria-label="Page navigation example" id="paginate-align" id="paginate">
                 <ul class="pagination justify-content-center">
                 {% if joblists.has_previous %}
                     <li class="page-item">  
@@ -225,7 +228,7 @@
                     </li>
                 {% endif %}
                 </ul>
-            </nav>
+            </nav> -->
     	</div>
 
         <!-- Job Requirements Content -->

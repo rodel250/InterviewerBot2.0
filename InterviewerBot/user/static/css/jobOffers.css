@@ -37,7 +37,7 @@ h1 {
 hr {
 	border-color: white; 
 	width: 87%; 
-	height: 5%; 
+	height: 0.5%; 
 	float: left;
 }
 
@@ -183,16 +183,16 @@ ul ul a {
 }
 
 .searchInput input[type=text] {
-	width: 70%;
+	width: 87%;
 	padding: 10px;
-  	padding-left: 20px;
-  	border-radius: 100px;
-  	margin-right: 2%;
-  	font-weight: bold;
-  	background-color: white;
+  padding-left: 20px;
+  border-radius: 100px;
+  margin-right: 2%;
+  font-weight: bold;
+  background-color: white;
 }
 
-.searchButton {
+/*.searchButton {
 	background: #FFCC00;  
 	width: 15%; 
 	margin: 1 0;
@@ -203,7 +203,7 @@ ul ul a {
 
 .searchButton:hover {
     background: #FFD700;
-}
+}*/
 
 
 /* ---------------------------------
