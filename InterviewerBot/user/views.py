@@ -8,6 +8,7 @@ from administrator.models import Administrator
 from administrator.models import CreateJob
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -171,9 +172,20 @@ class JobOffersView(View):
 		applicant = Applicant.objects.filter(id = currentUser)
 		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
 
+		p = Paginator(joblists,3)
+		page_number = request.GET.get('page',1)
+		page = p.page(page_number)
+		numberOfPage = p.num_pages
+
+		array = []
+		for x in range(1, numberOfPage+1):
+			array.append(x)
+
 		context = {
 			'applicant': applicant,
-			'joblists': joblists
+			'joblists': page,
+			'pages': array,
+			'page_number': int(page_number)
 		}
 
 		return render(request, 'jobOffers.html', context)
@@ -192,7 +204,7 @@ class JobOffersView(View):
 				for saved_job in saved_jobs:
 					count = count + 1
 
-				if count <= 5:
+				if count < 5:
 					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
 					return redirect('user:job-offers_view')
 

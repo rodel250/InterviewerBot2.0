@@ -152,7 +152,7 @@
                                     </button>
                                 </div>
 
-                                <form id="deleteForm" method="POST">
+                                <form id="saveForm" method="POST">
                                 {% csrf_token %}
                                     {% for applicant in applicant %}
                                     <input type="text" name="user-id" value="{{applicant.id}}" hidden>
@@ -171,7 +171,37 @@
                     </div>
                     {% endfor %}
                 </tbody>
-            </table>
+            </table><br>
+
+            <nav aria-label="Page navigation example" id="paginate-align">
+                <ul class="pagination justify-content-center">
+                {% if joblists.has_previous %}
+                    <li class="page-item">  
+                        <a class="page-link" href="{% url 'user:job-offers_view' %}?page={{joblists.previous_page_number}}" tabindex="-1">Previous</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Previous</a>              
+                    </li>
+                {% endif %}
+
+                {% for page in pages %}
+                    <li class="page-item {% if page == page_number %} active {% endif %}">
+                        <a class="page-link" href="?page={{page}}">{{page}}</a>
+                    </li>
+                {% endfor %}
+                    
+                {% if joblists.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% url 'user:job-offers_view' %}?page={{joblists.next_page_number}}">Next</a>              
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">Next</a>              
+                    </li>
+                {% endif %}
+                </ul>
+            </nav>
     	</div>
 
         <!-- Job Requirements Content -->
