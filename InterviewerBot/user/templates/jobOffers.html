@@ -118,13 +118,37 @@
             <h1>Job Offers</h1><br>
 
             <div class="searchInput">
-                <input type="text" placeholder="&#xF002;&nbsp;&nbsp; Search jobs by title, or keyword." style="font-family: Arial, 'Font Awesome 5 Free'" />
-                <button type="submit" class="searchButton">Search</button>
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="&#xF002;&nbsp;&nbsp; Search jobs by title, or keyword." style="font-family: Arial, 'Font Awesome 5 Free'" />
+                <button type="submit" class="searchButton" id="btnSearch" name="btnSearch">Search</button>
 	        </div>
+
+            <script>
+                function myFunction() {
+                  // Declare variables
+                  var input, filter, table, tr, td, i, txtValue;
+                  input = document.getElementById("myInput");
+                  filter = input.value.toUpperCase();
+                  table = document.getElementById("myTable");
+                  tr = table.getElementsByTagName("tr");
+
+                  // Loop through all table rows, and hide those who don't match the search query
+                  for (i = 0; i < tr.length; i++){
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                      txtValue = td.textContent || td.innerText;
+                      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                      } else {
+                        tr[i].style.display = "none";
+                      }
+                    }
+                  }
+                }
+            </script>
 
             <br><hr>
 
-            <table width="87%" class="table-striped table-bordered table-sm">
+            <table width="87%" id="myTable" class="table-striped table-bordered table-sm">
                 <tbody>
                     {% for joblist in joblists %}
                     <tr>
@@ -134,7 +158,7 @@
                             <div class="row jobDescription">{{joblist.description}}</div>
                         </td>
                         <td width="15%" align="center">
-                                <button class="btnApply" id="id-btnApply">Apply</button> 
+                            <button class="btnApply" id="id-btnApply">Apply</button> 
                         </td>
                         <td width="15%" align="center">
                             <button type="button" class="btnSave" data-toggle="modal" data-target="#jobdetailsModal-{{joblist.id}}"><i class="fa fa-bookmark"></i> SAVE</button>
