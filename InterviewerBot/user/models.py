@@ -1,4 +1,6 @@
 from django.db import models
+from administrator.models import CreateJob
+
 
 # Create your models here.
 
@@ -33,7 +35,37 @@ class SavedJobs(models.Model):
 	user_id = models.IntegerField()
 	job_id = models.IntegerField()
 	job_header = models.CharField(max_length = 50, null=False)
-	job_description = models.CharField(max_length = 250, null=False)
+	job_description = models.CharField(max_length = 500, null=False)
 
 	class Meta:
 		db_table ="SavedJobs"
+
+class AppliedJob(models.Model):
+	user = models.ForeignKey(Applicant, null = False, blank = False, on_delete = models.CASCADE, related_name = "Applicant")
+	job = models.ForeignKey(CreateJob, null = False, blank = False, on_delete = models.CASCADE, related_name = "CreateJob")
+	response_1 = models.CharField(max_length = 250, null=True, blank=True)
+	response_2 = models.CharField(max_length = 250, null=True, blank=True)
+	response_3 = models.CharField(max_length = 250, null=True, blank=True)
+	response_4 = models.CharField(max_length = 250, null=True, blank=True)
+	response_5 = models.CharField(max_length = 250, null=True, blank=True)
+	response_6 = models.CharField(max_length = 250, null=True, blank=True)
+	response_7 = models.CharField(max_length = 250, null=True, blank=True)
+	response_8 = models.CharField(max_length = 250, null=True, blank=True)
+	response_9 = models.CharField(max_length = 250, null=True, blank=True)
+	response_10 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_1 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_2 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_3 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_4 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_5 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_6 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_7 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_8 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_9 = models.CharField(max_length = 250, null=True, blank=True)
+	requirement_10 = models.CharField(max_length = 250, null=True, blank=True)
+
+	
+	class Meta:
+		db_table ="AppliedJob"
+
+

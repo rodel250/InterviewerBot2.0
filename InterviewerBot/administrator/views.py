@@ -58,7 +58,7 @@ class JobListsView(View):
     def get(self, request):
         currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         administrator = Administrator.objects.filter(id = currentUser)
-        joblist = CreateJob.objects.all()
+        joblist = CreateJob.objects.filter(admin_id = currentUser)
         
 
         p = Paginator(joblist,2)
@@ -84,9 +84,12 @@ class JobListsView(View):
         
 
     def post(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+        admin = Administrator.objects.filter(id = currentUser)
         form = CreateJobForm(request.POST)
         if request.method == 'POST':
             if 'btnDelete' in request.POST:
+                print("press")
                 jobID1 = request.POST.get("jobID")
                 job = CreateJob.objects.filter(id=jobID1).delete()
             
@@ -97,11 +100,9 @@ class JobListsView(View):
                 job = CreateJob.objects.filter(id=jobID1).update(description = jobDesription1, title= jobHeader1)
             
             elif 'btnAdd' in request.POST:
-                print("press")
                 if form.is_valid():
                     jobTitle = request.POST.get("name-title")
                     jobDescription = request.POST.get("name-description")
-                    print(jobTitle)
                     q1 = request.POST.get("qtn1")
                     q2 = request.POST.get("qtn2")
                     q3 = request.POST.get("qtn3")
@@ -122,7 +123,7 @@ class JobListsView(View):
                     form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                         question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
                         question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
-                        requirement1 = r1)
+                        requirement1 = r1, admin_id = currentUser)
                     form.save()
 
         return redirect('administrator:job-lists_view')
