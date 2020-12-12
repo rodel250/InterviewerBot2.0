@@ -19,10 +19,10 @@ def Mbox(title, text, style):
 	return ctypes.windll.user32.MessageBoxW(0, title, text, style)
 
 def password_check(password, request):
-	specialSymbols = ['$', '*', '#', '@', '!', '&']
+	specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
 	val = True
 
-	if len(password) < 6 | len(password) > 20:
+	if len(password) < 6 or len(password) > 20:
 		messages.error(request,'Password should be at least 6 and not greater than 20 characters')
 		val = False
 	
@@ -39,7 +39,7 @@ def password_check(password, request):
 		val = False
 	
 	if not any(char in specialSymbols for char in password): 
-		messages.error(request,'Password should have at least one of the symbols $#*!&@')
+		messages.error(request,'Password should have at least one of the symbols $#*!&@.')
 		val = False
 
 	if val:
