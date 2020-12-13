@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from user.models import Login
+from user.models import AppliedJob
+from user.models import Applicant
 from django.core.files.storage import default_storage
 from django.core.paginator import Paginator
 # Create your views here.
@@ -20,7 +22,9 @@ class DashboardView(View):
         return render(request, 'admindashboard.html', context)
 
     def post(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         form = CreateJobForm(request.POST)
+        joblist = CreateJob.objects.filter(admin_id = currentUser)
 
         if form.is_valid():
             jobTitle = request.POST.get("name-title")
@@ -46,7 +50,7 @@ class DashboardView(View):
             form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                 question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
                 question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
-                requirement1 = r1)
+                requirement1 = r1,  admin_id = currentUser)
             form.save()
 
             return redirect('administrator:job-lists_view')
@@ -54,11 +58,12 @@ class DashboardView(View):
             print(form.errors)
             return HttpResponse('not valid')
 
-class JobListsView(View):
+class JobListsView(View):      
     def get(self, request):
         currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         administrator = Administrator.objects.filter(id = currentUser)
         joblist = CreateJob.objects.filter(admin_id = currentUser)
+        # count = AppliedJob.objects.filter
         
 
         p = Paginator(joblist,2)
@@ -76,7 +81,8 @@ class JobListsView(View):
             'administrator': administrator,
             'joblists': page,
             'pages':array,
-            'page_number':int(page_number)
+            'page_number':int(page_number),
+            
 
         }
 
@@ -89,15 +95,16 @@ class JobListsView(View):
         form = CreateJobForm(request.POST)
         if request.method == 'POST':
             if 'btnDelete' in request.POST:
-                print("press")
                 jobID1 = request.POST.get("jobID")
                 job = CreateJob.objects.filter(id=jobID1).delete()
+                return redirect('administrator:job-lists_view')
             
             elif 'btnUpdate' in request.POST:
                 jobID1 = request.POST.get("jobID")
                 jobDesription1 = request.POST.get("jobDescription")
                 jobHeader1 = request.POST.get("jobHeader")
                 job = CreateJob.objects.filter(id=jobID1).update(description = jobDesription1, title= jobHeader1)
+                return redirect('administrator:job-lists_view')
             
             elif 'btnAdd' in request.POST:
                 if form.is_valid():
@@ -125,8 +132,17 @@ class JobListsView(View):
                         question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
                         requirement1 = r1, admin_id = currentUser)
                     form.save()
+                    return redirect('administrator:job-lists_view')
 
-        return redirect('administrator:job-lists_view')
+            elif 'viewApplicant' in request.POST:
+                jobID1 = request.POST.get("jobID1")
+                currentJob3 = currentJob.objects.filter(pk=1).update(jobID = jobID1)
+                currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)           
+                # print(jobID1)
+                return redirect('administrator:applicants_view')
+
+        
+        
         # else:
         #     print(form.errors)
         #     return HttpResponse('not valid')
@@ -192,3 +208,21 @@ class SettingsView(View):
             lastname = lastName, phone = phone, password = password)
 
         return redirect('administrator:settings_view')
+
+class Applicants(View):
+    def get(self,request):
+        currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)    
+        joblist = CreateJob.objects.filter(id = currentJob1)
+        applicant = Applicant.objects.raw('SELECT DISTINCT applicant.id,firstname,lastname FROM applicant,createjob,appliedjob WHERE appliedjob.job_id =' + str(currentJob1) +' AND applicant.id = appliedjob.user_id')
+        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id ='+str(currentJob1))
+        context = {
+            'joblists': joblist,
+            'applicants': applicant,
+            'responses': response
+            
+        }
+
+        return render(request, 'jobApplicants.html', context)
+
+    def post(self,request):
+        return HttpResponse()

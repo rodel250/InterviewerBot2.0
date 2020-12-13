@@ -40,3 +40,10 @@ class CreateJob(models.Model):
 
     class Meta: 
         db_table = "CreateJob"
+
+
+class currentJob(models.Model):
+    jobID = models.IntegerField()
+    
+    class Meta:
+        db_table = "currentJob"
