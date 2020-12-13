@@ -11,4 +11,5 @@ urlpatterns=[
     path('job-lists', views.JobListsView.as_view(), name="job-lists_view"),
     path('add-admin', views.AdminRegistrationView.as_view(), name="add-admin_view"),
     path('settings', views.SettingsView.as_view(), name="settings_view"),
+    path('logout', views.LogOutView.as_view(), name="logout_view"),
 ]

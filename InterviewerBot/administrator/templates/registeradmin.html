@@ -41,12 +41,12 @@
             </div>
 
             <div class="form-group">
-                <input type="text" id="firstName" name="first" placeholder="First Name" required>
-                <input type="text" id="lastName" name="last" placeholder="Last Name" required>
+                <input type="text" id="firstName" name="first" placeholder="First Name" value="{{form.first}}" required>
+                <input type="text" id="lastName" name="last" placeholder="Last Name" value="{{form.last}}" required>
             </div>
 
             <div class="form-group">
-                <input type="text" id="phoneNo" name="phone" placeholder="Phone">
+                <input type="text" id="phoneNo" name="phone" placeholder="Phone" value="{{form.phone}}">
             <select name="gender" id="gender" required>
                 <option value="" disabled selected>Gender</option>
                 <option value="Male">Male</option>
@@ -56,12 +56,19 @@
             </div>
 
             <div class="form-group">   
-                <input type="text" id="emailAdd" name="email" placeholder="Email" required>
+                <input type="text" id="emailAdd" name="email" placeholder="Email" value="{{form.email}}" required>
             </div>
 
-            <div>                
+            <div class="pb-2">                
                 <input type="Password" id="pass" name="pass" placeholder="Password" required><br>
             </div>
+
+            {% for message in messages %}
+                <div class="alert" style="color: red; font-size: 13px; margin-bottom: -2%">
+                        {{ message }}
+                </div>
+            {% endfor %}
+
             <div class="py-3">
                 <hr style="width: 50%; text-align:center;">
             </div>
