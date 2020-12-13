@@ -340,43 +340,43 @@ ul ul a {
 }
 
 .citButton {
-	border-radius: 15px;
-	padding-top: 5px;
+    border-radius: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-	min-width:20%;
-	border-left-width: 0px;
-	border-right-width: 0px;
-	border-top-width: 0px;
-	border-bottom-width: 0px;
-	background-color: #8C383E;
-	position: relative;
-	font-weight: bold;
-	color: white;
-	cursor: pointer;
+    min-width:20%;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    background-color: #8C383E;
+    position: relative;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
 }
 
 .citButton:hover{
-	background-color: #781B1B;
+    background-color: #781B1B;
 }
 
 .citButton1 {
-	border-radius: 15px;
-	padding-top: 5px;
+    border-radius: 15px;
+    padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-	min-width:20%;
-	border-left-width: 0px;
-	border-right-width: 0px;
-	border-top-width: 0px;
-	border-bottom-width: 0px;
-	background-color: darkgray;
-	position: relative;
-	font-weight: bold;
-	color: white;
-	cursor: pointer;
+    min-width:20%;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    background-color: darkgray;
+    position: relative;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
 }
 .citButton1:hover{
     background-color: gray;
@@ -630,4 +630,39 @@ textarea{
 
 .input_fields_wrap button:hover{
     opacity: 100%;
+}
+
+.number-requirements input{
+    cursor: pointer;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab a {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab a:hover {
+  background-color: #ddd;
+}
+
+.tab a.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
