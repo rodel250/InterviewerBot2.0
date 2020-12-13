@@ -164,11 +164,13 @@ class HomePageView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs WHERE currentuser.user_id = savedjobs.user_id')
+		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs, createjob WHERE currentuser.user_id = savedjobs.user_id AND createjob.id = savedjobs.job_id')
+		appliedjobs = AppliedJob.objects.raw('SELECT * FROM currentuser, appliedjob, createjob WHERE currentuser.user_id = appliedjob.user_id AND createjob.id = appliedjob.job_id')
 
 		context = {
 			'applicant': applicant,
 			'savedjobs': savedjobs,
+			'appliedjobs': appliedjobs
 		}
 
 		return render(request, 'homePage.html', context)
@@ -233,7 +235,7 @@ class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
+		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id UNION ALL SELECT appliedjob.job_id FROM appliedjob, currentuser WHERE appliedjob.user_id = currentuser.user_id)')
 
 		# p = Paginator(joblists,3)
 		# page_number = request.GET.get('page',1)
@@ -260,8 +262,6 @@ class JobOffersView(View):
 				count = 0
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
-				job_title = request.POST.get("job-header")
-				job_description = request.POST.get("job-description")
 
 				saved_jobs = SavedJobs.objects.all()
 
@@ -269,7 +269,7 @@ class JobOffersView(View):
 					count = count + 1
 
 				if count < 5:
-					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
+					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id)
 					return redirect('user:job-offers_view')
 			# elif 'btnSearch' in request.POST:
 			# 	searchData = request.POST.get("search")

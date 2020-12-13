@@ -32,10 +32,8 @@ class Contact(models.Model):
 		db_table = "Contact"
 		
 class SavedJobs(models.Model):
-	user_id = models.IntegerField()
-	job_id = models.IntegerField()
-	job_header = models.CharField(max_length = 50, null=False)
-	job_description = models.CharField(max_length = 500, null=False)
+	user = models.ForeignKey(Applicant, null=False, blank=False, on_delete=models.CASCADE)
+	job = models.ForeignKey(CreateJob, null=False, blank=False, on_delete=models.CASCADE)
 
 	class Meta:
 		db_table ="SavedJobs"

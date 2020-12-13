@@ -99,7 +99,14 @@
                         <div class="verticalLine"></div>
                     </div>
                     <div class="col-sm-8">
-                        <h2>1</h2>
+                        <h2 id="totalAppliedJobs"></h2>
+                        <script>
+                            var count = 0;
+                            {% for total in appliedjobs %}
+                                count++;
+                            {% endfor %}
+                            document.getElementById("totalAppliedJobs").innerHTML = ""+count;
+                        </script>
                     </div>
                 </div>
 
@@ -124,8 +131,8 @@
                         <tr>
                             <td width="13%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"></td>
                             <td width="60%">
-                                <div class="row jobTitle">{{savedjob.job_header}}</div>
-                                <div class="row jobDescription">{{savedjob.job_description}}</div>
+                                <div class="row jobTitle">{{savedjob.title}}</div>
+                                <div class="row jobDescription">{{savedjob.description}}</div>
                             </td>
                             <td width="15%" align="center">
                                 <button type="button" class="btnUnsave" data-toggle="modal" data-target="#unsaveModal-{{savedjob.job_id}}"><i class="fa fa-bookmark"></i> UNSAVE</button>
@@ -168,13 +175,15 @@
             <div class="panel">
                 <table width="100%" class="table-striped table-bordered table-sm">
                     <tbody>
+                        {% for appliedjob in appliedjobs %}
                         <tr>
                             <td width="10%"> <img src="{% static 'images/white_bg.jpg' %}" class="imgJob"></td>
                             <td width="60%">
-                                <div class="row jobTitle">Web Designer</div>
-                                <div class="row jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam porta dignissim id nec magna. Sed in elit nibh. Suspendisse eros nunc, placerat nec ultricies eu, suscipit et felis. Morbi fringilla, quam nec eleifend convallis, eros massa commodo justo, sed mattis diam lectus a odio.</div>
+                                <div class="row jobTitle">{{appliedjob.title}}</div>
+                                <div class="row jobDescription">{{appliedjob.description}}</div>
                             </td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
