@@ -61,12 +61,14 @@
                 <input type="email" id="emailAdd" name="email" placeholder="Email" value="{{form.email}}" required>
             </div>
 
-            <div>                
+            <div class="pb-2">                
                 <input type="Password" id="pass" name="pass" placeholder="Password" required><br>
             </div>
 
             {% for message in messages %}
-                <div class="alert" style="color: red; margin-bottom: -2%">{{ message }}</div>
+                <div class="alert" style="color: red; font-size: 13px; margin-bottom: -2%">
+                        {{ message }}
+                </div>
             {% endfor %}
 
             <div class="py-3">

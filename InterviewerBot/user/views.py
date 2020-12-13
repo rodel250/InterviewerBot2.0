@@ -16,7 +16,7 @@ from django.contrib import messages
 # Create your views here.
 
 def Mbox(title, text, style):
-	return ctypes.windll.user32.MessageBoxW(0, title, text, style)
+	return ctypes.windll.user32.MessageBoxW(0, title, text, style, 0x1000)
 
 def password_check(password, request):
 	specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
