@@ -20,6 +20,13 @@ def Mbox(title, text, style):
 	sty=int(style)+4096
 	return ctypes.windll.user32.MessageBoxW(0, title, text, sty)
 
+def encrypt_password(password):
+	password_bytes = password.encode('ascii')
+	base64_bytes = base64.b64encode(password_bytes)
+	password = base64_bytes.decode('ascii')
+
+	return password
+
 def password_check(password, request):
 	specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
 	val = True
@@ -79,11 +86,9 @@ class UserRegistrationView(View):
 						emailAddress = request.POST.get("email")
 						email = emailAddress
 
-						password_bytes = password.encode('ascii')
-						base64_bytes = base64.b64encode(password_bytes)
-						base64_password = base64_bytes.decode('ascii')
+						password = encrypt_password(password)
 
-						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = base64_password, gender = gender, emailAddress = emailAddress)
+						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
 						form.save()
 
 						send_mail(
@@ -114,9 +119,7 @@ class UserIndexView(View):
 			applicants = Applicant.objects.all()
 			administrators = Administrator.objects.all()
 
-			password_bytes = password.encode('ascii')
-			base64_bytes = base64.b64encode(password_bytes)
-			password = base64_bytes.decode('ascii')
+			password = encrypt_password(password)
 
 			for applicant in applicants:
 				if(applicant.emailAddress == email and applicant.password == password):
@@ -248,6 +251,7 @@ class SettingsView(View):
 		password = request.POST.get("password")
 
 		if password_check(password, request):
+			password = encrypt_password(password)
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
 			Mbox('Profile Update Successful', 'Success', 64)
