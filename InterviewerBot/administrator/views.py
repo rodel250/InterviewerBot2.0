@@ -215,7 +215,7 @@ class Applicants(View):
         currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
         joblist = CreateJob.objects.filter(id = currentJob1)
         applicant = Applicant.objects.raw('SELECT DISTINCT applicant.id,firstname,lastname FROM applicant,createjob,appliedjob WHERE appliedjob.job_id =' + str(currentJob1) +' AND applicant.id = appliedjob.user_id')
-        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1))
+        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1)+' GROUP BY applicant.firstname')
         context = {
             'joblists': joblist,
             'applicants': applicant,
