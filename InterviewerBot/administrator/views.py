@@ -1,4 +1,5 @@
 import ctypes
+import base64
 from tkinter import messagebox as tkMessageBox
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
@@ -16,6 +17,13 @@ from django.contrib import messages
 def Mbox(title, text, style):
     sty=int(style)+4096
     return ctypes.windll.user32.MessageBoxW(0, title, text, sty)
+
+def encrypt_password(password):
+    password_bytes = password.encode('ascii')
+    base64_bytes = base64.b64encode(password_bytes)
+    password = base64_bytes.decode('ascii')
+
+    return password
 
 def password_check(password, request):
     specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
@@ -194,6 +202,8 @@ class AdminRegistrationView(View):
                     emailAdd = request.POST.get("email")
                     email = emailAdd
 
+                    password = encrypt_password(password)
+
                     form = Administrator(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
                                             emailAddress = emailAdd)
                     form.save()
@@ -234,9 +244,15 @@ class SettingsView(View):
         phone = request.POST.get("phone")
         password = request.POST.get("password")
 
-        update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
-            lastname = lastName, phone = phone, password = password)
-        Mbox('Profile Update Successful', 'Success', 64)
+        if password == "":
+            update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
+                lastname = lastName, phone = phone)
+            Mbox('Profile Update Successful', 'Success', 64)
+        elif password_check(password, request):
+            password = encrypt_password(password)
+            update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
+                lastname = lastName, phone = phone, password = password)
+            Mbox('Profile Update Successful', 'Success', 64)
 
         return redirect('administrator:settings_view')
 
