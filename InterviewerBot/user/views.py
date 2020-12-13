@@ -75,9 +75,18 @@ class UserRegistrationView(View):
 						password = request.POST.get("pass")
 						gender = request.POST.get("gender")
 						emailAddress = request.POST.get("email")
+						email = emailAddress
 
 						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
 						form.save()
+
+						send_mail(
+						    'Your Registration was Successful.',
+						    'Thank you for registering! You may login now using your newly created account.',
+						    'email',
+						    [email],
+						    fail_silently=False,
+						)
 
 						Mbox('Successfully Registered', 'Success', 64)
 						return redirect('user:login_view')
@@ -156,7 +165,7 @@ class ContactUsView(View):
 
 			form = Contact(email = email, subject = subject, message = message)
 			form.save()
-			
+
 			send_mail(subject,message,email,['interviewbot.cit@gmail.com'])
 
 			return redirect('user:mailsent_view')
