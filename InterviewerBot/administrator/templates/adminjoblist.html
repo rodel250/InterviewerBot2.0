@@ -293,16 +293,7 @@
                             </center>
                         </div>
                         <div id="requirementsTab" class="tab-pane fade">
-                            <header></header>
-                            <div class="input_fields_wrap">
-                                <button class="add_field_button" id="btn-add-more-field">Add More Field</button><br>
-                                <div class="class-requirement" id="id-requirement">
-                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;">
-                                    <input type="checkbox" name="check-attachement" id="id-checkbox">
-                                    <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;
-                                </div>
-                            </div>
-                            <footer></footer>
+                            
                         </div>
                         <div id="responsesTab" class="tab-pane fade">
                             <h3>Response Tab</h3>
@@ -346,28 +337,6 @@
             if (event.keyCode == 27) { 
                 $('#createJobModal').hide();
             }
-        });
-    </script>
-
-    <!-- ADD MORE FIELD BUTTON -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-        var max_fields      = 10; //maximum input boxes allowed
-        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-        var add_button      = $(".add_field_button"); //Add button ID
-        
-        var x = 1; //initlal text box count
-        $(add_button).click(function(e){ //on add input button click
-            e.preventDefault();
-            if(x < max_fields){ //max input box allowed
-                x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;"> <input type="checkbox" name="check-attachement" id="id-requirement"><label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
-            }
-        });
-        
-        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-            e.preventDefault(); $(this).parent('div').remove(); x--;
-        })
         });
     </script>
 
