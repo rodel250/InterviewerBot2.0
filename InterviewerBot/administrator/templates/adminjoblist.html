@@ -293,7 +293,48 @@
                             </center>
                         </div>
                         <div id="requirementsTab" class="tab-pane fade">
-                            
+                            <div class="tab">
+                                <a class="tablinks" onclick="numberRequirement(event, 'fiveReq')" id="defaultOpen">5 REQUIREMENTS</a>
+                                <a class="tablinks" onclick="numberRequirement(event, 'tenReq')">10 REQUIREMENTS</a>
+                                <a class="tablinks" onclick="numberRequirement(event, 'fifteenReq')">15 REQUIREMENTS</a>
+                            </div>
+                            <div id="fiveReq" class="tabcontent">
+                                    <input type="text" name="req1" id="id-req1" class="step" placeholder="Requirement 1" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req2" id="id-req2" class="step" placeholder="Requirement 2" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req3" id="id-req3" class="step" placeholder="Requirement 3" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req4" id="id-req4" class="step" placeholder="Requirement 4" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req5" id="id-req5" class="step" placeholder="Requirement 5" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                </div>
+
+                                <!-- TEN REQUIREMENTS -->
+                                <div id="tenReq" class="tabcontent">
+                                    <input type="text" name="req6" id="id-req6" class="step" placeholder="Requirement 6" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req7" id="id-req7" class="step" placeholder="Requirement 7" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req8" id="id-req8" class="step" placeholder="Requirement 8" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req9" id="id-req9" class="step" placeholder="Requirement 9" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req10" id="id-req10" class="step" placeholder="Requirement 10" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                </div>
+
+                                <!-- FIFTEEN REQUIREMENTS -->
+                                <div id="fifteenReq" class="tabcontent">
+                                    <input type="text" name="req11" id="id-req11" class="step" placeholder="Requirement 11" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req12" id="id-req12" class="step" placeholder="Requirement 12" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req13" id="id-req13" class="step" placeholder="Requirement 13" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req14" id="id-req14" class="step" placeholder="Requirement 14" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req15" id="id-req15" class="step" placeholder="Requirement 15" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    </div>
                         </div>
                         <div id="responsesTab" class="tab-pane fade">
                             <h3>Response Tab</h3>
@@ -338,6 +379,33 @@
                 $('#createJobModal').hide();
             }
         });
+    </script>
+
+    <!-- SHOW REQUIREMENT BUTTONS -->
+    <script type="text/javascript">
+        function numberRequirement(evt, number) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the button that opened the tab
+          document.getElementById(number).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultOpen").click();
+
     </script>
 
 {% endblock content %}
