@@ -153,7 +153,11 @@ class ContactUsView(View):
 			email = request.POST.get("email")
 			subject = request.POST.get("subject")
 			message = request.POST.get("message")
-			send_mail(subject,message,email,['interviewbot.cit@gmail.com',email])
+
+			form = Contact(email = email, subject = subject, message = message)
+			form.save()
+			
+			send_mail(subject,message,email,['interviewbot.cit@gmail.com'])
 
 			return redirect('user:mailsent_view')
 
