@@ -250,7 +250,11 @@ class SettingsView(View):
 		phone = request.POST.get("phone")
 		password = request.POST.get("password")
 
-		if password_check(password, request):
+		if password == "":
+			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
+				lastname = lastName, phone = phone)
+			Mbox('Profile Update Successful', 'Success', 64)
+		elif password_check(password, request):
 			password = encrypt_password(password)
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
