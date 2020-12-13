@@ -1,3 +1,5 @@
+import ctypes
+from tkinter import messagebox as tkMessageBox
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
 from django.http import Http404
@@ -7,7 +9,40 @@ from .models import *
 from user.models import Login
 from django.core.files.storage import default_storage
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
+from django.contrib import messages
 # Create your views here.
+
+def Mbox(title, text, style):
+    sty=int(style)+4096
+    return ctypes.windll.user32.MessageBoxW(0, title, text, sty)
+
+def password_check(password, request):
+    specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
+    val = True
+
+    if len(password) < 6 or len(password) > 20:
+        messages.error(request,'Password should be at least 6 and not greater than 20 characters')
+        val = False
+    
+    if not any(char.isdigit() for char in password): 
+        messages.error(request,'Password should have at least one numeral')
+        val = False
+    
+    if not any(char.isupper() for char in password): 
+        messages.error(request,'Password should have at least one uppercase letter')
+        val = False
+                    
+    if not any(char.islower() for char in password): 
+        messages.error(request,'Password should have at least one lowercase letter')
+        val = False
+    
+    if not any(char in specialSymbols for char in password): 
+        messages.error(request,'Password should have at least one of the symbols $#*!&@.')
+        val = False
+
+    if val:
+        return val
 
 class DashboardView(View):
     def get(self, request):
@@ -142,30 +177,41 @@ class AdminRegistrationView(View):
         form = AdministratorForm(request.POST)
         administrators = Administrator.objects.all()
         emailAdd = request.POST.get("email")
+        form.passwd = request.POST.get("pass")
 
         for administrator in administrators:
             if(administrator.emailAddress == emailAdd):
                 count = 1
 
         if (count == 0):
-            if(form.is_valid()):
-                fname = request.POST.get("first")
-                lname = request.POST.get("last")
-                phone = request.POST.get("phone")
-                password = request.POST.get("pass")
-                gender = request.POST.get("gender")
-                emailAdd = request.POST.get("email")
+            if password_check(form.passwd, request):
+                if(form.is_valid()):
+                    fname = request.POST.get("first")
+                    lname = request.POST.get("last")
+                    phone = request.POST.get("phone")
+                    password = request.POST.get("pass")
+                    gender = request.POST.get("gender")
+                    emailAdd = request.POST.get("email")
+                    email = emailAdd
 
-                form = Administrator(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
-                                        emailAddress = emailAdd)
-                form.save()
+                    form = Administrator(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
+                                            emailAddress = emailAdd)
+                    form.save()
 
-                return redirect('user:login_view')
+                    send_mail(
+                        'Your Registration was Successful.',
+                        'Thank you for registering! You may login now using your newly created account.',
+                        'email',
+                        [email],
+                        fail_silently=False,
+                    )
+
+                    Mbox('Successfully Registered', 'Success', 64)
+                    return redirect('user:login_view')
         else:
-            print(form.errors)
-            return HttpResponse('Email address is already used.')
+            Mbox('Email address is already used.', 'Error', 16)
         
-        return HttpResponse('not valid')
+        return render(request, 'registeradmin.html', {'form':form})
 
 class SettingsView(View):
     def get(self, request):
@@ -190,5 +236,10 @@ class SettingsView(View):
 
         update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
             lastname = lastName, phone = phone, password = password)
+        Mbox('Profile Update Successful', 'Success', 64)
 
         return redirect('administrator:settings_view')
+
+class LogOutView(View):
+    def get(self, request):
+        return render(request, 'LogOut.html')
