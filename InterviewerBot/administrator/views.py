@@ -212,9 +212,10 @@ class SettingsView(View):
 class Applicants(View):
     def get(self,request):
         currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)    
+        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
         joblist = CreateJob.objects.filter(id = currentJob1)
         applicant = Applicant.objects.raw('SELECT DISTINCT applicant.id,firstname,lastname FROM applicant,createjob,appliedjob WHERE appliedjob.job_id =' + str(currentJob1) +' AND applicant.id = appliedjob.user_id')
-        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id ='+str(currentJob1))
+        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1))
         context = {
             'joblists': joblist,
             'applicants': applicant,
@@ -225,4 +226,13 @@ class Applicants(View):
         return render(request, 'jobApplicants.html', context)
 
     def post(self,request):
+        if request.method == 'POST':
+                    if 'btnView' in request.POST:
+                        applicantID1 = request.POST.get("applicantID")
+                        print(applicantID1)
+                        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
+                        currentApplicant2 = currentApplicant.objects.filter(pk=1).update(applicantID = applicantID1)
+                        return redirect('administrator:applicants_view')
+                        
+
         return HttpResponse()

@@ -5,6 +5,7 @@
     
     <title>Interview BOT - Job List</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -45,11 +46,17 @@
                             <div class="modalHeader" style="border-radius: 0px;">
                                 <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
                                 <a class="questionTitle">Job Responses </a>
+                                <br><br>
+                                <a href=  "{% url 'administrator:job-lists_view' %}"><b>Back</b></a>
+                                
                                 <div hidden>
                                     <input type="text" id="jobID" name="jobID" value="{{joblist.id}}">
                                 </div>
-                                <img src="{% static '/images/circle.png' %}" class="imgProfile">
-                                <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
+                                
+                                
+
+                                
+                                
                             </div>
                             <div class="container">
                                 <ul class="nav nav-tabs" style="margin-left: 30%;">
@@ -94,11 +101,14 @@
                                         <div class="questionContainer">
                                             <div class="contentQuestion">
                                                 {% for applicant in applicants %}
-                                                <div class="input_fields_wrap2" style="display:flex ;margin-bottom: 10px;">                                               
-                                                <input type="text" name="qtn1" id="id-question1" placeholder="{{applicant.firstname}} {{applicant.lastname}} " disabled>
+                                                <form id="applicantForm" method="post">
+                                                {% csrf_token %}
+                                                <div class="input_fields_wrap2" style="display:flex ;margin-bottom: 10px;"> 
+                                                <div hidden><input type="text" name="applicantID" value="{{applicant.id}}"></div>                                             
+                                                <input type="text" name="qtn1" id="id-question1" placeholder="{{applicant.lastname}}, {{applicant.firstname}} " disabled>
                                                 <button type="submit" class="citButton" id="btnView" name="btnView">View</button>                                                                        
                                                 </div>
-                                                
+                                                </form>
                                                 {% endfor %}
                                                 
                                             </div>
@@ -109,23 +119,29 @@
                                     <div id="individualTab" class="tab-pane in fade">
                                         <center>
                                         <header></header>
+                                        {% for response in responses %}
                                         <div class="questionnaireTitle" style="height: 80px;">
-                                            <h4>Name</h4>
+                                            <h4>{{response.firstname}}{{response.lastname}}</h4>
                                         </div>
                                         <div class="questionContainer">
                                             <div class="contentQuestion">
                                                 <div class="input_fields_wrap2">
-                                                <input type="text"  placeholder="Question?" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="Answer?" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.question_1 == '' %} (No Question) {% else %} {{response.question_1}} {% endif %}" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.response_1 == null %} - {% else %} {{response.response_1}} {% endif %}" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.question_2 == '' %} (No Question) {% else %} {{response.question_2}} {% endif %}" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.response_2 == null %} - {% else %} {{response.response_2}} {% endif %}" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.question_3 == '' %} (No Question) {% else %} {{response.question_3}} {% endif %}" disabled> &nbsp;<br>
+                                                <input type="text"  placeholder="{% if response.response_3 == null %} - {% else %} {{response.response_3}} {% endif %}" disabled> &nbsp;<br>
+
                                                 </div>
                                             </div>
                                         </div>
+                                        {% endfor %}
                                         <footer></footer>
                                         </center>
                                     </div> 
                                 </div>
-                            </div>
-                         
+                            </div>                         
                         </div>
                        
             

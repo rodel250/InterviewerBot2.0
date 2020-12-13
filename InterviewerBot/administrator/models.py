@@ -47,3 +47,9 @@ class currentJob(models.Model):
     
     class Meta:
         db_table = "currentJob"
+
+class currentApplicant(models.Model):
+    applicantID = models.IntegerField()
+    
+    class Meta:
+        db_table = "currentApplicant"
