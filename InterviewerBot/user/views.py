@@ -1,4 +1,5 @@
 import ctypes
+import base64
 from tkinter import messagebox as tkMessageBox
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
@@ -77,7 +78,11 @@ class UserRegistrationView(View):
 						emailAddress = request.POST.get("email")
 						email = emailAddress
 
-						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
+						password_bytes = password.encode('ascii')
+						base64_bytes = base64.b64encode(password_bytes)
+						base64_password = base64_bytes.decode('ascii')
+
+						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = base64_password, gender = gender, emailAddress = emailAddress)
 						form.save()
 
 						send_mail(
@@ -107,6 +112,10 @@ class UserIndexView(View):
 			password = request.POST.get("pass")
 			applicants = Applicant.objects.all()
 			administrators = Administrator.objects.all()
+
+			password_bytes = password.encode('ascii')
+			base64_bytes = base64.b64encode(password_bytes)
+			password = base64_bytes.decode('ascii')
 
 			for applicant in applicants:
 				if(applicant.emailAddress == email and applicant.password == password):
@@ -237,7 +246,7 @@ class SettingsView(View):
 		phone = request.POST.get("phone")
 		password = request.POST.get("password")
 
-		if password_check(password):
+		if password_check(password, request):
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
 			Mbox('Profile Update Successful', 'Success', 64)
