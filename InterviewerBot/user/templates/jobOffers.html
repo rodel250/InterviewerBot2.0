@@ -161,12 +161,77 @@
                             <div class="row jobDescription">{{joblist.description}}</div>
                         </td>
                         <td width="15%" align="center">
-                            <button class="btnApply" id="id-btnApply">Apply</button> 
+                            <button type="button" class="btnApply" data-toggle="modal" id="id-btnApply" data-target="#applyJobModal-{{joblist.id}}">Apply</button> 
                         </td>
                         <td width="15%" align="center">
                             <button type="button" class="btnSave" data-toggle="modal" data-target="#jobdetailsModal-{{joblist.id}}"><i class="fa fa-bookmark"></i> SAVE</button>
                         </td>
                     </tr>
+
+                    <!---- APPLY MODAL ------->
+                    <div class="modal fade" id="applyJobModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="applyJobModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style="background-color: #ffcc00;">
+                                    <h5 class="modal-title" id="myLargeModalLabel"><b>{{joblist.title}}</b></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <form id="applyForm" method="POST">
+                                {% csrf_token %}
+                                    <div class="row">
+                                        <div class="column left">
+                                            <h5 style="float: left; font-weight: bold; margin-left: 28px;">Job Requirements</h5>
+                                            <center>
+                                                <input type="text" name="" value="{{joblist.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement2}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement3}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement4}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement5}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement6}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement7}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement8}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement9}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement10}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement11}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement12}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement13}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement14}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement15}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                            </center>
+                                        </div>
+                                        <div class="column right">
+                                            <h5 style="float: left; font-weight: bold;">Attach Files Here</h5>
+                                            <center>
+                                                <input type="file" id="myfile1" name="myfile1" style="padding: 2px;">
+                                                <input type="file" id="myfile2" name="myfile2" style="padding: 2px;">
+                                                <input type="file" id="myfile3" name="myfile3" style="padding: 2px;">
+                                                <input type="file" id="myfile4" name="myfile4" style="padding: 2px;">
+                                                <input type="file" id="myfile5" name="myfile5" style="padding: 2px;">
+                                                <input type="file" id="myfile6" name="myfile6" style="padding: 2px;">
+                                                <input type="file" id="myfile7" name="myfile7" style="padding: 2px;">
+                                                <input type="file" id="myfile8" name="myfile8" style="padding: 2px;">
+                                                <input type="file" id="myfile9" name="myfile9" style="padding: 2px;">
+                                                <input type="file" id="myfile10" name="myfile10" style="padding: 2px;">
+                                                <input type="file" id="myfile11" name="myfile11" style="padding: 2px;">
+                                                <input type="file" id="myfile12" name="myfile12" style="padding: 2px;">
+                                                <input type="file" id="myfile13" name="myfile13" style="padding: 2px;">
+                                                <input type="file" id="myfile14" name="myfile14" style="padding: 2px;">
+                                                <input type="file" id="myfile15" name="myfile15" style="padding: 2px;">
+                                            </center>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="submit" id="btnApply" name="btnApply" class="btn btn-primary">APPLY</button>
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
                     <!---- SAVE MODAL ------->
                     <div class="modal fade" id="jobdetailsModal-{{joblist.id}}" tabindex="-1" role="dialog" aria-labelledby="jobdetailsModalLabel" aria-hidden="true">
@@ -228,94 +293,6 @@
                 </ul>
             </nav> -->
     	</div>
-
-        <!-- Job Requirements Content -->
-        <div id="jobReqModal" class="jobModal">
-            <div class="jobModal_content">
-                <span class="close">&times</span>
-                <table class="modalTable">
-                    <thead>
-                        <tr>
-                            <th>Job Requirements</th>
-                            <th>Attach Your Requirements Here</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">
-                                <a href="#" id="btnss">Submit</a>
-                            </td>
-                        </tr>
-                    </tfoot>
-                    
-                    <tr>
-                        <td>Application Letter</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>Accomplished Civil Service Commission Form 212 (CSC Form 212 Revised 2017)</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>Certified Photocopy of your LET Rating</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>Photocopy of your PRC Licence</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>Certified Photocopy of your Transcript of Records</td>
-                    </tr>
-                    <tr>
-                        <td>Photocopy of the Certificate(s) of Specialized Training(s) you attended</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>Certification of Employment/ Service Records/ Performance Rating or Clearances</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                    <tr>
-                        <td>MARL MARL</td>
-                    </tr>
-                    <tr>
-                        <td>Original copy of Certificate of Residency or Voter’s ID or Voter’s Affidavit</td>
-                        <td><input type="file" id="id-file" name="name-file"></td>
-                    </tr>
-                </table>
-                
-                <!-- <div class="row">
-                    <div class="column">
-                        <h3>Job Requirements</h3><br>
-                        <li>Application Letter</li>
-                        <li>Accomplished Civil Service Commission Form 212 (CSC Form 212 Revised 2017)</li>
-                        <li>Certified Photocopy of your LET Rating</li>
-                        <li>Photocopy of your PRC Licence</li>
-                        <li>Certified Photocopy of your Transcript of Records</li>
-                        <li>Photocopy of the Certificate(s) of Specialized Training(s) you attended</li>
-                        <li>Certification of Employment/ Service Records/ Performance Rating or Clearances</li>
-                        <li>Original copy of Certificate of Residency or Voter’s ID or Voter’s Affidavit</li>
-                        <li>PSA/NSO Birth Certificate</li>
-                        <li>Barangay Clearance, Police Clearance, and NBI Clearance</li>
-                        <li>Omnibus Certification of authenticity and Veracity of all documents submitted, signed by the applicant</li>
-                        <li>For Senior High School Applicants</li>
-                        <li>For TVL Teacher-Applicants</li>
-                    </div>
-                    <div class="column2">
-                        <h3>Attach Your Requirements Here</h3><br>
-                        <form id="myForm" method="post">
-                            <div class="field" align="left">
-                                <h5>Upload Files Here</h5>
-                                <input type="file" id="files" name="files[]" multiple/>
-                            </div>
-                            <div class="btnSubmit">
-                                <a href="#">Submit</a>
-                            </div>
-                        </form>
-                    </div>
-                </div> -->
-            </div>
-        </div>
     </div>
 
     <!-- script for Job Requirements Modal -->

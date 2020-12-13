@@ -568,7 +568,7 @@ textarea{
     width: 80%;
     min-height: 100px;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     padding: 20px;
     border-left: 5px solid #933633;
 }
@@ -664,5 +664,35 @@ textarea{
   display: none;
   padding: 6px 12px;
   border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabs {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tabs a {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tabs a:hover {
+  background-color: #ddd;
+}
+
+.tabs a.active {
+  background-color: #ccc;
+}
+
+.tabcontents {
+  display: none;
+  padding: 6px 12px;
   border-top: none;
 }

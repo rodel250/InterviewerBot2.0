@@ -156,17 +156,43 @@ class JobListsView(View):
                     q8 = request.POST.get("qtn8")
                     q9 = request.POST.get("qtn9")
                     q10 = request.POST.get("qtn10")
+                    q11 = request.POST.get("qtn11")
+                    q12 = request.POST.get("qtn12")
+                    q13 = request.POST.get("qtn13")
+                    q14 = request.POST.get("qtn14")
+                    q15 = request.POST.get("qtn15")
+                    q16 = request.POST.get("qtn16")
+                    q17 = request.POST.get("qtn17")
+                    q18 = request.POST.get("qtn18")
+                    q19 = request.POST.get("qtn19")
+                    q20 = request.POST.get("qtn20")
 
-                    r1 = request.POST.get("mytext[]") #E LOOP TINGALI NI DI KO KIBAW
-                    # r1 = request.POST.get("mytext[1]")
-                    # r1 = request.POST.get("mytext[2]")
-                    # r1 = request.POST.get("mytext[3]")
-                    # r1 = request.POST.get("mytext[4]")
+                    r1 = request.POST.get("req1")
+                    r2 = request.POST.get("req2")
+                    r3 = request.POST.get("req3")
+                    r4 = request.POST.get("req4")
+                    r5 = request.POST.get("req5")
+                    r6 = request.POST.get("req6")
+                    r7 = request.POST.get("req7")
+                    r8 = request.POST.get("req8")
+                    r9 = request.POST.get("req9")
+                    r10 = request.POST.get("req10")
+                    r11 = request.POST.get("req11")
+                    r12 = request.POST.get("req12")
+                    r13 = request.POST.get("req13")
+                    r14 = request.POST.get("req14")
+                    r15 = request.POST.get("req15")
 
                     form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                         question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
                         question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
-                        requirement1 = r1, admin_id = currentUser)
+                        question_11 = q11, question_12 = q12, question_13 = q13, question_14 = q14,
+                        question_15 = q15, question_16 = q16, question_17 = q17, question_18 = q18,
+                        question_19 = q19, question_20 = q20, requirement1 = r1, requirement2 = r2,
+                        requirement3 = r3, requirement4 = r4, requirement5 = r5, requirement6 = r6,
+                        requirement7 = r7, requirement8 = r8, requirement9 = r9, requirement10 = r10,
+                        requirement11 = r11, requirement12 = r12, requirement13 = r13, requirement14 = r14,
+                        requirement15 = r15, admin_id = currentUser)
                     form.save()
 
         return redirect('administrator:job-lists_view')
