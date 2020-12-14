@@ -256,16 +256,17 @@ td {
 }
 
 .btnApply {
-    border-color: #FFCC00;
-    padding: 5px 16px;
+    border-color: #933633;
+    background-color: #933633;
+    padding: 10px 20px 10px 20px;
     font-weight: bold;
     font-size: 16px;
-    color: #4D4DFF;
+    color: white;
     border-radius: 8px;
 }
 
 .btnApply:hover {
-    background-color: #4D4DFF;
+    background-color: #781B1B;
     color: white;
 }
 
@@ -273,6 +274,7 @@ td {
     border: none;
     font-size: 16px;
     font-weight: bold;
+    color: black;
     background-color: inherit;
 }
 
@@ -301,12 +303,29 @@ td {
 }
 
 /* ---------- MODAL -------------*/
-.modal {
-   width: 500px;
-   height: 300px;
-   position: absolute;
-   left: 50%;
-   top: 50%; 
-   margin-left: -150px;
-   margin-top: -150px;
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

@@ -5,6 +5,7 @@
 
     <title>Interview BOT - Home</title>
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
@@ -135,10 +136,144 @@
                                 <div class="row jobDescription">{{savedjob.description}}</div>
                             </td>
                             <td width="15%" align="center">
+                                <button type="button" class="btnApply" data-toggle="modal" id="id-btnApply" data-target="#applyJobModal-{{savedjob.job_id}}">Apply</button> 
+                            </td>
+                            <td width="15%" align="center">
                                 <button type="button" class="btnUnsave" data-toggle="modal" data-target="#unsaveModal-{{savedjob.job_id}}"><i class="fa fa-bookmark"></i> UNSAVE</button>
                             </td>
                         </tr>
 
+                        <!---- APPLY MODAL ------->
+                        <div class="modal fade" id="applyJobModal-{{savedjob.job_id}}" tabindex="-1" role="dialog" aria-labelledby="applyJobModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="background-color: #ffcc00;">
+                                        <h5 class="modal-title" id="myLargeModalLabel"><b>{{savedjob.title}}</b></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <form id="applyForm" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                        <div class="row">
+                                            <div class="column left">
+                                                <h5 style="float: left; font-weight: bold; margin-left: 28px;">Job Requirements</h5>
+
+                                                {% for applicant in applicant %}
+                                                <input type="text" name="user-id" value="{{applicant.id}}" hidden>
+                                                {% endfor %}
+                                                <input type="text" name="job-id" value="{{savedjob.id}}" hidden>
+
+                                                <center>
+                                                    {% if savedjob.requirement1 != null %}
+                                                    <input type="text" value="{{savedjob.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement2 != null %}
+                                                    <input type="text" value="{{savedjob.requirement2}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement3 != null %}
+                                                    <input type="text" value="{{savedjob.requirement3}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement4 != null %}
+                                                    <input type="text" value="{{savedjob.requirement4}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement5 != null %}
+                                                    <input type="text" value="{{savedjob.requirement5}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement6 != null %}
+                                                    <input type="text" value="{{savedjob.requirement6}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement7 != null %}
+                                                    <input type="text" value="{{savedjob.requirement7}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement8 != null %}
+                                                    <input type="text" value="{{savedjob.requirement8}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement9 != null %}
+                                                    <input type="text" value="{{savedjob.requirement9}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement10 != null %}
+                                                    <input type="text" value="{{savedjob.requirement10}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement11 != null %}
+                                                    <input type="text" value="{{savedjob.requirement11}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement12 != null %}
+                                                    <input type="text" value="{{savedjob.requirement12}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement13 != null %}
+                                                    <input type="text" value="{{savedjob.requirement13}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement14 != null %}
+                                                    <input type="text" value="{{savedjob.requirement14}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement15 != null %}
+                                                    <input type="text" value="{{savedjob.requirement15}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                    {% endif %}
+                                                </center>
+                                            </div>
+                                            <div class="column right">
+                                                <h5 style="float: left; font-weight: bold;">Attach Files Here</h5>
+                                                <center>
+                                                    {% if savedjob.requirement1 != null %}
+                                                    <input type="file" id="myfile1" name="myfile1" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement2 != null %}
+                                                    <input type="file" id="myfile2" name="myfile2" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement3 != null %}
+                                                    <input type="file" id="myfile3" name="myfile3" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement4 != null %}
+                                                    <input type="file" id="myfile4" name="myfile4" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement5 != null %}
+                                                    <input type="file" id="myfile5" name="myfile5" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement6 != null %}
+                                                    <input type="file" id="myfile6" name="myfile6" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement7 != null %}
+                                                    <input type="file" id="myfile7" name="myfile7" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement8 != null %}
+                                                    <input type="file" id="myfile8" name="myfile8" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement9 != null %}
+                                                    <input type="file" id="myfile9" name="myfile9" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement10 != null %}
+                                                    <input type="file" id="myfile10" name="myfile10" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement11 != null %}
+                                                    <input type="file" id="myfile11" name="myfile11" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement12 != null %}
+                                                    <input type="file" id="myfile12" name="myfile12" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement13 != null %}
+                                                    <input type="file" id="myfile13" name="myfile13" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement14 != null %}
+                                                    <input type="file" id="myfile14" name="myfile14" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                    {% if savedjob.requirement15 != null %}
+                                                    <input type="file" id="myfile15" name="myfile15" style="padding: 2px;" required>
+                                                    {% endif %}
+                                                </center>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="submit" id="btnApply" name="btnApply" class="btn btn-primary">APPLY</button>
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- UNSAVE MODAL -->
                         <div class="modal fade" id="unsaveModal-{{savedjob.job_id}}" tabindex="-1" role="dialog" aria-labelledby="unsaveModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
