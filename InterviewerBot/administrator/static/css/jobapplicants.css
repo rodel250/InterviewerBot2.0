@@ -499,19 +499,11 @@ ul ul a {
 
 .questionnaireTitle{
     width: 80%;
-    height: 195px;
+    height: 190px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     border-top: 5px solid #933633;
-}
-
-.questionnaireTitle select{
-    padding: 8px;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 10px;
-    border-color: #ccc;
 }
 
 .questionnaireTitle select, textarea{
@@ -584,11 +576,9 @@ textarea{
 .contentQuestion input{
     float: left;
     width: 100%;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 10px;
     border-style: none;
-    border: 1px solid #ccc;
+    font-weight: bold;
+    border-bottom-style: groove;
 }
 
 #id-answer{
@@ -646,67 +636,6 @@ textarea{
     cursor: pointer;
 }
 
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-.tab a {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-.tab a:hover {
-  background-color: #ddd;
-}
-
-.tab a.active {
-  background-color: #ccc;
-}
-
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-}
-
-.tabs {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
-}
-
-.tabs a {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-.tabs a:hover {
-  background-color: #ddd;
-}
-
-.tabs a.active {
-  background-color: #ccc;
-}
-
-.tabcontents {
-  display: none;
-  padding: 6px 12px;
-  border-top: none;
-}
-
 .project-tab {
     padding: 10%;
     margin-top: -8%;
@@ -746,3 +675,4 @@ textarea{
     color: #333;
     font-weight: 600;
 }
+
