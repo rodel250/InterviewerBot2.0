@@ -120,8 +120,11 @@
                                         <center>
                                         <header></header>
                                         {% for response in responses %}
-                                        <div class="questionnaireTitle" style="height: 80px;">
+                                        <div class="questionnaireTitle" style="height: 100px;">
                                             <h4>{{response.firstname}}{{response.lastname}}</h4>
+                                            <div class="column-form" style="margin-left: -49%;">
+                                            <a data-target="#viewModal-{{response.user_id}}" data-toggle="modal" href="#viewModal"><i>View Requirements</i></a> 
+                                            </div>
                                         </div>
                                         <div class="questionContainer">
                                             <div class="contentQuestion">
@@ -136,14 +139,28 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- View Modal -->
+                                        <div class="modal fade bd-example-modal-lg" id="viewModal-{{response.user_id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    {{response.requirement_1}}
+                                                </div>
+                                            </div>
+                                            </div>
+
                                         {% endfor %}
+
                                         <footer></footer>
                                         </center>
                                     </div> 
                                 </div>
                             </div>                         
                         </div>
-                       
+
+
+
+                        
             
 
 {% endblock content %}
