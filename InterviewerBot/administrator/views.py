@@ -109,6 +109,50 @@ class DashboardView(View):
             r14 = request.POST.get("req14")
             r15 = request.POST.get("req15")
 
+            if r1 == "":
+                r1 = None
+
+            if r2 == "":
+                r2 = None
+
+            if r3 == "":
+                r3 = None
+
+            if r4 == "":
+                r4 = None
+            if r5 == "":
+                r5 = None
+
+            if r6 == "":
+                r6 = None
+
+            if r7 == "":
+                r7 = None
+
+            if r8 == "":
+                r8 = None
+
+            if r9 == "":
+                r9 = None
+
+            if r10 == "":
+                r10 = None
+
+            if r11 == "":
+                r11 = None
+
+            if r12 == "":
+                r12 = None
+
+            if r13 == "":
+                r13 = None
+
+            if r14 == "":
+                r14 = None
+                
+            if r15 == "":
+                r15 = None
+
             form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                 question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
                 question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
@@ -213,6 +257,50 @@ class JobListsView(View):
                     r13 = request.POST.get("req13")
                     r14 = request.POST.get("req14")
                     r15 = request.POST.get("req15")
+
+                    if r1 == "":
+                        r1 = None
+
+                    if r2 == "":
+                        r2 = None
+
+                    if r3 == "":
+                        r3 = None
+
+                    if r4 == "":
+                        r4 = None
+                    if r5 == "":
+                        r5 = None
+
+                    if r6 == "":
+                        r6 = None
+
+                    if r7 == "":
+                        r7 = None
+
+                    if r8 == "":
+                        r8 = None
+
+                    if r9 == "":
+                        r9 = None
+
+                    if r10 == "":
+                        r10 = None
+
+                    if r11 == "":
+                        r11 = None
+
+                    if r12 == "":
+                        r12 = None
+
+                    if r13 == "":
+                        r13 = None
+
+                    if r14 == "":
+                        r14 = None
+                        
+                    if r15 == "":
+                        r15 = None
 
                     form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                         question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,

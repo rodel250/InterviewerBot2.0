@@ -301,21 +301,11 @@ class JobOffersView(View):
 
 				if count < 5:
 					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id)
-					return redirect('user:job-offers_view')
-			# elif 'btnSearch' in request.POST:
-			# 	searchData = request.POST.get("search")
-			# 	searchData = searchData.split()
-			# 	print(searchData)
-			# 	joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.title = %s AND createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)', [searchData])
-
-			# 	context = {
-			# 		'joblists': joblists,
-			# 	}
-
-			# 	return render(request, 'jobOffers.html', context)
-
-		return HttpResponse('You can only save at most 5 job offerings.')
-
+				else:
+					Mbox('Email address is already taken.', 'Error', 16)
+				return redirect('user:job-offers_view')
+			# elif 'btnApply' in request.POST:
+				
 class LogOutView(View):
 	def get(self, request):
 		return render(request, 'LogOut.html')
