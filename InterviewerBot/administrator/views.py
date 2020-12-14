@@ -253,8 +253,6 @@ class JobListsView(View):
             'joblists': page,
             'pages':array,
             'page_number':int(page_number),
-            
-
         }
 
         return render(request, 'adminjoblist.html', context)

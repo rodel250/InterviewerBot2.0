@@ -36,12 +36,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-    
-    
-
-
-
-
 {% endblock footerinclude %}
 
 
@@ -67,9 +61,9 @@
   <form id="response" method="POST" autocomplete="off" enctype="multipart/form-data" style="margin-bottom: 0px;">
     {% csrf_token %}
     <div class="message-box">
-      <input type="text" class="message-input" id="message" name="message" placeholder="Type a answer..."></input>
+      <input type="text" class="message-input" id="message" name="message" placeholder="Type your answer here..."></input>
       <button name="mic" id="id-mic"><i id="fa-mic" class="fa fa-microphone"></i></button>
-          <button class="message-submit sound-on-click" type="submit" name="send" id="send"><i id="fa-send" class="fa fa-send-o"> Send</i></button>
+          <button class="message-submit sound-on-click" type="button" name="send" id="send"><i id="fa-send" class="fa fa-send-o"> Send</i></button>
     </div>
   </form>
   
@@ -79,24 +73,27 @@
 <div class="bg"></div>
 
 <!-- Modal -->
-<div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Congratulations! </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Your interview is done.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Leave</button>
+<form id="formLeave" method="POST">
+  {% csrf_token %}
+  <div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Congratulations! </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Your interview is done.
+        </div>
+        <div class="modal-footer">
+          <button type="submit" id="btnLeave" name="btnLeave" class="btn btn-primary">Leave</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 
 <script type="text/javascript">
 var $messages = $('.messages-content'),
@@ -168,71 +165,71 @@ var bot = [
     '{{job.question_3}}',
   {% endif %}
 
-  {% if question_4 != null %}
+  {% if job.question_4 != null %}
     '{{job.question_4}}',
   {% endif %}
 
-  {% if question_5 != null %}
+  {% if job.question_5 != null %}
     '{{job.question_5}}',
   {% endif %}
 
-  {% if question_6 != null %}
+  {% if job.question_6 != null %}
     '{{job.question_6}}',
   {% endif %}
 
-  {% if question_7 != null %}
+  {% if job.question_7 != null %}
     '{{job.question_7}}',
   {% endif %}
 
-  {% if question_8 != null %}
+  {% if job.question_8 != null %}
     '{{job.question_8}}',
   {% endif %}
 
-  {% if question_9 != null %}
+  {% if job.question_9 != null %}
     '{{job.question_9}}',
   {% endif %}
 
-  {% if question_10 != null %}
+  {% if job.question_10 != null %}
     '{{job.question_10}}',
   {% endif %}
 
-  {% if question_11 != null %}
+  {% if job.question_11 != null %}
     '{{job.question_11}}',
   {% endif %}
 
-  {% if question_12 != null %}
+  {% if job.question_12 != null %}
     '{{job.question_12}}',
   {% endif %}
 
-  {% if question_13 != null %}
+  {% if job.question_13 != null %}
     '{{job.question_13}}',
   {% endif %}
 
-  {% if question_14 != null %}
+  {% if job.question_14 != null %}
     '{{job.question_14}}',
   {% endif %}
 
-  {% if question_15 != null %}
+  {% if job.question_15 != null %}
     '{{job.question_15}}',
   {% endif %}
 
-  {% if question_16 != null %}
+  {% if job.question_16 != null %}
     '{{job.question_16}}',
   {% endif %}
 
-  {% if question_17 != null %}
+  {% if job.question_17 != null %}
     '{{job.question_17}}',
   {% endif %}
 
-  {% if question_18 != null %}
+  {% if job.question_18 != null %}
     '{{job.question_18}}',
   {% endif %}
 
-  {% if question_19 != null %}
+  {% if job.question_19 != null %}
     '{{job.question_19}}',
   {% endif %}
 
-  {% if question_20 != null %}
+  {% if job.question_20 != null %}
     '{{job.question_20}}',
   {% endif %}
 

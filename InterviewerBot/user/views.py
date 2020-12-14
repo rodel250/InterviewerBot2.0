@@ -148,7 +148,6 @@ class UserIndexView(View):
 						# Mbox('WELCOME '+administrator.firstname, 'Success', 64)
 						return redirect('administrator:dashboard_view')
 
-		# Mbox('Email address or password is inccorect', 'Error', 16)
 		messages.error(request,'email address or password is incorrect')
 		return render(request, 'UserLog-inPage.html', {'form':form})
 
@@ -230,19 +229,20 @@ class JobInterviewView(View):
 		return render(request, 'jobOffer_Interview.html', context)
 	
 	def post(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		# currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		if request.method == 'POST':
-			print("press")
-				# response = request.POST.get("message")
+			if 'btnLeave' in request.POST:
+				print("press")
+				return redirect("user:home_view")
+			# print("press")
+			# response = request.POST.get("message")
 				
-
 				# save = AppliedJob(user_id = currentUser, job_id = 1, response_1 = response , response_2 = "test", response_3 = "test", 
 				# response_4 = "test", response_5 = "test", response_6 = "test", response_7 = "test", response_8 = "test", response_9 = "test", 
 				# response_10 = "test", requirement_1 = "test", requirement_2 = "test", requirement_3 = "test", requirement_4 = "test", requirement_5 = "test", requirement_6 = "test", 
 				# requirement_7 = "test", requirement_8 = "test", requirement_9 = "test", requirement_10 = "test",  )
 
 		return redirect('user:job-interview_view')
-
 
 class SettingsView(View):
 	def get(self, request):
