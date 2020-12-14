@@ -253,17 +253,28 @@ function toogleDataSeries(e){
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
-                        <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab" class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                        <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab1" class="tab-modal" style="font-weight: bold;">Questions</a></li>
                         <li><a data-toggle="tab" id="id-btnRequirements" href="#requirementsTab" class="tab-modal" style="font-weight: bold;">Requirements</a></li>
-                        <li><a data-toggle="tab" href="#responsesTab" class="tab-modal" style="font-weight: bold;">Responses</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div id="questionsTab" class="tab-pane fade in active">
+                        <div id="questionsTab1" class="tab-pane fade in active">
                             <center>
                             <header></header>
                             <div class="questionnaireTitle">
-                                <input type="text" name="name-title" id="id-title" style="float: left; border: none;" placeholder="Job title" required>
-                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
+                                <select name="name-title" id="id-title" required>
+                                    <option style="display: none;">---Please select a job---</option>
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Office Staff">Office Staff</option>
+                                    <option value="Guidance Counselor">Guidance Counselor</option>
+                                    <option value="School Social Worker">School Social Worker</option>
+                                    <option value="School Nurse">School Nurse</option>
+                                    <option value="Librarian">Librarian</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                    <option value="Custodial">Custodial</option>
+                                    <option value="Food Service">Food Service</option>
+                                    <option value="Transportation">Transportation</option>
+                                </select>
+                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description" required></textarea>
                             </div>
                             <div class="questionContainer">
                                 <div class="tabs" style="width: 80%; border-left: 5px solid #933633; border-radius: 10px 10px 0 0;">
@@ -319,7 +330,7 @@ function toogleDataSeries(e){
                             <footer></footer>
                             </center>
                         </div>
-                        <div id="requirementsTab" class="tab-pane fade">
+                        <div id="requirementsTab" class="tab-pane fade" style="padding: 20px;">
                             <center>
                             <div class="tab">
                                 <a class="tablinks" onclick="numberRequirement(event, 'fiveReq')" id="defaultOpen">5 REQUIREMENTS</a>
@@ -329,45 +340,41 @@ function toogleDataSeries(e){
                             <div id="fiveReq" class="tabcontent">
                                     <input type="text" name="req1" id="id-req1" class="step" placeholder="Requirement 1" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
 
-                                    <input type="text" name="req2" id="id-req2" class="step" placeholder="Requirement 2" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req2" id="id-req2" class="step" placeholder="Requirement 2" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req3" id="id-req3" class="step" placeholder="Requirement 3" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req3" id="id-req3" class="step" placeholder="Requirement 3" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req4" id="id-req4" class="step" placeholder="Requirement 4" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req4" id="id-req4" class="step" placeholder="Requirement 4" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req5" id="id-req5" class="step" placeholder="Requirement 5" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req5" id="id-req5" class="step" placeholder="Requirement 5" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
                                 </div>
 
                                 <!-- TEN REQUIREMENTS -->
                                 <div id="tenReq" class="tabcontent">
-                                    <input type="text" name="req6" id="id-req6" class="step" placeholder="Requirement 6" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req6" id="id-req6" class="step" placeholder="Requirement 6" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req7" id="id-req7" class="step" placeholder="Requirement 7" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req7" id="id-req7" class="step" placeholder="Requirement 7" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req8" id="id-req8" class="step" placeholder="Requirement 8" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req8" id="id-req8" class="step" placeholder="Requirement 8" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req9" id="id-req9" class="step" placeholder="Requirement 9" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req9" id="id-req9" class="step" placeholder="Requirement 9" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req10" id="id-req10" class="step" placeholder="Requirement 10" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req10" id="id-req10" class="step" placeholder="Requirement 10" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
                                 </div>
 
                                 <!-- FIFTEEN REQUIREMENTS -->
                                 <div id="fifteenReq" class="tabcontent">
-                                    <input type="text" name="req11" id="id-req11" class="step" placeholder="Requirement 11" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req11" id="id-req11" class="step" placeholder="Requirement 11" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req12" id="id-req12" class="step" placeholder="Requirement 12" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req12" id="id-req12" class="step" placeholder="Requirement 12" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req13" id="id-req13" class="step" placeholder="Requirement 13" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req13" id="id-req13" class="step" placeholder="Requirement 13" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req14" id="id-req14" class="step" placeholder="Requirement 14" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req14" id="id-req14" class="step" placeholder="Requirement 14" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
 
-                                    <input type="text" name="req15" id="id-req15" class="step" placeholder="Requirement 15" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    <input type="text" name="req15" id="id-req15" class="step" placeholder="Requirement 15" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;" disabled>
                                     </div>
                                 </center>
-                        </div>
-                        <div id="responsesTab" class="tab-pane fade">
-                            <h3>Response Tab</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </div>
                 </div>
@@ -436,6 +443,7 @@ function toogleDataSeries(e){
         document.getElementById("defaultOpen").click();
     </script>
 
+    <!-- SHOW QUESTION BUTTONS -->
     <script type="text/javascript">
         function numberQuestion(evt, number) {
           // Declare all variables
@@ -460,5 +468,39 @@ function toogleDataSeries(e){
 
         document.getElementById("defaultQuestionOpen").click();
     </script>
+
+    <script type="text/javascript">
+        $('.step').change(function() {
+            var next_step = $(this).next('.step');
+            var all_next_steps = $(this).nextAll('.step');
+            // If the element *has* a value
+            if ($(this).val()) {
+                // Should also perform validation here
+                next_step.attr('disabled', false);
+            }
+            // If the element doesn't have a value
+            else {
+                // Clear the value of all next steps and disable
+                all_next_steps.val('');
+                all_next_steps.attr('disabled', true);
+            }
+        });
+
+        $('.step').keydown(function(event) {
+            // If they pressed tab AND the input has a (valid) value
+            if ($(this).val() && event.keyCode == 9) {
+                $(this).next('.step').attr('disabled', false);
+            }
+        });
+    </script>
+
+<!--     <script type="text/javascript">
+        var lastQuestion5 = document.getElementById("id-req1").value;
+        if(!lastQuestion5){
+            document.getElementById("id-req5").disabled = true;
+        }else{
+            document.getElementById("id-req5").disabled = false;
+        }
+    </script> -->
 
 {% endblock content %}
