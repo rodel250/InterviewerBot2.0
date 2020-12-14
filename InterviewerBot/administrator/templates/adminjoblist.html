@@ -108,20 +108,31 @@
         <div class="cont">
             {% for joblist in joblists %}
             <div class="content-form">
+                <form id="test" method="POST">
+                    {% csrf_token %}
                 <div class="row">
                     <div class="column-form">
-                        <header>{{joblist.title}}</header>
+                        <header>{{joblist.title}} 
+                            <div hidden>
+                                <input type="text" id="jobID1" name="jobID1" value="{{joblist.id}}">
+                            </div>
+                        </header>
                         <textarea style="background-color:#E5E5E5;" readonly>{{joblist.description}}</textarea>
-                            <a href="#viewResponse">Responses</a>
+                            <a data-target="#viewResponseModal-{{joblist.id}}" id="viewResponse" name="viewResponse" data-toggle="modal" href="#viewResponseModal">Responses</a>
                             <a data-target="#updateModal-{{joblist.id}}" data-toggle="modal" href="#updateModal">Update</a>
                             <a data-target="#deleteModal-{{joblist.id}}" data-toggle="modal" href="#deleteModal">Delete</a>
-                            <a data-target="#viewModal-{{joblist.id}}" data-toggle="modal" href="#viewModal">View</a>
+                            <a data-target="#viewModal-{{joblist.id}}" data-toggle="modal" href="#viewModal">View</a>             
                     </div>
                     <div class="column-status">
-                        <a href="#">Applied: TBA</a><br>
-                        <a href="#">Status: Pending</a>     
+                        <br><br>
+                        
+                        <a href="#">Applied: {{count}}</a><br>
+                        <a href="#">Status: Pending</a><br>
+                        
+                        <button type="submit" class="citButton" id="viewApplicant" name="viewApplicant" style="margin-top: 30px;font-size: smaller;">View Applicants</button>
                     </div>
-                </div>
+                </div>        
+                </form>
             </div>
 
             <!-- View Modal -->
@@ -198,6 +209,66 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Response Modal
+            <div class="modal" id="viewResponseModal-{{joblist.id}}">
+                <div class="createJob-content">
+                    
+                        <div class="containerColor">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                    
+                            <div class="modalHeader">
+                                <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
+                                <a class="questionTitle">Job Responses </a>
+                                <div >
+                                    <input type="text" id="jobID" name="jobID" value="{{joblist.id}}">
+                                </div>
+                                <img src="{% static '/images/circle.png' %}" class="imgProfile">
+                                <a href="#"><img src="{% static '/images/ellipsis.png' %}" class="imgEllipsis"></a>
+                            </div>
+                            <div class="container">
+                                <ul class="nav nav-tabs" style="margin-left: 35%;">
+                                    <li><a data-toggle="tab" href="#questionsTab" id=questionsTab-ID class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                                    <li><a data-toggle="tab" href="#applicantTab" class="tab-modal" style="font-weight: bold;">Applicant</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div id="questionsTab" class="tab-pane in active">
+                                        <center>
+                                        <header></header>
+                                        <div class="questionnaireTitle" style="height: 80px;">
+                                            <h4>{{joblist.title}}</h4>
+                                        </div>
+                                        <div class="questionContainer">
+                                            <div class="contentQuestion">
+                                                <div class="input_fields_wrap2">
+                                                <input type="text" name="qtn1" id="id-question1" placeholder="{{joblist.question_1}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn2" id="id-question2" placeholder="{{joblist.question_2}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn3" id="id-question3" placeholder="{{joblist.question_3}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn4" id="id-question4" placeholder="{{joblist.question_4}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn5" id="id-question5" placeholder="{{joblist.question_5}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn6" id="id-question6" placeholder="{{joblist.question_6}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn7" id="id-question7" placeholder="{{joblist.question_7}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn8" id="id-question8" placeholder="{{joblist.question_8}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn9" id="id-question9" placeholder="{{joblist.question_9}}" disabled> &nbsp;<br>
+                                                <input type="text" name="qtn10" id="id-question10" placeholder="{{joblist.question_10}}" disabled> &nbsp;<br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <footer></footer>
+                                        </center>
+                                    </div> 
+                                    <div id="applicantTab" class="tab-pane fade">
+                                        <center><h3>Applicants</h3></center>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                        </div>
+                </div>
+            </div> -->
             {% endfor %}
         </div>
                 <nav aria-label="Page navigation example" id="paginate-align">
@@ -250,16 +321,19 @@
                 </div>
                 <div class="container">
                     <ul class="nav nav-tabs">
-                        <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab" class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                        <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab1" class="tab-modal" style="font-weight: bold;">Questions</a></li>
                         <li><a data-toggle="tab" id="id-btnRequirements" href="#requirementsTab" class="tab-modal" style="font-weight: bold;">Requirements</a></li>
                         <li><a data-toggle="tab" href="#responsesTab" class="tab-modal" style="font-weight: bold;">Responses</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div id="questionsTab" class="tab-pane fade in active">
+                        <div id="questionsTab1" class="tab-pane fade in active">
                             <center>
                             <header></header>
                             <div class="questionnaireTitle">
-                                <input type="text" name="name-title" id="id-title" style="float: left; border: none;" placeholder="Job title" required>
+                                <select name="name-title" id="id-title" placeholder="Select Option">
+                                    <option value="Janitor">Janitor</option>
+                                    <option value="Teacher">Teacher</option>
+                                </select>
                                 <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
                             </div>
                             <div class="questionContainer">
@@ -373,6 +447,8 @@
         </div>
     </div>
 
+    
+
     <!-- script for Create Job MOdal -->
     <script type="text/javascript">
         var modal = document.getElementById("createJobModal");
@@ -395,6 +471,13 @@
     <script type="text/javascript">
         $('#id-btnCreateJob').click(function(){
             $("#id-btnQuestion").click();
+        })
+    </script>
+
+    <!-- AUTOMATIC CLICK QUESTIONS TAB IN MODAL -->
+    <script type="text/javascript">
+        $('#viewResponse').click(function(){
+            $('#questionsTab-ID').click();
         })
     </script>
 

@@ -8,6 +8,8 @@ from django.http import HttpResponse
 from .forms import *
 from .models import *
 from user.models import Login
+from user.models import AppliedJob
+from user.models import Applicant
 from django.core.files.storage import default_storage
 from django.core.paginator import Paginator
 from django.core.mail import send_mail
@@ -63,7 +65,9 @@ class DashboardView(View):
         return render(request, 'admindashboard.html', context)
 
     def post(self, request):
+        currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         form = CreateJobForm(request.POST)
+        joblist = CreateJob.objects.filter(admin_id = currentUser)
 
         if form.is_valid():
             jobTitle = request.POST.get("name-title")
@@ -109,11 +113,12 @@ class DashboardView(View):
             print(form.errors)
             return HttpResponse('not valid')
 
-class JobListsView(View):
+class JobListsView(View):      
     def get(self, request):
         currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
         administrator = Administrator.objects.filter(id = currentUser)
         joblist = CreateJob.objects.filter(admin_id = currentUser)
+        # count = AppliedJob.objects.filter
         
 
         p = Paginator(joblist,2)
@@ -131,7 +136,8 @@ class JobListsView(View):
             'administrator': administrator,
             'joblists': page,
             'pages':array,
-            'page_number':int(page_number)
+            'page_number':int(page_number),
+            
 
         }
 
@@ -144,15 +150,16 @@ class JobListsView(View):
         form = CreateJobForm(request.POST)
         if request.method == 'POST':
             if 'btnDelete' in request.POST:
-                print("press")
                 jobID1 = request.POST.get("jobID")
                 job = CreateJob.objects.filter(id=jobID1).delete()
+                return redirect('administrator:job-lists_view')
             
             elif 'btnUpdate' in request.POST:
                 jobID1 = request.POST.get("jobID")
                 jobDesription1 = request.POST.get("jobDescription")
                 jobHeader1 = request.POST.get("jobHeader")
                 job = CreateJob.objects.filter(id=jobID1).update(description = jobDesription1, title= jobHeader1)
+                return redirect('administrator:job-lists_view')
             
             elif 'btnAdd' in request.POST:
                 if form.is_valid():
@@ -205,8 +212,17 @@ class JobListsView(View):
                         requirement11 = r11, requirement12 = r12, requirement13 = r13, requirement14 = r14,
                         requirement15 = r15, admin_id = currentUser)
                     form.save()
+                    return redirect('administrator:job-lists_view')
 
-        return redirect('administrator:job-lists_view')
+            elif 'viewApplicant' in request.POST:
+                jobID1 = request.POST.get("jobID1")
+                currentJob3 = currentJob.objects.filter(pk=1).update(jobID = jobID1)
+                currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)           
+                # print(jobID1)
+                return redirect('administrator:applicants_view')
+
+        
+        
         # else:
         #     print(form.errors)
         #     return HttpResponse('not valid')
@@ -292,6 +308,34 @@ class SettingsView(View):
             Mbox('Profile Update Successful', 'Success', 64)
 
         return redirect('administrator:settings_view')
+
+class Applicants(View):
+    def get(self,request):
+        currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)    
+        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
+        joblist = CreateJob.objects.filter(id = currentJob1)
+        applicant = Applicant.objects.raw('SELECT DISTINCT applicant.id,firstname,lastname FROM applicant,createjob,appliedjob WHERE appliedjob.job_id =' + str(currentJob1) +' AND applicant.id = appliedjob.user_id')
+        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1)+' GROUP BY applicant.firstname')
+        context = {
+            'joblists': joblist,
+            'applicants': applicant,
+            'responses': response
+            
+        }
+
+        return render(request, 'jobApplicants.html', context)
+
+    def post(self,request):
+        if request.method == 'POST':
+                    if 'btnView' in request.POST:
+                        applicantID1 = request.POST.get("applicantID")
+                        print(applicantID1)
+                        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
+                        currentApplicant2 = currentApplicant.objects.filter(pk=1).update(applicantID = applicantID1)
+                        return redirect('administrator:applicants_view')
+                        
+
+        return HttpResponse()
 
 class LogOutView(View):
     def get(self, request):
