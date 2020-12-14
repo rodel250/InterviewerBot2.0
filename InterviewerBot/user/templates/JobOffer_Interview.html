@@ -105,7 +105,7 @@ var $messages = $('.messages-content'),
 $(window).load(function() {
   $messages.mCustomScrollbar();
   setTimeout(function() {
-    fakeMessage();
+    botMessage();
   }, 100);
 });
 
@@ -136,7 +136,7 @@ function insertMessage() {
   $('.message-input').val(null);
   updateScrollbar();
   setTimeout(function() {
-    fakeMessage();
+    botMessage();
   }, 1000 + (Math.random() * 20) * 100);
 }
 
@@ -152,14 +152,32 @@ $(window).on('keydown', function(e) {
   }
 })
 
-var Fake = [
+var bot = [
   'Hi CIT-Interviewerbot at your service ',
   'Tell me about yourself',
+  'Tell me about your work experience',
+  'How do you describe yourself?',
+  'Describe your dream job',
+  'Why do you want this job?',
   'Why do you want to work at this Company?',
+  'what are your biggest strengths?',
+  'what is your leadership style?',
+  'what do you consider to be your biggest achievement?',
+  'What are your biggest weaknesses?',
+  'How do you prioritize your work?',
+  'How do you handle stress?',
+  'What are you Passionate about?',
+  'What motivates you?',
+  'Where do you see yourself in five years?',
+  'What makes you unique?',
+  'What can we expect from you in your first three months?',
+  'What was your salary in your last job?',
+  'What is your salary range expectation?',
+  'Out of all the applicants, why should we Hire you?',
   'Thank you for answering our questions. We will contact you through your gmail.'
 ]
 
-function fakeMessage() {
+function botMessage() {
   if ($('.message-input').val() != '') {
     return false;
   }
@@ -172,12 +190,12 @@ function fakeMessage() {
     setDate();
     updateScrollbar();
     i++;
-    $test = Fake[i];
-    if(Fake[i-1] != 'Thank you for answering our questions. We will contact you through your gmail.'){
+    $test = bot[i];
+    if(bot[i-1] != 'Thank you for answering our questions. We will contact you through your gmail.'){
       $('#message').attr('disabled', false);
     }
   }, 1000 + (Math.random() * 20) * 100);
-  if(Fake[i] == 'Thank you for answering our questions. We will contact you through your gmail.'){
+  if(bot[i] == 'Thank you for answering our questions. We will contact you through your gmail.'){
       $('#exitModal').modal('show')  
   }
 

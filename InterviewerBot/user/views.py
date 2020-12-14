@@ -1,4 +1,5 @@
 import ctypes
+import base64
 from tkinter import messagebox as tkMessageBox
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView
@@ -11,78 +12,140 @@ from administrator.models import CreateJob
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
+from django.contrib import messages
 
 # Create your views here.
 
 def Mbox(title, text, style):
-	return ctypes.windll.user32.MessageBoxW(0, title, text, style)
+	sty=int(style)+4096
+	return ctypes.windll.user32.MessageBoxW(0, title, text, sty)
 
-def password_check(password):
-	specialSymbols = ['$', '*', '#', '@', '%', '!', '^', '&']
+def encrypt_password(password):
+	password_bytes = password.encode('ascii')
+	base64_bytes = base64.b64encode(password_bytes)
+	password = base64_bytes.decode('ascii')
+
+	return password
+
+def password_check(password, request):
+	specialSymbols = ['$', '*', '#', '@', '!', '&', '.']
 	val = True
 
-	if len(password) < 6: 
-		Mbox('length should be at least 6', 'Error', 16) 
+	if len(password) < 6 or len(password) > 20:
+		messages.error(request,'Password should be at least 6 and not greater than 20 characters')
 		val = False
-
-	if len(password) > 20:
-		Mbox('length should be not be greater than 8', 'Error', 16) 
-		val = False  
-
+	
 	if not any(char.isdigit() for char in password): 
-		Mbox('Password should have at least one numeral', 'Error', 16) 
+		messages.error(request,'Password should have at least one numeral')
 		val = False
-
+	
 	if not any(char.isupper() for char in password): 
-		Mbox('Password should have at least one uppercase letter', 'Error', 16) 
+		messages.error(request,'Password should have at least one uppercase letter')
 		val = False
-
+					
 	if not any(char.islower() for char in password): 
-		Mbox('Password should have at least one lowercase letter', 'Error', 16) 
+		messages.error(request,'Password should have at least one lowercase letter')
 		val = False
-
+	
 	if not any(char in specialSymbols for char in password): 
-		Mbox('Password should have at least one of the symbols $@#*@%!^&', 'Error', 16) 
+		messages.error(request,'Password should have at least one of the symbols $#*!&@.')
 		val = False
 
 	if val:
 		return val
+
+class UserRegistrationView(View):
+	def get(self, request):
+		return render(request, 'RegistrationPage.html')
+
+	def post(self, request):
+		if request.method == 'POST':
+			form = ApplicantForm(request.POST)
+			form.first = request.POST.get("firstName")
+			form.last = request.POST.get("lastName")
+			form.phone = request.POST.get("phone")
+			form.passwd = request.POST.get("pass")
+			form.gender = request.POST.get("gender")
+			form.email = request.POST.get("email")
+
+			applicants = Applicant.objects.all()
+			count = 0
+
+			for applicant in applicants:
+				if(applicant.emailAddress == form.email):
+					count = 1
+
+			if (count == 0):
+				if password_check(form.passwd, request):
+					if(form.is_valid()):
+						firstname = request.POST.get("firstName")
+						lastname = request.POST.get("lastName")
+						phone = request.POST.get("phone")
+						password = request.POST.get("pass")
+						gender = request.POST.get("gender")
+						emailAddress = request.POST.get("email")
+						email = emailAddress
+
+						password = encrypt_password(password)
+
+						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
+						form.save()
+
+						send_mail(
+						    'Your Registration was Successful.',
+						    'Thank you for registering! You may login now using your newly created account.',
+						    'email',
+						    [email],
+						    fail_silently=False,
+						)
+
+						Mbox('Successfully Registered', 'Success', 64)
+						return redirect('user:login_view')
+			else:
+				Mbox('Email address is already taken.', 'Error', 16)
+		
+		return render(request, 'RegistrationPage.html', {'form':form})
 
 class UserIndexView(View):
 	def get(self, request):
 		return render(request, 'UserLog-inPage.html')
 
 	def post(self, request):
-		email = request.POST.get("emailAdd")
-		password = request.POST.get("pass")
-		applicants = Applicant.objects.all()
-		administrators = Administrator.objects.all()
-		form = LoginForm(request.POST)
+		if request.method == 'POST':
+			form = LoginForm(request.POST)
+			form.email = request.POST.get("emailAdd")
+			email = request.POST.get("emailAdd")
+			password = request.POST.get("pass")
+			applicants = Applicant.objects.all()
+			administrators = Administrator.objects.all()
 
-		for applicant in applicants:
-			if(applicant.emailAddress == email and applicant.password == password):
-				if(form.is_valid()):
-					form = Login.objects.get(id=1)
-					form.user_id = applicant.id
-					form.emailAddress = email
-					form.password = password
-					form.save()
-					Mbox('WELCOME '+applicant.firstname, 'Success', 64)
-				return redirect('user:home_view')
+			password = encrypt_password(password)
 
-		for administrator in administrators:
-			if (administrator.emailAddress == email and administrator.password == password):
-				if (form.is_valid()):
-					form = Login.objects.get(id=1)
-					form.user_id = administrator.id
-					form.emailAddress = email
-					form.password = password
-					form.save()
-					Mbox('WELCOME '+administrator.firstname, 'Success', 64)
-				return redirect('administrator:dashboard_view')
+			for applicant in applicants:
+				if(applicant.emailAddress == email and applicant.password == password):
+					if(form.is_valid()):
+						form = Login.objects.get(id=1)
+						form.user_id = applicant.id
+						form.emailAddress = email
+						form.password = password
+						form.save()
+						# Mbox('WELCOME '+applicant.firstname, 'Success', 64)
+						return redirect('user:home_view')
+			
+			for administrator in administrators:
+				if (administrator.emailAddress == email and administrator.password == password):
+					if (form.is_valid()):
+						form = Login.objects.get(id=1)
+						form.user_id = administrator.id
+						form.emailAddress = email
+						form.password = password
+						form.save()
+						# Mbox('WELCOME '+administrator.firstname, 'Success', 64)
+						return redirect('administrator:dashboard_view')
 
-		Mbox('Email address or password is inccorect', 'Error', 16)
-		return redirect('user:login_view')
+		# Mbox('Email address or password is inccorect', 'Error', 16)
+		messages.error(request,'email address or password is incorrect')
+		return render(request, 'UserLog-inPage.html', {'form':form})
 
 class AboutUsView(View):
 	def get(self, request):
@@ -112,7 +175,11 @@ class ContactUsView(View):
 			email = request.POST.get("email")
 			subject = request.POST.get("subject")
 			message = request.POST.get("message")
-			send_mail(subject,message,email,['interviewbot.cit@gmail.com',email])
+
+			form = Contact(email = email, subject = subject, message = message)
+			form.save()
+
+			send_mail(subject,message,email,['interviewbot.cit@gmail.com'])
 
 			return redirect('user:mailsent_view')
 
@@ -123,11 +190,13 @@ class HomePageView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs WHERE currentuser.user_id = savedjobs.user_id')
+		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs, createjob WHERE currentuser.user_id = savedjobs.user_id AND createjob.id = savedjobs.job_id')
+		appliedjobs = AppliedJob.objects.raw('SELECT * FROM currentuser, appliedjob, createjob WHERE currentuser.user_id = appliedjob.user_id AND createjob.id = appliedjob.job_id')
 
 		context = {
 			'applicant': applicant,
 			'savedjobs': savedjobs,
+			'appliedjobs': appliedjobs
 		}
 
 		return render(request, 'homePage.html', context)
@@ -181,55 +250,23 @@ class SettingsView(View):
 		phone = request.POST.get("phone")
 		password = request.POST.get("password")
 
-		if password_check(password):
+		if password == "":
+			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
+				lastname = lastName, phone = phone)
+			Mbox('Profile Update Successful', 'Success', 64)
+		elif password_check(password, request):
+			password = encrypt_password(password)
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
 			Mbox('Profile Update Successful', 'Success', 64)
 
 		return redirect('user:settings_view')
 
-class UserRegistrationView(View):
-	def get(self, request):
-		return render(request, 'RegistrationPage.html')
-
-	def post(self, request):
-		count = 0
-		form = ApplicantForm(request.POST)
-		applicants = Applicant.objects.all()
-		emailAdd = request.POST.get("email")
-
-		for applicant in applicants:
-			if(applicant.emailAddress == emailAdd):
-				count = 1
-
-		if (count == 0):
-			if(form.is_valid()):
-				fname = request.POST.get("first")
-				lname = request.POST.get("last")
-				phone = request.POST.get("phone")
-				password = request.POST.get("pass")
-				gender = request.POST.get("gender")
-				emailAdd = request.POST.get("email")
-				
-				if password_check(password):
-					form = Applicant(firstname = fname, lastname = lname, phone = phone, password = password, gender = gender, 
-											emailAddress = emailAdd)
-					form.save()
-					Mbox('Successfully Registered', 'Success', 64)
-
-					return redirect('user:login_view')
-		else:
-			print(form.errors)
-			return HttpResponse('Email address is already used.')
-		
-		Mbox('Registration failed', 'Error', 16) 
-		return redirect('user:registration_view')
-
 class JobOffersView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
 		applicant = Applicant.objects.filter(id = currentUser)
-		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id)')
+		joblists = CreateJob.objects.raw('SELECT createjob.id, createjob.title, createjob.description FROM createjob WHERE createjob.id NOT IN (SELECT savedjobs.job_id FROM savedjobs, currentuser WHERE currentuser.user_id = savedjobs.user_id UNION ALL SELECT appliedjob.job_id FROM appliedjob, currentuser WHERE appliedjob.user_id = currentuser.user_id)')
 
 		# p = Paginator(joblists,3)
 		# page_number = request.GET.get('page',1)
@@ -256,8 +293,6 @@ class JobOffersView(View):
 				count = 0
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
-				job_title = request.POST.get("job-header")
-				job_description = request.POST.get("job-description")
 
 				saved_jobs = SavedJobs.objects.all()
 
@@ -265,7 +300,7 @@ class JobOffersView(View):
 					count = count + 1
 
 				if count < 5:
-					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id, job_header = job_title, job_description = job_description)
+					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id)
 					return redirect('user:job-offers_view')
 			# elif 'btnSearch' in request.POST:
 			# 	searchData = request.POST.get("search")

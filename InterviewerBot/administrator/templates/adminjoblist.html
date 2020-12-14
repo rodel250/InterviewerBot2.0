@@ -67,7 +67,7 @@
                             <a href="{% url 'administrator:settings_view' %}"><i class="fas fa-cog"></i>&nbsp;&nbsp; Settings</a>
                         </li>
                         <li>
-                            <a href="{% url 'user:login_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
+                            <a href="{% url 'user:logout_view' %}"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp; Logout</a>
                         </li>
                     </ul>
                 </li>
@@ -337,6 +337,12 @@
                                 <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
                             </div>
                             <div class="questionContainer">
+                                <div class="tabs" style="width: 80%; border-left: 5px solid #933633; border-radius: 10px 10px 0 0;">
+                                    <a class="tablink" onclick="numberQuestion(event, 'fiveQuest')" id="defaultQuestionOpen">5 QUESTIONS</a>
+                                    <a class="tablink" onclick="numberQuestion(event, 'tenQuest')">10 QUESTIONS</a>
+                                    <a class="tablink" onclick="numberQuestion(event, 'fifteenQuest')">15 QUESTIONS</a>
+                                    <a class="tablink" onclick="numberQuestion(event, 'twentyQuest')">20 QUESTIONS</a>
+                                </div>
                                 <!-- <div class="tools">
                                     <a href="#" class="add_field_button2" id="btn-plus"><img src="{% static '/images/plus.png' %}" class="imgPlus"></a>
                                     <a href="#"><img src="{% static '/images/forward.png' %}" class="imgForward"></a>
@@ -347,16 +353,37 @@
                                 </div> -->
                                 <div class="contentQuestion">
                                     <div class="input_fields_wrap2">
-                                    <input type="text" name="qtn1" id="id-question1" placeholder="Question 1"> &nbsp;<br>
-                                    <input type="text" name="qtn2" id="id-question2" placeholder="Question 2"> &nbsp;<br>
-                                    <input type="text" name="qtn3" id="id-question3" placeholder="Question 3"> &nbsp;<br>
-                                    <input type="text" name="qtn4" id="id-question4" placeholder="Question 4"> &nbsp;<br>
-                                    <input type="text" name="qtn5" id="id-question5" placeholder="Question 5"> &nbsp;<br>
-                                    <input type="text" name="qtn6" id="id-question6" placeholder="Question 6"> &nbsp;<br>
-                                    <input type="text" name="qtn7" id="id-question7" placeholder="Question 7"> &nbsp;<br>
-                                    <input type="text" name="qtn8" id="id-question8" placeholder="Question 8"> &nbsp;<br>
-                                    <input type="text" name="qtn9" id="id-question9" placeholder="Question 9"> &nbsp;<br>
-                                    <input type="text" name="qtn10" id="id-question10" placeholder="Question 10"> &nbsp;<br>
+                                    <div id="fiveQuest" class="tabcontents">
+                                        <input type="text" name="qtn1" id="id-question1" placeholder="Question 1"> &nbsp;<br>
+                                        <input type="text" name="qtn2" id="id-question2" placeholder="Question 2"> &nbsp;<br>
+                                        <input type="text" name="qtn3" id="id-question3" placeholder="Question 3"> &nbsp;<br>
+                                        <input type="text" name="qtn4" id="id-question4" placeholder="Question 4"> &nbsp;<br>
+                                        <input type="text" name="qtn5" id="id-question5" placeholder="Question 5"> &nbsp;<br>
+                                    </div>
+
+                                    <div id="tenQuest" class="tabcontents">
+                                        <input type="text" name="qtn6" id="id-question6" placeholder="Question 6"> &nbsp;<br>
+                                        <input type="text" name="qtn7" id="id-question7" placeholder="Question 7"> &nbsp;<br>
+                                        <input type="text" name="qtn8" id="id-question8" placeholder="Question 8"> &nbsp;<br>
+                                        <input type="text" name="qtn9" id="id-question9" placeholder="Question 9"> &nbsp;<br>
+                                        <input type="text" name="qtn10" id="id-question10" placeholder="Question 10"> &nbsp;<br>
+                                    </div>
+
+                                    <div id="fifteenQuest" class="tabcontents">
+                                        <input type="text" name="qtn11" id="id-question11" placeholder="Question 11"> &nbsp;<br>
+                                        <input type="text" name="qtn12" id="id-question12" placeholder="Question 12"> &nbsp;<br>
+                                        <input type="text" name="qtn13" id="id-question13" placeholder="Question 13"> &nbsp;<br>
+                                        <input type="text" name="qtn14" id="id-question14" placeholder="Question 14"> &nbsp;<br>
+                                        <input type="text" name="qtn15" id="id-question15" placeholder="Question 15"> &nbsp;<br>
+                                    </div>
+
+                                    <div id="twentyQuest" class="tabcontents">
+                                        <input type="text" name="qtn16" id="id-question16" placeholder="Question 16"> &nbsp;<br>
+                                        <input type="text" name="qtn17" id="id-question17" placeholder="Question 17"> &nbsp;<br>
+                                        <input type="text" name="qtn18" id="id-question18" placeholder="Question 18"> &nbsp;<br>
+                                        <input type="text" name="qtn19" id="id-question19" placeholder="Question 19"> &nbsp;<br>
+                                        <input type="text" name="qtn20" id="id-question20" placeholder="Question 20"> &nbsp;<br>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -364,16 +391,50 @@
                             </center>
                         </div>
                         <div id="requirementsTab" class="tab-pane fade">
-                            <header></header>
-                            <div class="input_fields_wrap">
-                                <button class="add_field_button" id="btn-add-more-field">Add More Field</button><br>
-                                <div class="class-requirement" id="id-requirement">
-                                    <input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;">
-                                    <input type="checkbox" name="check-attachement" id="id-checkbox">
-                                    <label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;
-                                </div>
+                            <center>
+                            <div class="tab">
+                                <a class="tablinks" onclick="numberRequirement(event, 'fiveReq')" id="defaultOpen">5 REQUIREMENTS</a>
+                                <a class="tablinks" onclick="numberRequirement(event, 'tenReq')">10 REQUIREMENTS</a>
+                                <a class="tablinks" onclick="numberRequirement(event, 'fifteenReq')">15 REQUIREMENTS</a>
                             </div>
-                            <footer></footer>
+                            <div id="fiveReq" class="tabcontent">
+                                    <input type="text" name="req1" id="id-req1" class="step" placeholder="Requirement 1" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req2" id="id-req2" class="step" placeholder="Requirement 2" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req3" id="id-req3" class="step" placeholder="Requirement 3" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req4" id="id-req4" class="step" placeholder="Requirement 4" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req5" id="id-req5" class="step" placeholder="Requirement 5" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                </div>
+
+                                <!-- TEN REQUIREMENTS -->
+                                <div id="tenReq" class="tabcontent">
+                                    <input type="text" name="req6" id="id-req6" class="step" placeholder="Requirement 6" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req7" id="id-req7" class="step" placeholder="Requirement 7" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req8" id="id-req8" class="step" placeholder="Requirement 8" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req9" id="id-req9" class="step" placeholder="Requirement 9" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req10" id="id-req10" class="step" placeholder="Requirement 10" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                </div>
+
+                                <!-- FIFTEEN REQUIREMENTS -->
+                                <div id="fifteenReq" class="tabcontent">
+                                    <input type="text" name="req11" id="id-req11" class="step" placeholder="Requirement 11" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req12" id="id-req12" class="step" placeholder="Requirement 12" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req13" id="id-req13" class="step" placeholder="Requirement 13" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req14" id="id-req14" class="step" placeholder="Requirement 14" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+
+                                    <input type="text" name="req15" id="id-req15" class="step" placeholder="Requirement 15" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
+                                    </div>
+                                </center>
                         </div>
                         <div id="responsesTab" class="tab-pane fade">
                             <h3>Response Tab</h3>
@@ -429,26 +490,55 @@
         });
     </script>
 
-    <!-- ADD MORE FIELD BUTTON -->
+    <!-- SHOW REQUIREMENT BUTTONS -->
     <script type="text/javascript">
-        $(document).ready(function() {
-        var max_fields      = 10; //maximum input boxes allowed
-        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
-        var add_button      = $(".add_field_button"); //Add button ID
-        
-        var x = 1; //initlal text box count
-        $(add_button).click(function(e){ //on add input button click
-            e.preventDefault();
-            if(x < max_fields){ //max input box allowed
-                x++; //text box increment
-                $(wrapper).append('<div><input type="text" name="mytext[]" placeholder="Type requirement here" style="width: 70%; margin: 5px; border-radius: 8px; border: none; padding: 5px;"> <input type="checkbox" name="check-attachement" id="id-requirement"><label for="check-attachement">Include Attachement</label>&nbsp;&nbsp;&nbsp;<a href="#" class="remove_field">Remove</a></div>'); //add input box
-            }
-        });
-        
-        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-            e.preventDefault(); $(this).parent('div').remove(); x--;
-        })
-        });
+        function numberRequirement(evt, number) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the button that opened the tab
+          document.getElementById(number).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultOpen").click();
+    </script>
+
+    <script type="text/javascript">
+        function numberQuestion(evt, number) {
+          // Declare all variables
+          var i, tabcontent, tablinks;
+
+          // Get all elements with class="tabcontent" and hide them
+          tabcontent = document.getElementsByClassName("tabcontents");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+
+          // Get all elements with class="tablinks" and remove the class "active"
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+
+          // Show the current tab, and add an "active" class to the button that opened the tab
+          document.getElementById(number).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+
+        document.getElementById("defaultQuestionOpen").click();
     </script>
 
 {% endblock content %}

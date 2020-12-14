@@ -306,15 +306,15 @@ td {
 }
 
 /* ---------- MODAL -------------*/
-.modal {
-   width: 500px;
-   height: 300px;
+/*.modal {
+   width: 50%;
+   height: 50%;
    position: absolute;
    left: 50%;
    top: 50%; 
-   margin-left: -150px;
+   margin-left: -220px;
    margin-top: -150px;
-}
+}*/
 
 /*.column{
     float: left;
@@ -378,4 +378,31 @@ td {
     padding-right: 50px;
     background: #DCB800;
     border-radius: 15px;
+}
+
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
+
+.column {
+  float: left;
+  padding: 10px;
+}
+
+.left {
+  width: 75%;
+}
+
+.right {
+  width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

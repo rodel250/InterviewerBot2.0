@@ -326,24 +326,22 @@ hr{
     margin-left: 20px;
 }
 
-.btn_post{
-    border-radius: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    background-color: #8C383E;
-    position: relative;
-    font-weight: bold;
-    color: white;
+.btnPost{
+    background-color: #933633;
     width: 100px;
     height: 35px;
+    border: none;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 10px;
     float: right;
     margin-top: 16px;
     margin-right: 5px;
     transition: 0.2s;
+}
+
+.btnPost:hover{
+    background-color: #A00000;
 }
 
 .btnPost:hover{
@@ -448,7 +446,7 @@ hr{
     width: 80%;
     min-height: 100px;
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     padding: 20px;
     border-left: 5px solid #933633;
 }
@@ -510,4 +508,65 @@ hr{
 
 .input_fields_wrap button:hover{
     opacity: 100%;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab a {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tab a:hover {
+  background-color: #ddd;
+}
+
+.tab a.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+.tabs {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tabs a {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+.tabs a:hover {
+  background-color: #ddd;
+}
+
+.tabs a.active {
+  background-color: #ccc;
+}
+
+.tabcontents {
+  display: none;
+  padding: 6px 12px;
+  border-top: none;
 }
