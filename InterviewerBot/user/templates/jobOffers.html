@@ -185,7 +185,7 @@
                                         <div class="column left">
                                             <h5 style="float: left; font-weight: bold; margin-left: 28px;">Job Requirements</h5>
                                             <center>
-                                                <input type="text" name="" value="{{joblist.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" id="id-file1" value="{{joblist.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 <input type="text" name="" value="{{joblist.requirement2}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 <input type="text" name="" value="{{joblist.requirement3}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 <input type="text" name="" value="{{joblist.requirement4}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
@@ -199,27 +199,27 @@
                                                 <input type="text" name="" value="{{joblist.requirement12}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 <input type="text" name="" value="{{joblist.requirement13}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 <input type="text" name="" value="{{joblist.requirement14}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
-                                                <input type="text" name="" value="{{joblist.requirement15}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" name="" value="{{joblist.requirement15}}" id="id-file15" style="width: 95%; padding: 5px; border: none;" disabled>
                                             </center>
                                         </div>
                                         <div class="column right">
                                             <h5 style="float: left; font-weight: bold;">Attach Files Here</h5>
                                             <center>
-                                                <input type="file" id="myfile1" name="myfile1" style="padding: 2px;">
-                                                <input type="file" id="myfile2" name="myfile2" style="padding: 2px;">
-                                                <input type="file" id="myfile3" name="myfile3" style="padding: 2px;">
-                                                <input type="file" id="myfile4" name="myfile4" style="padding: 2px;">
-                                                <input type="file" id="myfile5" name="myfile5" style="padding: 2px;">
-                                                <input type="file" id="myfile6" name="myfile6" style="padding: 2px;">
-                                                <input type="file" id="myfile7" name="myfile7" style="padding: 2px;">
-                                                <input type="file" id="myfile8" name="myfile8" style="padding: 2px;">
-                                                <input type="file" id="myfile9" name="myfile9" style="padding: 2px;">
-                                                <input type="file" id="myfile10" name="myfile10" style="padding: 2px;">
-                                                <input type="file" id="myfile11" name="myfile11" style="padding: 2px;">
-                                                <input type="file" id="myfile12" name="myfile12" style="padding: 2px;">
-                                                <input type="file" id="myfile13" name="myfile13" style="padding: 2px;">
-                                                <input type="file" id="myfile14" name="myfile14" style="padding: 2px;">
-                                                <input type="file" id="myfile15" name="myfile15" style="padding: 2px;">
+                                                <input type="file" id="myfile1" name="myfile1" value="{{joblist.requirement1}}" style="padding: 2px;">
+                                                <input type="file" id="myfile2" name="myfile2" value="{{joblist.requirement2}}" style="padding: 2px;">
+                                                <input type="file" id="myfile3" name="myfile3" value="{{joblist.requirement3}}" style="padding: 2px;">
+                                                <input type="file" id="myfile4" name="myfile4" value="{{joblist.requirement4}}" style="padding: 2px;">
+                                                <input type="file" id="myfile5" name="myfile5" value="{{joblist.requirement5}}" style="padding: 2px;">
+                                                <input type="file" id="myfile6" name="myfile6" value="{{joblist.requirement6}}" style="padding: 2px;">
+                                                <input type="file" id="myfile7" name="myfile7" value="{{joblist.requirement7}}" style="padding: 2px;">
+                                                <input type="file" id="myfile8" name="myfile8" value="{{joblist.requirement8}}" style="padding: 2px;">
+                                                <input type="file" id="myfile9" name="myfile9" value="{{joblist.requirement9}}" style="padding: 2px;">
+                                                <input type="file" id="myfile10" name="myfile10" value="{{joblist.requirement10}}" style="padding: 2px;">
+                                                <input type="file" id="myfile11" name="myfile11" value="{{joblist.requirement11}}" style="padding: 2px;">
+                                                <input type="file" id="myfile12" name="myfile12" value="{{joblist.requirement12}}" style="padding: 2px;">
+                                                <input type="file" id="myfile13" name="myfile13" value="{{joblist.requirement13}}" style="padding: 2px;">
+                                                <input type="file" id="myfile14" name="myfile14" value="{{joblist.requirement14}}" style="padding: 2px;">
+                                                <input type="file" id="myfile15" name="myfile15" value="{{joblist.requirement15}}" style="padding: 2px;">
                                             </center>
                                         </div>
                                     </div>
@@ -312,4 +312,22 @@
         }
     </script>
 
+<!--     <script type="text/javascript">
+        var file1 = document.getElementById("id-file1").value;
+        if(!file1){
+            document.getElementById("myfile1").disabled = true;
+        }else{
+            document.getElementById("myfile1").disabled = false;
+        }
+    </script>
+
+    <script type="text/javascript">
+        var file15 = document.getElementById("id-file15").value;
+        if(!file15){
+            document.getElementById("myfile15").disabled = true;
+        }else{
+            document.getElementById("myfile15").disabled = false;
+        }
+    </script>
+ -->
 {% endblock content %}

@@ -584,11 +584,11 @@ textarea{
 .contentQuestion input{
     float: left;
     width: 100%;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 10px;
-    border-style: none;
+    border: none;
     border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 #id-answer{

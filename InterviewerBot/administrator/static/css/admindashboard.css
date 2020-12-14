@@ -454,9 +454,11 @@ hr{
 .contentQuestion input{
     float: left;
     width: 100%;
-    border-style: none;
+    border: none;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 10px;
     font-weight: bold;
-    border-bottom-style: groove;
 }
 
 #id-answer{
