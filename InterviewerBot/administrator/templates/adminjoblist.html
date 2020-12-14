@@ -323,18 +323,34 @@
                     <ul class="nav nav-tabs">
                         <li><a data-toggle="tab" id="id-btnQuestion" href="#questionsTab1" class="tab-modal" style="font-weight: bold;">Questions</a></li>
                         <li><a data-toggle="tab" id="id-btnRequirements" href="#requirementsTab" class="tab-modal" style="font-weight: bold;">Requirements</a></li>
-                        <li><a data-toggle="tab" href="#responsesTab" class="tab-modal" style="font-weight: bold;">Responses</a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="questionsTab1" class="tab-pane fade in active">
                             <center>
                             <header></header>
                             <div class="questionnaireTitle">
+<<<<<<< Updated upstream
                                 <select name="name-title" id="id-title" placeholder="Select Option">
                                     <option value="Janitor">Janitor</option>
                                     <option value="Teacher">Teacher</option>
                                 </select>
                                 <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description"></textarea>
+=======
+                                <select name="jobs" id="jobs" required>
+                                    <option style="display: none;">---Please select a job---</option>
+                                    <option value="Administrator">Administrator</option>
+                                    <option value="Office Staff">Office Staff</option>
+                                    <option value="Guidance Counselor">Guidance Counselor</option>
+                                    <option value="School Social Worker">School Social Worker</option>
+                                    <option value="School Nurse">School Nurse</option>
+                                    <option value="Librarian">Librarian</option>
+                                    <option value="Maintenance">Maintenance</option>
+                                    <option value="Custodial">Custodial</option>
+                                    <option value="Food Service">Food Service</option>
+                                    <option value="Transportation">Transportation</option>
+                                </select>
+                                <textarea type="text" name="name-description" id="id-description" rows="5" cols="50" style="margin-top: 5px;" placeholder="Questionaire description" required></textarea>
+>>>>>>> Stashed changes
                             </div>
                             <div class="questionContainer">
                                 <div class="tabs" style="width: 80%; border-left: 5px solid #933633; border-radius: 10px 10px 0 0;">
@@ -390,7 +406,7 @@
                             <footer></footer>
                             </center>
                         </div>
-                        <div id="requirementsTab" class="tab-pane fade">
+                        <div id="requirementsTab" class="tab-pane fade" style="padding: 20px;">
                             <center>
                             <div class="tab">
                                 <a class="tablinks" onclick="numberRequirement(event, 'fiveReq')" id="defaultOpen">5 REQUIREMENTS</a>
@@ -435,10 +451,6 @@
                                     <input type="text" name="req15" id="id-req15" class="step" placeholder="Requirement 15" style="padding: 6px; margin: 10px; width: 60%; border-radius: 8px; border: none;">
                                     </div>
                                 </center>
-                        </div>
-                        <div id="responsesTab" class="tab-pane fade">
-                            <h3>Response Tab</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </div>
                 </div>

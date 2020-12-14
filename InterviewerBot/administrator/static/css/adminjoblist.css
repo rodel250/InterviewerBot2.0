@@ -499,11 +499,19 @@ ul ul a {
 
 .questionnaireTitle{
     width: 80%;
-    height: 190px;
+    height: 195px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     border-top: 5px solid #933633;
+}
+
+.questionnaireTitle select{
+    padding: 8px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    border-color: #ccc;
 }
 
 .questionnaireTitle select, textarea{
@@ -576,9 +584,11 @@ textarea{
 .contentQuestion input{
     float: left;
     width: 100%;
-    border-style: none;
     font-weight: bold;
-    border-bottom-style: groove;
+    padding: 10px;
+    border-radius: 10px;
+    border-style: none;
+    border: 1px solid #ccc;
 }
 
 #id-answer{
