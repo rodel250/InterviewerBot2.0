@@ -50,8 +50,10 @@
    
 <div class="chat">
   <div class="chat-title">
-    <b><h1>Job offer</h1></b>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec urna at quam.</h2>
+    {% for job in job %}
+    <b><h1>{{job.title}}</h1></b>
+    <h2>{{job.description}}</h2>
+    {% endfor %}
     <figure class="avatar">
       <img src="{% static '/images/red_bg.jpg' %}" />
     </figure>
@@ -152,30 +154,91 @@ $(window).on('keydown', function(e) {
   }
 })
 
+{% for job in job %}
 var bot = [
-  'Hi CIT-Interviewerbot at your service ',
-  'Tell me about yourself',
-  'Tell me about your work experience',
-  'How do you describe yourself?',
-  'Describe your dream job',
-  'Why do you want this job?',
-  'Why do you want to work at this Company?',
-  'what are your biggest strengths?',
-  'what is your leadership style?',
-  'what do you consider to be your biggest achievement?',
-  'What are your biggest weaknesses?',
-  'How do you prioritize your work?',
-  'How do you handle stress?',
-  'What are you Passionate about?',
-  'What motivates you?',
-  'Where do you see yourself in five years?',
-  'What makes you unique?',
-  'What can we expect from you in your first three months?',
-  'What was your salary in your last job?',
-  'What is your salary range expectation?',
-  'Out of all the applicants, why should we Hire you?',
+  {% if job.question_1 != null %}
+    '{{job.question_1}}',
+  {% endif %}
+
+  {% if job.question_2 != null %}
+    '{{job.question_2}}',
+  {% endif %}
+
+  {% if job.question_3 != null %}
+    '{{job.question_3}}',
+  {% endif %}
+
+  {% if question_4 != null %}
+    '{{job.question_4}}',
+  {% endif %}
+
+  {% if question_5 != null %}
+    '{{job.question_5}}',
+  {% endif %}
+
+  {% if question_6 != null %}
+    '{{job.question_6}}',
+  {% endif %}
+
+  {% if question_7 != null %}
+    '{{job.question_7}}',
+  {% endif %}
+
+  {% if question_8 != null %}
+    '{{job.question_8}}',
+  {% endif %}
+
+  {% if question_9 != null %}
+    '{{job.question_9}}',
+  {% endif %}
+
+  {% if question_10 != null %}
+    '{{job.question_10}}',
+  {% endif %}
+
+  {% if question_11 != null %}
+    '{{job.question_11}}',
+  {% endif %}
+
+  {% if question_12 != null %}
+    '{{job.question_12}}',
+  {% endif %}
+
+  {% if question_13 != null %}
+    '{{job.question_13}}',
+  {% endif %}
+
+  {% if question_14 != null %}
+    '{{job.question_14}}',
+  {% endif %}
+
+  {% if question_15 != null %}
+    '{{job.question_15}}',
+  {% endif %}
+
+  {% if question_16 != null %}
+    '{{job.question_16}}',
+  {% endif %}
+
+  {% if question_17 != null %}
+    '{{job.question_17}}',
+  {% endif %}
+
+  {% if question_18 != null %}
+    '{{job.question_18}}',
+  {% endif %}
+
+  {% if question_19 != null %}
+    '{{job.question_19}}',
+  {% endif %}
+
+  {% if question_20 != null %}
+    '{{job.question_20}}',
+  {% endif %}
+
   'Thank you for answering our questions. We will contact you through your gmail.'
 ]
+{% endfor %}
 
 function botMessage() {
   if ($('.message-input').val() != '') {

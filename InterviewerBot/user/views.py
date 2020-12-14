@@ -9,6 +9,7 @@ from .forms import *
 from .models import *
 from administrator.models import Administrator
 from administrator.models import CreateJob
+from administrator.models import currentJob
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
@@ -216,7 +217,17 @@ class HomePageView(View):
 
 class JobInterviewView(View):
 	def get(self, request):
-		return render(request, 'jobOffer_Interview.html')
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobOffer_Interview.html', context)
 	
 	def post(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
@@ -311,6 +322,7 @@ class JobOffersView(View):
 			elif 'btnApply' in request.POST:
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
+				job = currentJob.objects.filter(id = 1).update(jobID = job_id)
 
 				try:
 					r1 = request.FILES['myfile1']

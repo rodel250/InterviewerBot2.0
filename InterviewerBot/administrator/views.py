@@ -109,6 +109,65 @@ class DashboardView(View):
             r14 = request.POST.get("req14")
             r15 = request.POST.get("req15")
 
+            if q1 == "":
+                q1 = None
+
+            if q2 == "":
+                q2 = None
+
+            if q3 == "":
+                q3 = None
+
+            if q4 == "":
+                q4 = None
+            if q5 == "":
+                q5 = None
+
+            if q6 == "":
+                q6 = None
+
+            if q7 == "":
+                q7 = None
+
+            if q8 == "":
+                q8 = None
+
+            if q9 == "":
+                q9 = None
+
+            if q10 == "":
+                q10 = None
+
+            if q11 == "":
+                q11 = None
+
+            if q12 == "":
+                q12 = None
+
+            if q13 == "":
+                q13 = None
+
+            if q14 == "":
+                q14 = None
+                
+            if q15 == "":
+                q15 = None
+
+            if q16 == "":
+                q16 = None
+
+            if q17 == "":
+                q17 = None
+
+            if q18 == "":
+                q18 = None
+
+            if q19 == "":
+                q19 = None
+                        
+            if q20 == "":
+                q20 = None
+
             if r1 == "":
                 r1 = None
 
@@ -257,6 +316,65 @@ class JobListsView(View):
                     r13 = request.POST.get("req13")
                     r14 = request.POST.get("req14")
                     r15 = request.POST.get("req15")
+
+                    if q1 == "":
+                        q1 = None
+
+                    if q2 == "":
+                        q2 = None
+
+                    if q3 == "":
+                        q3 = None
+
+                    if q4 == "":
+                        q4 = None
+                    if q5 == "":
+                        q5 = None
+
+                    if q6 == "":
+                        q6 = None
+
+                    if q7 == "":
+                        q7 = None
+
+                    if q8 == "":
+                        q8 = None
+
+                    if q9 == "":
+                        q9 = None
+
+                    if q10 == "":
+                        q10 = None
+
+                    if q11 == "":
+                        q11 = None
+
+                    if q12 == "":
+                        q12 = None
+
+                    if q13 == "":
+                        q13 = None
+
+                    if q14 == "":
+                        q14 = None
+                        
+                    if q15 == "":
+                        q15 = None
+
+                    if q16 == "":
+                        q16 = None
+
+                    if q17 == "":
+                        q17 = None
+
+                    if q18 == "":
+                        q18 = None
+
+                    if q19 == "":
+                        q19 = None
+                        
+                    if q20 == "":
+                        q20 = None
 
                     if r1 == "":
                         r1 = None
