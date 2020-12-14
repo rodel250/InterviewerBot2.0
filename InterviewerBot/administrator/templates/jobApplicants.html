@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/adminjoblist.css' %}">
+    <link rel="stylesheet" href="{% static '/css/jobapplicants.css' %}">
 
 {% endblock headerinclude %}
 
 
 
 {% block footerinclude %}
-
+    
     <!-- Font Awesome JS -->
     <script src="{% static 'Automate/js/bootstrap.js' %}"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -35,15 +35,13 @@
 
 
 {% block content %}
-
-            <!-- Response Modal -->
                         {% for joblist in joblists %}
-                        <div class="containerColor" style="border-radius: 0%;min-height: 100%;width: 50%;margin-left: 25%;">
+                        <div class="containerColor" style="border-radius: 0%;min-height: 100%;width: 100%;">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                                 <span aria-hidden="true">&times;</span>
                             </button>
                     
-                            <div class="modalHeader" style="border-radius: 0px;">
+                            <div class="modalHeader" style="border-radius: 0px;height: 80px;">
                                 <img src="{% static '/images/Notepad.png' %}" class="imgNotepad">
                                 <a class="questionTitle">Job Responses </a>
                                 <br><br>
@@ -51,40 +49,70 @@
                                 
                                 <div hidden>
                                     <input type="text" id="jobID" name="jobID" value="{{joblist.id}}">
-                                </div>
-                                
-                                
-
-                                
-                                
+                                </div>                                                            
                             </div>
                             <div class="container">
-                                <ul class="nav nav-tabs" style="margin-left: 30%;">
-                                    <li><a data-toggle="tab" href="#questionsTab" id=questionsTab-ID class="tab-modal" style="font-weight: bold;">Questions</a></li>
+                                <ul class="nav nav-tabs" style="margin-left: 34%;">
+                                    <li><a data-toggle="tab" href="#questionsTab" class="tab-modal" style="font-weight: bold;">Questions</a></li>
                                     <li><a data-toggle="tab" href="#applicantTab" class="tab-modal" style="font-weight: bold;">Applicants</a></li>
                                     <li><a data-toggle="tab" href="#individualTab" class="tab-modal" style="font-weight: bold;">Individual</a></li>
                                 </ul>
-                                <div class="tab-content">                                 
+
+
+                                <div class="tab-content" style="width: 150%;margin-left: -25%;" >                                 
                                     <div id="questionsTab" class="tab-pane in active">
                                         <center>
                                         <header></header>
-                                        <div class="questionnaireTitle" style="height: 80px;">
+                                        <div class="questionnaireTitle" style="height: 100px;">
                                             <h4>{{joblist.title}}</h4>
                                         </div>
+                                        
                                         <div class="questionContainer">
                                             <div class="contentQuestion">
-                                                <div class="input_fields_wrap2">
-                                                <input type="text" name="qtn1" id="id-question1" placeholder="{{joblist.question_1}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn2" id="id-question2" placeholder="{{joblist.question_2}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn3" id="id-question3" placeholder="{{joblist.question_3}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn4" id="id-question4" placeholder="{{joblist.question_4}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn5" id="id-question5" placeholder="{{joblist.question_5}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn6" id="id-question6" placeholder="{{joblist.question_6}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn7" id="id-question7" placeholder="{{joblist.question_7}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn8" id="id-question8" placeholder="{{joblist.question_8}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn9" id="id-question9" placeholder="{{joblist.question_9}}" disabled> &nbsp;<br>
-                                                <input type="text" name="qtn10" id="id-question10" placeholder="{{joblist.question_10}}" disabled> &nbsp;<br>
-                                                </div>
+                                                <section id="tabs" class="project-tab">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <nav>
+                                                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Questions 1-5</a>
+                                                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Questions 6-10</a>
+                                                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Questions 11-15</a>
+                                                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Questions 16-20</a>
+                                                                    </div>
+                                                                </nav>
+                                                                <div class="tab-content" id="nav-tabContents">
+                                                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                                        <div class="input_fields_wrap2">
+                                                                            <br>
+                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="{{joblist.question_1}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="{{joblist.question_2}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="{{joblist.question_3}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="{{joblist.question_4}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="{{joblist.question_5}}" disabled> &nbsp;<br>
+                                                                            </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                                            <br>
+                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="{{joblist.question_6}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="{{joblist.question_7}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="{{joblist.question_8}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="{{joblist.question_9}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="{{joblist.question_10}}" disabled> &nbsp;<br>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                            <br>
+                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="{{joblist.question_11}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="{{joblist.question_12}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="{{joblist.question_13}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="{{joblist.question_14}}" disabled> &nbsp;<br>
+                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="{{joblist.question_15}}" disabled> &nbsp;<br>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
                                             </div>
                                         </div>
                                         <footer></footer>
@@ -121,30 +149,98 @@
                                         <header></header>
                                         {% for response in responses %}
                                         <div class="questionnaireTitle" style="height: 100px;">
-                                            <h4>{{response.firstname}}{{response.lastname}}</h4>
+                                            <h4>{{response.firstname}} {{response.lastname}}</h4>
                                             <div class="column-form" style="margin-left: -49%;">
-                                            <a data-target="#viewModal-{{response.user_id}}" data-toggle="modal" href="#viewModal"><i>View Requirements</i></a> 
+                                            <a data-target="#viewModal-{{response.user_id}}" data-toggle="modal" href="#viewModal" style="margin-right: 125px;"><i>View Requirements</i></a> 
                                             </div>
                                         </div>
                                         <div class="questionContainer">
                                             <div class="contentQuestion">
-                                                <div class="input_fields_wrap2">
-                                                <input type="text"  placeholder="{% if response.question_1 == '' %} (No Question) {% else %} {{response.question_1}} {% endif %}" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="{% if response.response_1 == null %} - {% else %} {{response.response_1}} {% endif %}" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="{% if response.question_2 == '' %} (No Question) {% else %} {{response.question_2}} {% endif %}" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="{% if response.response_2 == null %} - {% else %} {{response.response_2}} {% endif %}" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="{% if response.question_3 == '' %} (No Question) {% else %} {{response.question_3}} {% endif %}" disabled> &nbsp;<br>
-                                                <input type="text"  placeholder="{% if response.response_3 == null %} - {% else %} {{response.response_3}} {% endif %}" disabled> &nbsp;<br>
-
-                                                </div>
+                                                <section id="tabs" class="project-tab">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <nav>
+                                                                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Questions 1-5</a>
+                                                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Questions 6-10</a>
+                                                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Questions 11-15</a>
+                                                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Questions 16-20</a>
+                                                                    </div>
+                                                                </nav>
+                                                                <div class="tab-content" id="nav-tabContent">
+                                                                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                                        <div class="input_fields_wrap2">
+                                                                            <br>
+                                                                            <input type="text"  placeholder="{% if response.question_1 == '' %} (No Question) {% else %} {{response.question_1}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_1 == null %} - {% else %} {{response.response_1}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_2 == '' %} (No Question) {% else %} {{response.question_2}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_2 == null %} - {% else %} {{response.response_2}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_3 == '' %} (No Question) {% else %} {{response.question_3}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_3 == null %} - {% else %} {{response.response_3}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_4 == '' %} (No Question) {% else %} {{response.question_4}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_4 == null %} - {% else %} {{response.response_4}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_5 == '' %} (No Question) {% else %} {{response.question_5}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_5 == null %} - {% else %} {{response.response_5}} {% endif %}" disabled> &nbsp;<br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                                        <div class="input_fields_wrap2">
+                                                                            <br>
+                                                                            <input type="text"  placeholder="{% if response.question_6 == '' %} (No Question) {% else %} {{response.question_6}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_6 == null %} - {% else %} {{response.response_6}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_7 == '' %} (No Question) {% else %} {{response.question_7}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_7 == null %} - {% else %} {{response.response_7}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_8 == '' %} (No Question) {% else %} {{response.question_8}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_8 == null %} - {% else %} {{response.response_8}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_9 == '' %} (No Question) {% else %} {{response.question_9}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_9 == null %} - {% else %} {{response.response_9}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_10 == '' %} (No Question) {% else %} {{response.question_10}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_10 == null %} - {% else %} {{response.response_10}} {% endif %}" disabled> &nbsp;<br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                                        <div class="input_fields_wrap2">
+                                                                            <br>
+                                                                            <input type="text"  placeholder="{% if response.question_11 == '' %} (No Question) {% else %} {{response.question_11}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer: {% if response.response_11 == null %} - {% else %} {{response.response_11}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_12 == '' %} (No Question) {% else %} {{response.question_12}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_12 == null %} - {% else %} {{response.response_12}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_13 == '' %} (No Question) {% else %} {{response.question_13}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_13 == null %} - {% else %} {{response.response_13}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_14 == '' %} (No Question) {% else %} {{response.question_14}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_14 == null %} - {% else %} {{response.response_14}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="{% if response.question_15 == '' %} (No Question) {% else %} {{response.question_15}} {% endif %}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="Answer:{% if response.response_15 == null %} - {% else %} {{response.response_15}} {% endif %}" disabled> &nbsp;<br>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                
                                             </div>
                                         </div>
-
                                         <!-- View Modal -->
                                         <div class="modal fade bd-example-modal-lg" id="viewModal-{{response.user_id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
                                                 <div class="modal-content">
-                                                    {{response.requirement_1}}
+                                                    {{response.requirement_1}}<br>
+                                                    {{response.requirement_2}}<br>
+                                                    {{response.requirement_3}}<br>
+                                                    {{response.requirement_4}}<br>
+                                                    {{response.requirement_5}}<br>
+                                                    {{response.requirement_6}}<br>
+                                                    {{response.requirement_7}}<br>
+                                                    {{response.requirement_8}}<br>
+                                                    {{response.requirement_9}}<br>
+                                                    {{response.requirement_10}}<br>
+                                                    {{response.requirement_11}}<br>
+                                                    {{response.requirement_12}}<br>
+                                                    {{response.requirement_13}}<br>
+                                                    {{response.requirement_14}}<br>
+                                                    {{response.requirement_15}}
                                                 </div>
                                             </div>
                                             </div>
@@ -155,6 +251,9 @@
                                         </center>
                                     </div> 
                                 </div>
-                            </div>                         
+                            </div>                      
                         </div>
+                        
+                        
+                        
 {% endblock content %}
