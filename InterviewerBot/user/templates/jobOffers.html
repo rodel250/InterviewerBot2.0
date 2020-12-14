@@ -175,60 +175,66 @@
                                 <div class="modal-header" style="background-color: #ffcc00;">
                                     <h5 class="modal-title" id="myLargeModalLabel"><b>{{joblist.title}}</b></h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
+                                        <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
 
-                                <form id="applyForm" method="POST">
+                                <form id="applyForm" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
                                 {% csrf_token %}
                                     <div class="row">
                                         <div class="column left">
                                             <h5 style="float: left; font-weight: bold; margin-left: 28px;">Job Requirements</h5>
+
+                                            {% for applicant in applicant %}
+                                            <input type="text" name="user-id" value="{{applicant.id}}" hidden>
+                                            {% endfor %}
+                                            <input type="text" name="job-id" value="{{joblist.id}}" hidden>
+
                                             <center>
                                                 {% if joblist.requirement1 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement1}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement2 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement2}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement2}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement3 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement3}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement3}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement4 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement4}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement4}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement5 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement5}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement5}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement6 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement6}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement6}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement7 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement7}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement7}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement8 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement8}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement8}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement9 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement9}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement9}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement10 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement10}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement10}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement11 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement11}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement11}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement12 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement12}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement12}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement13 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement13}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement13}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement14 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement14}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
+                                                <input type="text" value="{{joblist.requirement14}}" style="width: 95%; padding: 5px; border: none; background-color: #fff" disabled>
                                                 {% endif %}
                                                 {% if joblist.requirement15 != null %}
-                                                <input type="text" name="" value="{{joblist.requirement15}}" style="width: 95%; padding: 5px; border: none;" disabled>
+                                                <input type="text" value="{{joblist.requirement15}}" style="width: 95%; padding: 5px; border: none;" disabled>
                                                 {% endif %}
                                             </center>
                                         </div>
@@ -236,49 +242,49 @@
                                             <h5 style="float: left; font-weight: bold;">Attach Files Here</h5>
                                             <center>
                                                 {% if joblist.requirement1 != null %}
-                                                <input type="file" id="myfile1" name="myfile1" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile1" name="myfile1" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement2 != null %}
-                                                <input type="file" id="myfile2" name="myfile2" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile2" name="myfile2" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement3 != null %}
-                                                <input type="file" id="myfile3" name="myfile3" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile3" name="myfile3" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement4 != null %}
-                                                <input type="file" id="myfile4" name="myfile4" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile4" name="myfile4" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement5 != null %}
-                                                <input type="file" id="myfile5" name="myfile5" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile5" name="myfile5" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement6 != null %}
-                                                <input type="file" id="myfile6" name="myfile6" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile6" name="myfile6" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement7 != null %}
-                                                <input type="file" id="myfile7" name="myfile7" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile7" name="myfile7" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement8 != null %}
-                                                <input type="file" id="myfile8" name="myfile8" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile8" name="myfile8" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement9 != null %}
-                                                <input type="file" id="myfile9" name="myfile9" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile9" name="myfile9" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement10 != null %}
-                                                <input type="file" id="myfile10" name="myfile10" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile10" name="myfile10" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement11 != null %}
-                                                <input type="file" id="myfile11" name="myfile11" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile11" name="myfile11" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement12 != null %}
-                                                <input type="file" id="myfile12" name="myfile12" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile12" name="myfile12" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement13 != null %}
-                                                <input type="file" id="myfile13" name="myfile13" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile13" name="myfile13" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement14 != null %}
-                                                <input type="file" id="myfile14" name="myfile14" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile14" name="myfile14" style="padding: 2px;" required>
                                                 {% endif %}
                                                 {% if joblist.requirement15 != null %}
-                                                <input type="file" id="myfile15" name="myfile15" style="padding: 2px;" requried>
+                                                <input type="file" id="myfile15" name="myfile15" style="padding: 2px;" required>
                                                 {% endif %}
                                             </center>
                                         </div>
