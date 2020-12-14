@@ -40,6 +40,16 @@ class DashboardView(View):
             q8 = request.POST.get("qtn8")
             q9 = request.POST.get("qtn9")
             q10 = request.POST.get("qtn10")
+            q11 = request.POST.get("qtn11")
+            q12 = request.POST.get("qtn12")
+            q13 = request.POST.get("qtn13")
+            q14 = request.POST.get("qtn14")
+            q15 = request.POST.get("qtn15")
+            q16 = request.POST.get("qtn16")
+            q17 = request.POST.get("qtn17")
+            q18 = request.POST.get("qtn18")
+            q19 = request.POST.get("qtn19")
+            q20 = request.POST.get("qtn20")
 
             r1 = request.POST.get("mytext[]") #E LOOP TINGALI NI DI KO KIBAW
             # r1 = request.POST.get("mytext[1]")
@@ -49,8 +59,10 @@ class DashboardView(View):
 
             form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
                 question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
-                question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
-                requirement1 = r1,  admin_id = currentUser)
+                    question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10, question_11 = q11,
+                    question_12 = q12, question_13 = q13, question_14 = q14, question_15 = q15, question_16 = q16,
+                    question_17 = q17, question_18 = q18, question_19 = q19, question_20 = q20, requirement1 = r1, 
+                    admin_id = currentUser)
             form.save()
 
             return redirect('administrator:job-lists_view')
@@ -236,3 +248,7 @@ class Applicants(View):
                         
 
         return HttpResponse()
+
+class LogOutView(View):
+    def get(self, request):
+        return render(request, 'LogOut.html')

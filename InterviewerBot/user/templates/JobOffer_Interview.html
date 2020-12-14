@@ -168,7 +168,7 @@ function fakeMessage() {
 
   setTimeout(function() {
     $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="{% static '/images/avatar.jpg /'%}"> /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    $('<div class="message new"><figure class="avatar"><img src="{% static '/images/avatar.jpg /'%}"> /></figure>' + bot[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
     setDate();
     updateScrollbar();
     i++;
