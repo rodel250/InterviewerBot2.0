@@ -1,0 +1,8 @@
+*note*
+Manual insert ff.
+administrator
+applicant
+appliedjob
+currentapplication
+currentjob
+currentuser
