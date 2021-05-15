@@ -1,7 +1,6 @@
 import ctypes
 import base64
 import os
-
 import speech_recognition as sr
 from gtts import gTTS
 
@@ -20,6 +19,7 @@ from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.contrib import messages
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 # Create your views here.
@@ -154,7 +154,6 @@ class UserIndexView(View):
 						# Mbox('WELCOME '+administrator.firstname, 'Success', 64)
 						return redirect('administrator:dashboard_view')
 
-		# Mbox('Email address or password is inccorect', 'Error', 16)
 		messages.error(request,'email address or password is incorrect')
 		return render(request, 'UserLog-inPage.html', {'form':form})
 
@@ -203,24 +202,114 @@ class HomePageView(View):
 		applicant = Applicant.objects.filter(id = currentUser)
 		savedjobs = SavedJobs.objects.raw('SELECT * FROM currentuser, savedjobs, createjob WHERE currentuser.user_id = savedjobs.user_id AND createjob.id = savedjobs.job_id')
 		appliedjobs = AppliedJob.objects.raw('SELECT * FROM currentuser, appliedjob, createjob WHERE currentuser.user_id = appliedjob.user_id AND createjob.id = appliedjob.job_id')
-
+	
 		context = {
 			'applicant': applicant,
 			'savedjobs': savedjobs,
-			'appliedjobs': appliedjobs
+			'appliedjobs': appliedjobs,
 		}
 
 		return render(request, 'homePage.html', context)
 
 	def post(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
-		applicant = Applicant.objects.filter(id = currentUser)
+		if request.method == "POST":
+			if 'btnUnsave' in request.POST:
+				currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+				applicant = Applicant.objects.filter(id = currentUser)
 
-		job_id = request.POST.get("job-id")
-		savedjobs = SavedJobs.objects.filter(job_id = job_id).delete()
+				job_id = request.POST.get("job-id")
+				savedjobs = SavedJobs.objects.filter(job_id = job_id).delete()
 
-		return redirect('user:home_view')
+				return redirect('user:home_view')
+			elif 'btnApply' in request.POST:
+				user_id = request.POST.get("user-id")
+				job_id = request.POST.get("job-id")
+				job = currentJob.objects.filter(id = 1).update(jobID = job_id)
 
+				try:
+					r1 = request.FILES['myfile1']
+				except MultiValueDictKeyError:
+					r1 = None
+
+				try:
+					r2 = request.FILES['myfile2']
+				except MultiValueDictKeyError:
+					r2 = None
+
+				try:
+					r3 = request.FILES['myfile3']
+				except MultiValueDictKeyError:
+					r3 = None
+
+				try:
+					r4 = request.FILES['myfile4']
+				except MultiValueDictKeyError:
+					r4 = None
+
+				try:
+					r5 = request.FILES['myfile5']
+				except MultiValueDictKeyError:
+					r5 = None
+
+				try:
+					r6 = request.FILES['myfile6']
+				except MultiValueDictKeyError:
+					r6 = None
+
+				try:
+					r7 = request.FILES['myfile7']
+				except MultiValueDictKeyError:
+					r7 = None
+
+				try:
+					r8 = request.FILES['myfile8']
+				except MultiValueDictKeyError:
+					r8 = None
+
+				try:
+					r9 = request.FILES['myfile9']
+				except MultiValueDictKeyError:
+					r9 = None
+
+				try:
+					r10 = request.FILES['myfile10']
+				except MultiValueDictKeyError:
+					r10 = None
+
+				try:
+					r11 = request.FILES['myfile11']
+				except MultiValueDictKeyError:
+					r11 = None
+
+				try:
+					r12 = request.FILES['myfile12']
+				except MultiValueDictKeyError:
+					r12 = None
+
+				try:
+					r13 = request.FILES['myfile13']
+				except MultiValueDictKeyError:
+					r13 = None
+
+				try:
+					r14 = request.FILES['myfile14']
+				except MultiValueDictKeyError:
+					r14 = None
+
+				try:
+					r15 = request.FILES['myfile15']
+				except MultiValueDictKeyError:
+					r15 = None
+
+				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
+					requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
+					job_id = job_id, user_id = user_id)
+				apply_job.save()
+
+				return redirect('user:job-interview_view')
+				
 class SettingsView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
@@ -296,7 +385,94 @@ class JobOffersView(View):
 				else:
 					Mbox('Email address is already taken.', 'Error', 16)
 				return redirect('user:job-offers_view')
-			# elif 'btnApply' in request.POST:
+			elif 'btnApply' in request.POST:
+				user_id = request.POST.get("user-id")
+				job_id = request.POST.get("job-id")
+				job = currentJob.objects.filter(id = 1).update(jobID = job_id)
+
+				try:
+					r1 = request.FILES['myfile1']
+				except MultiValueDictKeyError:
+					r1 = None
+
+				try:
+					r2 = request.FILES['myfile2']
+				except MultiValueDictKeyError:
+					r2 = None
+
+				try:
+					r3 = request.FILES['myfile3']
+				except MultiValueDictKeyError:
+					r3 = None
+
+				try:
+					r4 = request.FILES['myfile4']
+				except MultiValueDictKeyError:
+					r4 = None
+
+				try:
+					r5 = request.FILES['myfile5']
+				except MultiValueDictKeyError:
+					r5 = None
+
+				try:
+					r6 = request.FILES['myfile6']
+				except MultiValueDictKeyError:
+					r6 = None
+
+				try:
+					r7 = request.FILES['myfile7']
+				except MultiValueDictKeyError:
+					r7 = None
+
+				try:
+					r8 = request.FILES['myfile8']
+				except MultiValueDictKeyError:
+					r8 = None
+
+				try:
+					r9 = request.FILES['myfile9']
+				except MultiValueDictKeyError:
+					r9 = None
+
+				try:
+					r10 = request.FILES['myfile10']
+				except MultiValueDictKeyError:
+					r10 = None
+
+				try:
+					r11 = request.FILES['myfile11']
+				except MultiValueDictKeyError:
+					r11 = None
+
+				try:
+					r12 = request.FILES['myfile12']
+				except MultiValueDictKeyError:
+					r12 = None
+
+				try:
+					r13 = request.FILES['myfile13']
+				except MultiValueDictKeyError:
+					r13 = None
+
+				try:
+					r14 = request.FILES['myfile14']
+				except MultiValueDictKeyError:
+					r14 = None
+
+				try:
+					r15 = request.FILES['myfile15']
+				except MultiValueDictKeyError:
+					r15 = None
+
+				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
+					requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
+					job_id = job_id, user_id = user_id)
+				apply_job.save()
+
+				return redirect('user:job-interview_view')
 				
 class LogOutView(View):
 	def get(self, request):
