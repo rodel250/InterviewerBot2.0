@@ -1,18 +1,26 @@
 import ctypes
 import base64
-from tkinter import messagebox as tkMessageBox
-from django.shortcuts import render, redirect
-from django.views.generic import View, TemplateView
-from django.http import Http404
-from django.http import HttpResponse
+import os
+
+import speech_recognition as sr
+from gtts import gTTS
+
 from .forms import *
 from .models import *
 from administrator.models import Administrator
 from administrator.models import CreateJob
+from administrator.models import currentJob
+
+from django.shortcuts import render, redirect
+from django.views.generic import View, TemplateView
+from django.http import Http404
+from django.http import HttpResponse
+
 from django.core.files.storage import default_storage
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.contrib import messages
+
 
 # Create your views here.
 
@@ -53,6 +61,9 @@ def password_check(password, request):
 
 	if val:
 		return val
+
+def is_non_zero_file(fpath):  
+    return os.path.isfile(fpath) and os.path.getsize(fpath) > 0
 
 class UserRegistrationView(View):
 	def get(self, request):
@@ -210,25 +221,6 @@ class HomePageView(View):
 
 		return redirect('user:home_view')
 
-class JobInterviewView(View):
-	def get(self, request):
-		return render(request, 'jobOffer_Interview.html')
-	
-	def post(self, request):
-		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
-		if request.method == 'POST':
-			print("press")
-				# response = request.POST.get("message")
-				
-
-				# save = AppliedJob(user_id = currentUser, job_id = 1, response_1 = response , response_2 = "test", response_3 = "test", 
-				# response_4 = "test", response_5 = "test", response_6 = "test", response_7 = "test", response_8 = "test", response_9 = "test", 
-				# response_10 = "test", requirement_1 = "test", requirement_2 = "test", requirement_3 = "test", requirement_4 = "test", requirement_5 = "test", requirement_6 = "test", 
-				# requirement_7 = "test", requirement_8 = "test", requirement_9 = "test", requirement_10 = "test",  )
-
-		return redirect('user:job-interview_view')
-
-
 class SettingsView(View):
 	def get(self, request):
 		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
@@ -294,7 +286,7 @@ class JobOffersView(View):
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
 
-				saved_jobs = SavedJobs.objects.all()
+				saved_jobs = SavedJobs.objects.filter(user_id = user_id)
 
 				for saved_job in saved_jobs:
 					count = count + 1
@@ -313,3 +305,118 @@ class LogOutView(View):
 class MailSentView(View):
 	def get(self, request):
 		return render(request, 'MailSent.html')
+
+class JobInterviewView(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		for job in job:
+			tts1 = gTTS(text=job.question_1, lang="en")
+			tts1.save("%s.mp3" % os.path.join('user/static/questions', 'question1'))
+
+			tts2 = gTTS(text=job.question_2, lang="en")
+			tts2.save("%s.mp3" % os.path.join('user/static/questions', 'question2'))
+
+			tts3 = gTTS(text=job.question_3, lang="en")
+			tts3.save("%s.mp3" % os.path.join('user/static/questions', 'question3'))
+
+			tts4 = gTTS(text=job.question_4, lang="en")
+			tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question4'))
+
+			tts5 = gTTS(text=job.question_5, lang="en")
+			tts5.save("%s.mp3" % os.path.join('user/static/questions', 'question5'))
+
+			# tts4 = gTTS(text=job.question_6, lang="en")
+			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question6'))
+
+			# tts4 = gTTS(text=job.question_7, lang="en")
+			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question7'))
+
+			# tts4 = gTTS(text=job.question_8, lang="en")
+			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question8'))
+
+			# tts9 = gTTS(text=job.question_9, lang="en")
+			# tts9.save("%s.mp3" % os.path.join('user/static/questions', 'question9'))
+
+			# tts10 = gTTS(text=job.question_10, lang="en")
+			# tts10.save("%s.mp3" % os.path.join('user/static/questions', 'question10'))
+
+		return render(request, 'jobOffer_Interview.html', context)
+
+class JobInterviewQ1View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q1.html', context)
+
+class JobInterviewQ2View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q2.html', context)
+
+class JobInterviewQ3View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q3.html', context)
+
+class JobInterviewQ4View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q4.html', context)
+
+class JobInterviewQ5View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q5.html', context)

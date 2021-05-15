@@ -51,20 +51,66 @@
     <figure class="avatar">
       <img src="{% static '/images/red_bg.jpg' %}" />
     </figure>
+
+    <script type="text/javascript">
+      function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 0;
+            }
+        }, 1000);
+      }
+
+      window.onload = function () {
+        var twoMinutes = 60 * 2,
+          display = document.querySelector('#time');
+        startTimer(twoMinutes, display);
+      };
+    </script>
   </div><br>
+
+  <!-- autoplay audio when loaded -->
+  <audio id="audio" controls hidden onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 1000)">
+        <source src="{% static '/questions/question2.mp3' %}" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function talk(){
+      var audio = document.getElementById("audio"); audio.play();
+    }
+    function pageRedirect() {
+        window.location.replace("http://127.0.0.1:8000/user/job-interview/question-3");
+    }      
+    setTimeout("pageRedirect()", 122000);
+  </script>
 
   <div class="messages">
     <div class="messages-content">
-      <h3 style="text-align: justify; margin: auto; width: 75%; padding: 75px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in elementum lorem, aliquet blandit mi. Integer eu ullamcorper mauris. Aliquam aliquam enim sed fringilla porta. Aliquam quis tellus id tortor pulvinar pellentesque a eget eros. Suspendisse aliquet tristique urna eu efficitur.<h3>
+      <h1 style="text-align: center; font-size: 100; margin: auto; width: 75%; padding: 75px;">
+      {% for job in job %}
+      {{job.question_2}}
+      {% endfor %}
+      <button onclick="talk()"><span style="color: #1D80FF;"><i class="fa fa-volume-up fa-fw"></i></span></button></h1>
     </div>
-
-    <!-- <audio controls>
-      <source src="{% static '/questions/question1.mp3' %}" type="audio/mpeg">
-    </audio> -->
   
-    <div style="bottom: 10px; text-align: center;">
-      <a href="{% url 'user:job-interview_q1' %}"> Proceed</a>
-    </div>
+    <form id="response" method="POST" autocomplete="off" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="message-box" style="position: fixed; bottom: 10px;">
+        <span id="time">02:00</span>
+        <input type="text" class="message-input" id="message" name="message" placeholder="Type your answer here..." style="left: 6%; top: 25%; position: absolute;">
+        <button name="mic" id="id-mic" style="left: 88%; top: 17%; position: absolute;"><i id="fa-mic" class="fa fa-microphone"></i></button>
+        <a href="{% url 'user:job-interview_q3' %}" class="message-submit sound-on-click" style="left: 92%; top: 17%; height: 40px; position: absolute; text-align: center;"><i id="fa-send" class="fa fa-send-o"> Send</i></a>
+      </div>
+    </form>
   </div>
 
 </div>

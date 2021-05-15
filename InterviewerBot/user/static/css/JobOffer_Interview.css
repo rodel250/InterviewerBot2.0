@@ -12,6 +12,7 @@
 html,
 body {
   height: 100%;
+  margin: 0;
 }
 
 body {
@@ -29,7 +30,6 @@ body {
   z-index: 1;
   background-color: #781B1B;
 }
-
 
 /*--------------------
 Chat
@@ -296,6 +296,13 @@ Messages
   margin-left: 7px;
   -webkit-animation-delay: .3s;
   animation-delay: .3s;
+}
+
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
 }
 
 /*--------------------
