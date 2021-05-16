@@ -478,13 +478,13 @@ class AdminRegistrationView(View):
                                             emailAddress = emailAdd)
                     form.save()
 
-                    send_mail(
-                        'Your Registration was Successful.',
-                        'Thank you for registering! You may login now using your newly created account.',
-                        'email',
-                        [email],
-                        fail_silently=False,
-                    )
+                    # send_mail(
+                    #     'Your Registration was Successful.',
+                    #     'Thank you for registering! You may login now using your newly created account.',
+                    #     'email',
+                    #     [email],
+                    #     fail_silently=False,
+                    # )
 
                     Mbox('Successfully Registered', 'Success', 64)
                     return redirect('user:login_view')

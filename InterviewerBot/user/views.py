@@ -102,13 +102,13 @@ class UserRegistrationView(View):
 						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
 						form.save()
 
-						send_mail(
-						    'Your Registration was Successful.',
-						    'Thank you for registering! You may login now using your newly created account.',
-						    'email',
-						    [email],
-						    fail_silently=False,
-						)
+						# send_mail(
+						#     'Your Registration was Successful.',
+						#     'Thank you for registering! You may login now using your newly created account.',
+						#     'email',
+						#     [email],
+						#     fail_silently=False,
+						# )
 
 						Mbox('Successfully Registered', 'Success', 64)
 						return redirect('user:login_view')
@@ -301,11 +301,13 @@ class HomePageView(View):
 				except MultiValueDictKeyError:
 					r15 = None
 
-				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
-					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
-					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
-					requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
-					job_id = job_id, user_id = user_id)
+				# apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+				# 	requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+				# 	requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
+				# 	requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
+				# 	job_id = job_id, user_id = user_id)
+
+				apply_job = AppliedJob(job_id = job_id, user_id = user_id)
 				apply_job.save()
 
 				return redirect('user:job-interview_view')
@@ -383,7 +385,7 @@ class JobOffersView(View):
 				if count < 5:
 					save_jobs = SavedJobs.objects.create(job_id = job_id, user_id = user_id)
 				else:
-					Mbox('Email address is already taken.', 'Error', 16)
+					Mbox('You can only save at most 5 job offers.', 'Error', 16)
 				return redirect('user:job-offers_view')
 			elif 'btnApply' in request.POST:
 				user_id = request.POST.get("user-id")
@@ -465,11 +467,13 @@ class JobOffersView(View):
 				except MultiValueDictKeyError:
 					r15 = None
 
-				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
-					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
-					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
-					requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
-					job_id = job_id, user_id = user_id)
+				# apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+				# 	requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+				# 	requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
+				# 	requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
+				# 	job_id = job_id, user_id = user_id)
+
+				apply_job = AppliedJob(job_id = job_id, user_id = user_id)
 				apply_job.save()
 
 				return redirect('user:job-interview_view')
@@ -494,36 +498,36 @@ class JobInterviewView(View):
 			'job': job
 		}
 
-		for job in job:
-			tts1 = gTTS(text=job.question_1, lang="en")
-			tts1.save("%s.mp3" % os.path.join('user/static/questions', 'question1'))
+		# for job in job:
+		# 	tts1 = gTTS(text=job.question_1, lang="en")
+		# 	tts1.save("%s.mp3" % os.path.join('user/static/questions', 'question1'))
 
-			tts2 = gTTS(text=job.question_2, lang="en")
-			tts2.save("%s.mp3" % os.path.join('user/static/questions', 'question2'))
+		# 	tts2 = gTTS(text=job.question_2, lang="en")
+		# 	tts2.save("%s.mp3" % os.path.join('user/static/questions', 'question2'))
 
-			tts3 = gTTS(text=job.question_3, lang="en")
-			tts3.save("%s.mp3" % os.path.join('user/static/questions', 'question3'))
+		# 	tts3 = gTTS(text=job.question_3, lang="en")
+		# 	tts3.save("%s.mp3" % os.path.join('user/static/questions', 'question3'))
 
-			tts4 = gTTS(text=job.question_4, lang="en")
-			tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question4'))
+		# 	tts4 = gTTS(text=job.question_4, lang="en")
+		# 	tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question4'))
 
-			tts5 = gTTS(text=job.question_5, lang="en")
-			tts5.save("%s.mp3" % os.path.join('user/static/questions', 'question5'))
+		# 	tts5 = gTTS(text=job.question_5, lang="en")
+		# 	tts5.save("%s.mp3" % os.path.join('user/static/questions', 'question5'))
 
-			# tts4 = gTTS(text=job.question_6, lang="en")
-			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question6'))
+		# 	tts6 = gTTS(text=job.question_6, lang="en")
+		# 	tts6.save("%s.mp3" % os.path.join('user/static/questions', 'question6'))
 
-			# tts4 = gTTS(text=job.question_7, lang="en")
-			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question7'))
+		# 	tts7 = gTTS(text=job.question_7, lang="en")
+		# 	tts7.save("%s.mp3" % os.path.join('user/static/questions', 'question7'))
 
-			# tts4 = gTTS(text=job.question_8, lang="en")
-			# tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question8'))
+		# 	tts8 = gTTS(text=job.question_8, lang="en")
+		# 	tts8.save("%s.mp3" % os.path.join('user/static/questions', 'question8'))
 
-			# tts9 = gTTS(text=job.question_9, lang="en")
-			# tts9.save("%s.mp3" % os.path.join('user/static/questions', 'question9'))
+		# 	tts9 = gTTS(text=job.question_9, lang="en")
+		# 	tts9.save("%s.mp3" % os.path.join('user/static/questions', 'question9'))
 
-			# tts10 = gTTS(text=job.question_10, lang="en")
-			# tts10.save("%s.mp3" % os.path.join('user/static/questions', 'question10'))
+		# 	tts10 = gTTS(text=job.question_10, lang="en")
+		# 	tts10.save("%s.mp3" % os.path.join('user/static/questions', 'question10'))
 
 		return render(request, 'jobOffer_Interview.html', context)
 
@@ -596,3 +600,73 @@ class JobInterviewQ5View(View):
 		}
 
 		return render(request, 'jobInterview_Q5.html', context)
+
+class JobInterviewQ6View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q6.html', context)
+
+class JobInterviewQ7View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q7.html', context)
+
+class JobInterviewQ8View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q8.html', context)
+
+class JobInterviewQ9View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q9.html', context)
+
+class JobInterviewQ10View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+
+		return render(request, 'jobInterview_Q10.html', context)

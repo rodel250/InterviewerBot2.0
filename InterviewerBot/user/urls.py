@@ -22,8 +22,9 @@ urlpatterns=[
     path('job-interview/question-3', views.JobInterviewQ3View.as_view(), name="job-interview_q3"),
     path('job-interview/question-4', views.JobInterviewQ4View.as_view(), name="job-interview_q4"),
     path('job-interview/question-5', views.JobInterviewQ5View.as_view(), name="job-interview_q5"),
-    # path('job-interview/question-7', views.JobInterviewQ6View.as_view(), name="job-interview_q7"),
-    # path('job-interview/question-8', views.JobInterviewQ7View.as_view(), name="job-interview_q8"),
-    # path('job-interview/question-9', views.JobInterviewQ8View.as_view(), name="job-interview_q9"),
-    # path('job-interview/question-10', views.JobInterviewQ9View.as_view(), name="job-interview_q10"),
+    path('job-interview/question-6', views.JobInterviewQ6View.as_view(), name="job-interview_q6"),
+    path('job-interview/question-7', views.JobInterviewQ7View.as_view(), name="job-interview_q7"),
+    path('job-interview/question-8', views.JobInterviewQ8View.as_view(), name="job-interview_q8"),
+    path('job-interview/question-9', views.JobInterviewQ9View.as_view(), name="job-interview_q9"),
+    path('job-interview/question-10', views.JobInterviewQ10View.as_view(), name="job-interview_q10"),
 ]

@@ -13,6 +13,8 @@
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- ResponsiveVoice API -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=N9DRhuUu"></script>
 
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{% static '/css/JobOffer_Interview.css' %}">
@@ -42,7 +44,7 @@
 
 {% block content %}
 
-<div class="chat">
+<div class="chat" onload="timestart();">
   <div class="chat-title">
     {% for job in job %}
     <b><h1>{{job.title}}</h1></b>
@@ -70,36 +72,35 @@
         }, 1000);
       }
 
+
+
+      function talk(){
+        {% for job in job %}
+        responsiveVoice.speak("{{job.question_4}}", "US English Male", {volume: 1});
+        {% endfor %}
+      }
+
       window.onload = function () {
         var twoMinutes = 60 * 2,
           display = document.querySelector('#time');
-        startTimer(twoMinutes, display);
+        setTimeout(function() { startTimer(twoMinutes, display); }, 2000)
+        talk();
       };
+
+      function pageRedirect() {
+        document.getElementById('send').click();
+      }      
+      setTimeout("pageRedirect()", 123000);
     </script>
   </div><br>
 
-  <!-- autoplay audio when loaded -->
-  <audio id="audio" controls hidden onloadeddata="var audioPlayer = this; setTimeout(function() { audioPlayer.play(); }, 1000)">
-        <source src="{% static '/questions/question4.mp3' %}" type="audio/mpeg">
-  </audio>
-
-  <script>
-    function talk(){
-      var audio = document.getElementById("audio"); audio.play();
-    }
-    function pageRedirect() {
-        document.getElementById('send').click();
-    }      
-    setTimeout("pageRedirect()", 122000);
-  </script>
-
   <div class="messages">
     <div class="messages-content">
-      <h1 style="text-align: center; font-size: 100; margin: auto; width: 75%; padding: 75px;">
+      <h1 style="text-align: center; font-size: 75; margin: auto; width: 75%; padding: 25px;">
       {% for job in job %}
       {{job.question_4}}
       {% endfor %}
-      <button onclick="talk()"><span style="color: #1D80FF;"><i class="fa fa-volume-up fa-fw"></i></span></button></h1>
+      <button onclick="talk();"><span style="color: #1D80FF;"><small><i class="fa fa-volume-up fa-fw"></i></small></span></button></h1>
     </div>
   
     <form id="response" method="POST" autocomplete="off" enctype="multipart/form-data">
