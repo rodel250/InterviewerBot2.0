@@ -163,7 +163,7 @@
                                                 {% for applicant in applicant %}
                                                 <input type="text" name="user-id" value="{{applicant.id}}" hidden>
                                                 {% endfor %}
-                                                <input type="text" name="job-id" value="{{savedjob.id}}" hidden>
+                                                <input type="text" name="job-id" value="{{savedjob.job_id}}" hidden>
 
                                                 <center>
                                                     {% if savedjob.requirement1 != null %}

@@ -85,36 +85,36 @@
                                                                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                                                         <div class="input_fields_wrap2">
                                                                             <br>
-                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="1. {{joblist.question_1}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="2. {{joblist.question_2}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="3. {{joblist.question_3}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="4. {{joblist.question_4}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="5. {{joblist.question_5}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="1. {{joblist.question_1}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="2. {{joblist.question_2}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="3. {{joblist.question_3}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="4. {{joblist.question_4}}" disabled> &nbsp;<br>
+                                                                            <input type="text" placeholder="5. {{joblist.question_5}}" disabled> &nbsp;<br>
                                                                             </div>
                                                                     </div>
                                                                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                                                             <br>
-                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="6. {{joblist.question_6}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="7. {{joblist.question_7}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="8. {{joblist.question_8}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="9. {{joblist.question_9}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="10. {{joblist.question_10}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="6. {{joblist.question_6}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="7. {{joblist.question_7}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="8. {{joblist.question_8}}" disabled> &nbsp;<br>
+                                                                            <input type="text"  placeholder="9. {{joblist.question_9}}" disabled> &nbsp;<br>
+                                                                            <input type="text" placeholder="10. {{joblist.question_10}}" disabled> &nbsp;<br>
                                                                     </div>
                                                                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                                                             <br>
-                                                                            <input type="text" name="qtn1" id="id-question1" placeholder="11. {{joblist.question_11}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn2" id="id-question2" placeholder="12. {{joblist.question_12}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn3" id="id-question3" placeholder="13. {{joblist.question_13}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn4" id="id-question4" placeholder="14. {{joblist.question_14}}" disabled> &nbsp;<br>
-                                                                            <input type="text" name="qtn5" id="id-question5" placeholder="15. {{joblist.question_15}}" disabled> &nbsp;<br>
+                                                                            <input type="text" placeholder="11. {{joblist.question_11}}" disabled> &nbsp;<br>
+                                                                            <input type="text"placeholder="12. {{joblist.question_12}}" disabled> &nbsp;<br>
+                                                                            <input type="text"placeholder="13. {{joblist.question_13}}" disabled> &nbsp;<br>
+                                                                            <input type="text"placeholder="14. {{joblist.question_14}}" disabled> &nbsp;<br>
+                                                                            <input type="text" placeholder="15. {{joblist.question_15}}" disabled> &nbsp;<br>
                                                                     </div>
                                                                     <div class="tab-pane fade" id="nav-last" role="tabpanel" aria-labelledby="nav-last-tab">
                                                                         <br>
-                                                                        <input type="text" name="qtn1" id="id-question1" placeholder="11. {{joblist.question_16}}" disabled> &nbsp;<br>
-                                                                        <input type="text" name="qtn2" id="id-question2" placeholder="12. {{joblist.question_17}}" disabled> &nbsp;<br>
-                                                                        <input type="text" name="qtn3" id="id-question3" placeholder="13. {{joblist.question_18}}" disabled> &nbsp;<br>
-                                                                        <input type="text" name="qtn4" id="id-question4" placeholder="14. {{joblist.question_19}}" disabled> &nbsp;<br>
-                                                                        <input type="text" name="qtn5" id="id-question5" placeholder="15. {{joblist.question_20}}" disabled> &nbsp;<br>
+                                                                        <input type="text"  placeholder="16. {{joblist.question_16}}" disabled> &nbsp;<br>
+                                                                        <input type="text" placeholder="17. {{joblist.question_17}}" disabled> &nbsp;<br>
+                                                                        <input type="text" placeholder="18. {{joblist.question_18}}" disabled> &nbsp;<br>
+                                                                        <input type="text" placeholder="19. {{joblist.question_19}}" disabled> &nbsp;<br>
+                                                                        <input type="text" placeholder="20. {{joblist.question_20}}" disabled> &nbsp;<br>
                                                                 </div>
                                                                 </div>
                                                             </div>
@@ -229,16 +229,16 @@
                                 <div id="q16to20" class="tabcontent">
                                     <div class="input_fields_wrap2">
                                         <br>
-                                        <input type="text"  placeholder="{% if response.question_16 == '' %} (No Question) {% else %} {{response.question_11}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="Answer: {% if response.response_16 == null %} - {% else %} {{response.response_11}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="{% if response.question_17 == '' %} (No Question) {% else %} {{response.question_12}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="Answer:{% if response.response_17 == null %} - {% else %} {{response.response_12}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="{% if response.question_18 == '' %} (No Question) {% else %} {{response.question_13}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="Answer:{% if response.response_18 == null %} - {% else %} {{response.response_13}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="{% if response.question_19 == '' %} (No Question) {% else %} {{response.question_14}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="Answer:{% if response.response_19 == null %} - {% else %} {{response.response_14}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="{% if response.question_20 == '' %} (No Question) {% else %} {{response.question_15}} {% endif %}" disabled> &nbsp;<br>
-                                        <input type="text"  placeholder="Answer:{% if response.response_20 == null %} - {% else %} {{response.response_15}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="{{response.question_16}}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="Answer: {% if response.response_16 == null %} - {% else %} {{response.response_16}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="{% if response.question_17 == '' %} (No Question) {% else %} {{response.question_17}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="Answer:{% if response.response_17 == null %} - {% else %} {{response.response_17}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="{% if response.question_18 == '' %} (No Question) {% else %} {{response.question_18}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="Answer:{% if response.response_18 == null %} - {% else %} {{response.response_18}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="{% if response.question_19 == '' %} (No Question) {% else %} {{response.question_19}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="Answer:{% if response.response_19 == null %} - {% else %} {{response.response_19}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="{% if response.question_20 == '' %} (No Question) {% else %} {{response.question_20}} {% endif %}" disabled> &nbsp;<br>
+                                        <input type="text"  placeholder="Answer:{% if response.response_20 == null %} - {% else %} {{response.response_20}} {% endif %}" disabled> &nbsp;<br>
                                     </div>
                                 </div>
                                 </center>

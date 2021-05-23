@@ -47,9 +47,15 @@
             </div>
 
             {% for message in messages %}
-                <div class="alert" style="color: red; font-size: 13px;">
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success" role="alert" style="font-size: 13px; width: 50%;">
                     {{ message }}
                 </div>
+                {% else %}
+                <div class="alert alert-danger" role="alert" style="font-size: 13px; width: 50%;">
+                    {{ message }}
+                </div>
+                {% endif %}
             {% endfor %}
 
              <div class="pb-3">

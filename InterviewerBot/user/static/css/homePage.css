@@ -241,14 +241,9 @@ table {
     margin-top: 2%;
     margin-bottom: 3%;
     background-color: #FFCC00;
-    border-collapse: collapse;
-}
-
-table {
     border: 1px solid #FFCC00;
     border-collapse: collapse;
 }
-
 
 td {
     border: none;

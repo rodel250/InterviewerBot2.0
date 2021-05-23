@@ -76,7 +76,7 @@
 
       function talk(){
         {% for job in job %}
-        responsiveVoice.speak("{{job.question_2}}", "US English Male", {volume: 1});
+        responsiveVoice.speak("{{job.question_2}}", "US English Female", {volume: 1});
         {% endfor %}
       }
 
@@ -109,7 +109,7 @@
         <span id="time">02:00</span>
         <input type="text" class="message-input" id="message" name="message" placeholder="Type your answer here..." style="left: 6%; top: 25%; position: absolute;">
         <button name="mic" id="id-mic" style="left: 88%; top: 17%; position: absolute;"><i id="fa-mic" class="fa fa-microphone"></i></button>
-        <a href="{% url 'user:job-interview_q3' %}" id="send" class="message-submit sound-on-click" style="left: 92%; top: 17%; height: 40px; position: absolute; text-align: center;"><i id="fa-send" class="fa fa-send-o"> Send</i></a>
+        <button type="submit" id="send" class="message-submit sound-on-click" style="left: 92%; top: 17%; height: 40px; position: absolute; text-align: center;"><i id="fa-send" class="fa fa-send-o"> Send</i></button>
       </div>
     </form>
   </div>

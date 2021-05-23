@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{% static '/css/joboffers.css' %}">
+    <link rel="stylesheet" href="{% static '/css/jobOffers.css' %}">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/solid.css">
@@ -151,12 +151,12 @@
 
             <br><hr>
 
-            <table width="87%" id="jobTable" class="table-striped table-bordered table-sm">
+            <table width="100%" id="jobTable" class="table-striped table-bordered table-sm">
                 <tbody>
                     {% for joblist in joblists %}
                     <tr>
-                        <td width="10%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"> </td>
-                        <td width="50%">
+                        <td width="13%"> <img src="{% static '/images/red_bg.jpg' %}" class="imgJob"> </td>
+                        <td width="60%">
                             <div class="row jobTitle">{{joblist.title}}</div>
                             <div class="row jobDescription">{{joblist.description}}</div>
                         </td>

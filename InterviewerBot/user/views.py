@@ -1,7 +1,7 @@
 import ctypes
 import base64
 import os
-import speech_recognition as sr
+# import speech_recognition as sr
 from gtts import gTTS
 
 from .forms import *
@@ -102,19 +102,18 @@ class UserRegistrationView(View):
 						form = Applicant(firstname = firstname, lastname = lastname, phone = phone, password = password, gender = gender, emailAddress = emailAddress)
 						form.save()
 
-						# send_mail(
-						#     'Your Registration was Successful.',
-						#     'Thank you for registering! You may login now using your newly created account.',
-						#     'email',
-						#     [email],
-						#     fail_silently=False,
-						# )
+						send_mail(
+						    'Your Registration was Successful.',
+						    'Thank you for registering! You may login now using your newly created account.',
+						    'email',
+						    [email],
+						    fail_silently=False,
+						)
 
-						Mbox('Successfully Registered', 'Success', 64)
+						messages.success(request, "Account created for "+email)
 						return redirect('user:login_view')
 			else:
-				Mbox('Email address is already taken.', 'Error', 16)
-		
+				messages.error(request, "Email address is already taken.")
 		return render(request, 'RegistrationPage.html', {'form':form})
 
 class UserIndexView(View):
@@ -140,7 +139,6 @@ class UserIndexView(View):
 						form.emailAddress = email
 						form.password = password
 						form.save()
-						# Mbox('WELCOME '+applicant.firstname, 'Success', 64)
 						return redirect('user:home_view')
 			
 			for administrator in administrators:
@@ -151,7 +149,6 @@ class UserIndexView(View):
 						form.emailAddress = email
 						form.password = password
 						form.save()
-						# Mbox('WELCOME '+administrator.firstname, 'Success', 64)
 						return redirect('administrator:dashboard_view')
 
 		messages.error(request,'email address or password is incorrect')
@@ -225,6 +222,7 @@ class HomePageView(View):
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
 				job = currentJob.objects.filter(id = 1).update(jobID = job_id)
+				savedjobs = SavedJobs.objects.filter(job_id = job_id).delete()
 
 				try:
 					r1 = request.FILES['myfile1']
@@ -276,38 +274,10 @@ class HomePageView(View):
 				except MultiValueDictKeyError:
 					r10 = None
 
-				try:
-					r11 = request.FILES['myfile11']
-				except MultiValueDictKeyError:
-					r11 = None
-
-				try:
-					r12 = request.FILES['myfile12']
-				except MultiValueDictKeyError:
-					r12 = None
-
-				try:
-					r13 = request.FILES['myfile13']
-				except MultiValueDictKeyError:
-					r13 = None
-
-				try:
-					r14 = request.FILES['myfile14']
-				except MultiValueDictKeyError:
-					r14 = None
-
-				try:
-					r15 = request.FILES['myfile15']
-				except MultiValueDictKeyError:
-					r15 = None
-
-				# apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
-				# 	requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
-				# 	requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
-				# 	requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
-				# 	job_id = job_id, user_id = user_id)
-
-				apply_job = AppliedJob(job_id = job_id, user_id = user_id)
+				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, job_id = job_id, 
+					user_id = user_id)
 				apply_job.save()
 
 				return redirect('user:job-interview_view')
@@ -336,12 +306,12 @@ class SettingsView(View):
 		if password == "":
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone)
-			Mbox('Profile Update Successful', 'Success', 64)
+			messages.success(request, 'Profile Successfully Updated')
 		elif password_check(password, request):
 			password = encrypt_password(password)
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
-			Mbox('Profile Update Successful', 'Success', 64)
+			messages.success(request, 'Profile Successfully Updated')
 
 		return redirect('user:settings_view')
 
@@ -442,38 +412,10 @@ class JobOffersView(View):
 				except MultiValueDictKeyError:
 					r10 = None
 
-				try:
-					r11 = request.FILES['myfile11']
-				except MultiValueDictKeyError:
-					r11 = None
-
-				try:
-					r12 = request.FILES['myfile12']
-				except MultiValueDictKeyError:
-					r12 = None
-
-				try:
-					r13 = request.FILES['myfile13']
-				except MultiValueDictKeyError:
-					r13 = None
-
-				try:
-					r14 = request.FILES['myfile14']
-				except MultiValueDictKeyError:
-					r14 = None
-
-				try:
-					r15 = request.FILES['myfile15']
-				except MultiValueDictKeyError:
-					r15 = None
-
-				# apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
-				# 	requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
-				# 	requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, requirement_11 = r11,
-				# 	requirement_12 = r12, requirement_13 = r13, requirement_14 = r14, requirement_15 = r15,
-				# 	job_id = job_id, user_id = user_id)
-
-				apply_job = AppliedJob(job_id = job_id, user_id = user_id)
+				apply_job = AppliedJob(requirement_1 = r1, requirement_2 = r2, requirement_3 = r3, 
+					requirement_4 = r4, requirement_5 = r5, requirement_6 = r6, requirement_7 = r7, 
+					requirement_8 = r8, requirement_9 = r9, requirement_10 = r10, job_id = job_id, 
+					user_id = user_id)
 				apply_job.save()
 
 				return redirect('user:job-interview_view')
@@ -502,33 +444,6 @@ class JobInterviewView(View):
 		# 	tts1 = gTTS(text=job.question_1, lang="en")
 		# 	tts1.save("%s.mp3" % os.path.join('user/static/questions', 'question1'))
 
-		# 	tts2 = gTTS(text=job.question_2, lang="en")
-		# 	tts2.save("%s.mp3" % os.path.join('user/static/questions', 'question2'))
-
-		# 	tts3 = gTTS(text=job.question_3, lang="en")
-		# 	tts3.save("%s.mp3" % os.path.join('user/static/questions', 'question3'))
-
-		# 	tts4 = gTTS(text=job.question_4, lang="en")
-		# 	tts4.save("%s.mp3" % os.path.join('user/static/questions', 'question4'))
-
-		# 	tts5 = gTTS(text=job.question_5, lang="en")
-		# 	tts5.save("%s.mp3" % os.path.join('user/static/questions', 'question5'))
-
-		# 	tts6 = gTTS(text=job.question_6, lang="en")
-		# 	tts6.save("%s.mp3" % os.path.join('user/static/questions', 'question6'))
-
-		# 	tts7 = gTTS(text=job.question_7, lang="en")
-		# 	tts7.save("%s.mp3" % os.path.join('user/static/questions', 'question7'))
-
-		# 	tts8 = gTTS(text=job.question_8, lang="en")
-		# 	tts8.save("%s.mp3" % os.path.join('user/static/questions', 'question8'))
-
-		# 	tts9 = gTTS(text=job.question_9, lang="en")
-		# 	tts9.save("%s.mp3" % os.path.join('user/static/questions', 'question9'))
-
-		# 	tts10 = gTTS(text=job.question_10, lang="en")
-		# 	tts10.save("%s.mp3" % os.path.join('user/static/questions', 'question10'))
-
 		return render(request, 'jobOffer_Interview.html', context)
 
 class JobInterviewQ1View(View):
@@ -542,8 +457,14 @@ class JobInterviewQ1View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q1.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_1 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_1 = response_1)
+		return redirect('user:job-interview_q2')
 
 class JobInterviewQ2View(View):
 	def get(self, request):
@@ -556,8 +477,14 @@ class JobInterviewQ2View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q2.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_2 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_2 = response_2)
+		return redirect('user:job-interview_q3')
 
 class JobInterviewQ3View(View):
 	def get(self, request):
@@ -570,8 +497,14 @@ class JobInterviewQ3View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q3.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_3 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_3 = response_3)
+		return redirect('user:job-interview_q4')
 
 class JobInterviewQ4View(View):
 	def get(self, request):
@@ -584,8 +517,14 @@ class JobInterviewQ4View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q4.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_4 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_4 = response_4)
+		return redirect('user:job-interview_q5')
 
 class JobInterviewQ5View(View):
 	def get(self, request):
@@ -598,8 +537,14 @@ class JobInterviewQ5View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q5.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_5 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_5 = response_5)
+		return redirect('user:job-interview_q6')
 
 class JobInterviewQ6View(View):
 	def get(self, request):
@@ -612,8 +557,14 @@ class JobInterviewQ6View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q6.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_6 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_6 = response_6)
+		return redirect('user:job-interview_q7')
 
 class JobInterviewQ7View(View):
 	def get(self, request):
@@ -626,8 +577,14 @@ class JobInterviewQ7View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q7.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_7 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_7 = response_7)
+		return redirect('user:job-interview_q8')
 
 class JobInterviewQ8View(View):
 	def get(self, request):
@@ -640,8 +597,14 @@ class JobInterviewQ8View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q8.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_8 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_8 = response_8)
+		return redirect('user:job-interview_q9')
 
 class JobInterviewQ9View(View):
 	def get(self, request):
@@ -654,8 +617,14 @@ class JobInterviewQ9View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q9.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_9 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_9 = response_9)
+		return redirect('user:job-interview_q10')
 
 class JobInterviewQ10View(View):
 	def get(self, request):
@@ -668,5 +637,215 @@ class JobInterviewQ10View(View):
 			'applicant': applicant,
 			'job': job
 		}
-
 		return render(request, 'jobInterview_Q10.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_10 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_10 = response_10)
+		return redirect('user:job-interview_q11')
+
+class JobInterviewQ11View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q11.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_11 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_11 = response_11)
+		return redirect('user:job-interview_q12')
+
+class JobInterviewQ12View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q12.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_12 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_12 = response_12)
+		return redirect('user:job-interview_q13')
+
+class JobInterviewQ13View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q13.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_13 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_13 = response_13)
+		return redirect('user:job-interview_q14')
+
+class JobInterviewQ14View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q14.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_14 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_14 = response_14)
+		return redirect('user:job-interview_q15')
+
+class JobInterviewQ15View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q15.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_15 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_15 = response_15)
+		return redirect('user:job-interview_q16')
+
+class JobInterviewQ16View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q16.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_16 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_16 = response_16)
+		return redirect('user:job-interview_q17')
+
+class JobInterviewQ17View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q17.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_17 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_17 = response_17)
+		return redirect('user:job-interview_q18')
+
+class JobInterviewQ18View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q18.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_18 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_18 = response_18)
+		return redirect('user:job-interview_q19')
+
+class JobInterviewQ19View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q19.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_19 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_19 = response_19)
+		return redirect('user:job-interview_q20')
+
+class JobInterviewQ20View(View):
+	def get(self, request):
+		currentUser = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		applicant = Applicant.objects.filter(id = currentUser)
+		interview_job = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)
+		job = CreateJob.objects.filter(id = interview_job)
+
+		context = {
+			'applicant': applicant,
+			'job': job
+		}
+		return render(request, 'jobInterview_Q20.html', context)
+
+	def post(self, request):
+		user = Login.objects.values_list("user_id", flat=True).get(pk = 1)
+		job = currentJob.objects.values_list("jobID", flat=True).get(pk=1)
+		response_20 = request.POST.get("message")
+		update_applyJob = AppliedJob.objects.filter(job_id = job, user_id = user).update(response_20 = response_20)
+		return redirect('user:interview_success_view')
+
+class InterviewSuccessView(View):
+	def get(self, request):
+		return render(request, 'interviewSuccess.html')

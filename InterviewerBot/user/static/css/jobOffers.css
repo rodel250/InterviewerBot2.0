@@ -192,19 +192,6 @@ ul ul a {
   background-color: white;
 }
 
-/*.searchButton {
-	background: #FFCC00;  
-	width: 15%; 
-	margin: 1 0;
-	font-weight: bold; 
-	padding: 10px; 
-	border-radius: 100px;
-}
-
-.searchButton:hover {
-    background: #FFD700;
-}*/
-
 
 /* ---------------------------------
 	TABLE CONTENTS
@@ -217,13 +204,13 @@ table, th, td {
 table {
 	background-color: white;
 	border-collapse: separate;
-    border-spacing: 10px;
-    border-radius: 10px;
+  border-spacing: 10px;
+  border-radius: 10px;
 	border: none;
 }
 
 td {
-	height: 5%;
+	height: 80px;
 }
 
 .btnApply {
@@ -268,29 +255,7 @@ td {
 	border-radius: 50%;
 }
 
-/*JOB REQUIREMENTS MODAL*/
-.jobModal{
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4);
-}
-
-.jobModal_content{
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 5px solid #DCB800;
-    width: 80%; /* Could be more or less, depending on screen size */
-    border-radius: 15px;
-}
-
+/*BUTTON CLOSE FOR MODAL*/
 .close{
     color: #aaa;
     float: right;
@@ -305,69 +270,6 @@ td {
   cursor: pointer;
 }
 
-/* ---------- MODAL -------------*/
-/*.modal {
-   width: 50%;
-   height: 50%;
-   position: absolute;
-   left: 50%;
-   top: 50%; 
-   margin-left: -220px;
-   margin-top: -150px;
-}*/
-
-/*.column{
-    float: left;
-    width: 50%;
-}
-.column2{
-    float: left;
-    width: 50%;
-    border-left: 1px solid #EADFA8;
-}
-
-.column h3{
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.column2 h3{
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.row:after{
-    content: "";
-    display: table;
-    clear: both;
-}*/
-
-/*Upload File CSS*/
-/*input[type="file"] {
-  display: block;
-}
-.imageThumb {
-  max-height: 75px;
-  border: 2px solid;
-  padding: 1px;
-  cursor: pointer;
-}
-.pip {
-  display: inline-block;
-  margin: 10px 10px 0 0;
-}
-.remove {
-  display: block;
-  background: #444;
-  border: 1px solid black;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-}
-.remove:hover {
-  background: white;
-  color: black;
-}*/
 
 #btnss{
     float: right;

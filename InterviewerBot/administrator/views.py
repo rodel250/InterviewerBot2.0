@@ -73,16 +73,6 @@ class DashboardView(View):
             jobTitle = request.POST.get("name-title")
             jobDescription = request.POST.get("name-description")
             print(jobTitle)
-            q1 = request.POST.get("qtn1")
-            q2 = request.POST.get("qtn2")
-            q3 = request.POST.get("qtn3")
-            q4 = request.POST.get("qtn4")
-            q5 = request.POST.get("qtn5")
-            q6 = request.POST.get("qtn6")
-            q7 = request.POST.get("qtn7")
-            q8 = request.POST.get("qtn8")
-            q9 = request.POST.get("qtn9")
-            q10 = request.POST.get("qtn10")
             q11 = request.POST.get("qtn11")
             q12 = request.POST.get("qtn12")
             q13 = request.POST.get("qtn13")
@@ -103,70 +93,6 @@ class DashboardView(View):
             r8 = request.POST.get("req8")
             r9 = request.POST.get("req9")
             r10 = request.POST.get("req10")
-            r11 = request.POST.get("req11")
-            r12 = request.POST.get("req12")
-            r13 = request.POST.get("req13")
-            r14 = request.POST.get("req14")
-            r15 = request.POST.get("req15")
-
-            if q1 == "":
-                q1 = None
-
-            if q2 == "":
-                q2 = None
-
-            if q3 == "":
-                q3 = None
-
-            if q4 == "":
-                q4 = None
-            if q5 == "":
-                q5 = None
-
-            if q6 == "":
-                q6 = None
-
-            if q7 == "":
-                q7 = None
-
-            if q8 == "":
-                q8 = None
-
-            if q9 == "":
-                q9 = None
-
-            if q10 == "":
-                q10 = None
-
-            if q11 == "":
-                q11 = None
-
-            if q12 == "":
-                q12 = None
-
-            if q13 == "":
-                q13 = None
-
-            if q14 == "":
-                q14 = None
-                
-            if q15 == "":
-                q15 = None
-
-            if q16 == "":
-                q16 = None
-
-            if q17 == "":
-                q17 = None
-
-            if q18 == "":
-                q18 = None
-
-            if q19 == "":
-                q19 = None
-                        
-            if q20 == "":
-                q20 = None
 
             if r1 == "":
                 r1 = None
@@ -197,31 +123,13 @@ class DashboardView(View):
             if r10 == "":
                 r10 = None
 
-            if r11 == "":
-                r11 = None
-
-            if r12 == "":
-                r12 = None
-
-            if r13 == "":
-                r13 = None
-
-            if r14 == "":
-                r14 = None
-                
-            if r15 == "":
-                r15 = None
-
-            form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
-                question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
-                question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
+            form = CreateJob(title = jobTitle, description = jobDescription,
                 question_11 = q11, question_12 = q12, question_13 = q13, question_14 = q14,
                 question_15 = q15, question_16 = q16, question_17 = q17, question_18 = q18,
                 question_19 = q19, question_20 = q20, requirement1 = r1, requirement2 = r2,
                 requirement3 = r3, requirement4 = r4, requirement5 = r5, requirement6 = r6,
                 requirement7 = r7, requirement8 = r8, requirement9 = r9, requirement10 = r10,
-                requirement11 = r11, requirement12 = r12, requirement13 = r13, requirement14 = r14,
-                requirement15 = r15, admin_id = currentUser)
+                admin_id = currentUser)
             form.save()
 
             return redirect('administrator:job-lists_view')
@@ -279,16 +187,6 @@ class JobListsView(View):
                 if form.is_valid():
                     jobTitle = request.POST.get("name-title")
                     jobDescription = request.POST.get("name-description")
-                    q1 = request.POST.get("qtn1")
-                    q2 = request.POST.get("qtn2")
-                    q3 = request.POST.get("qtn3")
-                    q4 = request.POST.get("qtn4")
-                    q5 = request.POST.get("qtn5")
-                    q6 = request.POST.get("qtn6")
-                    q7 = request.POST.get("qtn7")
-                    q8 = request.POST.get("qtn8")
-                    q9 = request.POST.get("qtn9")
-                    q10 = request.POST.get("qtn10")
                     q11 = request.POST.get("qtn11")
                     q12 = request.POST.get("qtn12")
                     q13 = request.POST.get("qtn13")
@@ -309,70 +207,6 @@ class JobListsView(View):
                     r8 = request.POST.get("req8")
                     r9 = request.POST.get("req9")
                     r10 = request.POST.get("req10")
-                    r11 = request.POST.get("req11")
-                    r12 = request.POST.get("req12")
-                    r13 = request.POST.get("req13")
-                    r14 = request.POST.get("req14")
-                    r15 = request.POST.get("req15")
-
-                    if q1 == "":
-                        q1 = None
-
-                    if q2 == "":
-                        q2 = None
-
-                    if q3 == "":
-                        q3 = None
-
-                    if q4 == "":
-                        q4 = None
-                    if q5 == "":
-                        q5 = None
-
-                    if q6 == "":
-                        q6 = None
-
-                    if q7 == "":
-                        q7 = None
-
-                    if q8 == "":
-                        q8 = None
-
-                    if q9 == "":
-                        q9 = None
-
-                    if q10 == "":
-                        q10 = None
-
-                    if q11 == "":
-                        q11 = None
-
-                    if q12 == "":
-                        q12 = None
-
-                    if q13 == "":
-                        q13 = None
-
-                    if q14 == "":
-                        q14 = None
-                        
-                    if q15 == "":
-                        q15 = None
-
-                    if q16 == "":
-                        q16 = None
-
-                    if q17 == "":
-                        q17 = None
-
-                    if q18 == "":
-                        q18 = None
-
-                    if q19 == "":
-                        q19 = None
-                        
-                    if q20 == "":
-                        q20 = None
 
                     if r1 == "":
                         r1 = None
@@ -403,31 +237,13 @@ class JobListsView(View):
                     if r10 == "":
                         r10 = None
 
-                    if r11 == "":
-                        r11 = None
-
-                    if r12 == "":
-                        r12 = None
-
-                    if r13 == "":
-                        r13 = None
-
-                    if r14 == "":
-                        r14 = None
-                        
-                    if r15 == "":
-                        r15 = None
-
-                    form = CreateJob(title = jobTitle, description = jobDescription, question_1 = q1,
-                        question_2 = q2, question_3 = q3, question_4 = q4, question_5 = q5, question_6 = q6,
-                        question_7 = q7, question_8 = q8, question_9 = q9, question_10 = q10,
+                    form = CreateJob(title = jobTitle, description = jobDescription,
                         question_11 = q11, question_12 = q12, question_13 = q13, question_14 = q14,
                         question_15 = q15, question_16 = q16, question_17 = q17, question_18 = q18,
                         question_19 = q19, question_20 = q20, requirement1 = r1, requirement2 = r2,
                         requirement3 = r3, requirement4 = r4, requirement5 = r5, requirement6 = r6,
                         requirement7 = r7, requirement8 = r8, requirement9 = r9, requirement10 = r10,
-                        requirement11 = r11, requirement12 = r12, requirement13 = r13, requirement14 = r14,
-                        requirement15 = r15, admin_id = currentUser)
+                        admin_id = currentUser)
                     form.save()
                     return redirect('administrator:job-lists_view')
 
@@ -451,14 +267,19 @@ class AdminRegistrationView(View):
         return render(request, 'registeradmin.html')
 
     def post(self, request):
-        count = 0
         form = AdministratorForm(request.POST)
-        administrators = Administrator.objects.all()
-        emailAdd = request.POST.get("email")
+        form.first = request.POST.get("first")
+        form.last = request.POST.get("last")
+        form.phone = request.POST.get("phone")
         form.passwd = request.POST.get("pass")
+        form.gender = request.POST.get("gender")
+        form.email = request.POST.get("email")
+
+        administrators = Administrator.objects.all()
+        count = 0
 
         for administrator in administrators:
-            if(administrator.emailAddress == emailAdd):
+            if(administrator.emailAddress == form.email):
                 count = 1
 
         if (count == 0):
@@ -478,18 +299,18 @@ class AdminRegistrationView(View):
                                             emailAddress = emailAdd)
                     form.save()
 
-                    # send_mail(
-                    #     'Your Registration was Successful.',
-                    #     'Thank you for registering! You may login now using your newly created account.',
-                    #     'email',
-                    #     [email],
-                    #     fail_silently=False,
-                    # )
+                    send_mail(
+                        'Your Registration was Successful.',
+                        'Thank you for registering! You may login now using your newly created account.',
+                        'email',
+                        [email],
+                        fail_silently=False,
+                    )
 
-                    Mbox('Successfully Registered', 'Success', 64)
+                    messages.success(request, 'Account created for '+email)
                     return redirect('user:login_view')
         else:
-            Mbox('Email address is already used.', 'Error', 16)
+            messages.error(request, 'Email address is already taken.')
         
         return render(request, 'registeradmin.html', {'form':form})
 
@@ -508,21 +329,86 @@ class SettingsView(View):
         administrator = Administrator.objects.all()
         count = 1
 
-        administrator_id = request.POST.get("administrator-id")
-        firstName = request.POST.get("firstname")
-        lastName = request.POST.get("lastname")
-        phone = request.POST.get("phone")
-        password = request.POST.get("password")
+        if 'btnAdd' in request.POST:
+            if form.is_valid():
+                jobTitle = request.POST.get("name-title")
+                jobDescription = request.POST.get("name-description")
+                q11 = request.POST.get("qtn11")
+                q12 = request.POST.get("qtn12")
+                q13 = request.POST.get("qtn13")
+                q14 = request.POST.get("qtn14")
+                q15 = request.POST.get("qtn15")
+                q16 = request.POST.get("qtn16")
+                q17 = request.POST.get("qtn17")
+                q18 = request.POST.get("qtn18")
+                q19 = request.POST.get("qtn19")
+                q20 = request.POST.get("qtn20")
+                r1 = request.POST.get("req1")
+                r2 = request.POST.get("req2")
+                r3 = request.POST.get("req3")
+                r4 = request.POST.get("req4")
+                r5 = request.POST.get("req5")
+                r6 = request.POST.get("req6")
+                r7 = request.POST.get("req7")
+                r8 = request.POST.get("req8")
+                r9 = request.POST.get("req9")
+                r10 = request.POST.get("req10")
 
-        if password == "":
-            update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
-                lastname = lastName, phone = phone)
-            Mbox('Profile Update Successful', 'Success', 64)
-        elif password_check(password, request):
-            password = encrypt_password(password)
-            update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
-                lastname = lastName, phone = phone, password = password)
-            Mbox('Profile Update Successful', 'Success', 64)
+                if r1 == "":
+                    r1 = None
+
+                if r2 == "":
+                    r2 = None
+
+                if r3 == "":
+                    r3 = None
+
+                if r4 == "":
+                    r4 = None
+                if r5 == "":
+                    r5 = None
+
+                if r6 == "":
+                    r6 = None
+
+                if r7 == "":
+                    r7 = None
+
+                if r8 == "":
+                    r8 = None
+
+                if r9 == "":
+                    r9 = None
+
+                if r10 == "":
+                    r10 = None
+
+                form = CreateJob(title = jobTitle, description = jobDescription,
+                    question_11 = q11, question_12 = q12, question_13 = q13, question_14 = q14,
+                    question_15 = q15, question_16 = q16, question_17 = q17, question_18 = q18,
+                    question_19 = q19, question_20 = q20, requirement1 = r1, requirement2 = r2,
+                    requirement3 = r3, requirement4 = r4, requirement5 = r5, requirement6 = r6,
+                    requirement7 = r7, requirement8 = r8, requirement9 = r9, requirement10 = r10,
+                    admin_id = currentUser)
+                form.save()
+                return redirect('administrator:job-lists_view')
+
+        elif 'btnUpdate' in request.POST:
+            administrator_id = request.POST.get("administrator-id")
+            firstName = request.POST.get("firstname")
+            lastName = request.POST.get("lastname")
+            phone = request.POST.get("phone")
+            password = request.POST.get("password")
+
+            if password == "":
+                update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
+                    lastname = lastName, phone = phone)
+                messages.success(request, 'Profile Successfully Updated')
+            elif password_check(password, request):
+                password = encrypt_password(password)
+                update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
+                    lastname = lastName, phone = phone, password = password)
+                messages.success(request, 'Profile Successfully Updated')
 
         return redirect('administrator:settings_view')
 
