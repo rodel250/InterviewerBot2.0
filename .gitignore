@@ -4,3 +4,6 @@
 /InterviewerBot/user/__pycache__
 /InterviewerBot/user/migrations/__pycache__
 *.pyc
+*.docx
+*.JPG
+*.pdf

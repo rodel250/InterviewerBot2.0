@@ -15,7 +15,7 @@ from django.views.generic import View, TemplateView
 from django.http import Http404
 from django.http import HttpResponse
 
-from django.core.files.storage import default_storage
+from django.core.files.storage import FileSystemStorage
 from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.contrib import messages
@@ -306,12 +306,10 @@ class SettingsView(View):
 		if password == "":
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone)
-			messages.success(request, 'Profile Successfully Updated')
 		elif password_check(password, request):
 			password = encrypt_password(password)
 			update_applicant = Applicant.objects.filter(id = applicant_id).update(firstname = firstName,
 				lastname = lastName, phone = phone, password = password)
-			messages.success(request, 'Profile Successfully Updated')
 
 		return redirect('user:settings_view')
 
@@ -358,57 +356,70 @@ class JobOffersView(View):
 					Mbox('You can only save at most 5 job offers.', 'Error', 16)
 				return redirect('user:job-offers_view')
 			elif 'btnApply' in request.POST:
+				context = {}
 				user_id = request.POST.get("user-id")
 				job_id = request.POST.get("job-id")
 				job = currentJob.objects.filter(id = 1).update(jobID = job_id)
 
+				# To store the files in the media dir
+				fs = FileSystemStorage();
 				try:
 					r1 = request.FILES['myfile1']
+					fs.save(r1.name, r1)
 				except MultiValueDictKeyError:
 					r1 = None
 
 				try:
 					r2 = request.FILES['myfile2']
+					fs.save(r2.name, r2)
 				except MultiValueDictKeyError:
 					r2 = None
 
 				try:
 					r3 = request.FILES['myfile3']
+					fs.save(r3.name, r3)
 				except MultiValueDictKeyError:
 					r3 = None
 
 				try:
 					r4 = request.FILES['myfile4']
+					fs.save(r4.name, r4)
 				except MultiValueDictKeyError:
 					r4 = None
 
 				try:
 					r5 = request.FILES['myfile5']
+					fs.save(r5.name, r5)
 				except MultiValueDictKeyError:
 					r5 = None
 
 				try:
 					r6 = request.FILES['myfile6']
+					fs.save(r6.name, r6)
 				except MultiValueDictKeyError:
 					r6 = None
 
 				try:
 					r7 = request.FILES['myfile7']
+					fs.save(r7.name, r7)
 				except MultiValueDictKeyError:
 					r7 = None
 
 				try:
 					r8 = request.FILES['myfile8']
+					fs.save(r8.name, r8)
 				except MultiValueDictKeyError:
 					r8 = None
 
 				try:
 					r9 = request.FILES['myfile9']
+					fs.save(r9.name, r9)
 				except MultiValueDictKeyError:
 					r9 = None
 
 				try:
 					r10 = request.FILES['myfile10']
+					fs.save(r10.name, r10)
 				except MultiValueDictKeyError:
 					r10 = None
 

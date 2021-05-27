@@ -676,6 +676,10 @@ textarea{
     font-weight: 600;
 }
 
+.tab {
+    margin-left: 20px;
+}
+
 .tablinks{
     border: 1px solid transparent;
     border-top-left-radius: .25rem;
@@ -706,6 +710,7 @@ textarea{
     outline: none;
     border-bottom: 3px solid !important;
 }
+
 
 /*
 @font-face { font-family: Gotham; src: url('font/GothamLight.ttf'); font-weight: normal;} 

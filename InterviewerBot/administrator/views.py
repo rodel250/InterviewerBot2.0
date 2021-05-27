@@ -403,42 +403,49 @@ class SettingsView(View):
             if password == "":
                 update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
                     lastname = lastName, phone = phone)
-                messages.success(request, 'Profile Successfully Updated')
             elif password_check(password, request):
                 password = encrypt_password(password)
                 update_administrator = Administrator.objects.filter(id = administrator_id).update(firstname = firstName,
                     lastname = lastName, phone = phone, password = password)
-                messages.success(request, 'Profile Successfully Updated')
 
         return redirect('administrator:settings_view')
 
 class Applicants(View):
     def get(self,request):
         currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)    
-        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
         joblist = CreateJob.objects.filter(id = currentJob1)
         applicant = Applicant.objects.raw('SELECT DISTINCT applicant.id,firstname,lastname FROM applicant,createjob,appliedjob WHERE appliedjob.job_id =' + str(currentJob1) +' AND applicant.id = appliedjob.user_id')
-        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1)+' GROUP BY applicant.firstname')
+        
         context = {
             'joblists': joblist,
             'applicants': applicant,
-            'responses': response
-            
         }
 
         return render(request, 'jobApplicants.html', context)
 
     def post(self,request):
         if request.method == 'POST':
-                    if 'btnView' in request.POST:
-                        applicantID1 = request.POST.get("applicantID")
-                        print(applicantID1)
-                        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
-                        currentApplicant2 = currentApplicant.objects.filter(pk=1).update(applicantID = applicantID1)
-                        return redirect('administrator:applicants_view')
-                        
+            if 'btnAnswers' in request.POST:
+                applicantID1 = request.POST.get("applicantID")
+                currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
+                currentApplicant2 = currentApplicant.objects.filter(pk=1).update(applicantID = applicantID1)
+                return redirect('administrator:response_view')
+        else:
+            return render(request, 'jobApplicants.html')
 
-        return HttpResponse()
+class ResponseView(View):
+    def get(self, request):
+        currentJob1 = currentJob.objects.values_list("jobID", flat=True).get(pk = 1)    
+        currentApplicant1 = currentApplicant.objects.values_list("applicantID",flat = True).get(pk = 1)
+        response = AppliedJob.objects.raw('SELECT * FROM appliedjob,createjob,applicant where appliedjob.job_id = createjob.id and appliedjob.user_id = applicant.id and createjob.id = '+str(currentJob1)+' and applicant.id ='+str(currentApplicant1)+' GROUP BY applicant.firstname')
+        job = CreateJob.objects.filter(id = currentJob1)
+
+        context = {
+            'responses': response,
+            'job': job,
+        }
+
+        return render(request, 'individualApplicant.html', context)
 
 class LogOutView(View):
     def get(self, request):
